@@ -1,0 +1,39 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="atras" src="../../../assets/icons/arrow-back-outline.svg"></ion-back-button>
+    </ion-buttons>
+    <ion-title>QR </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+    <ngx-qrcode
+        class="centerr qr"
+        [qrc-element-type]="element-type"        
+        [qrc-value] = "accountNumber" 
+        cssClass="bshadow">        
+    </ngx-qrcode>  
+  </ion-card>
+
+  <ion-card>
+    <ion-item href="#" class="ion-activated">
+      <ion-icon name="wifi" slot="start"></ion-icon>
+      <ion-label>Tipo de cuenta: {{ type }}</ion-label>
+    </ion-item>
+  
+    <ion-item href="#">
+      <ion-icon name="wine" slot="start"></ion-icon>
+      <ion-label>Cuenta Numero: #{{accountNumber}}</ion-label>
+    </ion-item>
+  
+    <ion-item class="ion-activated">
+      <ion-icon name="warning" slot="start"></ion-icon>
+      <ion-label>Descripcion de la cuenta: {{description}}</ion-label>
+    </ion-item>
+  
+  </ion-card>
+  
+</ion-content>

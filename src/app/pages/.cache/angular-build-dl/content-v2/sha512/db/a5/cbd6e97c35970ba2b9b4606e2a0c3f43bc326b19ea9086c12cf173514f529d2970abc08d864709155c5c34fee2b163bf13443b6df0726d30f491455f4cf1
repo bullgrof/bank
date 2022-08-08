@@ -1,0 +1,385 @@
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-create-group-create-group-module"], {
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/create-group/create-group.page.html":
+  /*!*************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/create-group/create-group.page.html ***!
+    \*************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppPagesCreateGroupCreateGroupPageHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar color=\"warning\">\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"/contacts\" icon-only></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>{{'CREATEGROUPS.title' | translate}}</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n\r\n\r\n  <ion-item>\r\n    \r\n    <ion-input placeholder=\"{{'CREATEGROUPS.namegroup' | translate}}\" [(ngModel)]=\"group.name\"  required></ion-input>\r\n  </ion-item>\r\n  <ion-list>\r\n    <ion-item *ngFor=\"let contact of contacts\" (click)=\"onClick( contact )\">\r\n      <ion-avatar slot=\"start\">\r\n        <img src=\"../../../assets/avatars/defaultavatar.png\">\r\n      </ion-avatar>\r\n      <ion-label>{{ contact.alias }} ({{ contact.sidcontact }})</ion-label>\r\n      <ion-checkbox slot=\"end\" color=\"warning\"></ion-checkbox>\r\n    </ion-item>\r\n  </ion-list>\r\n  \r\n  \r\n  \r\n  <!--ion-list>\r\n\r\n    <ion-item-sliding *ngFor=\"let contact of contacts\" >\r\n      <ion-item class=\"itemheight\" [routerLink]=\"['/chat', contact.sidcontact]\">\r\n        <ion-avatar slot=\"start\">\r\n          <img src=\"../../../assets/avatars/defaultavatar.png\">\r\n        </ion-avatar>\r\n        <ion-label class=\"sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated\">\r\n          <h3 class=\"nameUser\">{{ contact.alias }} </h3>\r\n          <p *ngIf=\"contact.badge === 1\">Mensajes sin leer</p>\r\n         \r\n        </ion-label>\r\n        \r\n        <ion-icon name=\"chatbox-ellipses\" color=\"warning\" *ngIf=\"contact.badge === 1\"></ion-icon>\r\n        <ion-icon slot=\"end\" name=\"chevron-back-outline\" class=\"backArrow\"></ion-icon>\r\n      \r\n      </ion-item>\r\n      \r\n      \r\n     \r\n    </ion-item-sliding>\r\n  </ion-list-->\r\n\r\n</ion-content>\r\n\r\n<ion-footer class=\"ion-no-border\">\r\n  <ion-toolbar>\r\n    <ion-button (click)=\"createGroup(usersParticipants)\" expand=\"block\"  color=\"warning\"> <ion-icon name=\"add-outline\"></ion-icon> {{'CREATEGROUPS.title' | translate}}</ion-button>\r\n  </ion-toolbar>\r\n</ion-footer>\r\n";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/create-group/create-group.module.ts":
+  /*!***********************************************************!*\
+    !*** ./src/app/pages/create-group/create-group.module.ts ***!
+    \***********************************************************/
+
+  /*! exports provided: CreateGroupPageModule */
+
+  /***/
+  function srcAppPagesCreateGroupCreateGroupModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CreateGroupPageModule", function () {
+      return CreateGroupPageModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _create_group_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./create-group.page */
+    "./src/app/pages/create-group/create-group.page.ts");
+    /* harmony import */
+
+
+    var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @ngx-translate/core */
+    "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
+
+    var routes = [{
+      path: '',
+      component: _create_group_page__WEBPACK_IMPORTED_MODULE_6__["CreateGroupPage"]
+    }];
+
+    var CreateGroupPageModule = function CreateGroupPageModule() {
+      _classCallCheck(this, CreateGroupPageModule);
+    };
+
+    CreateGroupPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes), _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateModule"]],
+      declarations: [_create_group_page__WEBPACK_IMPORTED_MODULE_6__["CreateGroupPage"]]
+    })], CreateGroupPageModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/create-group/create-group.page.scss":
+  /*!***********************************************************!*\
+    !*** ./src/app/pages/create-group/create-group.page.scss ***!
+    \***********************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppPagesCreateGroupCreateGroupPageScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2NyZWF0ZS1ncm91cC9jcmVhdGUtZ3JvdXAucGFnZS5zY3NzIn0= */";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/create-group/create-group.page.ts":
+  /*!*********************************************************!*\
+    !*** ./src/app/pages/create-group/create-group.page.ts ***!
+    \*********************************************************/
+
+  /*! exports provided: CreateGroupPage */
+
+  /***/
+  function srcAppPagesCreateGroupCreateGroupPageTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "CreateGroupPage", function () {
+      return CreateGroupPage;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _ionic_storage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @ionic/storage */
+    "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+    /* harmony import */
+
+
+    var _services_users_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../../services/users.service */
+    "./src/app/services/users.service.ts");
+    /* harmony import */
+
+
+    var src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! src/app/services/contacts.service */
+    "./src/app/services/contacts.service.ts");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _services_chat_group_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ../../services/chat-group.service */
+    "./src/app/services/chat-group.service.ts");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+
+    var CreateGroupPage = /*#__PURE__*/function () {
+      function CreateGroupPage(storage, userService, contactsService, toastCtrl, groupService, router) {
+        _classCallCheck(this, CreateGroupPage);
+
+        this.storage = storage;
+        this.userService = userService;
+        this.contactsService = contactsService;
+        this.toastCtrl = toastCtrl;
+        this.groupService = groupService;
+        this.router = router;
+        this.args = null;
+        this.usernameStorage = '';
+        this.sekretidrec = '';
+        this.contacts = [];
+        this.participants = [];
+        this.usersParticipants = [];
+        this.group = {
+          name: ''
+        };
+      }
+
+      _createClass(CreateGroupPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          this.getContacts();
+        }
+      }, {
+        key: "getContacts",
+        value: function getContacts() {
+          var _this = this;
+
+          this.args = this.storage.get('username').then(function (result) {
+            _this.usernameStorage = result;
+
+            _this.userService.getSekretId(_this.usernameStorage).subscribe(function (response) {
+              _this.sekretidrec = response.user[0].sekretid;
+              _this.sid = response.user[0].sekretid;
+              _this.myUser = response.user[0]._id;
+
+              _this.contactsService.getContacts(_this.sekretidrec).subscribe(function (responseContacts) {
+                console.log('Contactos', responseContacts);
+                _this.contacts = responseContacts.contacts;
+                console.log('ARREGLO DE CONTACTOS', _this.contacts); //this.createRomms(this.contacts);             
+              });
+            }); //End Token Service
+
+          }); //End user Service
+        }
+      }, {
+        key: "onClick",
+        value: function onClick(check) {
+          var _this2 = this;
+
+          var arr = check; // console.log('[INFO] objeto que ingresa',arr.sidcontact );
+
+          this.userService.getUserNameBySekretId(arr.sidcontact).subscribe(function (resp) {
+            console.log('[RESPONSE]: respuesta del sevicio de usuario', resp);
+            _this2.arrUser = resp.user[0];
+            _this2.idUser = _this2.arrUser._id;
+
+            _this2.addParticipant(_this2.idUser);
+          });
+        }
+      }, {
+        key: "addParticipant",
+        value: function addParticipant(idUser) {
+          var alpha;
+          var betha = {
+            receiverId: idUser,
+            isadmin: '0'
+          };
+          alpha = this.participants.indexOf(idUser); // console.log('[INFO]: resultado del FIND', alpha);
+
+          if (alpha === -1) {
+            this.participants.push(idUser);
+            this.usersParticipants.push(betha); // console.log('[INFO]: arreglo de usuarios', this.participants);
+            // console.log('[INFO]: arreglo de usuariosparticipantes', this.usersParticipants);
+          } else {
+            var i = this.participants.indexOf(idUser);
+            var b = this.usersParticipants.indexOf(function (user) {
+              return user.receiverId === idUser;
+            });
+            this.usersParticipants.splice(b, 1);
+            console.log('variable B: ', b);
+            this.participants.splice(i, 1); // console.log('[INFO]: arreglo de usuarios', this.participants);
+            // console.log('[INFO]: arreglo de usuariosparticipantes', this.usersParticipants);
+          }
+        }
+      }, {
+        key: "createGroup",
+        value: function createGroup(users) {
+          var _this3 = this;
+
+          console.log('groupName', this.group.name);
+          var ev = users.length;
+
+          if (ev < 1) {
+            this.showToast('El grupo debe tener mínimo 2 participantes');
+          } else {
+            if (this.group.name === '') {
+              this.showToast('El grupo debe tener un nombre');
+            } else {
+              var bet = {
+                receiverId: this.myUser,
+                isadmin: '1'
+              };
+              this.usersParticipants.push(bet);
+              var grp = {
+                groupname: this.group.name,
+                participants: this.usersParticipants
+              };
+              this.groupService.postCreateGroup(grp).subscribe(function (response) {
+                console.log('[INFO] Response post Group', response.ok);
+
+                if (response.ok === true) {
+                  _this3.showToast('El grupo se ha creado con éxito'); // this.router.navigate(['/groups'] );      
+
+
+                  _this3.router.navigate(['/groups']);
+                }
+              });
+            }
+          }
+        }
+      }, {
+        key: "showToast",
+        value: function showToast(msg) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var toast;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return this.toastCtrl.create({
+                      message: msg,
+                      position: 'middle',
+                      duration: 3000
+                    });
+
+                  case 2:
+                    toast = _context.sent;
+                    toast.present();
+
+                  case 4:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
+        }
+      }]);
+
+      return CreateGroupPage;
+    }();
+
+    CreateGroupPage.ctorParameters = function () {
+      return [{
+        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_2__["Storage"]
+      }, {
+        type: _services_users_service__WEBPACK_IMPORTED_MODULE_3__["UsersService"]
+      }, {
+        type: src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_4__["ContactsService"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ToastController"]
+      }, {
+        type: _services_chat_group_service__WEBPACK_IMPORTED_MODULE_6__["ChatGroupService"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]
+      }];
+    };
+
+    CreateGroupPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-create-group',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./create-group.page.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/create-group/create-group.page.html"))["default"],
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./create-group.page.scss */
+      "./src/app/pages/create-group/create-group.page.scss"))["default"]]
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_2__["Storage"], _services_users_service__WEBPACK_IMPORTED_MODULE_3__["UsersService"], src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_4__["ContactsService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ToastController"], _services_chat_group_service__WEBPACK_IMPORTED_MODULE_6__["ChatGroupService"], _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"]])], CreateGroupPage);
+    /***/
+  }
+}]);
+//# sourceMappingURL=pages-create-group-create-group-module-es5.js.map

@@ -1,0 +1,37 @@
+<ion-menu side="start" menuId="first" contentId="principal">
+    <ion-header>
+        <ion-toolbar color="warning">
+            <ion-title class="title"> </ion-title>
+        </ion-toolbar>
+    </ion-header>
+    <ion-content>
+        
+        <ion-list>
+            <ion-menu-toggle *ngFor="let c of components | async">
+                <ion-item [routerLink]="c.redirectTo">
+                    <div *ngIf="c.src !== ''">
+                        <ion-icon slot="start" [src]="c.src"  color="warning" class="iconaa"></ion-icon>
+                    </div>
+                    <div *ngIf="c.name === 'Sekret'" class="cube">
+                        <img src="../../../assets/icon/cube.png">
+                    </div>
+                    <ion-label> {{ c.name}}</ion-label> 
+                    <ion-badge slot="end" *ngIf="c.name === 'Grupos' && badgeGroup > 0">{{ badgeGroup }} </ion-badge>
+                    <ion-badge slot="end" *ngIf="c.name === 'Solicitudes' && requests > 0">{{ requests }} </ion-badge>
+                    <ion-badge slot="end" *ngIf="c.name === 'Comunicados' && numberReleases > 0">{{ numberReleases }} </ion-badge>
+                </ion-item>
+            </ion-menu-toggle>
+        </ion-list>
+
+  
+          
+          <ion-fab vertical="bottom" horizontal="center" slot="fixed" (click)="logout()" >
+            <ion-fab-button color="danger">
+                <ion-icon src="../../../assets/icons/power.svg" ></ion-icon>
+            </ion-fab-button>
+          </ion-fab>
+        
+        
+
+    </ion-content>
+</ion-menu>

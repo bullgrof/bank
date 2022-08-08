@@ -1,0 +1,2897 @@
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-chat-new-chat-new-module"], {
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/chat-new/chat-new.page.html":
+  /*!*****************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/chat-new/chat-new.page.html ***!
+    \*****************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppPagesChatNewChatNewPageHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<ion-header class=\"headera\">\n  <ion-toolbar color=\"warning\">\n    <ion-buttons slot=\"start\" class=\"backarrow\">\n      <ion-button (click)=\"goToContacts()\">\n        <ion-icon src=\"assets/icons/arrow-back.svg\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n\n    <ion-buttons class=\"\">\n      <ion-avatar slot=\"\" color=\"warning\">\n        <img src=\"../../../assets/avatars/{{avatarUser}}\" class=\"avatar\">\n      </ion-avatar>\n      <label class=\"username\">{{usernameContact}} ({{nameContact}})</label>\n    </ion-buttons>\n\n    <ion-buttons slot=\"primary\" class=\"powerbutton\">\n      <ion-button (click)=\"logout()\">\n        <ion-icon slot=\"end\" src=\"/assets/icons/power.svg\" class=\"icon-logout\"></ion-icon>\n      </ion-button>\n\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content #content class=\"ion-padding2 contentt\" [scrollEvents]=\"true\" fullscreen  id=\"myContent\" overflow-scroll=\"true\">\n  <ion-fab horizontal=\"end\" vertical=\"top\" slot=\"fixed\" color=\"warning\">\n    <ion-fab-button class=\"ios ion-activatable ion-focusable hydrated\" color=\"warning\">\n      <ion-icon name=\"add\"></ion-icon>\n    </ion-fab-button>\n\n    <ion-fab-list side=\"\">\n      <ion-fab-button color=\"warning\" data-desc=\"Camara\" (click)=\"captureImage()\"\n        *ngIf=\"planActive  === 'Plan Plus' || planActive === 'Plan Promocional'\">\n        <ion-icon name=\"camera\" role=\"img\" class=\"ios hydrated\" aria-label=\"logo facebook\"></ion-icon>\n      </ion-fab-button>\n\n      <ion-fab-button color=\"warning\" data-desc=\"Galería\" (click)=\"imageGallery()\"\n        *ngIf=\"planActive  === 'Plan Plus' || planActive === 'Plan Promocional'\">\n        <ion-icon name=\"image\" role=\"img\" class=\"ios hydrated\" aria-label=\"logo twitter\"></ion-icon>\n      </ion-fab-button>\n\n      <ion-fab-button color=\"warning\" data-desc=\"Enviar al Baúl\" (click)=\"sendTrunk()\"\n        *ngIf=\"planActive  === 'Plan Plus' || planActive === 'Plan Promocional'\">\n        <ion-icon src=\"/assets/icons/lock-closed.svg\" class=\"\"></ion-icon>\n      </ion-fab-button>\n\n      <ion-fab-button color=\"warning\" data-desc=\"Eliminar mensajes\" (click)=\"deleteMeessages()\">\n        <ion-icon name=\"trash\" role=\"img\" class=\"ios hydrated\" ></ion-icon>\n      </ion-fab-button>\n\n      <ion-fab-button color=\"warning\" data-desc=\"Mensaje de voz\" (click)=\"showRecorder()\"\n        *ngIf=\"planActive  === 'Plan Plus' || planActive === 'Plan Promocional'\">\n        <ion-icon src=\"/assets/icons/mic-circle.svg\" role=\"img\" class=\"ios hydrated\" class=\"iconfav\"></ion-icon>\n      </ion-fab-button>\n\n    </ion-fab-list>\n  </ion-fab>\n\n  <div class=\"messages-container\">\n    <!--space to menu lateral rigth-->\n\n\n\n    <div class=\"\" fullscreen=\"true\">\n      <ion-grid>\n\n        <ion-infinite-scroll position=\"top\" threshold=\"100px\" (ionInfinite)=\"loadData($event)\">\n          <ion-infinite-scroll-content loadingSpinner=\"bubbles\" loadingText=\"Cargando mensajes...\">\n          </ion-infinite-scroll-content>\n        </ion-infinite-scroll>\n        <div class=\"messages-container\">\n          <ion-row radio-group *ngFor=\"let message of messages; let i = index\">\n\n\n            <ion-col size=\"9\">\n              <div\n                *ngIf=\"message.senderId !== currentUser && message.type === '1' && currentUser !== message.deleteAlpha\">\n\n                <div class=\"bubble me\" *ngIf=\"currentUser !== message.deletebetha\">\n                  <div class=\"user\">\n\n                    <ion-radio slot=\"start\" *ngIf=\"checks === 'on'\" (click)=\"addSelectResend(message)\"\n                      value=\"message._id\">\n                    </ion-radio>\n                    <ion-radio slot=\"start\" *ngIf=\"trunkChecks === 'on'\" (click)=\"addTrunk(message)\"></ion-radio>\n                    <ion-icon src=\"/assets/icons/redo.svg\" class=\"icon-app\" (click)=\"presentSelect()\"\n                      *ngIf=\"arrowControl === 'off'\"></ion-icon>\n                    {{ nameContact }}<br>\n                  </div>\n                  <div class=\"msg\">\n                    {{ message.body}}\n                  </div>\n                  <div class=\"footer-bubble\">\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Decoded {{message.createAt | date:'short'}}</div>\n                  </div>\n                </div>\n              </div>\n            </ion-col>\n\n\n            <ion-col offset=\"3\" size=\"9\"\n              *ngIf=\"message.senderId === currentUser && message.type === '1' && currentUser !== message.deleteAlpha\">\n              <div *ngIf=\"currentUser !== message.deletebetha\">\n                <div class=\"bubble you\">\n                  <div class=\"user\">\n                    <ion-radio slot=\"start\" *ngIf=\"checks === 'on'\" (click)=\"addSelectResend(message)\"\n                      value=\"message._id\">\n                    </ion-radio>\n                    <ion-radio slot=\"start\" *ngIf=\"trunkChecks === 'on'\" (click)=\"addTrunk(message)\"></ion-radio>\n                    <ion-icon src=\"/assets/icons/redo.svg\" class=\"icon-app\" (click)=\"presentSelect()\"\n                      *ngIf=\"arrowControl === 'off'\">\n                    </ion-icon>\n                    {{ myUsername }}<br>\n                  </div>\n                  <div class=\"msg2\">\n                    {{ message.body}}\n                  </div>\n                  <div class=\"footer-bubble\">\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Encoded {{message.createAt | date:'short'}}</div>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-outline.svg\" *ngIf=\"message.isread === '0'\">\n                    </ion-icon>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-done-outline.svg\"\n                      *ngIf=\"message.isread === '1'\">\n                    </ion-icon>\n                  </div>\n                </div>\n              </div>\n            </ion-col>\n\n            <!--Ressend-->\n            <ion-col offset=\"3\" size=\"9\"\n              *ngIf=\"message.senderId === currentUser && message.type === '11' && currentUser !== message.deleteAlpha \">\n              <div *ngIf=\"currentUser !== message.deletebetha\">\n                <div class=\"bubbleorange you\">\n                  <div class=\"user\">\n                    <ion-radio slot=\"start\" *ngIf=\"checks === 'on'\" (click)=\"addSelectResend(message)\"\n                      value=\"message._id\"></ion-radio>\n                    <ion-radio slot=\"start\" *ngIf=\"trunkChecks === 'on'\" (click)=\"addTrunk(message)\"></ion-radio>\n                    <ion-icon src=\"/assets/icons/redo.svg\" class=\"icon-app\" (click)=\"presentSelect()\"\n                      *ngIf=\"arrowControl === 'off'\"></ion-icon>\n                    {{ myUsername }}<br>\n                  </div>\n                  <div class=\"msg2\">\n                    {{ message.body}}\n                  </div>\n                  <div class=\"footer-bubble\">\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Decoded {{message.createAt | date:'short'}}</div>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-outline.svg\" *ngIf=\"message.isread === '0'\">\n                    </ion-icon>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-done-outline.svg\"\n                      *ngIf=\"message.isread === '1'\">\n                    </ion-icon>\n                  </div>\n                </div>\n              </div>\n            </ion-col>\n\n            <ion-col size=\"9\"\n              *ngIf=\"message.senderId !== currentUser && message.type === '11' && currentUser !== message.deleteAlpha \">\n              <div *ngIf=\"currentUser !== message.deletebetha\">\n                <div class=\"bubbleorange me\">\n                  <div class=\"user\">\n                    <ion-radio slot=\"start\" *ngIf=\"checks === 'on'\" (click)=\"addSelectResend(message)\"\n                      value=\"message._id\"></ion-radio>\n                    <ion-radio slot=\"start\" *ngIf=\"trunkChecks === 'on'\" (click)=\"addTrunk(message)\"></ion-radio>\n                    <ion-icon src=\"/assets/icons/redo.svg\" class=\"icon-app\" (click)=\"presentSelect()\"\n                      *ngIf=\"arrowControl === 'off'\"></ion-icon>\n                    {{ nameContact }} <br>\n                  </div>\n                  <div class=\"msg\">\n                    {{ message.body}}\n                  </div>\n                  <div class=\"footer-bubble\">\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Decoded {{message.createAt | date:'short'}}</div>\n                  </div>\n                </div>\n              </div>\n            </ion-col>\n\n            <!--Resend Images-->\n            <ion-col size=\"10\" offset=\"2\"\n              *ngIf=\"message.senderId === currentUser && message.type === '22' && currentUser !== message.deleteAlpha \">\n              <div *ngIf=\"currentUser !== message.deletebetha\">\n                <div class=\"bubbleorange you\">\n                  <ion-radio slot=\"start\" *ngIf=\"checks === 'on'\" (click)=\"addSelectResend(message)\"\n                    value=\"message._id\">\n                  </ion-radio>\n                  <ion-radio slot=\"start\" *ngIf=\"trunkChecks === 'on'\" (click)=\"addTrunk(message)\"></ion-radio>\n                  <ion-icon src=\"/assets/icons/redo.svg\" class=\"icon-app\" (click)=\"presentSelect()\"\n                    *ngIf=\"arrowControl === 'off'\"></ion-icon>\n                  {{ myUsername }} <br>\n                  <div class=\"msg2\">\n                    <img [src]=\"message.body | image\" (click)=\"openGallery(message.body)\">\n                  </div>\n                  <div class=\"footer-bubble\">\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Encoded {{message.createAt | date:'short'}}</div>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-outline.svg\" *ngIf=\"message.isread === '0'\">\n                    </ion-icon>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-done-outline.svg\"\n                      *ngIf=\"message.isread === '1'\">\n                    </ion-icon>\n                  </div>\n                </div>\n              </div>\n            </ion-col>\n\n            <ion-col size=\"10\"\n              *ngIf=\"message.senderId !== currentUser && message.type === '22' && currentUser !== message.deleteAlpha\">\n              <div *ngIf=\"currentUser !== message.deletebetha\">\n                <div class=\"bubbleorange me\">\n                  <ion-radio slot=\"start\" *ngIf=\"checks === 'on'\" (click)=\"addSelectResend(message)\"\n                    value=\"message._id\">\n                  </ion-radio>\n                  <ion-radio slot=\"start\" *ngIf=\"trunkChecks === 'on'\" (click)=\"addTrunk(message)\"></ion-radio>\n                  <ion-icon src=\"/assets/icons/redo.svg\" class=\"icon-app\" (click)=\"presentSelect()\"\n                    *ngIf=\"arrowControl === 'off'\"></ion-icon>\n                  {{ nameContact }} <br>\n                  <div class=\"msg2\">\n                    <img [src]=\"message.body | image\" (click)=\"openGallery(message.body)\">\n                  </div>\n                  <div class=\"footer-bubble\">\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Decoded {{message.createAt | date:'short'}}</div>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-outline.svg\" *ngIf=\"message.isread === '0'\">\n                    </ion-icon>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-done-outline.svg\"\n                      *ngIf=\"message.isread === '1'\">\n                    </ion-icon>\n                  </div>\n                </div>\n              </div>\n            </ion-col>\n\n            <!--End Resend Images-->\n\n\n            <!--end Resend-->\n            <ion-col size=\"10\" offset=\"2\"\n              *ngIf=\"message.senderId === currentUser && message.type === '2' && currentUser !== message.deleteAlpha\">\n              <div *ngIf=\"currentUser !== message.deletebetha\">\n                <div class=\"bubble you\">\n                  <ion-radio slot=\"start\" *ngIf=\"checks === 'on'\" (click)=\"addSelectResend(message)\"\n                    value=\"message._id\">\n                  </ion-radio>\n                  <ion-radio slot=\"start\" *ngIf=\"trunkChecks === 'on'\" (click)=\"addTrunk(message)\"></ion-radio>\n                  <ion-icon src=\"/assets/icons/redo.svg\" class=\"icon-app\" (click)=\"presentSelect()\"\n                    *ngIf=\"arrowControl === 'off'\"></ion-icon>\n                  {{ myUsername }} <br>\n                  <div class=\"msg2\">\n                    <img [src]=\"message.body | image\" (click)=\"openGallery(message.body)\">\n                  </div>\n                  <div class=\"footer-bubble\">\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Decoded {{message.createAt | date:'short'}}</div>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-outline.svg\" *ngIf=\"message.isread === '0'\">\n                    </ion-icon>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-done-outline.svg\"\n                      *ngIf=\"message.isread === '1'\">\n                    </ion-icon>\n                  </div>\n                </div>\n              </div>\n            </ion-col>\n\n            <ion-col size=\"10\"\n              *ngIf=\"message.senderId !== currentUser && message.type === '2' && currentUser !== message.deleteAlpha\">\n              <div *ngIf=\"currentUser !== message.deletebetha\">\n                <div class=\"bubble me\">\n                  <ion-radio slot=\"start\" *ngIf=\"checks === 'on'\" (click)=\"addSelectResend(message)\"\n                    value=\"message._id\">\n                  </ion-radio>\n                  <ion-radio slot=\"start\" *ngIf=\"trunkChecks === 'on'\" (click)=\"addTrunk(message)\"></ion-radio>\n                  <ion-icon src=\"/assets/icons/redo.svg\" class=\"icon-app\" (click)=\"presentSelect()\"\n                    *ngIf=\"arrowControl === 'off'\"></ion-icon>\n                  {{ nameContact }} <br>\n                  <div class=\"msg2\">\n                    <img [src]=\"message.body | image\" (click)=\"openGallery(message.body)\">\n                  </div>\n                  <div class=\"footer-bubble\">\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Decoded {{message.createAt | date:'short'}}</div>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-outline.svg\" *ngIf=\"message.isread === '0'\">\n                    </ion-icon>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-done-outline.svg\"\n                      *ngIf=\"message.isread === '1'\">\n                    </ion-icon>\n                  </div>\n                </div>\n              </div>\n            </ion-col>\n\n            <ion-col size=\"10\"\n              *ngIf=\"message.senderId !== currentUser && message.type === '3' && currentUser !== message.deleteAlpha\">\n              <div *ngIf=\"currentUser !== message.deletebetha\">\n                <div class=\"bubble me\">\n                  {{nameContact}}\n                  <div class=\"pl\">               \n                    <ion-icon  class=\"newIcons\" name=\"play\" (click)=\"start(message.audioFile)\" *ngIf=\"playing === '1'\"></ion-icon>\n                    <ion-icon  class=\"newIcons\" name=\"pause\" (click)=\"sto(message.audioFile)\"  *ngIf=\"playing === '0'\"></ion-icon>     \n                  </div>\n                  <div class=\"datePlayer\">Decoded {{message.createAt | date:'short'}}</div>\n                </div>\n              </div>\n            </ion-col>\n\n            <ion-col size=\"10\" offset=\"2\"\n              *ngIf=\"message.senderId === currentUser && message.type === '3' && currentUser !== message.deleteAlpha\">\n              <div *ngIf=\"currentUser !== message.deletebetha\">\n                <div class=\"bubble you\">\n                    {{myUsername}}\n                  <div class=\"pl\">               \n                    <ion-icon  class=\"newIcons\" name=\"play\" (click)=\"start(message.audioFile)\" *ngIf=\"playing === '1'\"></ion-icon>\n                    <ion-icon  class=\"newIcons\" name=\"pause\" (click)=\"sto(message.audioFile)\"  *ngIf=\"playing === '0'\"></ion-icon>     \n                  </div>\n                  <div class=\"datePlayer\">Encoded {{message.createAt | date:'short'}}</div>\n                </div>\n              </div>\n            </ion-col>\n\n            <ion-col offset=\"3\" size=\"9\"\n              *ngIf=\"message.senderId === currentUser && message.type === '44' && currentUser !== message.deleteAlpha \">\n              <div *ngIf=\"currentUser !== message.deletebetha\">\n                <div class=\"bubbleorange2 you\">\n                  <div class=\"user3\">\n            \n                   \n                   \n                    {{ myUsername }} <ion-icon src=\"/assets/icons/lock-closed.svg\" slot=\"end\" class=\"block\"></ion-icon> <br>\n                    \n                  </div>\n                  <div class=\"msg2\">\n                    {{ message.body}}\n                  </div>\n                  <div class=\"footer-bubble\">\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Decoded {{message.createAt | date:'short'}}</div>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-outline.svg\" *ngIf=\"message.isread === '0'\">\n                    </ion-icon>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-done-outline.svg\"\n                      *ngIf=\"message.isread === '1'\">\n                    </ion-icon>\n                  </div>\n                </div>\n              </div>\n            </ion-col>\n\n            <ion-col size=\"9\">\n              <div *ngIf=\"message.senderId !== currentUser && message.type === '44' && currentUser !== message.deleteAlpha \">\n                <div class=\"bubbleorange2 me\" *ngIf=\"currentUser !== message.deletebetha\">\n                  <div class=\"user3\">\n           \n                    {{ nameContact }} <ion-icon src=\"/assets/icons/lock-closed.svg\" slot=\"end\" class=\"block\"></ion-icon> <br>\n                  </div>\n                  <div class=\"msg2\">\n                    {{ message.body}}\n                  </div>\n                  <div class=\"footer-bubble\">\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Decoded {{message.createAt | date:'short'}}</div>\n                  </div>\n                </div>\n              </div>\n            </ion-col>\n\n            <!-- Iamges resend Trunk-->\n            <ion-col size=\"10\" offset=\"2\"\n              *ngIf=\"message.senderId === currentUser && message.type === '55' && currentUser !== message.deleteAlpha\">\n              <div *ngIf=\"currentUser !== message.deletebetha\">\n                <div class=\"bubbleorange2 you\">\n                  <!--ion-radio slot=\"start\" *ngIf=\"checks === 'on'\" (click)=\"addSelectResend(message)\"\n                    value=\"message._id\">\n                  </ion-radio-->\n                  \n                  <!--ion-icon src=\"/assets/icons/redo.svg\" class=\"icon-app\" (click)=\"presentSelect()\"\n                    *ngIf=\"arrowControl === 'off'\"></ion-icon-->\n                  {{ myUsername }} <ion-icon src=\"/assets/icons/lock-closed.svg\" slot=\"end\" class=\"block\"></ion-icon><br>\n                  <div class=\"msg2\">\n                    <img [src]=\"message.body | image\" (click)=\"openGallery(message.body)\">\n                  </div>\n                  <div class=\"footer-bubble\">\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Decoded {{message.createAt | date:'short'}}</div>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-outline.svg\" *ngIf=\"message.isread === '0'\">\n                    </ion-icon>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-done-outline.svg\"\n                      *ngIf=\"message.isread === '1'\">\n                    </ion-icon>\n                  </div>\n                </div>\n              </div>\n            </ion-col>\n\n            <ion-col size=\"10\"\n              *ngIf=\"message.senderId !== currentUser && message.type === '55' && currentUser !== message.deleteAlpha\">\n              <div *ngIf=\"currentUser !== message.deletebetha\">\n                <div class=\"bubbleorange2 me\">\n                 \n                 \n                  {{ nameContact }} <ion-icon src=\"/assets/icons/lock-closed.svg\" slot=\"end\" class=\"block\"></ion-icon><br>\n                  <div class=\"msg2\">\n                    <img [src]=\"message.body | image\" (click)=\"openGallery(message.body)\">\n                  </div>\n                  <div class=\"footer-bubble\">\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Decoded {{message.createAt | date:'short'}}</div>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-outline.svg\" *ngIf=\"message.isread === '0'\">\n                    </ion-icon>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-done-outline.svg\"\n                      *ngIf=\"message.isread === '1'\">\n                    </ion-icon>\n                  </div>\n                </div>\n              </div>\n            </ion-col>\n\n            <!--End Images Resend Trunk-->\n\n\n\n            <!--ion-col size=\"10\"\n              *ngIf=\"message.senderId !== currentUser && message.type === '3' && currentUser !== message.deleteAlpha\">\n              <div *ngIf=\"currentUser !== message.deletebetha\">\n                <div class=\"bubble me\">\n                  <div> {{ nameContact }}</div>                  \n                    <div class=\"playermessage\">\n                      <div>\n                        <ion-icon  class=\"iconsplayer\" name=\"play\" (click)=\"start(message.audioFile)\" *ngIf=\"playing === '1'\"></ion-icon>\n                        \n                        <ion-icon  class=\"iconsplayer\" name=\"pause\" (click)=\"sto(message.audioFile)\"  *ngIf=\"playing === '0'\"></ion-icon>                        \n                      </div>\n                      <div>\n                        \n                          <ion-row>\n                            <ion-col size=\"8\" class=\"ion-text-center\"></ion-col>\n                          </ion-row>\n                        \n                      </div>\n                  </div>\n                  <div class=\"encodeplayer text-right\">Decoded {{message.createAt | date:'short'}}</div>\n                </div>\n              </div>\n            </ion-col>\n\n            <ion-col size=\"10\" offset=\"2\"\n              *ngIf=\"message.senderId === currentUser && message.type === '3' && currentUser !== message.deleteAlpha\">\n              <div *ngIf=\"currentUser !== message.deletebetha\">\n                <div class=\"bubble you\">\n                  <div> {{myUsername}} </div>\n                  <div class=\"playermessage\">\n                    <div>\n                        <ion-icon  class=\"iconsplayer\" name=\"play\" (click)=\"start(message.audioFile)\" *ngIf=\"playing === '1'\"></ion-icon>\n                        <ion-icon  class=\"iconsplayer\" name=\"pause\" (click)=\"sto(message.audioFile)\"  *ngIf=\"playing === '0'\"></ion-icon>                        \n                      </div>\n                    </div>\n                  <div class=\"encodeplayer text-right\">Encode {{message.createAt | date:'short'}}</div>\n                </div>\n              </div>\n            </ion-col-->\n\n\n\n            <!--ion-col size=\"9\" *ngIf=\"message.senderId !== currentUser && message.type === '1' \"\n                class=\"message other-message\">\n                <div *ngIf=\"currentUser  !== message.deleteAlpha || currentUser === message.deletebetha\">\n                  <div *ngIf=\"currentUser !== message.deletebetha\">\n                    <div class=\"user\" >\n                      <ion-icon src=\"/assets/icons/redo.svg\" class=\"icon-app\" (click)=\"presentMenuBar(message.body, message.receiverId)\"></ion-icon> \n                      {{ nameContact }} <br>\n                    </div>\n                    <span>{{ decrypt(message.body)}}</span>\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Decoded {{message.createAt | date:'short'}}</div>\n                  </div>\n                </div>\n              </ion-col-->\n\n            <!--ion-col offset=\"3\" size=\"9\" *ngIf=\"message.senderId === currentUser && message.type === '1' && currentUser !== message.deleteAlpha\"\n                class=\"message my-message\">\n                <div *ngIf=\"currentUser  !== message.deleteAlpha || currentUser === message.deletebetha\">\n                  <div *ngIf=\"currentUser !== message.deletebetha\">\n                    <div class=\"user\">\n                      <ion-icon src=\"/assets/icons/redo.svg\" class=\"icon-app\" (click)=\"presentMenuBar(message.body, message.receiverId)\"></ion-icon>\n                      {{ myUsername }}<br>\n                    </div>\n                    <span>{{ decrypt(message.body) }}</span>\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Encoded {{message.createAt | date:'short' }}</div>\n                    <ion-icon src=\"assets/icons/checkmark-outline.svg\" *ngIf=\"message.isread === '0'\"></ion-icon>\n                    <ion-icon src=\"assets/icons/checkmark-done-outline.svg\" *ngIf=\"message.isread === '1'\"></ion-icon>\n                  </div>\n                </div>\n              </ion-col-->\n\n          </ion-row>\n        </div>\n      </ion-grid>\n    </div>\n  </div>\n  \n  \n</ion-content>\n\n<ion-footer color=\"warning\">\n\n  <!--ion-card *ngIf=\"hidde1\" >\n    <ion-card-header>\n      <ion-icon name=\"close\" class=\"closeButton\" (click)=\"closeRecord()\"></ion-icon>\n      <ion-card-title> {{status}}</ion-card-title>      \n    </ion-card-header>\n  \n    <ion-card-content>\n      <img src=\"../../../assets/espetro.gif\" class=\"wave\">\n      <ion-grid>\n        <ion-row>\n          <ion-col size=\"6\">\n            <div>            \n              <ion-button color=\"medium\" (click)=\"recordAudio()\" class=\"btnPlayer\" disabled=\"{{recordButton}}\">\n                <ion-icon name=\"mic-circle-outline\"  class=\"botonsAudioRecord\" ></ion-icon>\n                Grabar\n              </ion-button>           \n            </div>\n          </ion-col>\n          <ion-col size=\"6\">\n            <div>\n              <ion-button  (click)=\"stopRecording()\" color=\"medium\" class=\"btnPlayer\">\n                <ion-icon name=\"stop-circle-outline\"  class=\"botonsAudioStop\" slot=\"start\"></ion-icon>\n                Detener\n              </ion-button>              \n            </div>\n          </ion-col>\n          <ion-col>\n            <div>\n              <ion-button expand=\"full\" color=\"medium\" (click)=\"sendAudio(file)\" class=\"btnPlayer\" disabled=\"{{sendAudioButton}}\">\n                <ion-icon  src=\"assets/icons/send.svg\" slot=\"icon-only\"></ion-icon>\n              </ion-button>\n            </div>\n          </ion-col>\n        </ion-row>\n      </ion-grid>      \n    </ion-card-content>\n  </ion-card-->\n\n\n\n\n\n  <ion-toolbar color=\"light\" *ngIf=\"checks === 'on'\">\n    <ion-button expand=\"block\" (click)=\"resendMessage()\"\n      class=\"ios button button-block button-solid ion-activatable ion-focusable hydrated\" color=\"warning\">Seleccionar\n      contacto</ion-button>\n    <ion-button expand=\"block\" (click)=\"canelResend()\"\n      class=\"ios button button-block button-solid ion-activatable ion-focusable hydrated\" color=\"danger\">Cancelar\n    </ion-button>\n  </ion-toolbar>\n  <ion-toolbar color=\"light\" *ngIf=\"trunkChecks === 'on'\">\n    <ion-input type=\"text\" [(ngModel)]=\"nameTrunk\" placeholder=\"Asignar nombre\" required=\"true\">\n    </ion-input>\n\n    <ion-button expand=\"block\" (click)=\"sendtoTrunk()\"\n      class=\"ios button button-block button-solid ion-activatable ion-focusable hydrated\" color=\"warning\">Enviar al Baúl\n    </ion-button>\n    <ion-button expand=\"block\" (click)=\"canelResend()\"\n      class=\"ios button button-block button-solid ion-activatable ion-focusable hydrated\" color=\"danger\">Cancelar\n    </ion-button>\n  </ion-toolbar>\n  <ion-toolbar color=\"light\" *ngIf=\"checks === 'off' \">\n    <ion-row>\n  \n      <ion-col size=\"10\" (click)=\"scrollToBottomInChat()\">\n        <textarea autosize maxRows=\"4\" [(ngModel)]=\"message\" class=\"message-input\"\n          (keyup)=\"comprobeMessage($e)\"></textarea>\n      </ion-col>\n      <ion-col size=\"2\">\n        <ion-button expand=\"block\" fill=\"clear\" color=\"warning\" [disabled]=\"true\" *ngIf=\"message === ''\" (click)=\"sendMessage()\">\n          <ion-icon src=\"assets/icons/send.svg\" slot=\"icon-only\"></ion-icon>\n        </ion-button>\n  \n        <ion-button expand=\"block\" fill=\"clear\" color=\"warning\" [disabled]=\"false\" *ngIf=\"message !== ''\" (click)=\"sendMessage()\">\n          <ion-icon src=\"assets/icons/send.svg\" slot=\"icon-only\"></ion-icon>\n        </ion-button>\n      </ion-col>\n    </ion-row>\n  </ion-toolbar>\n</ion-footer>";
+    /***/
+  },
+
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/modalrecord/modalrecord.page.html":
+  /*!***********************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/modalrecord/modalrecord.page.html ***!
+    \***********************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppPagesModalrecordModalrecordPageHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "\n\n<ion-content class=\"content\">  \n\n  <ion-card>\n    <ion-card-header>\n      <ion-icon src=\"assets/icons/close.svg\" class=\"closeButton\" (click)=\"exitWithOutArguments()\"></ion-icon>\n      <ion-card-title class=\"ion-text-center\"> {{status}}</ion-card-title>      \n    </ion-card-header>\n  \n    <ion-card-content>      \n      <ion-grid>\n        <ion-row>\n          <ion-col size=\"6\">\n            <div>            \n              <ion-button color=\"medium\" (click)=\"recordAudio()\" class=\"btnPlayer\" disabled=\"{{btcRecord}}\">\n                <ion-icon src=\"assets/icons/mic.svg\"  class=\"botonsAudioRecord\" ></ion-icon>\n                Grabar\n              </ion-button>           \n            </div>\n          </ion-col>\n          <ion-col size=\"6\">\n            <div>\n              <ion-button  (click)=\"stopRecording()\" color=\"medium\" class=\"btnPlayer\" disabled=\"{{btnStopRecord}}\">\n                <ion-icon src=\"assets/icons/stop.svg\"  class=\"botonsAudioStop\" slot=\"start\"></ion-icon>\n                Detener\n              </ion-button>              \n            </div>\n          </ion-col>\n          <ion-col>\n            <div>\n              <ion-button expand=\"full\" color=\"medium\" (click)=\"sendAudio(file)\" class=\"btnPlayer\" disabled=\"{{btnSendAudio}}\">\n                <ion-icon  src=\"assets/icons/send.svg\" slot=\"icon-only\"></ion-icon>\n              </ion-button>\n            </div>\n          </ion-col>\n        </ion-row>\n      </ion-grid>      \n    </ion-card-content>\n  </ion-card>\n\n</ion-content>\n";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/chat-new/chat-new.module.ts":
+  /*!***************************************************!*\
+    !*** ./src/app/pages/chat-new/chat-new.module.ts ***!
+    \***************************************************/
+
+  /*! exports provided: ChatNewPageModule */
+
+  /***/
+  function srcAppPagesChatNewChatNewModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ChatNewPageModule", function () {
+      return ChatNewPageModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _chat_new_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./chat-new.page */
+    "./src/app/pages/chat-new/chat-new.page.ts");
+    /* harmony import */
+
+
+    var ngx_autosize__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ngx-autosize */
+    "./node_modules/ngx-autosize/fesm2015/ngx-autosize.js");
+    /* harmony import */
+
+
+    var _modal_contacts_modal_contacts_page__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! ../modal-contacts/modal-contacts.page */
+    "./src/app/pages/modal-contacts/modal-contacts.page.ts");
+    /* harmony import */
+
+
+    var _modal_contacts_modal_contacts_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! ../modal-contacts/modal-contacts.module */
+    "./src/app/pages/modal-contacts/modal-contacts.module.ts");
+    /* harmony import */
+
+
+    var src_app_pipes_pipes_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! src/app/pipes/pipes.module */
+    "./src/app/pipes/pipes.module.ts");
+    /* harmony import */
+
+
+    var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! @ngx-translate/core */
+    "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
+    /* harmony import */
+
+
+    var _modalrecord_modalrecord_page__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    /*! ../modalrecord/modalrecord.page */
+    "./src/app/pages/modalrecord/modalrecord.page.ts");
+    /* harmony import */
+
+
+    var _modalrecord_modalrecord_module__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    /*! ../modalrecord/modalrecord.module */
+    "./src/app/pages/modalrecord/modalrecord.module.ts");
+
+    var routes = [{
+      path: '',
+      component: _chat_new_page__WEBPACK_IMPORTED_MODULE_6__["ChatNewPage"]
+    }];
+
+    var ChatNewPageModule = function ChatNewPageModule() {
+      _classCallCheck(this, ChatNewPageModule);
+    };
+
+    ChatNewPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      entryComponents: [_modal_contacts_modal_contacts_page__WEBPACK_IMPORTED_MODULE_8__["ModalContactsPage"], _modalrecord_modalrecord_page__WEBPACK_IMPORTED_MODULE_12__["ModalrecordPage"]],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes), ngx_autosize__WEBPACK_IMPORTED_MODULE_7__["AutosizeModule"], _modal_contacts_modal_contacts_module__WEBPACK_IMPORTED_MODULE_9__["ModalContactsPageModule"], src_app_pipes_pipes_module__WEBPACK_IMPORTED_MODULE_10__["PipesModule"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_11__["TranslateModule"], _modalrecord_modalrecord_module__WEBPACK_IMPORTED_MODULE_13__["ModalrecordPageModule"]],
+      declarations: [_chat_new_page__WEBPACK_IMPORTED_MODULE_6__["ChatNewPage"]]
+    })], ChatNewPageModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/chat-new/chat-new.page.scss":
+  /*!***************************************************!*\
+    !*** ./src/app/pages/chat-new/chat-new.page.scss ***!
+    \***************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppPagesChatNewChatNewPageScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "@charset \"UTF-8\";\n.avatar {\n  width: 60%;\n  height: 60%;\n  margin-top: 8%;\n}\n.username {\n  font-size: 13px;\n  margin-top: -5%;\n}\n.backarrow {\n  margin-top: -4%;\n}\n.powerbutton {\n  margin-top: -3%;\n}\n.icon-logout {\n  font-size: 20px;\n  background: #f19936;\n  width: 28px;\n  height: 28px;\n  border-radius: 50%;\n  line-height: 50px;\n  text-align: center;\n  color: #000000;\n}\n.message-input {\n  width: 100%;\n  border: 1px solid var(--ion-color-medium);\n  border-radius: 10px;\n  background: #fff;\n  resize: none;\n  padding-left: 10px;\n  padding-right: 10px;\n}\n.msg-btn {\n  /*  --padding-start: 0.5em;\n    --padding-end: 0.5em; */\n  color: blue;\n}\n/*Messages*/\n.message {\n  border-radius: 10px;\n  margin-bottom: 4px;\n  white-space: pre-wrap;\n}\n.other-message {\n  background: #ffffff;\n  color: #000000;\n  border-color: #c0c0c0;\n  border-width: thin;\n  border-style: solid;\n}\n.my-message {\n  background: #dddbdb;\n  color: #000000;\n  border-color: #c0c0c0;\n  border-width: thin;\n  border-style: solid;\n}\n.user {\n  font-weight: bold;\n  font-size: 18px;\n  color: #3B3B3B;\n}\n.user2 {\n  font-weight: bold;\n  font-size: 18px;\n  color: #ffffff;\n}\n.user2 {\n  font-weight: bold;\n  font-size: 18px;\n  color: #3B3B3B;\n  margin-top: -19px;\n}\n.bubble {\n  background-color: #F2F2F2;\n  border-radius: 5px;\n  box-shadow: 0 0 6px #B2B2B2;\n  display: inline-block;\n  padding: 10px 18px;\n  position: relative;\n  vertical-align: top;\n  width: 100%;\n}\n.bubble::before {\n  background-color: #F2F2F2;\n  content: \" \";\n  display: block;\n  height: 16px;\n  position: absolute;\n  top: 11px;\n  transform: rotate(29deg) skew(-35deg);\n  -moz-transform: rotate(29deg) skew(-35deg);\n  -ms-transform: rotate(29deg) skew(-35deg);\n  -o-transform: rotate(29deg) skew(-35deg);\n  -webkit-transform: rotate(29deg) skew(-35deg);\n  width: 20px;\n}\n.me {\n  float: left;\n  margin: -4px 5px 0px 20px;\n}\n.me::before {\n  box-shadow: -2px 2px 2px 0 rgba(178, 178, 178, 0.4);\n  left: -9px;\n}\n.you {\n  float: right;\n  margin: -6px 20px 5px 45px;\n  background-color: #dddbdb;\n}\n.you::before {\n  box-shadow: 2px -2px 2px 0 #dddbdb;\n  background-color: #dddbdb;\n  right: -9px;\n}\n.footer-bubble {\n  margin-top: 5px;\n  font-size: 11px;\n}\n.msg {\n  font-size: 18px;\n  text-align: left;\n  white-space: pre-wrap !important;\n}\n.msg2 {\n  font-size: 18px;\n  text-align: left;\n  white-space: pre-wrap !important;\n}\n.check {\n  font-size: 16px;\n}\n.ion-padding2 {\n  padding: 5px;\n}\n.contentt {\n  height: auto;\n}\n/*END MESSAGEs*/\nion-input[placeholder] {\n  text-align: center;\n}\nion-fab-button[data-desc] {\n  position: relative;\n}\nion-fab-button[data-desc]::after {\n  position: absolute;\n  content: attr(data-desc);\n  z-index: 1;\n  right: 55px;\n  bottom: 4px;\n  background-color: var(--ion-color-dark);\n  padding: 9px;\n  border-radius: 15px;\n  color: white;\n  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);\n}\n.bubbleorange {\n  background-color: #f6a03f;\n  border-radius: 5px;\n  box-shadow: 0 0 6px #000000;\n  display: inline-block;\n  padding: 10px 18px;\n  position: relative;\n  vertical-align: top;\n  width: 100%;\n}\n.bubbleorange {\n  background-color: #f6a03f;\n  border-radius: 5px;\n  box-shadow: 0 0 6px #000000;\n  display: inline-block;\n  padding: 10px 18px;\n  position: relative;\n  vertical-align: top;\n  width: 100%;\n  color: #ffffff;\n}\n.bubbleorange::before {\n  background-color: #f6a03f;\n  content: \" \";\n  display: block;\n  height: 16px;\n  position: absolute;\n  top: 11px;\n  transform: rotate(29deg) skew(-35deg);\n  -moz-transform: rotate(29deg) skew(-35deg);\n  -ms-transform: rotate(29deg) skew(-35deg);\n  -o-transform: rotate(29deg) skew(-35deg);\n  -webkit-transform: rotate(29deg) skew(-35deg);\n  width: 20px;\n}\n.messages-container {\n  position: relative;\n  overflow: hidden;\n  margin: 0 auto;\n}\nion-header ion-toolbar {\n  height: 50px;\n}\n.btnmenufooter {\n  color: #f6a03f;\n  font-size: 28px;\n  margin-top: 7px;\n}\n.messages-container {\n  position: relative;\n  overflow: hidden;\n  margin: 0 auto;\n}\n.botonsAudioRecord {\n  font-size: 36px;\n  color: red;\n}\n.botonsAudioStop {\n  font-size: 36px;\n  color: #0012E8;\n}\nion-card {\n  background: #000000;\n  color: #3B3B3B;\n}\n.wave {\n  height: 120px;\n}\n.btnPlayer {\n  width: 100%;\n  font-size: 12px;\n}\n.closeButton {\n  font-size: 36px;\n}\nion-card-title {\n  text-align: center;\n  color: #dddbdb;\n}\n.playermessage {\n  border-radius: 4px;\n  color: #dddbdb;\n  align-items: center;\n  text-align: center;\n  font-size: 35px;\n}\n.iconsplayer {\n  margin-top: 15px;\n  margin-bottom: 10px;\n  color: #000;\n}\n.imh {\n  background: url('espetro.gif');\n  height: 90px;\n}\n.imh {\n  height: 90px;\n}\n.encodeplayer {\n  font-size: 11px;\n}\n.iconfav {\n  color: #fff;\n  font-size: 24px;\n}\n.wavea {\n  background: url('wave.png');\n  z-index: 3;\n}\n.newIcons {\n  color: #000;\n  font-size: 35px;\n  text-align: center;\n  align-items: center;\n}\n.pl {\n  text-align: center;\n  align-items: center;\n}\n.datePlayer {\n  font-size: 10px;\n}\n.bubbleorange2 {\n  background-color: #000000;\n  border-radius: 5px;\n  box-shadow: 0 0 6px #000000;\n  display: inline-block;\n  padding: 10px 18px;\n  position: relative;\n  vertical-align: top;\n  width: 100%;\n  color: #ffffff;\n}\n.bubbleorange2::before {\n  background-color: #000000;\n  content: \" \";\n  display: block;\n  height: 16px;\n  position: absolute;\n  top: 11px;\n  transform: rotate(29deg) skew(-35deg);\n  -moz-transform: rotate(29deg) skew(-35deg);\n  -ms-transform: rotate(29deg) skew(-35deg);\n  -o-transform: rotate(29deg) skew(-35deg);\n  -webkit-transform: rotate(29deg) skew(-35deg);\n  width: 20px;\n}\n.block {\n  color: #ffffff;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY2hhdC1uZXcvY2hhdC1uZXcucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9jaGF0LW5ldy9DOlxcVXNlcnNcXE5lbWVzc2lzXFxEZXNrdG9wXFxmc3UgLSBDb3B5MjJcXHBydWViYSByZW5kaW1pZW50b1xcZnN1IC0gQ29weS9zcmNcXGFwcFxccGFnZXNcXGNoYXQtbmV3XFxjaGF0LW5ldy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUEsZ0JBQWdCO0FDQWhCO0VBQ0ksVUFBQTtFQUNBLFdBQUE7RUFDQSxjQUFBO0FERUo7QUNDQTtFQUNJLGVBQUE7RUFDQSxlQUFBO0FERUo7QUNDQTtFQUNFLGVBQUE7QURFRjtBQ0NBO0VBQ0UsZUFBQTtBREVGO0FDQ0E7RUFFRyxlQUFBO0VBRUEsbUJBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0EsaUJBQUE7RUFDQSxrQkFBQTtFQUNBLGNBQUE7QURBSDtBQ0dBO0VBQ0ksV0FBQTtFQUNBLHlDQUFBO0VBQ0EsbUJBQUE7RUFDQSxnQkFBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0FEQUo7QUNHRTtFQUNBOzJCQUFBO0VBRUUsV0FBQTtBREFKO0FDSUUsV0FBQTtBQUNBO0VBRUUsbUJBQUE7RUFDQSxrQkFBQTtFQUNBLHFCQUFBO0FERko7QUNLRTtFQUNFLG1CQUFBO0VBQ0EsY0FBQTtFQUNBLHFCQUFBO0VBQ0Esa0JBQUE7RUFDQSxtQkFBQTtBREZKO0FDS0U7RUFDRSxtQkFBQTtFQUNBLGNBQUE7RUFDQSxxQkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7QURGSjtBQ01FO0VBQ0UsaUJBQUE7RUFDQSxlQUFBO0VBQ0EsY0FBQTtBREhKO0FDT0U7RUFDRSxpQkFBQTtFQUNBLGVBQUE7RUFDQSxjQUFBO0FESko7QUNRRTtFQUNFLGlCQUFBO0VBQ0EsZUFBQTtFQUNBLGNBQUE7RUFDQSxpQkFBQTtBRExKO0FDUUU7RUFDRSx5QkFBQTtFQUNBLGtCQUFBO0VBQ0EsMkJBQUE7RUFDQSxxQkFBQTtFQUNBLGtCQUFBO0VBQ0Esa0JBQUE7RUFDQSxtQkFBQTtFQUNBLFdBQUE7QURMSjtBQ1FBO0VBQ0kseUJBQUE7RUFDQSxZQUFBO0VBQ0EsY0FBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLFNBQUE7RUFDQSxxQ0FBQTtFQUNJLDBDQUFBO0VBQ0EseUNBQUE7RUFDQSx3Q0FBQTtFQUNBLDZDQUFBO0VBQ0osV0FBQTtBRExKO0FDUUE7RUFDSSxXQUFBO0VBQ0EseUJBQUE7QURMSjtBQ1FBO0VBQ0ksbURBQUE7RUFDQSxVQUFBO0FETEo7QUNRQTtFQUNJLFlBQUE7RUFDQSwwQkFBQTtFQUNBLHlCQUFBO0FETEo7QUNRQTtFQUNJLGtDQUFBO0VBQ0EseUJBQUE7RUFDQSxXQUFBO0FETEo7QUNRQTtFQUNFLGVBQUE7RUFDQSxlQUFBO0FETEY7QUNRQTtFQUNFLGVBQUE7RUFDQSxnQkFBQTtFQUNBLGdDQUFBO0FETEY7QUNRQTtFQUNFLGVBQUE7RUFDQSxnQkFBQTtFQUVELGdDQUFBO0FETkQ7QUNTQTtFQUNFLGVBQUE7QURORjtBQ1NBO0VBQ0UsWUFBQTtBRE5GO0FDU0E7RUFDRSxZQUFBO0FETkY7QUNTRSxlQUFBO0FBRUY7RUFDRSxrQkFBQTtBRFBGO0FDVUU7RUFDRSxrQkFBQTtBRFBKO0FDVUU7RUFDRSxrQkFBQTtFQUNBLHdCQUFBO0VBQ0EsVUFBQTtFQUNBLFdBQUE7RUFDQSxXQUFBO0VBQ0EsdUNBQUE7RUFDQSxZQUFBO0VBQ0EsbUJBQUE7RUFDQSxZQUFBO0VBQ0EsaUhBQUE7QURQSjtBQ1VFO0VBQ0UseUJBQUE7RUFDQSxrQkFBQTtFQUNBLDJCQUFBO0VBQ0EscUJBQUE7RUFDQSxrQkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxXQUFBO0FEUEo7QUNVQTtFQUNFLHlCQUFBO0VBQ0Esa0JBQUE7RUFDQSwyQkFBQTtFQUNBLHFCQUFBO0VBQ0Esa0JBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0VBQ0EsV0FBQTtFQUNBLGNBQUE7QURQRjtBQ1VBO0VBQ0UseUJBQUE7RUFDQSxZQUFBO0VBQ0EsY0FBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLFNBQUE7RUFDQSxxQ0FBQTtFQUNJLDBDQUFBO0VBQ0EseUNBQUE7RUFDQSx3Q0FBQTtFQUNBLDZDQUFBO0VBQ0osV0FBQTtBRFBGO0FDVUE7RUFHRSxrQkFBQTtFQUVBLGdCQUFBO0VBQ0QsY0FBQTtBRFZEO0FDY0U7RUFDRSxZQUFBO0FEWEo7QUNlQTtFQUNFLGNBQUE7RUFDQSxlQUFBO0VBQ0EsZUFBQTtBRFpGO0FDZ0JBO0VBR0Usa0JBQUE7RUFFQSxnQkFBQTtFQUNBLGNBQUE7QURoQkY7QUNvQkE7RUFDRSxlQUFBO0VBQ0EsVUFBQTtBRGpCRjtBQ29CQTtFQUNFLGVBQUE7RUFDQSxjQUFBO0FEakJGO0FDb0JBO0VBQ0UsbUJBQUE7RUFDQSxjQUFBO0FEakJGO0FDcUJBO0VBRUUsYUFBQTtBRG5CRjtBQ3NCQTtFQUNFLFdBQUE7RUFDQSxlQUFBO0FEbkJGO0FDc0JBO0VBQ0EsZUFBQTtBRG5CQTtBQ3NCQTtFQUNFLGtCQUFBO0VBQ0EsY0FBQTtBRG5CRjtBQ3NCQTtFQUlFLGtCQUFBO0VBQ0EsY0FBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7RUFDQSxlQUFBO0FEdEJGO0FDMEJBO0VBQ0UsZ0JBQUE7RUFDQSxtQkFBQTtFQUNBLFdBQUE7QUR2QkY7QUMwQkE7RUFDRSw4QkFBQTtFQUNBLFlBQUE7QUR2QkY7QUMyQkE7RUFDRSxZQUFBO0FEeEJGO0FDNEJBO0VBQ0UsZUFBQTtBRHpCRjtBQzRCQTtFQUNFLFdBQUE7RUFDQSxlQUFBO0FEekJGO0FDNEJBO0VBQ0UsMkJBQUE7RUFDQSxVQUFBO0FEekJGO0FDNEJBO0VBR0UsV0FBQTtFQUNBLGVBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0FEM0JGO0FDOEJBO0VBQ0Usa0JBQUE7RUFDQSxtQkFBQTtBRDNCRjtBQzhCQTtFQUNFLGVBQUE7QUQzQkY7QUM4QkE7RUFDRSx5QkFBQTtFQUNBLGtCQUFBO0VBQ0EsMkJBQUE7RUFDQSxxQkFBQTtFQUNBLGtCQUFBO0VBQ0Esa0JBQUE7RUFDQSxtQkFBQTtFQUNBLFdBQUE7RUFDQSxjQUFBO0FEM0JGO0FDOEJBO0VBQ0UseUJBQUE7RUFDQSxZQUFBO0VBQ0EsY0FBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtFQUNBLFNBQUE7RUFDQSxxQ0FBQTtFQUNJLDBDQUFBO0VBQ0EseUNBQUE7RUFDQSx3Q0FBQTtFQUNBLDZDQUFBO0VBQ0osV0FBQTtBRDNCRjtBQzhCQTtFQUNFLGNBQUE7QUQzQkYiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9jaGF0LW5ldy9jaGF0LW5ldy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJAY2hhcnNldCBcIlVURi04XCI7XG4uYXZhdGFyIHtcbiAgd2lkdGg6IDYwJTtcbiAgaGVpZ2h0OiA2MCU7XG4gIG1hcmdpbi10b3A6IDglO1xufVxuXG4udXNlcm5hbWUge1xuICBmb250LXNpemU6IDEzcHg7XG4gIG1hcmdpbi10b3A6IC01JTtcbn1cblxuLmJhY2thcnJvdyB7XG4gIG1hcmdpbi10b3A6IC00JTtcbn1cblxuLnBvd2VyYnV0dG9uIHtcbiAgbWFyZ2luLXRvcDogLTMlO1xufVxuXG4uaWNvbi1sb2dvdXQge1xuICBmb250LXNpemU6IDIwcHg7XG4gIGJhY2tncm91bmQ6ICNmMTk5MzY7XG4gIHdpZHRoOiAyOHB4O1xuICBoZWlnaHQ6IDI4cHg7XG4gIGJvcmRlci1yYWRpdXM6IDUwJTtcbiAgbGluZS1oZWlnaHQ6IDUwcHg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgY29sb3I6ICMwMDAwMDA7XG59XG5cbi5tZXNzYWdlLWlucHV0IHtcbiAgd2lkdGg6IDEwMCU7XG4gIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWlvbi1jb2xvci1tZWRpdW0pO1xuICBib3JkZXItcmFkaXVzOiAxMHB4O1xuICBiYWNrZ3JvdW5kOiAjZmZmO1xuICByZXNpemU6IG5vbmU7XG4gIHBhZGRpbmctbGVmdDogMTBweDtcbiAgcGFkZGluZy1yaWdodDogMTBweDtcbn1cblxuLm1zZy1idG4ge1xuICAvKiAgLS1wYWRkaW5nLXN0YXJ0OiAwLjVlbTtcbiAgICAtLXBhZGRpbmctZW5kOiAwLjVlbTsgKi9cbiAgY29sb3I6IGJsdWU7XG59XG5cbi8qTWVzc2FnZXMqL1xuLm1lc3NhZ2Uge1xuICBib3JkZXItcmFkaXVzOiAxMHB4O1xuICBtYXJnaW4tYm90dG9tOiA0cHg7XG4gIHdoaXRlLXNwYWNlOiBwcmUtd3JhcDtcbn1cblxuLm90aGVyLW1lc3NhZ2Uge1xuICBiYWNrZ3JvdW5kOiAjZmZmZmZmO1xuICBjb2xvcjogIzAwMDAwMDtcbiAgYm9yZGVyLWNvbG9yOiAjYzBjMGMwO1xuICBib3JkZXItd2lkdGg6IHRoaW47XG4gIGJvcmRlci1zdHlsZTogc29saWQ7XG59XG5cbi5teS1tZXNzYWdlIHtcbiAgYmFja2dyb3VuZDogI2RkZGJkYjtcbiAgY29sb3I6ICMwMDAwMDA7XG4gIGJvcmRlci1jb2xvcjogI2MwYzBjMDtcbiAgYm9yZGVyLXdpZHRoOiB0aGluO1xuICBib3JkZXItc3R5bGU6IHNvbGlkO1xufVxuXG4udXNlciB7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICBmb250LXNpemU6IDE4cHg7XG4gIGNvbG9yOiAjM0IzQjNCO1xufVxuXG4udXNlcjIge1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgZm9udC1zaXplOiAxOHB4O1xuICBjb2xvcjogI2ZmZmZmZjtcbn1cblxuLnVzZXIyIHtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIGZvbnQtc2l6ZTogMThweDtcbiAgY29sb3I6ICMzQjNCM0I7XG4gIG1hcmdpbi10b3A6IC0xOXB4O1xufVxuXG4uYnViYmxlIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI0YyRjJGMjtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBib3gtc2hhZG93OiAwIDAgNnB4ICNCMkIyQjI7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgcGFkZGluZzogMTBweCAxOHB4O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHZlcnRpY2FsLWFsaWduOiB0b3A7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG4uYnViYmxlOjpiZWZvcmUge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjRjJGMkYyO1xuICBjb250ZW50OiBcIsKgXCI7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBoZWlnaHQ6IDE2cHg7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAxMXB4O1xuICB0cmFuc2Zvcm06IHJvdGF0ZSgyOWRlZykgc2tldygtMzVkZWcpO1xuICAtbW96LXRyYW5zZm9ybTogcm90YXRlKDI5ZGVnKSBza2V3KC0zNWRlZyk7XG4gIC1tcy10cmFuc2Zvcm06IHJvdGF0ZSgyOWRlZykgc2tldygtMzVkZWcpO1xuICAtby10cmFuc2Zvcm06IHJvdGF0ZSgyOWRlZykgc2tldygtMzVkZWcpO1xuICAtd2Via2l0LXRyYW5zZm9ybTogcm90YXRlKDI5ZGVnKSBza2V3KC0zNWRlZyk7XG4gIHdpZHRoOiAyMHB4O1xufVxuXG4ubWUge1xuICBmbG9hdDogbGVmdDtcbiAgbWFyZ2luOiAtNHB4IDVweCAwcHggMjBweDtcbn1cblxuLm1lOjpiZWZvcmUge1xuICBib3gtc2hhZG93OiAtMnB4IDJweCAycHggMCByZ2JhKDE3OCwgMTc4LCAxNzgsIDAuNCk7XG4gIGxlZnQ6IC05cHg7XG59XG5cbi55b3Uge1xuICBmbG9hdDogcmlnaHQ7XG4gIG1hcmdpbjogLTZweCAyMHB4IDVweCA0NXB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZGRkYmRiO1xufVxuXG4ueW91OjpiZWZvcmUge1xuICBib3gtc2hhZG93OiAycHggLTJweCAycHggMCAjZGRkYmRiO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZGRkYmRiO1xuICByaWdodDogLTlweDtcbn1cblxuLmZvb3Rlci1idWJibGUge1xuICBtYXJnaW4tdG9wOiA1cHg7XG4gIGZvbnQtc2l6ZTogMTFweDtcbn1cblxuLm1zZyB7XG4gIGZvbnQtc2l6ZTogMThweDtcbiAgdGV4dC1hbGlnbjogbGVmdDtcbiAgd2hpdGUtc3BhY2U6IHByZS13cmFwICFpbXBvcnRhbnQ7XG59XG5cbi5tc2cyIHtcbiAgZm9udC1zaXplOiAxOHB4O1xuICB0ZXh0LWFsaWduOiBsZWZ0O1xuICB3aGl0ZS1zcGFjZTogcHJlLXdyYXAgIWltcG9ydGFudDtcbn1cblxuLmNoZWNrIHtcbiAgZm9udC1zaXplOiAxNnB4O1xufVxuXG4uaW9uLXBhZGRpbmcyIHtcbiAgcGFkZGluZzogNXB4O1xufVxuXG4uY29udGVudHQge1xuICBoZWlnaHQ6IGF1dG87XG59XG5cbi8qRU5EIE1FU1NBR0VzKi9cbmlvbi1pbnB1dFtwbGFjZWhvbGRlcl0ge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbmlvbi1mYWItYnV0dG9uW2RhdGEtZGVzY10ge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG59XG5cbmlvbi1mYWItYnV0dG9uW2RhdGEtZGVzY106OmFmdGVyIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBjb250ZW50OiBhdHRyKGRhdGEtZGVzYyk7XG4gIHotaW5kZXg6IDE7XG4gIHJpZ2h0OiA1NXB4O1xuICBib3R0b206IDRweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0taW9uLWNvbG9yLWRhcmspO1xuICBwYWRkaW5nOiA5cHg7XG4gIGJvcmRlci1yYWRpdXM6IDE1cHg7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgYm94LXNoYWRvdzogMCAzcHggNXB4IC0xcHggcmdiYSgwLCAwLCAwLCAwLjIpLCAwIDZweCAxMHB4IDAgcmdiYSgwLCAwLCAwLCAwLjE0KSwgMCAxcHggMThweCAwIHJnYmEoMCwgMCwgMCwgMC4xMik7XG59XG5cbi5idWJibGVvcmFuZ2Uge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjZhMDNmO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIGJveC1zaGFkb3c6IDAgMCA2cHggIzAwMDAwMDtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICBwYWRkaW5nOiAxMHB4IDE4cHg7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgdmVydGljYWwtYWxpZ246IHRvcDtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi5idWJibGVvcmFuZ2Uge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjZhMDNmO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIGJveC1zaGFkb3c6IDAgMCA2cHggIzAwMDAwMDtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICBwYWRkaW5nOiAxMHB4IDE4cHg7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgdmVydGljYWwtYWxpZ246IHRvcDtcbiAgd2lkdGg6IDEwMCU7XG4gIGNvbG9yOiAjZmZmZmZmO1xufVxuXG4uYnViYmxlb3JhbmdlOjpiZWZvcmUge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjZhMDNmO1xuICBjb250ZW50OiBcIsKgXCI7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBoZWlnaHQ6IDE2cHg7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAxMXB4O1xuICB0cmFuc2Zvcm06IHJvdGF0ZSgyOWRlZykgc2tldygtMzVkZWcpO1xuICAtbW96LXRyYW5zZm9ybTogcm90YXRlKDI5ZGVnKSBza2V3KC0zNWRlZyk7XG4gIC1tcy10cmFuc2Zvcm06IHJvdGF0ZSgyOWRlZykgc2tldygtMzVkZWcpO1xuICAtby10cmFuc2Zvcm06IHJvdGF0ZSgyOWRlZykgc2tldygtMzVkZWcpO1xuICAtd2Via2l0LXRyYW5zZm9ybTogcm90YXRlKDI5ZGVnKSBza2V3KC0zNWRlZyk7XG4gIHdpZHRoOiAyMHB4O1xufVxuXG4ubWVzc2FnZXMtY29udGFpbmVyIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICBtYXJnaW46IDAgYXV0bztcbn1cblxuaW9uLWhlYWRlciBpb24tdG9vbGJhciB7XG4gIGhlaWdodDogNTBweDtcbn1cblxuLmJ0bm1lbnVmb290ZXIge1xuICBjb2xvcjogI2Y2YTAzZjtcbiAgZm9udC1zaXplOiAyOHB4O1xuICBtYXJnaW4tdG9wOiA3cHg7XG59XG5cbi5tZXNzYWdlcy1jb250YWluZXIge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIG1hcmdpbjogMCBhdXRvO1xufVxuXG4uYm90b25zQXVkaW9SZWNvcmQge1xuICBmb250LXNpemU6IDM2cHg7XG4gIGNvbG9yOiByZWQ7XG59XG5cbi5ib3RvbnNBdWRpb1N0b3Age1xuICBmb250LXNpemU6IDM2cHg7XG4gIGNvbG9yOiAjMDAxMkU4O1xufVxuXG5pb24tY2FyZCB7XG4gIGJhY2tncm91bmQ6ICMwMDAwMDA7XG4gIGNvbG9yOiAjM0IzQjNCO1xufVxuXG4ud2F2ZSB7XG4gIGhlaWdodDogMTIwcHg7XG59XG5cbi5idG5QbGF5ZXIge1xuICB3aWR0aDogMTAwJTtcbiAgZm9udC1zaXplOiAxMnB4O1xufVxuXG4uY2xvc2VCdXR0b24ge1xuICBmb250LXNpemU6IDM2cHg7XG59XG5cbmlvbi1jYXJkLXRpdGxlIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBjb2xvcjogI2RkZGJkYjtcbn1cblxuLnBsYXllcm1lc3NhZ2Uge1xuICBib3JkZXItcmFkaXVzOiA0cHg7XG4gIGNvbG9yOiAjZGRkYmRiO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGZvbnQtc2l6ZTogMzVweDtcbn1cblxuLmljb25zcGxheWVyIHtcbiAgbWFyZ2luLXRvcDogMTVweDtcbiAgbWFyZ2luLWJvdHRvbTogMTBweDtcbiAgY29sb3I6ICMwMDA7XG59XG5cbi5pbWgge1xuICBiYWNrZ3JvdW5kOiB1cmwoXCIuLi8uLi8uLi9hc3NldHMvZXNwZXRyby5naWZcIik7XG4gIGhlaWdodDogOTBweDtcbn1cblxuLmltaCB7XG4gIGhlaWdodDogOTBweDtcbn1cblxuLmVuY29kZXBsYXllciB7XG4gIGZvbnQtc2l6ZTogMTFweDtcbn1cblxuLmljb25mYXYge1xuICBjb2xvcjogI2ZmZjtcbiAgZm9udC1zaXplOiAyNHB4O1xufVxuXG4ud2F2ZWEge1xuICBiYWNrZ3JvdW5kOiB1cmwoXCIuLi8uLi8uLi9hc3NldHMvd2F2ZS5wbmcgXCIpO1xuICB6LWluZGV4OiAzO1xufVxuXG4ubmV3SWNvbnMge1xuICBjb2xvcjogIzAwMDtcbiAgZm9udC1zaXplOiAzNXB4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG59XG5cbi5wbCB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgYWxpZ24taXRlbXM6IGNlbnRlcjtcbn1cblxuLmRhdGVQbGF5ZXIge1xuICBmb250LXNpemU6IDEwcHg7XG59XG5cbi5idWJibGVvcmFuZ2UyIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogIzAwMDAwMDtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBib3gtc2hhZG93OiAwIDAgNnB4ICMwMDAwMDA7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgcGFkZGluZzogMTBweCAxOHB4O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHZlcnRpY2FsLWFsaWduOiB0b3A7XG4gIHdpZHRoOiAxMDAlO1xuICBjb2xvcjogI2ZmZmZmZjtcbn1cblxuLmJ1YmJsZW9yYW5nZTI6OmJlZm9yZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICMwMDAwMDA7XG4gIGNvbnRlbnQ6IFwiwqBcIjtcbiAgZGlzcGxheTogYmxvY2s7XG4gIGhlaWdodDogMTZweDtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IDExcHg7XG4gIHRyYW5zZm9ybTogcm90YXRlKDI5ZGVnKSBza2V3KC0zNWRlZyk7XG4gIC1tb3otdHJhbnNmb3JtOiByb3RhdGUoMjlkZWcpIHNrZXcoLTM1ZGVnKTtcbiAgLW1zLXRyYW5zZm9ybTogcm90YXRlKDI5ZGVnKSBza2V3KC0zNWRlZyk7XG4gIC1vLXRyYW5zZm9ybTogcm90YXRlKDI5ZGVnKSBza2V3KC0zNWRlZyk7XG4gIC13ZWJraXQtdHJhbnNmb3JtOiByb3RhdGUoMjlkZWcpIHNrZXcoLTM1ZGVnKTtcbiAgd2lkdGg6IDIwcHg7XG59XG5cbi5ibG9jayB7XG4gIGNvbG9yOiAjZmZmZmZmO1xufSIsIi5hdmF0YXJ7XHJcbiAgICB3aWR0aDogNjAlO1xyXG4gICAgaGVpZ2h0OiA2MCU7XHJcbiAgICBtYXJnaW4tdG9wOiA4JTtcclxufVxyXG5cclxuLnVzZXJuYW1le1xyXG4gICAgZm9udC1zaXplOjEzcHg7XHJcbiAgICBtYXJnaW4tdG9wOiAtNSU7XHJcbn1cclxuXHJcbi5iYWNrYXJyb3d7XHJcbiAgbWFyZ2luLXRvcDogLTQlO1xyXG59XHJcblxyXG4ucG93ZXJidXR0b257XHJcbiAgbWFyZ2luLXRvcDogLTMlO1xyXG59XHJcblxyXG4uaWNvbi1sb2dvdXR7XHJcbiBcclxuICAgZm9udC1zaXplOiAyMHB4O1xyXG5cclxuICAgYmFja2dyb3VuZDogI2YxOTkzNjtcclxuICAgd2lkdGg6IDI4cHg7XHJcbiAgIGhlaWdodDogMjhweDtcclxuICAgYm9yZGVyLXJhZGl1czogNTAlO1xyXG4gICBsaW5lLWhlaWdodDogNTBweDtcclxuICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICBjb2xvcjogIzAwMDAwMDtcclxufVxyXG5cclxuLm1lc3NhZ2UtaW5wdXQge1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbiAgICBib3JkZXI6IDFweCBzb2xpZCB2YXIoLS1pb24tY29sb3ItbWVkaXVtKTtcclxuICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7XHJcbiAgICBiYWNrZ3JvdW5kOiAjZmZmO1xyXG4gICAgcmVzaXplOiBub25lO1xyXG4gICAgcGFkZGluZy1sZWZ0OiAxMHB4O1xyXG4gICAgcGFkZGluZy1yaWdodDogMTBweDtcclxuICB9XHJcblxyXG4gIC5tc2ctYnRuIHtcclxuICAvKiAgLS1wYWRkaW5nLXN0YXJ0OiAwLjVlbTtcclxuICAgIC0tcGFkZGluZy1lbmQ6IDAuNWVtOyAqL1xyXG4gICAgY29sb3I6IGJsdWVcclxuICB9XHJcblxyXG5cclxuICAvKk1lc3NhZ2VzKi9cclxuICAubWVzc2FnZSB7XHJcbiAgICAvL3BhZGRpbmc6IDEwcHg7XHJcbiAgICBib3JkZXItcmFkaXVzOiAxMHB4O1xyXG4gICAgbWFyZ2luLWJvdHRvbTogNHB4O1xyXG4gICAgd2hpdGUtc3BhY2U6IHByZS13cmFwO1xyXG4gIH1cclxuICAgXHJcbiAgLm90aGVyLW1lc3NhZ2Uge1xyXG4gICAgYmFja2dyb3VuZDogI2ZmZmZmZjtcclxuICAgIGNvbG9yOiAjMDAwMDAwO1xyXG4gICAgYm9yZGVyLWNvbG9yOiAjYzBjMGMwO1xyXG4gICAgYm9yZGVyLXdpZHRoOiB0aGluO1xyXG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcclxuICB9XHJcblxyXG4gIC5teS1tZXNzYWdlIHtcclxuICAgIGJhY2tncm91bmQ6ICNkZGRiZGI7XHJcbiAgICBjb2xvcjogIzAwMDAwMDtcclxuICAgIGJvcmRlci1jb2xvcjogI2MwYzBjMDtcclxuICAgIGJvcmRlci13aWR0aDogdGhpbjtcclxuICAgIGJvcmRlci1zdHlsZTogc29saWQ7XHJcbiAgXHJcbiAgfVxyXG5cclxuICAudXNlcntcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG4gICAgZm9udC1zaXplOiAxOHB4O1xyXG4gICAgY29sb3I6ICMzQjNCM0I7XHJcbiAgICBcclxuICB9XHJcblxyXG4gIC51c2VyMntcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG4gICAgZm9udC1zaXplOiAxOHB4O1xyXG4gICAgY29sb3I6ICNmZmZmZmY7XHJcbiAgICBcclxuICB9XHJcblxyXG4gIC51c2VyMntcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG4gICAgZm9udC1zaXplOiAxOHB4O1xyXG4gICAgY29sb3I6ICMzQjNCM0I7XHJcbiAgICBtYXJnaW4tdG9wOiAtMTlweDtcclxuICB9XHJcblxyXG4gIC5idWJibGV7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjRjJGMkYyO1xyXG4gICAgYm9yZGVyLXJhZGl1czogNXB4O1xyXG4gICAgYm94LXNoYWRvdzogMCAwIDZweCAjQjJCMkIyO1xyXG4gICAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xyXG4gICAgcGFkZGluZzogMTBweCAxOHB4O1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgdmVydGljYWwtYWxpZ246IHRvcDtcclxuICAgIHdpZHRoOiAxMDAlO1xyXG59XHJcblxyXG4uYnViYmxlOjpiZWZvcmUge1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI0YyRjJGMjtcclxuICAgIGNvbnRlbnQ6IFwiXFwwMGEwXCI7XHJcbiAgICBkaXNwbGF5OiBibG9jaztcclxuICAgIGhlaWdodDogMTZweDtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIHRvcDogMTFweDtcclxuICAgIHRyYW5zZm9ybTogICAgICAgICAgICAgcm90YXRlKCAyOWRlZyApIHNrZXcoIC0zNWRlZyApO1xyXG4gICAgICAgIC1tb3otdHJhbnNmb3JtOiAgICByb3RhdGUoIDI5ZGVnICkgc2tldyggLTM1ZGVnICk7XHJcbiAgICAgICAgLW1zLXRyYW5zZm9ybTogICAgIHJvdGF0ZSggMjlkZWcgKSBza2V3KCAtMzVkZWcgKTtcclxuICAgICAgICAtby10cmFuc2Zvcm06ICAgICAgcm90YXRlKCAyOWRlZyApIHNrZXcoIC0zNWRlZyApO1xyXG4gICAgICAgIC13ZWJraXQtdHJhbnNmb3JtOiByb3RhdGUoIDI5ZGVnICkgc2tldyggLTM1ZGVnICk7XHJcbiAgICB3aWR0aDogIDIwcHg7XHJcbn1cclxuXHJcbi5tZSB7XHJcbiAgICBmbG9hdDogbGVmdDsgICBcclxuICAgIG1hcmdpbjogLTRweCA1cHggMHB4IDIwcHg7ICAgICAgICAgXHJcbn1cclxuXHJcbi5tZTo6YmVmb3JlIHtcclxuICAgIGJveC1zaGFkb3c6IC0ycHggMnB4IDJweCAwIHJnYmEoIDE3OCwgMTc4LCAxNzgsIC40ICk7XHJcbiAgICBsZWZ0OiAtOXB4OyAgICAgICAgICAgXHJcbn1cclxuXHJcbi55b3Uge1xyXG4gICAgZmxvYXQ6IHJpZ2h0OyAgICBcclxuICAgIG1hcmdpbjogLTZweCAyMHB4IDVweCA0NXB4OyAgICBcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNkZGRiZGI7ICAgICBcclxufVxyXG5cclxuLnlvdTo6YmVmb3JlIHtcclxuICAgIGJveC1zaGFkb3c6IDJweCAtMnB4IDJweCAwICNkZGRiZGI7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjZGRkYmRiO1xyXG4gICAgcmlnaHQ6IC05cHg7ICAgIFxyXG59XHJcblxyXG4uZm9vdGVyLWJ1YmJsZXtcclxuICBtYXJnaW4tdG9wOiA1cHg7XHJcbiAgZm9udC1zaXplOiAxMXB4O1xyXG59XHJcblxyXG4ubXNne1xyXG4gIGZvbnQtc2l6ZTogMThweDtcclxuICB0ZXh0LWFsaWduOiBsZWZ0O1xyXG4gIHdoaXRlLXNwYWNlOiBwcmUtd3JhcCFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbi5tc2cye1xyXG4gIGZvbnQtc2l6ZTogMThweDtcclxuICB0ZXh0LWFsaWduOiBsZWZ0O1xyXG4gLy8gd2hpdGUtc3BhY2U6IHByZS1saW5lIWltcG9ydGFudDtcclxuIHdoaXRlLXNwYWNlOiBwcmUtd3JhcCFpbXBvcnRhbnQ7XHJcbn1cclxuXHJcbi5jaGVja3tcclxuICBmb250LXNpemU6IDE2cHg7XHJcbn1cclxuXHJcbi5pb24tcGFkZGluZzJ7XHJcbiAgcGFkZGluZzogNXB4O1xyXG59XHJcblxyXG4uY29udGVudHR7XHJcbiAgaGVpZ2h0OiBhdXRvO1xyXG4gIFxyXG59XHJcbiAgLypFTkQgTUVTU0FHRXMqL1xyXG5cclxuaW9uLWlucHV0W3BsYWNlaG9sZGVyXSB7XHJcbiAgdGV4dC1hbGlnbjpjZW50ZXI7XHJcbn1cclxuXHJcbiAgaW9uLWZhYi1idXR0b25bZGF0YS1kZXNjXSB7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgfVxyXG4gIFxyXG4gIGlvbi1mYWItYnV0dG9uW2RhdGEtZGVzY106OmFmdGVyIHtcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIGNvbnRlbnQ6IGF0dHIoZGF0YS1kZXNjKTtcclxuICAgIHotaW5kZXg6IDE7XHJcbiAgICByaWdodDogNTVweDtcclxuICAgIGJvdHRvbTogNHB4O1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0taW9uLWNvbG9yLWRhcmspO1xyXG4gICAgcGFkZGluZzogOXB4O1xyXG4gICAgYm9yZGVyLXJhZGl1czogMTVweDtcclxuICAgIGNvbG9yOiB3aGl0ZTtcclxuICAgIGJveC1zaGFkb3c6IDAgM3B4IDVweCAtMXB4IHJnYmEoMCwwLDAsMC4yKSwgMCA2cHggMTBweCAwIHJnYmEoMCwwLDAsMC4xNCksIDAgMXB4IDE4cHggMCByZ2JhKDAsMCwwLDAuMTIpO1xyXG4gIH1cclxuXHJcbiAgLmJ1YmJsZW9yYW5nZXtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNmNmEwM2Y7XHJcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XHJcbiAgICBib3gtc2hhZG93OiAwIDAgNnB4ICMwMDAwMDA7XHJcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbiAgICBwYWRkaW5nOiAxMHB4IDE4cHg7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICB2ZXJ0aWNhbC1hbGlnbjogdG9wO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbn1cclxuXHJcbi5idWJibGVvcmFuZ2V7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2Y2YTAzZjtcclxuICBib3JkZXItcmFkaXVzOiA1cHg7XHJcbiAgYm94LXNoYWRvdzogMCAwIDZweCAjMDAwMDAwO1xyXG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcclxuICBwYWRkaW5nOiAxMHB4IDE4cHg7XHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gIHZlcnRpY2FsLWFsaWduOiB0b3A7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbiAgY29sb3I6ICNmZmZmZmY7XHJcbn1cclxuXHJcbi5idWJibGVvcmFuZ2U6OmJlZm9yZSB7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogI2Y2YTAzZjtcclxuICBjb250ZW50OiBcIlxcMDBhMFwiO1xyXG4gIGRpc3BsYXk6IGJsb2NrO1xyXG4gIGhlaWdodDogMTZweDtcclxuICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgdG9wOiAxMXB4O1xyXG4gIHRyYW5zZm9ybTogICAgICAgICAgICAgcm90YXRlKCAyOWRlZyApIHNrZXcoIC0zNWRlZyApO1xyXG4gICAgICAtbW96LXRyYW5zZm9ybTogICAgcm90YXRlKCAyOWRlZyApIHNrZXcoIC0zNWRlZyApO1xyXG4gICAgICAtbXMtdHJhbnNmb3JtOiAgICAgcm90YXRlKCAyOWRlZyApIHNrZXcoIC0zNWRlZyApO1xyXG4gICAgICAtby10cmFuc2Zvcm06ICAgICAgcm90YXRlKCAyOWRlZyApIHNrZXcoIC0zNWRlZyApO1xyXG4gICAgICAtd2Via2l0LXRyYW5zZm9ybTogcm90YXRlKCAyOWRlZyApIHNrZXcoIC0zNWRlZyApO1xyXG4gIHdpZHRoOiAgMjBweDtcclxufVxyXG5cclxuLm1lc3NhZ2VzLWNvbnRhaW5lcntcclxuIC8vIG1pbi1oZWlnaHQ6IDEwMCU7XHJcbiAvLyB3aWR0aDogMTAwJTtcclxuICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAvLyBkaXNwbGF5OiBmbGV4O1xyXG4gIG92ZXJmbG93OiBoaWRkZW47XHJcbiBtYXJnaW46IDAgYXV0bztcclxufVxyXG5cclxuaW9uLWhlYWRlciB7XHJcbiAgaW9uLXRvb2xiYXIge1xyXG4gICAgaGVpZ2h0OiA1MHB4O1xyXG4gIH1cclxufVxyXG5cclxuLmJ0bm1lbnVmb290ZXJ7XHJcbiAgY29sb3I6ICNmNmEwM2Y7XHJcbiAgZm9udC1zaXplOiAyOHB4O1xyXG4gIG1hcmdpbi10b3A6IDdweDtcclxufVxyXG5cclxuXHJcbi5tZXNzYWdlcy1jb250YWluZXIge1xyXG4gIC8vbWluLWhlaWdodDogMTAwJTtcclxuIC8vIHdpZHRoOiAxMDAlO1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuIC8vIGRpc3BsYXk6IGZsZXg7XHJcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcclxuICBtYXJnaW46IDAgYXV0bztcclxufVxyXG5cclxuXHJcbi5ib3RvbnNBdWRpb1JlY29yZHtcclxuICBmb250LXNpemU6IDM2cHg7XHJcbiAgY29sb3I6IHJlZDtcclxufVxyXG5cclxuLmJvdG9uc0F1ZGlvU3RvcHtcclxuICBmb250LXNpemU6IDM2cHg7XHJcbiAgY29sb3I6ICMwMDEyRTg7XHJcbn1cclxuXHJcbmlvbi1jYXJke1xyXG4gIGJhY2tncm91bmQ6ICMwMDAwMDA7XHJcbiAgY29sb3I6IzNCM0IzQiA7XHJcbiAgXHJcbn1cclxuXHJcbi53YXZle1xyXG4vLyAgd2lkdGg6IGF1dG9weDtcclxuICBoZWlnaHQ6IDEyMHB4O1xyXG59XHJcblxyXG4uYnRuUGxheWVye1xyXG4gIHdpZHRoOiAxMDAlO1xyXG4gIGZvbnQtc2l6ZTogMTJweDtcclxufVxyXG5cclxuLmNsb3NlQnV0dG9ue1xyXG5mb250LXNpemU6IDM2cHg7XHJcbn1cclxuXHJcbmlvbi1jYXJkLXRpdGxle1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICBjb2xvcjogI2RkZGJkYjtcclxufVxyXG5cclxuLnBsYXllcm1lc3NhZ2V7XHJcbiAgLy9iYWNrZ3JvdW5kOiAjNTY1NjU2O1xyXG4gIFxyXG4gLy8gaGVpZ2h0OiA3MXB4O1xyXG4gIGJvcmRlci1yYWRpdXM6IDRweDtcclxuICBjb2xvcjogI2RkZGJkYjtcclxuICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICBmb250LXNpemU6IDM1cHg7XHJcbiAvLyBtYXJnaW4tdG9wOiA1cHg7O1xyXG59XHJcblxyXG4uaWNvbnNwbGF5ZXJ7XHJcbiAgbWFyZ2luLXRvcDogMTVweDtcclxuICBtYXJnaW4tYm90dG9tOiAxMHB4O1xyXG4gIGNvbG9yOiAjMDAwO1xyXG59XHJcblxyXG4uaW1oe1xyXG4gIGJhY2tncm91bmQ6IHVybCgnLi4vLi4vLi4vYXNzZXRzL2VzcGV0cm8uZ2lmJyk7XHJcbiAgaGVpZ2h0OiA5MHB4O1xyXG4gIC8vbWFyZ2luLXRvcDogNXB4O1xyXG59XHJcblxyXG4uaW1oeyAgXHJcbiAgaGVpZ2h0OiA5MHB4O1xyXG4gIC8vbWFyZ2luLXRvcDogNXB4O1xyXG59XHJcblxyXG4uZW5jb2RlcGxheWVye1xyXG4gIGZvbnQtc2l6ZTogMTFweDtcclxufVxyXG5cclxuLmljb25mYXZ7XHJcbiAgY29sb3I6ICNmZmY7XHJcbiAgZm9udC1zaXplOiAyNHB4IDtcclxufVxyXG5cclxuLndhdmVhe1xyXG4gIGJhY2tncm91bmQ6IHVybCgnLi4vLi4vLi4vYXNzZXRzL3dhdmUucG5nICcpO1xyXG4gIHotaW5kZXg6IDM7XHJcbn1cclxuXHJcbi5uZXdJY29uc3tcclxuIC8vIG1hcmdpbi10b3A6IDVweDtcclxuIC8vIG1hcmdpbi1ib3R0b206IDEwcHg7XHJcbiAgY29sb3I6ICMwMDA7XHJcbiAgZm9udC1zaXplOiAzNXB4O1xyXG4gIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG59XHJcblxyXG4ucGx7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbn1cclxuXHJcbi5kYXRlUGxheWVye1xyXG4gIGZvbnQtc2l6ZTogMTBweDtcclxufVxyXG5cclxuLmJ1YmJsZW9yYW5nZTJ7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogIzAwMDAwMDtcclxuICBib3JkZXItcmFkaXVzOiA1cHg7XHJcbiAgYm94LXNoYWRvdzogMCAwIDZweCAjMDAwMDAwO1xyXG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcclxuICBwYWRkaW5nOiAxMHB4IDE4cHg7XHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gIHZlcnRpY2FsLWFsaWduOiB0b3A7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbiAgY29sb3I6ICNmZmZmZmY7XHJcbn1cclxuXHJcbi5idWJibGVvcmFuZ2UyOjpiZWZvcmUge1xyXG4gIGJhY2tncm91bmQtY29sb3I6ICMwMDAwMDA7XHJcbiAgY29udGVudDogXCJcXDAwYTBcIjtcclxuICBkaXNwbGF5OiBibG9jaztcclxuICBoZWlnaHQ6IDE2cHg7XHJcbiAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gIHRvcDogMTFweDtcclxuICB0cmFuc2Zvcm06ICAgICAgICAgICAgIHJvdGF0ZSggMjlkZWcgKSBza2V3KCAtMzVkZWcgKTtcclxuICAgICAgLW1vei10cmFuc2Zvcm06ICAgIHJvdGF0ZSggMjlkZWcgKSBza2V3KCAtMzVkZWcgKTtcclxuICAgICAgLW1zLXRyYW5zZm9ybTogICAgIHJvdGF0ZSggMjlkZWcgKSBza2V3KCAtMzVkZWcgKTtcclxuICAgICAgLW8tdHJhbnNmb3JtOiAgICAgIHJvdGF0ZSggMjlkZWcgKSBza2V3KCAtMzVkZWcgKTtcclxuICAgICAgLXdlYmtpdC10cmFuc2Zvcm06IHJvdGF0ZSggMjlkZWcgKSBza2V3KCAtMzVkZWcgKTtcclxuICB3aWR0aDogIDIwcHg7XHJcbn1cclxuXHJcbi5ibG9ja3tcclxuICBjb2xvcjogI2ZmZmZmZjtcclxufSJdfQ== */";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/chat-new/chat-new.page.ts":
+  /*!*************************************************!*\
+    !*** ./src/app/pages/chat-new/chat-new.page.ts ***!
+    \*************************************************/
+
+  /*! exports provided: ChatNewPage */
+
+  /***/
+  function srcAppPagesChatNewChatNewPageTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ChatNewPage", function () {
+      return ChatNewPage;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _ionic_storage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @ionic/storage */
+    "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+    /* harmony import */
+
+
+    var src_app_services_users_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! src/app/services/users.service */
+    "./src/app/services/users.service.ts");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! src/app/services/contacts.service */
+    "./src/app/services/contacts.service.ts");
+    /* harmony import */
+
+
+    var src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! src/app/services/chat.service */
+    "./src/app/services/chat.service.ts");
+    /* harmony import */
+
+
+    var crypto_js_enc_utf8__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! crypto-js/enc-utf8 */
+    "./node_modules/crypto-js/enc-utf8.js");
+    /* harmony import */
+
+
+    var crypto_js_enc_utf8__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(crypto_js_enc_utf8__WEBPACK_IMPORTED_MODULE_7__);
+    /* harmony import */
+
+
+    var crypto_js_aes__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! crypto-js/aes */
+    "./node_modules/crypto-js/aes.js");
+    /* harmony import */
+
+
+    var crypto_js_aes__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(crypto_js_aes__WEBPACK_IMPORTED_MODULE_8__);
+    /* harmony import */
+
+
+    var _ionic_native_aes_256_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! @ionic-native/aes-256/ngx */
+    "./node_modules/@ionic-native/aes-256/ngx/index.js");
+    /* harmony import */
+
+
+    var src_environments_environment__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! src/environments/environment */
+    "./src/environments/environment.ts");
+    /* harmony import */
+
+
+    var src_app_services_push_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! src/app/services/push.service */
+    "./src/app/services/push.service.ts");
+    /* harmony import */
+
+
+    var ngx_socket_io__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    /*! ngx-socket-io */
+    "./node_modules/ngx-socket-io/fesm2015/ngx-socket-io.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _modal_contacts_modal_contacts_page__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    /*! ../modal-contacts/modal-contacts.page */
+    "./src/app/pages/modal-contacts/modal-contacts.page.ts");
+    /* harmony import */
+
+
+    var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    /*! @ionic-native/camera/ngx */
+    "./node_modules/@ionic-native/camera/ngx/index.js");
+    /* harmony import */
+
+
+    var _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    /*! @ionic-native/File/ngx */
+    "./node_modules/@ionic-native/File/ngx/index.js");
+    /* harmony import */
+
+
+    var _image_modal_image_modal_page__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
+    /*! ../image-modal/image-modal.page */
+    "./src/app/pages/image-modal/image-modal.page.ts");
+    /* harmony import */
+
+
+    var _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(
+    /*! @ionic-native/ionic-webview/ngx */
+    "./node_modules/@ionic-native/ionic-webview/ngx/index.js");
+    /* harmony import */
+
+
+    var src_app_services_trunk_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(
+    /*! src/app/services/trunk.service */
+    "./src/app/services/trunk.service.ts");
+    /* harmony import */
+
+
+    var src_app_services_data_service_service__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(
+    /*! src/app/services/data-service.service */
+    "./src/app/services/data-service.service.ts");
+    /* harmony import */
+
+
+    var src_app_services_events_service__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(
+    /*! src/app/services/events.service */
+    "./src/app/services/events.service.ts");
+    /* harmony import */
+
+
+    var _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(
+    /*! @ionic-native/android-permissions/ngx */
+    "./node_modules/@ionic-native/android-permissions/ngx/index.js");
+    /* harmony import */
+
+
+    var src_app_services_closeapp_service__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(
+    /*! src/app/services/closeapp.service */
+    "./src/app/services/closeapp.service.ts");
+    /* harmony import */
+
+
+    var howler__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(
+    /*! howler */
+    "./node_modules/howler/dist/howler.js");
+    /* harmony import */
+
+
+    var howler__WEBPACK_IMPORTED_MODULE_24___default = /*#__PURE__*/__webpack_require__.n(howler__WEBPACK_IMPORTED_MODULE_24__);
+    /* harmony import */
+
+
+    var _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(
+    /*! @ionic-native/onesignal/ngx */
+    "./node_modules/@ionic-native/onesignal/ngx/index.js");
+    /* harmony import */
+
+
+    var _ionic_native_media_ngx__WEBPACK_IMPORTED_MODULE_26__ = __webpack_require__(
+    /*! @ionic-native/media/ngx */
+    "./node_modules/@ionic-native/media/ngx/index.js");
+    /* harmony import */
+
+
+    var _ionic_native_media_capture_ngx__WEBPACK_IMPORTED_MODULE_27__ = __webpack_require__(
+    /*! @ionic-native/media-capture/ngx */
+    "./node_modules/@ionic-native/media-capture/ngx/index.js");
+    /* harmony import */
+
+
+    var _modalrecord_modalrecord_page__WEBPACK_IMPORTED_MODULE_28__ = __webpack_require__(
+    /*! ../modalrecord/modalrecord.page */
+    "./src/app/pages/modalrecord/modalrecord.page.ts"); //import {VideoProvider} from '../../providers/video';
+
+
+    var STORAGE_KEY = 'my_images';
+    var MEDIA_FOLDER_NAME = 'my_media';
+    var MEDIA_FILES_KEY = 'mediaFiles';
+
+    var ChatNewPage = /*#__PURE__*/function () {
+      function ChatNewPage(storage, userService, activatedRoute, contactsService, router, chatService, aes256, pushService, socket, actionSheetController, modalCtrl, toastCtrl, cameranew, file, webview, navCtrl, trunkService, //public videoProvider: VideoProvider,
+      dataService, events, androidPermissions, closeApp, media, platform, mediaCapture, oneSignal) {
+        var _this = this;
+
+        _classCallCheck(this, ChatNewPage);
+
+        this.storage = storage;
+        this.userService = userService;
+        this.activatedRoute = activatedRoute;
+        this.contactsService = contactsService;
+        this.router = router;
+        this.chatService = chatService;
+        this.aes256 = aes256;
+        this.pushService = pushService;
+        this.socket = socket;
+        this.actionSheetController = actionSheetController;
+        this.modalCtrl = modalCtrl;
+        this.toastCtrl = toastCtrl;
+        this.cameranew = cameranew;
+        this.file = file;
+        this.webview = webview;
+        this.navCtrl = navCtrl;
+        this.trunkService = trunkService;
+        this.dataService = dataService;
+        this.events = events;
+        this.androidPermissions = androidPermissions;
+        this.closeApp = closeApp;
+        this.media = media;
+        this.platform = platform;
+        this.mediaCapture = mediaCapture;
+        this.oneSignal = oneSignal; //vars not
+
+        this.notificate = {
+          apid: '',
+          notid: ''
+        }; //varsMessages
+
+        this.page = 0;
+        this.allMessages = {
+          sender: '',
+          receiver: ''
+        };
+        this.part = {
+          senderId: '',
+          receiverId: ''
+        };
+        this.sconect = {
+          senderId: '',
+          receiverId: ''
+        };
+        this.messages = [];
+        this.message = '';
+        this.cipherMessage = '';
+        this.cipher = '';
+        this.key1 = '123456789abcdefghijklmnopqrstuuvwxyz';
+        this.decodedMessage = '';
+        this.skey = src_environments_environment__WEBPACK_IMPORTED_MODULE_10__["environment"].sekretKey;
+        this.messageBody = {
+          message: '',
+          receiverid: '',
+          senderid: '',
+          type: '',
+          image: '',
+          secureKey: '',
+          secureIv: '',
+          createAt: Date.now()
+        };
+        this.toSocket = {
+          convId: '',
+          msg: '',
+          type: '',
+          senderId: '',
+          receiverId: '',
+          audioFile: ''
+        };
+        this.m = [];
+        this.toResend = [];
+        this.toResendContacts = [];
+        this.checks = 'off';
+        this.trunkChecks = 'off';
+        this.arrowControl = 'off';
+        this.messageTrunk = {
+          owner: '',
+          senderId: '',
+          receiverId: '',
+          create: '',
+          receiverName: '',
+          messages: []
+        };
+        this.nameTrunk = '';
+        this.dataResFiles = [];
+        this.images = [];
+        this.stateCamera = 0;
+        /* AUDIO */
+
+        this.hidde1 = false;
+        this.hiddeAll = false;
+        this.isrecord = false;
+        this.status = "Pulse para grabar";
+        this.pathaudio = {};
+        this.participants = {
+          senderId: '',
+          receiverId: ''
+        };
+        this.skem = {
+          convId: '',
+          msg: '',
+          type: '',
+          senderId: '',
+          receiverId: '',
+          audioFile: ''
+        };
+        this.position = 0;
+        this.base = src_environments_environment__WEBPACK_IMPORTED_MODULE_10__["environment"].url;
+        this.waves = 'off';
+        this.recordButton = false;
+        this.sendAudioButton = true;
+        this.files = [];
+        this.mediaFiles = [];
+        this.audioPath = '';
+        this.playing = '1';
+        this.d2Duration = -5;
+        this.durationCnt2 = 0;
+        this.player = null;
+        this.isPlaying = false;
+        this.progress = 0;
+        this.countSock = 0;
+        this.countMessage = 0;
+        this.buttonText = true;
+        this.closeApp.comproveStateApp();
+        this.platform.pause.subscribe(function () {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    if (this.playing === '0') {
+                      this.player.stop();
+                    }
+
+                  case 1:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
+        });
+      }
+
+      _createClass(ChatNewPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          var _this2 = this;
+
+          this.socket.disconnect();
+          this.socket.connect(); // this.comproveState(this.stateCamera);
+
+          this.closeApp.comproveStateApp(); // this.oneSignal.clearOneSignalNotifications();
+          //   this.sidContact = this.activatedRoute.snapshot.paramMap.get('hash');
+
+          this.activatedRoute.queryParams.subscribe(function (params) {
+            if (params && params.special) {
+              _this2.sidContact = JSON.parse(params.special);
+            }
+          });
+          this.platform.ready().then(function () {
+            var path = _this2.file.dataDirectory;
+
+            _this2.file.checkDir(path, MEDIA_FOLDER_NAME).then(function () {// this.loadFiles();
+            }, function (err) {
+              _this2.file.createDir(path, MEDIA_FOLDER_NAME, false);
+            });
+          });
+          /* PRe ION WILL ENTER */
+
+          this.canelResend();
+          this.socket.fromEvent('user-connected').subscribe(function (resls) {});
+          /*  this.socket.fromEvent('joined').subscribe(resls => {
+              console.log('+0+0+00+0+0+0+0+0+', resls);
+            })
+           */
+
+          this.storage.get('username').then(function (result) {
+            _this2.userService.getSekretId(result).subscribe(function (responseUser) {
+              _this2.mySid = responseUser.user[0].sekretid;
+              _this2.myId = responseUser.user[0]._id;
+              _this2.currentUser = _this2.myId;
+              _this2.myUsername = responseUser.user[0].username;
+              _this2.planActive = responseUser.user[0].plan; // For more vars  
+              //Get Vars Contact User
+
+              _this2.userService.getUserNameBySekretId(_this2.sidContact).subscribe(function (responseContact) {
+                //console.log('99999999999999999', responseContact.user );
+                _this2.arrayContact = responseContact.user[0];
+                _this2.idContact = _this2.arrayContact._id;
+                _this2.usernameContact = _this2.arrayContact.username;
+                _this2.notiIdContact = _this2.arrayContact.notificationId;
+                _this2.appid = _this2.arrayContact.appidn; // console.log('AAAAAHHHHHAAA', this.appid);
+
+                _this2.avatarUser = _this2.arrayContact.avatar;
+                console.log('=== AVATAR ===', _this2.avatarUser); //  console.log('HHHHHHHHHHH',this.usernameContact)
+
+                _this2.userService.getSekretId(_this2.usernameContact).subscribe(function (rsCon2) {//console.log('1000000010000',rsCon2);
+                });
+
+                _this2.notificate = {
+                  apid: _this2.appid,
+                  notid: _this2.notiIdContact
+                }; // for more vars
+
+                _this2.generateSecureKeyAndIV();
+
+                _this2.sconect = {
+                  senderId: _this2.myId,
+                  receiverId: _this2.idContact
+                };
+
+                _this2.chatService.getCoversationid(_this2.sconect).subscribe(function (resConvId) {
+                  console.log('===== ID DE LA CONVERSACION =====', resConvId.idConver);
+                  _this2.toSocket = {
+                    convId: resConvId.idConver,
+                    msg: '',
+                    type: '',
+                    senderId: _this2.myId,
+                    receiverId: _this2.idContact,
+                    audioFile: ''
+                  };
+
+                  _this2.socket.emit('send-message', {
+                    msg: _this2.toSocket
+                  });
+                });
+
+                _this2.getRename();
+
+                _this2.loadData();
+
+                _this2.establishConnection();
+
+                _this2.scrollToBottomInChat();
+
+                _this2.updateChecks();
+
+                _this2.updateBadgeRead(); // this.socket.fromEvent('messageP').subscribe()
+
+              }); //end userService Contact  
+
+            }); //end userService My Current user      
+
+          });
+          /* END ION WILL ENTER */
+        } //end on init
+        // AUDIO START
+
+      }, {
+        key: "establishConnection",
+        value: function establishConnection() {
+          console.log('establecer conexion');
+        }
+      }, {
+        key: "comprobeMessage",
+        value: function comprobeMessage(e) {
+          if (this.message === '') {
+            this.buttonText = true;
+          } else {
+            this.buttonText = false;
+          }
+
+          return this.buttonText;
+        }
+      }, {
+        key: "sto",
+        value: function sto() {
+          this.playing = '1';
+          this.player.stop();
+        }
+      }, {
+        key: "start",
+        value: function start(track) {
+          var _this3 = this;
+
+          this.playing = '0';
+
+          if (this.player) {
+            this.player.stop();
+          }
+
+          var pathVoice = this.base + '/image/infrahell/' + track;
+          this.player = new howler__WEBPACK_IMPORTED_MODULE_24__["Howl"]({
+            src: [pathVoice],
+            onplay: function onplay() {
+              _this3.isPlaying = true;
+              _this3.activeTrack = track;
+            },
+            onend: function onend() {
+              console.log('OnEnd');
+              _this3.playing = '1';
+            }
+          });
+          this.player.play();
+        }
+      }, {
+        key: "togglePlayer",
+        value: function togglePlayer(pause) {
+          this.isPlaying = !pause;
+
+          if (pause) {
+            this.player.pause();
+          } else {
+            this.player.play();
+          }
+        }
+      }, {
+        key: "next",
+        value: function next() {}
+      }, {
+        key: "prev",
+        value: function prev() {}
+      }, {
+        key: "seek",
+        value: function seek() {}
+      }, {
+        key: "updateProgress",
+        value: function updateProgress() {}
+      }, {
+        key: "activeTape",
+        value: function activeTape() {
+          this.hidde1 = !this.hidde1;
+          this.checkActiveButton();
+        }
+      }, {
+        key: "checkActiveButton",
+        value: function checkActiveButton() {
+          if (this.hidde1) {
+            this.hiddeAll = true;
+          } else if (!this.hidde1) {
+            this.hiddeAll = false;
+          }
+        }
+      }, {
+        key: "stopRecording",
+        value: function stopRecording() {
+          this.recordButton = false;
+          this.sendAudioButton = false;
+          this.isrecord = false;
+          this.audioFile.stopRecord();
+          this.status = "Detenido";
+        }
+      }, {
+        key: "showRecorder",
+        value: function showRecorder() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            var _this4 = this;
+
+            var modal, _modal;
+
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    if (!(this.playing === '0')) {
+                      _context2.next = 11;
+                      break;
+                    }
+
+                    this.player.stop();
+                    _context2.next = 4;
+                    return this.modalCtrl.create({
+                      component: _modalrecord_modalrecord_page__WEBPACK_IMPORTED_MODULE_28__["ModalrecordPage"],
+                      cssClass: 'modalRecord',
+                      componentProps: {
+                        idContact: this.idContact,
+                        myId: this.myId,
+                        notificate: this.notificate,
+                        mySid: this.mySid,
+                        sidContact: this.sidContact
+                      }
+                    });
+
+                  case 4:
+                    modal = _context2.sent;
+                    modal.onDidDismiss().then(function () {
+                      console.log('+++ + + + + + + +  + + + + + + + + + + + +  + + + + +');
+
+                      _this4.ngOnInit();
+                    });
+                    _context2.next = 8;
+                    return modal.present();
+
+                  case 8:
+                    return _context2.abrupt("return", _context2.sent);
+
+                  case 11:
+                    _context2.next = 13;
+                    return this.modalCtrl.create({
+                      component: _modalrecord_modalrecord_page__WEBPACK_IMPORTED_MODULE_28__["ModalrecordPage"],
+                      cssClass: 'modalRecord',
+                      componentProps: {
+                        idContact: this.idContact,
+                        myId: this.myId,
+                        notificate: this.notificate,
+                        mySid: this.mySid,
+                        sidContact: this.sidContact
+                      }
+                    });
+
+                  case 13:
+                    _modal = _context2.sent;
+
+                    _modal.onDidDismiss().then(function () {
+                      console.log('+++ + + + + + + +  + + + + + + + + + + + +  + + + + +');
+
+                      _this4.ngOnInit();
+                    });
+
+                    _context2.next = 17;
+                    return _modal.present();
+
+                  case 17:
+                    return _context2.abrupt("return", _context2.sent);
+
+                  case 18:
+                  case "end":
+                    return _context2.stop();
+                }
+              }
+            }, _callee2, this);
+          }));
+        }
+      }, {
+        key: "recordAudio",
+        value: function recordAudio() {
+          this.stateCamera = 1; //this.pause();
+
+          this.fileA.stop();
+          this.userService.saveStateCamera(this.stateCamera);
+          this.recordButton = true;
+          this.sendAudioButton = true;
+          this.isrecord = true;
+          this.audioFile = this.media.create(this.file.externalRootDirectory + 'nalapm.mp3');
+          this.audioFile.startRecord();
+          this.status = "Grabando...";
+        }
+      }, {
+        key: "copyFileToLocalDira",
+        value: function copyFileToLocalDira(fullPath) {
+          var _this5 = this;
+
+          var myPath = fullPath;
+          console.log('[332] MY PATH', myPath); // Make sure we copy from the right location
+
+          if (fullPath.indexOf('file://') < 0) {
+            myPath = 'file://' + fullPath;
+          }
+
+          console.log('[337] ALL PATH', myPath);
+          var ext = myPath.split('.').pop();
+          var d = Date.now();
+          var newName = "".concat(d, ".").concat(ext);
+          console.log('[341] newName', newName);
+          var name = myPath.substr(myPath.lastIndexOf('/') + 1);
+          var copyFrom = myPath.substr(0, myPath.lastIndexOf('/') + 1);
+          var copyTo = this.file.dataDirectory + MEDIA_FOLDER_NAME;
+          console.log('[345] copuFrom', copyFrom);
+          console.log('[346] copyTo', copyTo);
+          console.log('[347] name', name);
+          this.file.copyFile(copyFrom, name, copyTo, newName).then(function (success) {
+            _this5.loadFiles();
+          }, function (error) {
+            console.log('error: ', error);
+          });
+        }
+      }, {
+        key: "loadFiles",
+        value: function loadFiles() {
+          var _this6 = this;
+
+          this.file.listDir(this.file.dataDirectory, MEDIA_FOLDER_NAME).then(function (res) {
+            _this6.files = res;
+            console.log('AUDIO GUARDADO', _this6.files);
+          }, function (err) {
+            return console.log('error loading files: ', err);
+          });
+        }
+      }, {
+        key: "sendAudio",
+        value: function sendAudio(fileAudio) {
+          this.recordButton = false;
+          this.sendAudioButton = true;
+          this.pathaudio = fileAudio.MediaObject;
+          var path = {};
+          var nameAudio; //path = 'file:///storage/emulated/0/audioFile.mp3';
+
+          path = 'file:///storage/emulated/0/nalapm.mp3';
+          nameAudio = this.uploadAudio(path);
+        }
+      }, {
+        key: "uploadAudio",
+        value: function uploadAudio(file) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+            var _this7 = this;
+
+            var resultAudioSender, nameFileAudio, messageBodyA;
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    this.stateCamera = 1;
+                    this.userService.saveStateCamera(this.stateCamera);
+                    nameFileAudio = '';
+
+                    if (!(file != null)) {
+                      _context3.next = 10;
+                      break;
+                    }
+
+                    _context3.next = 6;
+                    return this.chatService.uploadAudio(file);
+
+                  case 6:
+                    resultAudioSender = _context3.sent;
+                    nameFileAudio = resultAudioSender.name;
+                    _context3.next = 11;
+                    break;
+
+                  case 10:
+                    this.showToast('se ha encontrado algun error');
+
+                  case 11:
+                    messageBodyA = {
+                      message: nameFileAudio,
+                      receiverid: this.idContact,
+                      senderid: this.myId,
+                      type: '3',
+                      image: '',
+                      audioFile: nameFileAudio,
+                      secureKey: this.secureKEY,
+                      secureIv: this.secureIV,
+                      createAt: Date.now()
+                    };
+                    this.chatService.send(messageBodyA).subscribe(function (data) {
+                      console.log('===== RESPUESTA  AUDIO DE SUBIDA', data);
+                    });
+                    this.chatService.getCoversationid(this.part).subscribe(function (resConvId) {
+                      _this7.toSocket = {
+                        convId: resConvId.idConver,
+                        msg: nameFileAudio,
+                        type: '3',
+                        senderId: _this7.myId,
+                        receiverId: _this7.idContact,
+                        audioFile: nameFileAudio
+                      };
+
+                      _this7.socket.emit('send-message', {
+                        msg: _this7.toSocket
+                      });
+                    });
+                    this.pushService.sendPushNotificacionNew(this.notificate).subscribe(function (resnoti) {
+                      console.log('*****************', resnoti);
+                    });
+                    this.contactsService.getContactsId(this.mySid, this.sidContact).subscribe(function (res) {
+                      _this7.idContacts = res;
+                      _this7.idDef1 = _this7.idContacts.idDef;
+                      var idde = _this7.idContacts.idDef2;
+
+                      _this7.contactsService.updatebadgeTalk(idde).subscribe(function (start) {
+                        console.log('RESPONSE START ', start);
+                      });
+
+                      console.log('----------idDef1----------', _this7.idDef1);
+
+                      _this7.contactsService.updateBadge(_this7.idDef1).subscribe(function (test) {
+                        console.log('--------------------', _this7.idDef1);
+                      });
+                    });
+                    this.file.removeFile('file:///storage/emulated/0', 'nalapm.mp3');
+                    this.hidde1 = !this.hidde1; // this.checkActiveButton();  
+                    //  this.socket.emit('send-message-audio', { text: messageBodyA });
+                    //   this.message = '';
+                    // return resultAudioSender;
+
+                  case 18:
+                  case "end":
+                    return _context3.stop();
+                }
+              }
+            }, _callee3, this);
+          }));
+        }
+      }, {
+        key: "play",
+        value: function play(audioFile) {
+          this.changeplay();
+          this.d2Cnt = 0;
+          console.log('[446] PLAYING ', this.playing);
+          var pathVoice = this.base + '/image/infrahell/' + audioFile;
+          this.fileA = this.media.create(pathVoice);
+          this.getDuration2(this.fileA);
+          console.log('[447]TRACK DURATION');
+          this.fileA.play();
+        }
+      }, {
+        key: "getDuration2",
+        value: function getDuration2(a) {
+          var _this8 = this;
+
+          this.f2 = a;
+          setTimeout(function () {
+            _this8.d2Cnt = _this8.d2Cnt + 1;
+
+            if (_this8.d2Cnt > 8) {
+              return;
+            }
+
+            _this8.d2Duration = _this8.f2.getDuration();
+
+            _this8.timer(_this8.d2Duration, a);
+
+            console.log("checkDuration  duration = ", _this8.d2Duration, "d2Cnt = ", _this8.d2Cnt);
+            if (_this8.d2Duration > 0) return;
+
+            _this8.getDuration2(_this8.f2);
+          }, 1000);
+        }
+      }, {
+        key: "timer",
+        value: function timer(duration, a) {
+          var _this9 = this;
+
+          var count = 0;
+          var durationFinal = Math.round(duration);
+          var milliseconds = durationFinal * 1000 + 1000;
+          console.log('++ ++ MILISEGUNDOS ++ ++ ', milliseconds);
+          /* let intervalo = setInterval(()=>{
+             this.tett();
+             console.log('INTERVALO', intervalo);
+            clearInterval(intervalo);
+           },milliseconds );
+          */
+
+          setTimeout(function () {
+            _this9.fileA.stop();
+
+            _this9.playing = '1';
+          }, milliseconds);
+        }
+      }, {
+        key: "tett",
+        value: function tett() {
+          console.log('PASO A LA NUEVA FUNCION');
+          this.fileA.stop(); //file.pause();
+
+          this.playing = '1';
+        }
+      }, {
+        key: "changeplay",
+        value: function changeplay() {
+          if (this.playing === '1') {
+            this.playing = '0';
+          } else {
+            this.playing = '1';
+          }
+        }
+      }, {
+        key: "pause",
+        value: function pause(audioFile) {
+          console.log('++ ++ ++ ++ ++ ++ ++ +', audioFile, '++ ++ ++ ++ ++ ++ ++ ++ ++ audio file');
+          var pathVoice = this.base + '/image/infrahell/' + audioFile; //const file: MediaObject = this.media.create(pathVoice);
+
+          this.fileA.stop(); //file.pause();
+
+          this.playing = '1';
+        }
+      }, {
+        key: "closeRecord",
+        value: function closeRecord() {
+          this.hidde1 = !this.hidde1;
+          this.recordButton = false;
+          this.sendAudioButton = true;
+        } // AUDIO END
+
+      }, {
+        key: "comproveState",
+        value: function comproveState(param) {
+          console.log('00 00 00 000 000 000 000 000 00', param);
+
+          if (this.stateCamera === 0) {
+            this.closeApp.comproveStateApp();
+          }
+        }
+      }, {
+        key: "ionViewWillLeave",
+        value: function ionViewWillLeave() {
+          console.log('SOCKET DESCONECTADO');
+          this.socket.disconnect();
+          this.countSock = 0;
+          this.sto();
+        }
+      }, {
+        key: "ionViewDidLoad",
+        value: function ionViewDidLoad() {
+          var _this10 = this;
+
+          console.log('[494] IONVIEW DID LOAD');
+          this.storage.get(MEDIA_FILES_KEY).then(function (res) {
+            _this10.mediaFiles = JSON.parse(res) || [];
+          });
+        }
+      }, {
+        key: "storeMediaFiles",
+        value: function storeMediaFiles(files) {
+          var _this11 = this;
+
+          this.storage.get(MEDIA_FILES_KEY).then(function (res) {
+            if (res) {
+              var arr = JSON.parse(res);
+              var tam = arr.length;
+              tam = tam - 1;
+              console.log('[507] Response', arr, 'TAM ', tam);
+
+              _this11.uploadAudio(arr[tam].fullPath);
+
+              arr = arr.concat(files);
+
+              _this11.storage.set(MEDIA_FILES_KEY, JSON.stringify(arr));
+            } else {
+              _this11.storage.set(MEDIA_FILES_KEY, JSON.stringify(files));
+            }
+
+            _this11.mediaFiles = _this11.mediaFiles.concat(files);
+          });
+        } //ionViewDidEnter() {
+
+      }, {
+        key: "ionViewWillEnter",
+        value: function ionViewWillEnter() {
+          var _this12 = this;
+
+          this.storage.get(MEDIA_FILES_KEY).then(function (res) {
+            _this12.mediaFiles = JSON.parse(res) || [];
+          });
+          this.socket.fromEvent('message').subscribe(function (resmessage) {
+            console.log('socket recibido', resmessage);
+            _this12.countMessage = +1;
+            _this12.messageInSocket = resmessage;
+            var messagein = _this12.messageInSocket.msg;
+            console.log('=== MENSAJE ', messagein);
+            _this12.countSock = _this12.countSock + 1;
+
+            if (_this12.messageInSocket.msg !== '') {
+              if (_this12.myId === _this12.messageInSocket.receiverId || _this12.myId === _this12.messageInSocket.senderId) {
+                if (_this12.messageInSocket.type === '1' || _this12.messageInSocket.type === '11' || _this12.messageInSocket.type === '44') {
+                  _this12.msjDecrypSocket = _this12.decrypt(_this12.messageInSocket.msg);
+                } else {
+                  _this12.msjDecrypSocket = _this12.messageInSocket.msg;
+                }
+
+                console.log('BODYALPHA', _this12.msjDecrypSocket);
+
+                _this12.messages.push({
+                  body: _this12.msjDecrypSocket,
+                  createAt: Date.now(),
+                  image: "",
+                  isread: '0',
+                  receiverid: _this12.messageInSocket.receiverId,
+                  secureIv: "",
+                  secureKey: "",
+                  senderId: _this12.messageInSocket.senderId,
+                  type: _this12.messageInSocket.type,
+                  audioFile: _this12.messageInSocket.audioFile
+                });
+              }
+            } // }
+
+
+            _this12.scrollToBottomInChat(); // this.updateChecks();
+            //  console.log('=== ==== === ', this.countMessage);
+
+          }); // let element = document.getElementById("myContent");
+
+          this.content.scrollToBottom(0);
+        }
+      }, {
+        key: "loadData",
+        value: function loadData(ev) {
+          var _this13 = this;
+
+          // this.updateChecks();
+          this.messages.pop();
+          this.page++;
+          var mmsg;
+          this.allMessages = {
+            sender: this.myId,
+            receiver: this.idContact
+          };
+          this.part = {
+            senderId: this.myId,
+            receiverId: this.idContact
+          };
+          this.chatService.getCoversationid(this.part).subscribe(function (resConvId) {
+            _this13.toSocket = {
+              convId: resConvId.idConver,
+              msg: '',
+              type: '',
+              senderId: '',
+              receiverId: '',
+              audioFile: ''
+            }; //  this.socket.emit('send-message', { msg: this.toSocket });
+          }); // this.updateChecks();
+
+          this.chatService.getMessagesNew(this.allMessages, this.page).subscribe(function (responseChat) {
+            mmsg = responseChat.response;
+            console.log('8888', mmsg);
+            mmsg.map(function (elem) {
+              if (elem.message.type === "1" || elem.message.type === "11" || elem.message.type === "44") {
+                _this13.msjDecryp = _this13.decrypt(elem.message.body);
+                var newMessage = {
+                  body: _this13.msjDecryp,
+                  createAt: elem.message.createAt,
+                  image: "",
+                  isread: elem.message.isread,
+                  receiverid: elem.message.receiverId,
+                  secureIv: elem.message.secureIv,
+                  secureKey: elem.message.secureKey,
+                  senderId: elem.message.senderId,
+                  type: elem.message.type,
+                  audioFile: "",
+                  deleteAlpha: elem.message.deleteAlpha,
+                  deletebetha: elem.message.deletebetha
+                };
+
+                _this13.messages.unshift(newMessage);
+              } else if (elem.message.type === "2" || elem.message.type === "22" || elem.message.type === "3" || elem.message.type === "33" || elem.message.type === "55") {
+                _this13.messages.unshift(elem.message);
+
+                console.log('[816]', _this13.messages);
+              }
+            });
+            console.log('999', _this13.messages);
+
+            if (ev) {
+              ev.target.complete();
+
+              if (responseChat.response.length === 0) {
+                ev.target.disabled = true;
+                _this13.page = 0;
+              }
+            } //  this.updateChecks();
+
+          });
+        }
+      }, {
+        key: "sendMessage",
+        value: function sendMessage(formChat) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+            var _this14 = this;
+
+            var messageInput;
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+              while (1) {
+                switch (_context4.prev = _context4.next) {
+                  case 0:
+                    messageInput = this.message;
+                    _context4.next = 3;
+                    return this.encrypt(messageInput);
+
+                  case 3:
+                    this.cipherMessage = _context4.sent;
+                    this.messageBody = {
+                      message: this.cipherMessage,
+                      receiverid: this.idContact,
+                      senderid: this.myId,
+                      type: '1',
+                      image: '',
+                      secureKey: this.secureKEY,
+                      secureIv: this.secureIV,
+                      createAt: Date.now()
+                    };
+                    this.chatService.getCoversationid(this.part).subscribe(function (resConvId) {
+                      _this14.contactsService.getContactsId(_this14.mySid, _this14.sidContact).subscribe(function (res) {
+                        _this14.idContacts = res;
+                        _this14.idDef1 = _this14.idContacts.idDef;
+                        var idde = _this14.idContacts.idDef2;
+
+                        _this14.contactsService.updatebadgeTalk(idde).subscribe(function (start) {//console.log('RESPONSE START ', start);
+                        }); // console.log('----------idDef1----------',this.idDef1)
+
+
+                        _this14.contactsService.updateBadge(_this14.idDef1).subscribe(function (test) {//console.log('--------------------',this.idDef1)
+                        });
+                      });
+
+                      console.log('===== ID DE LA CONVERSACION =====', resConvId.idConver);
+                      _this14.toSocket = {
+                        convId: resConvId.idConver,
+                        msg: _this14.cipherMessage,
+                        type: _this14.messageBody.type,
+                        senderId: _this14.myId,
+                        receiverId: _this14.idContact,
+                        audioFile: ''
+                      };
+
+                      _this14.socket.emit('send-message', {
+                        msg: _this14.toSocket
+                      });
+                    }); //sendMessage
+
+                    this.chatService.send(this.messageBody).subscribe(function (responseSendMessage) {
+                      console.log('¿¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ ', responseSendMessage);
+                    }); //  this.updateChecks();
+                    //console.log('================== THIS NOTIFICATE =============', this.notificate, '+++++',this.appid);
+
+                    /*  this.userService.getUserNameBySekretId(this.sidContact).subscribe(rsCont => {
+                        let arContact = rsCont.user[0];
+                        console.log('##$$$$####$$$$###$$$$###$$$$###$$$', arContact);
+                        this.notificate = {
+                          apid: rsCont.appidn ,
+                          notid: rsCont.notificationId
+                        }
+                        console.log('¡?¡?¡?¡?¡?¡?¡?NOTIFGICAION ?¡?¡?¡?¡?¡?¡?¡?¡?¡?', this.notificate);
+                      })*/
+
+                    this.pushService.sendPushNotificacionNew(this.notificate).subscribe(function (resnoti) {
+                      console.log('*****************', resnoti);
+                    });
+                    this.message = '';
+
+                  case 9:
+                  case "end":
+                    return _context4.stop();
+                }
+              }
+            }, _callee4, this);
+          }));
+        } //end Send Message
+
+      }, {
+        key: "encrypt",
+        value: function encrypt(data) {
+          var dat2 = data.toString();
+          this.cipher = crypto_js_aes__WEBPACK_IMPORTED_MODULE_8__["encrypt"](JSON.stringify(data), this.key1).toString();
+          return this.cipher;
+        }
+      }, {
+        key: "decrypt",
+        value: function decrypt(encryptedData) {
+          this.decodedMessage = crypto_js_aes__WEBPACK_IMPORTED_MODULE_8__["decrypt"](encryptedData, this.key1).toString(crypto_js_enc_utf8__WEBPACK_IMPORTED_MODULE_7__);
+          var obj = JSON.parse(this.decodedMessage.toString());
+          return obj;
+        }
+      }, {
+        key: "generateSecureKeyAndIV",
+        value: function generateSecureKeyAndIV() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+            return regeneratorRuntime.wrap(function _callee5$(_context5) {
+              while (1) {
+                switch (_context5.prev = _context5.next) {
+                  case 0:
+                    _context5.next = 2;
+                    return this.aes256.generateSecureKey(this.skey);
+
+                  case 2:
+                    this.secureKEY = _context5.sent;
+                    _context5.next = 5;
+                    return this.aes256.generateSecureIV(this.skey);
+
+                  case 5:
+                    this.secureIV = _context5.sent;
+
+                  case 6:
+                  case "end":
+                    return _context5.stop();
+                }
+              }
+            }, _callee5, this);
+          }));
+        }
+      }, {
+        key: "getRename",
+        value: function getRename() {
+          var _this15 = this;
+
+          var contacts = {
+            sidUser: this.mySid,
+            sidcontact: this.sidContact
+          };
+          this.contactsService.getAliasContact(contacts).subscribe(function (responseContacts) {
+            _this15.nameContact = responseContacts.alias;
+          });
+        }
+      }, {
+        key: "goToContacts",
+        value: function goToContacts() {
+          this.toResend = [];
+          this.checks = 'off';
+          this.socket.disconnect();
+          this.router.navigate(['/contacts']);
+        }
+      }, {
+        key: "scrollToBottomInChat",
+        value: function scrollToBottomInChat() {
+          var _this16 = this;
+
+          setTimeout(function () {
+            if (_this16.content.scrollToBottom) {
+              _this16.content.scrollToBottom(0);
+            }
+          }, 500);
+        }
+      }, {
+        key: "addSelectResend",
+        value: function addSelectResend(msg) {
+          if (msg.type === '1' || msg.type === '11' || msg.type === '44') {
+            this.mess = this.encrypt(msg.body);
+          } else {
+            this.mess = msg.body;
+          }
+
+          if (msg.type === '1') {
+            this.typeToResend = '11';
+          } else if (msg.type === '2') {
+            this.typeToResend = '22';
+          } else {
+            this.typeToResend = msg.type;
+          }
+
+          if (this.toResendContacts.length === 0) {
+            this.toResendContacts.push({
+              id: msg._id,
+              body: this.mess,
+              createAt: Date.now(),
+              image: msg.image,
+              isread: '0',
+              receiverid: msg.receiverId,
+              secureIv: this.secureIV,
+              secureKey: this.secureKEY,
+              senderId: this.myId,
+              type: this.typeToResend,
+              audioFile: msg.audioFile
+            });
+            console.log('ARREGLO PARA R-ENVIAR', this.toResendContacts);
+          } else {
+            console.log('entro por el else');
+            var res = this.searchInArray(this.toResendContacts, msg);
+            console.log('RRRRTTTTT', res);
+
+            if (res === 0) {
+              this.toResendContacts.push({
+                id: msg._id,
+                body: this.mess,
+                createAt: Date.now(),
+                image: msg.image,
+                isread: '0',
+                receiverid: msg.receiverId,
+                secureIv: this.secureIV,
+                secureKey: this.secureKEY,
+                senderId: this.myId,
+                type: this.typeToResend,
+                audioFile: msg.audioFile
+              });
+              console.log('ARREGLO PARA R-ENVIAR POR EL ELSE', this.toResendContacts);
+            } else {
+              this.presentToast('Ya ha seleccionado este mensaje'); // console.log('ya se ha seleccionado el mensaje', this.toResendContacts);
+            }
+
+            console.log('===========CONTINUA========');
+          }
+        }
+      }, {
+        key: "searchInArray",
+        value: function searchInArray(arr, msg) {
+          console.log('???????????????', msg);
+          console.log('???????????????', arr);
+          var found = arr.find(function (array) {
+            return array.body === msg.body;
+          });
+          console.log('ENCONTRADO', found);
+
+          if (found === undefined) {
+            return 0; //not found
+
+            arr = '';
+          } else {
+            return 1; //founded
+
+            arr = '';
+          }
+        }
+      }, {
+        key: "addTrunk",
+        value: function addTrunk(msg) {
+          console.log('Mensaje que ingresa desde el selct', msg);
+
+          if (msg.type === "1" || msg.type === "11" || msg.type === "44") {
+            this.mess = this.encrypt(msg.body);
+          } else {
+            this.mess = msg.body;
+          }
+
+          this.toResend.push({
+            body: this.mess,
+            createAt: Date.now(),
+            image: msg.image,
+            isread: '0',
+            receiverId: msg.receiverid,
+            secureIv: this.secureIV,
+            secureKey: this.secureKEY,
+            senderId: msg.senderId,
+            type: msg.type,
+            audioFile: msg.audioFile
+          }); // console.log('ARREGLO PARA ENVIAR', this.toResend);
+
+          /* this.pushService.sendPushNotificacionNew(this.notificate).subscribe(resnoti => {
+             console.log(resnoti);
+           }) */
+
+          console.log('ZZZZZZ', this.toResend);
+          this.mess = '';
+        }
+      }, {
+        key: "presentSelect",
+        value: function presentSelect() {
+          this.checks = 'on';
+          this.arrowControl = 'on';
+        }
+      }, {
+        key: "resendMessage",
+        value: function resendMessage(_resendMessage) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+            var _this17 = this;
+
+            var modal;
+            return regeneratorRuntime.wrap(function _callee6$(_context6) {
+              while (1) {
+                switch (_context6.prev = _context6.next) {
+                  case 0:
+                    if (!(this.toResendContacts.length > 0)) {
+                      _context6.next = 10;
+                      break;
+                    }
+
+                    _context6.next = 3;
+                    return this.modalCtrl.create({
+                      component: _modal_contacts_modal_contacts_page__WEBPACK_IMPORTED_MODULE_14__["ModalContactsPage"],
+                      componentProps: {
+                        'objMessage': this.toResendContacts,
+                        'l1': this.secureIV,
+                        'l2': this.secureKEY,
+                        'mySid': this.mySid,
+                        'ids': this.myId,
+                        'sidu': this.sidContact
+                      }
+                    });
+
+                  case 3:
+                    modal = _context6.sent;
+                    modal.onDidDismiss().then(function () {
+                      _this17.canelResend();
+                    });
+                    _context6.next = 7;
+                    return modal.present();
+
+                  case 7:
+                    this.checks = 'off'; //finale line
+
+                    _context6.next = 11;
+                    break;
+
+                  case 10:
+                    this.presentToast('Debe seleccionar almenos un mensaje');
+
+                  case 11:
+                  case "end":
+                    return _context6.stop();
+                }
+              }
+            }, _callee6, this);
+          }));
+        }
+      }, {
+        key: "canelResend",
+        value: function canelResend() {
+          this.toResend = [];
+          this.toResendContacts = []; // console.log('ARREGLO CANCELAR', this.toResend);
+
+          this.checks = 'off';
+          this.trunkChecks = 'off';
+          this.arrowControl = 'off';
+        }
+      }, {
+        key: "getContacts",
+        value: function getContacts(resendMessage) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
+            var modal;
+            return regeneratorRuntime.wrap(function _callee7$(_context7) {
+              while (1) {
+                switch (_context7.prev = _context7.next) {
+                  case 0:
+                    _context7.next = 2;
+                    return this.modalCtrl.create({
+                      component: _modal_contacts_modal_contacts_page__WEBPACK_IMPORTED_MODULE_14__["ModalContactsPage"],
+                      componentProps: {
+                        'objMessage': resendMessage
+                      }
+                    });
+
+                  case 2:
+                    modal = _context7.sent;
+                    _context7.next = 5;
+                    return modal.present();
+
+                  case 5:
+                  case "end":
+                    return _context7.stop();
+                }
+              }
+            }, _callee7, this);
+          }));
+        }
+      }, {
+        key: "presentToast",
+        value: function presentToast(message) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee8() {
+            var toast;
+            return regeneratorRuntime.wrap(function _callee8$(_context8) {
+              while (1) {
+                switch (_context8.prev = _context8.next) {
+                  case 0:
+                    _context8.next = 2;
+                    return this.toastCtrl.create({
+                      message: message,
+                      duration: 3000,
+                      position: 'middle'
+                    });
+
+                  case 2:
+                    toast = _context8.sent;
+                    toast.present();
+
+                  case 4:
+                  case "end":
+                    return _context8.stop();
+                }
+              }
+            }, _callee8, this);
+          }));
+        }
+      }, {
+        key: "logout",
+        value: function logout() {
+          this.router.navigate(['/home']);
+        }
+      }, {
+        key: "captureImage",
+        value: function captureImage() {
+          var _this18 = this;
+
+          this.stateCamera = 1;
+          this.userService.saveStateCamera(this.stateCamera);
+          var sourceType = this.cameranew.PictureSourceType.CAMERA;
+          var options = {
+            quality: 50,
+            sourceType: sourceType,
+            saveToPhotoAlbum: false,
+            correctOrientation: true
+          };
+          this.cameranew.getPicture(options).then(function (imagePath) {
+            var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
+            var correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
+
+            _this18.copytoNew(correctPath, currentName);
+          });
+        } //end capture Imnage
+
+      }, {
+        key: "copytoNew",
+        value: function copytoNew(path, namePic) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee9() {
+            var fP, rs;
+            return regeneratorRuntime.wrap(function _callee9$(_context9) {
+              while (1) {
+                switch (_context9.prev = _context9.next) {
+                  case 0:
+                    fP = path + namePic;
+                    _context9.next = 3;
+                    return this.upImage(fP);
+
+                  case 3:
+                    this.dataResFiles = _context9.sent;
+
+                    if (this.dataResFiles === '') {
+                      /*   setTimeout(() => {
+                           // console.log('paso al if')
+                           rs = this.dataResFiles.name;
+                           this.sendMessageImage(this.dataResFiles.name);
+                         }, 1000);*/
+                    } else {
+                      // console.log('paso al ELSE')
+                      this.sendMessageImage(this.dataResFiles.name);
+                      rs = 'file:///storage/emulated/0/Pictures/';
+                      this.file.removeFile(fP, namePic);
+                    }
+
+                  case 5:
+                  case "end":
+                    return _context9.stop();
+                }
+              }
+            }, _callee9, this);
+          }));
+        }
+      }, {
+        key: "upImage",
+        value: function upImage(file) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee10() {
+            var imageSennder, resultImageSender;
+            return regeneratorRuntime.wrap(function _callee10$(_context10) {
+              while (1) {
+                switch (_context10.prev = _context10.next) {
+                  case 0:
+                    imageSennder = file;
+
+                    if (!(file != null)) {
+                      _context10.next = 7;
+                      break;
+                    }
+
+                    _context10.next = 4;
+                    return this.chatService.uploadimage(imageSennder);
+
+                  case 4:
+                    resultImageSender = _context10.sent;
+                    _context10.next = 8;
+                    break;
+
+                  case 7:
+                    this.showToast('se ha encontrado algun error');
+
+                  case 8:
+                    return _context10.abrupt("return", resultImageSender);
+
+                  case 9:
+                  case "end":
+                    return _context10.stop();
+                }
+              }
+            }, _callee10, this);
+          }));
+        }
+      }, {
+        key: "sendMessageImage",
+        value: function sendMessageImage(image) {
+          var _this19 = this;
+
+          var imageRecive = image;
+          this.messageBody = {
+            message: imageRecive,
+            receiverid: this.idContact,
+            senderid: this.myId,
+            type: '2',
+            image: imageRecive,
+            secureKey: this.secureKEY,
+            secureIv: this.secureIV,
+            createAt: Date.now()
+          };
+          this.chatService.send(this.messageBody).subscribe(function (data) {});
+          this.part = {
+            senderId: this.messageBody.senderid,
+            receiverId: this.messageBody.receiverid
+          }; //send notification
+
+          this.pushService.sendPushNotificacionNew(this.notiIdContact).subscribe(function (responseNoti) {});
+          this.contactsService.getContactsId(this.mySid, this.sidContact).subscribe(function (res) {
+            _this19.idContacts = res;
+            _this19.idDef1 = _this19.idContacts.idDef;
+            var idde = _this19.idContacts.idDef2;
+
+            _this19.contactsService.updatebadgeTalk(idde).subscribe(function (start) {
+              console.log('RESPONSE START ', start);
+            });
+
+            _this19.contactsService.updateBadge(_this19.idDef1).subscribe(function (test) {
+              console.log('--------------------', test);
+            });
+          });
+          this.chatService.getCoversationid(this.part).subscribe(function (resConvId) {
+            _this19.toSocket = {
+              convId: resConvId.idConver,
+              msg: imageRecive,
+              type: '2',
+              senderId: _this19.myId,
+              receiverId: _this19.idContact,
+              audioFile: ''
+            };
+
+            _this19.socket.emit('send-message', {
+              msg: _this19.toSocket
+            });
+          });
+          this.pushService.sendPushNotificacionNew(this.notificate).subscribe(function (resnoti) {}); //  this.message = '';
+        }
+      }, {
+        key: "showToast",
+        value: function showToast(msg) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee11() {
+            var toast;
+            return regeneratorRuntime.wrap(function _callee11$(_context11) {
+              while (1) {
+                switch (_context11.prev = _context11.next) {
+                  case 0:
+                    _context11.next = 2;
+                    return this.toastCtrl.create({
+                      message: msg,
+                      position: 'middle',
+                      duration: 3000
+                    });
+
+                  case 2:
+                    toast = _context11.sent;
+                    toast.present();
+
+                  case 4:
+                  case "end":
+                    return _context11.stop();
+                }
+              }
+            }, _callee11, this);
+          }));
+        }
+      }, {
+        key: "openGallery",
+        value: function openGallery(imagensend) {
+          this.modalCtrl.create({
+            component: _image_modal_image_modal_page__WEBPACK_IMPORTED_MODULE_17__["ImageModalPage"],
+            componentProps: {
+              img: imagensend
+            }
+          }).then(function (modal) {
+            return modal.present();
+          });
+        }
+      }, {
+        key: "imageGallery",
+        value: function imageGallery() {
+          var _this20 = this;
+
+          this.swcamera = true;
+          this.userService.saveStateCamera(1); // console.log('[INFO] Paso a la galeria');
+
+          var sourceType = this.cameranew.PictureSourceType.PHOTOLIBRARY;
+          var options = {
+            quality: 50,
+            sourceType: sourceType,
+            saveToPhotoAlbum: false,
+            correctOrientation: true
+          };
+          this.cameranew.getPicture(options).then(function (imagePath) {
+            var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
+            var correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
+
+            _this20.copyFileToLocalDir2(correctPath, currentName, _this20.createFileName());
+
+            _this20.copytoNew2(correctPath, currentName);
+          });
+        }
+      }, {
+        key: "copytoNew2",
+        value: function copytoNew2(path, namePic) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee12() {
+            var _this21 = this;
+
+            var fP, rs;
+            return regeneratorRuntime.wrap(function _callee12$(_context12) {
+              while (1) {
+                switch (_context12.prev = _context12.next) {
+                  case 0:
+                    //   console.log('paso al metodo copiar  nuevo');
+                    // console.log('PATH', path, 'PICCCCC', namePic);
+                    fP = path + namePic;
+                    _context12.next = 3;
+                    return this.upImage(fP);
+
+                  case 3:
+                    this.dataResFiles = _context12.sent;
+
+                    // console.log('image upload******', this.dataResFiles.name);
+                    if (this.dataResFiles === '') {
+                      setTimeout(function () {
+                        //  console.log('paso al if')
+                        rs = _this21.dataResFiles.name;
+
+                        _this21.sendMessageImage(_this21.dataResFiles.name);
+                      }, 1000);
+                    } else {
+                      // console.log('paso al ELSE')
+                      this.sendMessageImage(this.dataResFiles.name);
+                      rs = 'file:///storage/emulated/0/Pictures/';
+                      this.file.removeFile(fP, namePic);
+                    }
+
+                  case 5:
+                  case "end":
+                    return _context12.stop();
+                }
+              }
+            }, _callee12, this);
+          }));
+        }
+      }, {
+        key: "copyFileToLocalDir2",
+        value: function copyFileToLocalDir2(namePath, currentName, newFileName) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee13() {
+            var _this22 = this;
+
+            return regeneratorRuntime.wrap(function _callee13$(_context13) {
+              while (1) {
+                switch (_context13.prev = _context13.next) {
+                  case 0:
+                    this.file.copyFile(namePath, currentName, this.file.dataDirectory, newFileName).then(function (success) {
+                      _this22.updateStoredImages(newFileName);
+
+                      _this22.fpath = namePath + currentName;
+                      _this22.dataResFiles = _this22.upImage(_this22.fpath);
+                      _this22.result22 = _this22.dataResFiles.name;
+
+                      if (_this22.result22 === '') {
+                        setTimeout(function () {
+                          _this22.result22 = _this22.dataResFiles.name;
+
+                          _this22.sendMessageImage(_this22.result22);
+                        }, 1000);
+                      } else {
+                        _this22.sendMessageImage(_this22.result22);
+
+                        _this22.file.removeFile(namePath, currentName);
+                      }
+                    }, function (error) {//this.presentToast('Error while storing file.');
+                      //  console.log('Error while storing file.');
+                    });
+
+                  case 1:
+                  case "end":
+                    return _context13.stop();
+                }
+              }
+            }, _callee13, this);
+          }));
+        }
+      }, {
+        key: "updateStoredImages",
+        value: function updateStoredImages(name) {
+          var _this23 = this;
+
+          this.storage.get(STORAGE_KEY).then(function (images) {
+            var arr = JSON.parse(images);
+
+            if (!arr) {
+              var newImages = [name];
+
+              _this23.storage.set(STORAGE_KEY, JSON.stringify(newImages));
+            } else {
+              arr.push(name);
+
+              _this23.storage.set(STORAGE_KEY, JSON.stringify(arr));
+            }
+
+            var filePath = _this23.file.dataDirectory + name;
+
+            var resPath = _this23.pathForImage(filePath);
+
+            var newEntry = {
+              name: name,
+              path: resPath,
+              filePath: filePath
+            };
+            _this23.images = [newEntry].concat(_toConsumableArray(_this23.images)); //this.ref.detectChanges(); // trigger change detection cycle
+          });
+        }
+      }, {
+        key: "createFileName",
+        value: function createFileName() {
+          var d = new Date(),
+              n = d.getTime(),
+              newFileName = n + ".jpg";
+          return newFileName;
+        }
+      }, {
+        key: "pathForImage",
+        value: function pathForImage(img) {
+          if (img === null) {
+            return '';
+          } else {
+            var converted = this.webview.convertFileSrc(img);
+            return converted;
+          }
+        } //delete messages
+
+      }, {
+        key: "deleteMeessages",
+        value: function deleteMeessages() {
+          var _this24 = this;
+
+          this.allMessages = {
+            sender: this.myId,
+            receiver: this.idContact
+          };
+          this.chatService.GetAllMessages(this.allMessages).subscribe(function (data) {
+            //console.log('=======$$$======', data)
+            _this24.idChat = data.messages.conversationId; //  console.log('ID DEL CHAT', this.idChat);
+            //  console.log('SENDER ID', this.myId);
+
+            var getMyMessages = {
+              idConv: _this24.idChat,
+              idUser: _this24.myId
+            };
+
+            _this24.chatService.getMyMessages(getMyMessages).subscribe(function (myMsgResponse) {
+              var mymessages = myMsgResponse.response[0].message;
+              mymessages.map(function (message) {
+                if (message.deleteAlpha === '') {
+                  //  console.log('[INFO] PARAMETRO ALPHA OCUPADO')
+                  var updateIsRead = {
+                    idChat: _this24.idChat,
+                    idmessage: message._id,
+                    idSender: _this24.myId,
+                    param: 1
+                  };
+
+                  _this24.chatService.deleteMyMessages(updateIsRead).subscribe(function (response) {});
+                } else {
+                  var _updateIsRead = {
+                    idChat: _this24.idChat,
+                    idmessage: message._id,
+                    idSender: _this24.myId,
+                    param: 2
+                  }; //  console.log('ID DE CADA MENSAJE', updateIsRead.idmessage);
+
+                  _this24.chatService.deleteMyMessages(_updateIsRead).subscribe(function (response) {//  console.log('[INFO]', response);
+                  });
+                } // END ELSE
+
+              });
+            }); //end get all messages
+
+          });
+          this.showToast('Se están eliminando los mensajes');
+          this.navCtrl.navigateRoot('/contacts', {
+            animated: true
+          });
+        } //end Delete messages
+
+      }, {
+        key: "sendTrunk",
+        value: function sendTrunk() {
+          this.canelResend();
+          this.trunkChecks = 'on';
+          this.arrowControl = 'on';
+        }
+      }, {
+        key: "sendtoTrunk",
+        value: function sendtoTrunk() {
+          var _this25 = this;
+
+          if (this.toResend.length === 0) {
+            this.showToast('Debe seleccionar almenos un mensje');
+          } else if (this.nameTrunk === '') {
+            this.showToast('Debe asignar un nombre para guardar.');
+          } else {
+            var namet = this.usernameContact + ' - ' + this.nameTrunk;
+            this.messageTrunk = {
+              owner: this.myId,
+              senderId: this.myId,
+              receiverId: this.idContact,
+              create: Date(),
+              receiverName: namet,
+              messages: this.toResend
+            };
+            this.trunkService.createTrunkNew(this.messageTrunk).subscribe(function (responseCreTru) {
+              if (responseCreTru.ok === true) {
+                _this25.nameTrunk = '';
+                _this25.toResend = [];
+
+                _this25.canelResend();
+
+                _this25.showToast('Enviado al Baúl');
+              } else {
+                _this25.showToast('No se ha podido enviar al baúl revise su conexion');
+              }
+            });
+          }
+        }
+      }, {
+        key: "presentContacts",
+        value: function presentContacts(messages, sender) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee14() {
+            var modal;
+            return regeneratorRuntime.wrap(function _callee14$(_context14) {
+              while (1) {
+                switch (_context14.prev = _context14.next) {
+                  case 0:
+                    _context14.next = 2;
+                    return this.modalCtrl.create({
+                      component: _modal_contacts_modal_contacts_page__WEBPACK_IMPORTED_MODULE_14__["ModalContactsPage"],
+                      componentProps: {
+                        'objeMessage': messages
+                      }
+                    });
+
+                  case 2:
+                    modal = _context14.sent;
+                    modal.onDidDismiss().then(function () {
+                      console.log('SE HA CERRADO EL MODAL');
+                    });
+                    return _context14.abrupt("return", modal.present());
+
+                  case 5:
+                  case "end":
+                    return _context14.stop();
+                }
+              }
+            }, _callee14, this);
+          }));
+        }
+      }, {
+        key: "updateChecks",
+        value: function updateChecks() {
+          var _this26 = this;
+
+          this.chatService.getCoversationid(this.part).subscribe(function (resConId) {
+            var arr = {
+              idConv: resConId.idConver,
+              receiverId: _this26.myId
+            };
+
+            _this26.chatService.updateChecksRead(arr).subscribe(function (responseUpdate) {
+              console.log('&& RESPONSE UPDATE CHECKS &&', responseUpdate);
+            });
+          });
+        }
+      }, {
+        key: "updateBadgeRead",
+        value: function updateBadgeRead() {
+          var _this27 = this;
+
+          this.contactsService.getContactsId(this.mySid, this.sidContact).subscribe(function (res) {
+            _this27.contactsService.updateBadgeRead(res.idDef2).subscribe(function (rees) {
+              console.log('=?=====88==?==', rees);
+            });
+          });
+        }
+      }, {
+        key: "audioCall",
+        value: function audioCall() {
+          var optionCall = {
+            audio: true,
+            video: false,
+            group: this.dataService.group
+          };
+
+          this._call(optionCall);
+        }
+      }, {
+        key: "videoCall",
+        value: function videoCall() {
+          this.router.navigate(['/call', this.sidContact]);
+          var optionCall = {
+            audio: true,
+            video: true,
+            group: this.dataService.group
+          };
+
+          this._call(optionCall);
+        }
+      }, {
+        key: "_call",
+        value: function _call(option) {
+          this.events.publishSomeData({
+            type: 'call',
+            data: option
+          });
+        }
+      }, {
+        key: "presentFooterMenu",
+        value: function presentFooterMenu() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee15() {
+            var _this28 = this;
+
+            var actionSheet, _yield$actionSheet$on, role;
+
+            return regeneratorRuntime.wrap(function _callee15$(_context15) {
+              while (1) {
+                switch (_context15.prev = _context15.next) {
+                  case 0:
+                    _context15.next = 2;
+                    return this.actionSheetController.create({
+                      cssClass: 'my-custom-class',
+                      buttons: [{
+                        icon: 'videocam',
+                        handler: function handler() {
+                          _this28.videoCall();
+                        }
+                      }, {
+                        icon: 'call',
+                        handler: function handler() {
+                          console.log('Share clicked');
+                        }
+                      }]
+                    });
+
+                  case 2:
+                    actionSheet = _context15.sent;
+                    _context15.next = 5;
+                    return actionSheet.present();
+
+                  case 5:
+                    _context15.next = 7;
+                    return actionSheet.onDidDismiss();
+
+                  case 7:
+                    _yield$actionSheet$on = _context15.sent;
+                    role = _yield$actionSheet$on.role;
+                    console.log('onDidDismiss resolved with role', role);
+
+                  case 10:
+                  case "end":
+                    return _context15.stop();
+                }
+              }
+            }, _callee15, this);
+          }));
+        }
+      }]);
+
+      return ChatNewPage;
+    }();
+
+    ChatNewPage.ctorParameters = function () {
+      return [{
+        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_2__["Storage"]
+      }, {
+        type: src_app_services_users_service__WEBPACK_IMPORTED_MODULE_3__["UsersService"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"]
+      }, {
+        type: src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_5__["ContactsService"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]
+      }, {
+        type: src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_6__["ChatService"]
+      }, {
+        type: _ionic_native_aes_256_ngx__WEBPACK_IMPORTED_MODULE_9__["AES256"]
+      }, {
+        type: src_app_services_push_service__WEBPACK_IMPORTED_MODULE_11__["PushService"]
+      }, {
+        type: ngx_socket_io__WEBPACK_IMPORTED_MODULE_12__["Socket"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["ActionSheetController"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["ModalController"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["ToastController"]
+      }, {
+        type: _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_15__["Camera"]
+      }, {
+        type: _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_16__["File"]
+      }, {
+        type: _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_18__["WebView"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["NavController"]
+      }, {
+        type: src_app_services_trunk_service__WEBPACK_IMPORTED_MODULE_19__["TrunkService"]
+      }, {
+        type: src_app_services_data_service_service__WEBPACK_IMPORTED_MODULE_20__["DataServiceService"]
+      }, {
+        type: src_app_services_events_service__WEBPACK_IMPORTED_MODULE_21__["EventsService"]
+      }, {
+        type: _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_22__["AndroidPermissions"]
+      }, {
+        type: src_app_services_closeapp_service__WEBPACK_IMPORTED_MODULE_23__["CloseappService"]
+      }, {
+        type: _ionic_native_media_ngx__WEBPACK_IMPORTED_MODULE_26__["Media"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["Platform"]
+      }, {
+        type: _ionic_native_media_capture_ngx__WEBPACK_IMPORTED_MODULE_27__["MediaCapture"]
+      }, {
+        type: _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_25__["OneSignal"]
+      }];
+    };
+
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('content', {
+      "static": false
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["IonContent"])], ChatNewPage.prototype, "content", void 0);
+    ChatNewPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-chat-new',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./chat-new.page.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/chat-new/chat-new.page.html"))["default"],
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./chat-new.page.scss */
+      "./src/app/pages/chat-new/chat-new.page.scss"))["default"]]
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_2__["Storage"], src_app_services_users_service__WEBPACK_IMPORTED_MODULE_3__["UsersService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"], src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_5__["ContactsService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_6__["ChatService"], _ionic_native_aes_256_ngx__WEBPACK_IMPORTED_MODULE_9__["AES256"], src_app_services_push_service__WEBPACK_IMPORTED_MODULE_11__["PushService"], ngx_socket_io__WEBPACK_IMPORTED_MODULE_12__["Socket"], _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["ActionSheetController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["ToastController"], _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_15__["Camera"], _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_16__["File"], _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_18__["WebView"], _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["NavController"], src_app_services_trunk_service__WEBPACK_IMPORTED_MODULE_19__["TrunkService"], src_app_services_data_service_service__WEBPACK_IMPORTED_MODULE_20__["DataServiceService"], src_app_services_events_service__WEBPACK_IMPORTED_MODULE_21__["EventsService"], _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_22__["AndroidPermissions"], src_app_services_closeapp_service__WEBPACK_IMPORTED_MODULE_23__["CloseappService"], _ionic_native_media_ngx__WEBPACK_IMPORTED_MODULE_26__["Media"], _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["Platform"], _ionic_native_media_capture_ngx__WEBPACK_IMPORTED_MODULE_27__["MediaCapture"], _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_25__["OneSignal"]])], ChatNewPage);
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/modalrecord/modalrecord.module.ts":
+  /*!*********************************************************!*\
+    !*** ./src/app/pages/modalrecord/modalrecord.module.ts ***!
+    \*********************************************************/
+
+  /*! exports provided: ModalrecordPageModule */
+
+  /***/
+  function srcAppPagesModalrecordModalrecordModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ModalrecordPageModule", function () {
+      return ModalrecordPageModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _modalrecord_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ./modalrecord.page */
+    "./src/app/pages/modalrecord/modalrecord.page.ts");
+    /*
+    const routes: Routes = [
+      {
+        path: '',
+        component: ModalrecordPage
+      }
+    ];*/
+
+
+    var ModalrecordPageModule = function ModalrecordPageModule() {
+      _classCallCheck(this, ModalrecordPageModule);
+    };
+
+    ModalrecordPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"]],
+      declarations: [_modalrecord_page__WEBPACK_IMPORTED_MODULE_5__["ModalrecordPage"]]
+    })], ModalrecordPageModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/modalrecord/modalrecord.page.scss":
+  /*!*********************************************************!*\
+    !*** ./src/app/pages/modalrecord/modalrecord.page.scss ***!
+    \*********************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppPagesModalrecordModalrecordPageScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = ".botonsAudioRecord {\n  font-size: 36px;\n  color: red;\n  border-radius: 5PX;\n}\n\n.botonsAudioStop {\n  font-size: 36px;\n  color: #0012E8;\n  border-radius: 5PX;\n}\n\nion-card {\n  background: #000000;\n  color: #3B3B3B;\n  margin-top: 65%;\n}\n\nion-card ion-card-title {\n  color: cornsilk;\n}\n\n.closeButton {\n  font-size: 36px;\n}\n\n.btnPlayer {\n  width: 100%;\n  font-size: 12px;\n  border-radius: 5px;\n}\n\nion-content {\n  --background: transparent;\n}\n\n.content {\n  background-color: rgba(39, 39, 39, 0.761);\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvbW9kYWxyZWNvcmQvQzpcXFVzZXJzXFxOZW1lc3Npc1xcRGVza3RvcFxcZnN1IC0gQ29weTIyXFxwcnVlYmEgcmVuZGltaWVudG9cXGZzdSAtIENvcHkvc3JjXFxhcHBcXHBhZ2VzXFxtb2RhbHJlY29yZFxcbW9kYWxyZWNvcmQucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9tb2RhbHJlY29yZC9tb2RhbHJlY29yZC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQ0E7RUFDSSxlQUFBO0VBQ0EsVUFBQTtFQUNBLGtCQUFBO0FDQUo7O0FER0U7RUFDRSxlQUFBO0VBQ0EsY0FBQTtFQUNBLGtCQUFBO0FDQUo7O0FESUE7RUFDRSxtQkFBQTtFQUNBLGNBQUE7RUFDQSxlQUFBO0FDREY7O0FERUU7RUFDRSxlQUFBO0FDQUo7O0FESUE7RUFDSSxlQUFBO0FDREo7O0FESUE7RUFDSSxXQUFBO0VBQ0EsZUFBQTtFQUNBLGtCQUFBO0FDREo7O0FESUE7RUFDRSx5QkFBQTtBQ0RGOztBRElBO0VBQ0UseUNBQUE7QUNERiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL21vZGFscmVjb3JkL21vZGFscmVjb3JkLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIlxyXG4uYm90b25zQXVkaW9SZWNvcmR7XHJcbiAgICBmb250LXNpemU6IDM2cHg7XHJcbiAgICBjb2xvcjogcmVkO1xyXG4gICAgYm9yZGVyLXJhZGl1czogNVBYO1xyXG4gIH1cclxuXHJcbiAgLmJvdG9uc0F1ZGlvU3RvcHtcclxuICAgIGZvbnQtc2l6ZTogMzZweDtcclxuICAgIGNvbG9yOiAjMDAxMkU4O1xyXG4gICAgYm9yZGVyLXJhZGl1czogNVBYO1xyXG4gIH1cclxuICBcclxuXHJcbmlvbi1jYXJke1xyXG4gIGJhY2tncm91bmQ6ICMwMDAwMDA7XHJcbiAgY29sb3I6IzNCM0IzQiA7XHJcbiAgbWFyZ2luLXRvcDogNjUlO1xyXG4gIGlvbi1jYXJkLXRpdGxle1xyXG4gICAgY29sb3I6IGNvcm5zaWxrO1xyXG4gIH1cclxufVxyXG4gIFxyXG4uY2xvc2VCdXR0b257XHJcbiAgICBmb250LXNpemU6IDM2cHg7XHJcbn1cclxuXHJcbi5idG5QbGF5ZXJ7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGZvbnQtc2l6ZTogMTJweDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcclxufVxyXG5cclxuaW9uLWNvbnRlbnR7XHJcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcclxufVxyXG5cclxuLmNvbnRlbnR7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogcmdiYSgzOSwgMzksIDM5LCAwLjc2MSk7XHJcbiAvLyBiYWNrZ3JvdW5kOiBjaGFydHJldXNlO1xyXG59IiwiLmJvdG9uc0F1ZGlvUmVjb3JkIHtcbiAgZm9udC1zaXplOiAzNnB4O1xuICBjb2xvcjogcmVkO1xuICBib3JkZXItcmFkaXVzOiA1UFg7XG59XG5cbi5ib3RvbnNBdWRpb1N0b3Age1xuICBmb250LXNpemU6IDM2cHg7XG4gIGNvbG9yOiAjMDAxMkU4O1xuICBib3JkZXItcmFkaXVzOiA1UFg7XG59XG5cbmlvbi1jYXJkIHtcbiAgYmFja2dyb3VuZDogIzAwMDAwMDtcbiAgY29sb3I6ICMzQjNCM0I7XG4gIG1hcmdpbi10b3A6IDY1JTtcbn1cbmlvbi1jYXJkIGlvbi1jYXJkLXRpdGxlIHtcbiAgY29sb3I6IGNvcm5zaWxrO1xufVxuXG4uY2xvc2VCdXR0b24ge1xuICBmb250LXNpemU6IDM2cHg7XG59XG5cbi5idG5QbGF5ZXIge1xuICB3aWR0aDogMTAwJTtcbiAgZm9udC1zaXplOiAxMnB4O1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG59XG5cbmlvbi1jb250ZW50IHtcbiAgLS1iYWNrZ3JvdW5kOiB0cmFuc3BhcmVudDtcbn1cblxuLmNvbnRlbnQge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiByZ2JhKDM5LCAzOSwgMzksIDAuNzYxKTtcbn0iXX0= */";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/modalrecord/modalrecord.page.ts":
+  /*!*******************************************************!*\
+    !*** ./src/app/pages/modalrecord/modalrecord.page.ts ***!
+    \*******************************************************/
+
+  /*! exports provided: ModalrecordPage */
+
+  /***/
+  function srcAppPagesModalrecordModalrecordPageTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ModalrecordPage", function () {
+      return ModalrecordPage;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _ionic_native_media_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @ionic-native/media/ngx */
+    "./node_modules/@ionic-native/media/ngx/index.js");
+    /* harmony import */
+
+
+    var src_app_services_users_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! src/app/services/users.service */
+    "./src/app/services/users.service.ts");
+    /* harmony import */
+
+
+    var src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! src/app/services/contacts.service */
+    "./src/app/services/contacts.service.ts");
+    /* harmony import */
+
+
+    var src_app_services_push_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! src/app/services/push.service */
+    "./src/app/services/push.service.ts");
+    /* harmony import */
+
+
+    var src_app_services_closeapp_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! src/app/services/closeapp.service */
+    "./src/app/services/closeapp.service.ts");
+    /* harmony import */
+
+
+    var _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! @ionic-native/File/ngx */
+    "./node_modules/@ionic-native/File/ngx/index.js");
+    /* harmony import */
+
+
+    var src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! src/app/services/chat.service */
+    "./src/app/services/chat.service.ts");
+    /* harmony import */
+
+
+    var ngx_socket_io__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! ngx-socket-io */
+    "./node_modules/ngx-socket-io/fesm2015/ngx-socket-io.js");
+    /* harmony import */
+
+
+    var _ionic_native_aes_256_ngx__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! @ionic-native/aes-256/ngx */
+    "./node_modules/@ionic-native/aes-256/ngx/index.js");
+    /* harmony import */
+
+
+    var src_environments_environment__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    /*! src/environments/environment */
+    "./src/environments/environment.ts"); //Audio
+
+
+    var ModalrecordPage = /*#__PURE__*/function () {
+      function ModalrecordPage(modalCtrl, toastCtrl, userService, contactsService, pushService, media, file, chatService, socket, aes256, closeApp, platform, navCtrl) {
+        var _this29 = this;
+
+        _classCallCheck(this, ModalrecordPage);
+
+        this.modalCtrl = modalCtrl;
+        this.toastCtrl = toastCtrl;
+        this.userService = userService;
+        this.contactsService = contactsService;
+        this.pushService = pushService;
+        this.media = media;
+        this.file = file;
+        this.chatService = chatService;
+        this.socket = socket;
+        this.aes256 = aes256;
+        this.closeApp = closeApp;
+        this.platform = platform;
+        this.navCtrl = navCtrl;
+        this.btcRecord = false;
+        this.btnStopRecord = true;
+        this.btnSendAudio = true;
+        this.status = "Pulse para grabar";
+        this.statusRecording = '';
+        this.pathAudio = {}; // Vars
+
+        this.stateCamera = 0; //var message
+
+        this.toSocket = {
+          convId: '',
+          msg: '',
+          type: '',
+          senderId: '',
+          receiverId: '',
+          audioFile: ''
+        };
+        this.part = {
+          senderId: '',
+          receiverId: ''
+        };
+        this.skey = src_environments_environment__WEBPACK_IMPORTED_MODULE_12__["environment"].sekretKey;
+        this.platform.pause.subscribe(function () {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](_this29, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee16() {
+            return regeneratorRuntime.wrap(function _callee16$(_context16) {
+              while (1) {
+                switch (_context16.prev = _context16.next) {
+                  case 0:
+                    this.stopAndDelete();
+                    this.exitWithOutArguments();
+                    this.closeApp.comproveStateApp();
+
+                  case 3:
+                  case "end":
+                    return _context16.stop();
+                }
+              }
+            }, _callee16, this);
+          }));
+        });
+      }
+
+      _createClass(ModalrecordPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          this.generateSecureKeyAndIV();
+        }
+      }, {
+        key: "exitWithOutArguments",
+        value: function exitWithOutArguments() {
+          this.modalCtrl.dismiss();
+          console.log('[82 INFO] STATUS RECORDING ', this.statusRecording);
+
+          if (this.statusRecording === 'recording') {
+            this.stopAndDelete();
+          }
+        }
+      }, {
+        key: "stopAndDelete",
+        value: function stopAndDelete() {
+          this.audioFile.stopRecord();
+          console.log('Pasa a eliminar this.file', this.file);
+          this.file.removeFile('file:///storage/emulated/0', 'nalapm.mp3');
+        }
+      }, {
+        key: "recordAudio",
+        value: function recordAudio() {
+          this.btcRecord = true; // this.fileA.stop();
+
+          this.userService.saveStateCamera(this.stateCamera);
+          this.btnStopRecord = false; //this.isrecord = true;  
+
+          this.audioFile = this.media.create(this.file.externalRootDirectory + 'nalapm.mp3');
+          this.audioFile.startRecord();
+          this.statusRecording = 'recording';
+          this.status = "Grabando...";
+        }
+      }, {
+        key: "stopRecording",
+        value: function stopRecording() {
+          this.btnStopRecord = false;
+          this.btnStopRecord = true;
+          this.btnSendAudio = false;
+          this.audioFile.stopRecord();
+          this.status = "Detenido";
+        }
+      }, {
+        key: "sendAudio",
+        value: function sendAudio(fileAudio) {
+          this.btnSendAudio = true;
+          this.pathAudio = fileAudio.MediaObject;
+          var path = {};
+          var nameAudio;
+          path = 'file:///storage/emulated/0/nalapm.mp3';
+          nameAudio = this.uploadAudio(path);
+        }
+      }, {
+        key: "uploadAudio",
+        value: function uploadAudio(file) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee17() {
+            var _this30 = this;
+
+            var resultAudioSender, nameFileAudio, messageBodyA;
+            return regeneratorRuntime.wrap(function _callee17$(_context17) {
+              while (1) {
+                switch (_context17.prev = _context17.next) {
+                  case 0:
+                    this.stateCamera = 1;
+                    this.userService.saveStateCamera(this.stateCamera);
+                    nameFileAudio = '';
+
+                    if (!(file != null)) {
+                      _context17.next = 10;
+                      break;
+                    }
+
+                    _context17.next = 6;
+                    return this.chatService.uploadAudio(file);
+
+                  case 6:
+                    resultAudioSender = _context17.sent;
+                    nameFileAudio = resultAudioSender.name;
+                    _context17.next = 11;
+                    break;
+
+                  case 10:
+                    this.showToast('se ha encontrado algun error');
+
+                  case 11:
+                    messageBodyA = {
+                      message: nameFileAudio,
+                      receiverid: this.idContact,
+                      senderid: this.myId,
+                      type: '3',
+                      image: '',
+                      audioFile: nameFileAudio,
+                      secureKey: this.secureKEY,
+                      secureIv: this.secureIV,
+                      createAt: Date.now()
+                    };
+                    this.chatService.send(messageBodyA).subscribe(function (data) {
+                      console.log('===== RESPUESTA  AUDIO DE SUBIDA', data);
+                    });
+                    this.part = {
+                      senderId: this.myId,
+                      receiverId: this.idContact
+                    }; // console.log('=== PART',this.part);
+
+                    this.chatService.getCoversationid(this.part).subscribe(function (resConvId) {
+                      _this30.toSocket = {
+                        convId: resConvId.idConver,
+                        msg: nameFileAudio,
+                        type: '3',
+                        senderId: _this30.myId,
+                        receiverId: _this30.idContact,
+                        audioFile: nameFileAudio
+                      };
+
+                      _this30.socket.emit('send-message', {
+                        msg: _this30.toSocket
+                      });
+                    });
+                    this.pushService.sendPushNotificacionNew(this.notificate).subscribe(function (resnoti) {
+                      console.log('*****************', resnoti);
+                    });
+                    this.contactsService.getContactsId(this.mySid, this.sidContact).subscribe(function (res) {
+                      _this30.idContacts = res;
+                      _this30.idDef1 = _this30.idContacts.idDef;
+                      var idde = _this30.idContacts.idDef2;
+
+                      _this30.contactsService.updatebadgeTalk(idde).subscribe(function (start) {
+                        console.log('RESPONSE START ', start);
+                      });
+
+                      console.log('----------idDef1----------', _this30.idDef1);
+
+                      _this30.contactsService.updateBadge(_this30.idDef1).subscribe(function (test) {
+                        console.log('--------------------', _this30.idDef1);
+                      });
+                    });
+                    this.file.removeFile('file:///storage/emulated/0', 'nalapm.mp3'); // this.socket.emit('send-message-audio', { text: messageBodyA });
+
+                    this.exitWithOutArguments(); //return resultAudioSender;
+
+                  case 19:
+                  case "end":
+                    return _context17.stop();
+                }
+              }
+            }, _callee17, this);
+          }));
+        }
+      }, {
+        key: "showToast",
+        value: function showToast(msg) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee18() {
+            var toast;
+            return regeneratorRuntime.wrap(function _callee18$(_context18) {
+              while (1) {
+                switch (_context18.prev = _context18.next) {
+                  case 0:
+                    _context18.next = 2;
+                    return this.toastCtrl.create({
+                      message: msg,
+                      position: 'middle',
+                      duration: 3000
+                    });
+
+                  case 2:
+                    toast = _context18.sent;
+                    toast.present();
+
+                  case 4:
+                  case "end":
+                    return _context18.stop();
+                }
+              }
+            }, _callee18, this);
+          }));
+        }
+      }, {
+        key: "generateSecureKeyAndIV",
+        value: function generateSecureKeyAndIV() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee19() {
+            return regeneratorRuntime.wrap(function _callee19$(_context19) {
+              while (1) {
+                switch (_context19.prev = _context19.next) {
+                  case 0:
+                    _context19.next = 2;
+                    return this.aes256.generateSecureKey(this.skey);
+
+                  case 2:
+                    this.secureKEY = _context19.sent;
+                    _context19.next = 5;
+                    return this.aes256.generateSecureIV(this.skey);
+
+                  case 5:
+                    this.secureIV = _context19.sent;
+
+                  case 6:
+                  case "end":
+                    return _context19.stop();
+                }
+              }
+            }, _callee19, this);
+          }));
+        }
+      }]);
+
+      return ModalrecordPage;
+    }();
+
+    ModalrecordPage.ctorParameters = function () {
+      return [{
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"]
+      }, {
+        type: src_app_services_users_service__WEBPACK_IMPORTED_MODULE_4__["UsersService"]
+      }, {
+        type: src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_5__["ContactsService"]
+      }, {
+        type: src_app_services_push_service__WEBPACK_IMPORTED_MODULE_6__["PushService"]
+      }, {
+        type: _ionic_native_media_ngx__WEBPACK_IMPORTED_MODULE_3__["Media"]
+      }, {
+        type: _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_8__["File"]
+      }, {
+        type: src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_9__["ChatService"]
+      }, {
+        type: ngx_socket_io__WEBPACK_IMPORTED_MODULE_10__["Socket"]
+      }, {
+        type: _ionic_native_aes_256_ngx__WEBPACK_IMPORTED_MODULE_11__["AES256"]
+      }, {
+        type: src_app_services_closeapp_service__WEBPACK_IMPORTED_MODULE_7__["CloseappService"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"]
+      }];
+    };
+
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)], ModalrecordPage.prototype, "idContact", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)], ModalrecordPage.prototype, "myId", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)], ModalrecordPage.prototype, "mySid", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", String)], ModalrecordPage.prototype, "sidContact", void 0);
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)], ModalrecordPage.prototype, "notificate", void 0);
+    ModalrecordPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-modalrecord',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./modalrecord.page.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/modalrecord/modalrecord.page.html"))["default"],
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./modalrecord.page.scss */
+      "./src/app/pages/modalrecord/modalrecord.page.scss"))["default"]]
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"], src_app_services_users_service__WEBPACK_IMPORTED_MODULE_4__["UsersService"], src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_5__["ContactsService"], src_app_services_push_service__WEBPACK_IMPORTED_MODULE_6__["PushService"], _ionic_native_media_ngx__WEBPACK_IMPORTED_MODULE_3__["Media"], _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_8__["File"], src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_9__["ChatService"], ngx_socket_io__WEBPACK_IMPORTED_MODULE_10__["Socket"], _ionic_native_aes_256_ngx__WEBPACK_IMPORTED_MODULE_11__["AES256"], src_app_services_closeapp_service__WEBPACK_IMPORTED_MODULE_7__["CloseappService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"], _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"]])], ModalrecordPage);
+    /***/
+  },
+
+  /***/
+  "./src/app/services/events.service.ts":
+  /*!********************************************!*\
+    !*** ./src/app/services/events.service.ts ***!
+    \********************************************/
+
+  /*! exports provided: EventsService */
+
+  /***/
+  function srcAppServicesEventsServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "EventsService", function () {
+      return EventsService;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! rxjs */
+    "./node_modules/rxjs/_esm2015/index.js");
+
+    var EventsService = /*#__PURE__*/function () {
+      function EventsService() {
+        _classCallCheck(this, EventsService);
+
+        this.fooSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+      }
+
+      _createClass(EventsService, [{
+        key: "publishSomeData",
+        value: function publishSomeData(data) {
+          this.fooSubject.next(data);
+        }
+      }, {
+        key: "getObservable",
+        value: function getObservable() {
+          return this.fooSubject;
+        }
+      }]);
+
+      return EventsService;
+    }();
+
+    EventsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+      providedIn: 'root'
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])], EventsService);
+    /***/
+  }
+}]);
+//# sourceMappingURL=pages-chat-new-chat-new-module-es5.js.map

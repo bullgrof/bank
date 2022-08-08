@@ -1,0 +1,254 @@
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-trunk-trunk-module"],{
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/trunk/trunk.page.html":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/trunk/trunk.page.html ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar color=\"warning\">\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"/contacts\" icon-only></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>{{'TRUNK.title' | translate}}</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n  <ion-list>\r\n    <ion-item-sliding *ngFor=\"let el of trunks\" >      \r\n      <ion-item >\r\n      <ion-avatar slot=\"start\" [routerLink]=\"['/trunk-chat', el._id ]\">\r\n          <img src=\"../../../assets/avatars/lock.png\">\r\n        </ion-avatar>\r\n        <ion-label class=\"sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated\" [routerLink]=\"['/trunk-chat', el._id ]\">\r\n          <h3 class=\"nameUser\">{{ el.receiverName }}</h3>\r\n          <p>{{el.createAt | date:'short' }}</p>         \r\n        </ion-label>\r\n        <ion-button color=\"danger\" slot=\"end\" (click)=\"alertDelete(el._id)\">{{'TRUNK.delete' | translate}}</ion-button>\r\n      </ion-item>  \r\n      \r\n      \r\n    </ion-item-sliding>\r\n  </ion-list>\r\n</ion-content>");
+
+/***/ }),
+
+/***/ "./src/app/pages/trunk/trunk.module.ts":
+/*!*********************************************!*\
+  !*** ./src/app/pages/trunk/trunk.module.ts ***!
+  \*********************************************/
+/*! exports provided: TrunkPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TrunkPageModule", function() { return TrunkPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _trunk_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./trunk.page */ "./src/app/pages/trunk/trunk.page.ts");
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
+
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _trunk_page__WEBPACK_IMPORTED_MODULE_6__["TrunkPage"]
+    }
+];
+let TrunkPageModule = class TrunkPageModule {
+};
+TrunkPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes),
+            _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateModule"]
+        ],
+        declarations: [_trunk_page__WEBPACK_IMPORTED_MODULE_6__["TrunkPage"]]
+    })
+], TrunkPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/trunk/trunk.page.scss":
+/*!*********************************************!*\
+  !*** ./src/app/pages/trunk/trunk.page.scss ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".ssl {\n  width: 25%;\n  height: 70%;\n  margin-left: 37%;\n}\n\n.nameUser {\n  font-weight: bold;\n}\n\n.mdal {\n  align-content: center;\n  text-align: center;\n  font-size: 18px;\n  color: #000000;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvdHJ1bmsvQzpcXFVzZXJzXFxOZW1lc3Npc1xcRGVza3RvcFxccHJvamVjdHNcXGp1bmlvXFxjYWxsc1xcY3BcXGZzdSAtIENvcHkvc3JjXFxhcHBcXHBhZ2VzXFx0cnVua1xcdHJ1bmsucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy90cnVuay90cnVuay5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxVQUFBO0VBQ0EsV0FBQTtFQUNBLGdCQUFBO0FDQ0o7O0FERUE7RUFDSSxpQkFBQTtBQ0NKOztBREVBO0VBQ0kscUJBQUE7RUFDQSxrQkFBQTtFQUNBLGVBQUE7RUFDQSxjQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy90cnVuay90cnVuay5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc3Nse1xyXG4gICAgd2lkdGg6IDI1JTtcclxuICAgIGhlaWdodDogNzAlO1xyXG4gICAgbWFyZ2luLWxlZnQ6IDM3JTtcclxufVxyXG5cclxuLm5hbWVVc2Vye1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbn1cclxuXHJcbi5tZGFse1xyXG4gICAgYWxpZ24tY29udGVudDogY2VudGVyO1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgZm9udC1zaXplOiAxOHB4O1xyXG4gICAgY29sb3I6ICMwMDAwMDA7XHJcbn0iLCIuc3NsIHtcbiAgd2lkdGg6IDI1JTtcbiAgaGVpZ2h0OiA3MCU7XG4gIG1hcmdpbi1sZWZ0OiAzNyU7XG59XG5cbi5uYW1lVXNlciB7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xufVxuXG4ubWRhbCB7XG4gIGFsaWduLWNvbnRlbnQ6IGNlbnRlcjtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBmb250LXNpemU6IDE4cHg7XG4gIGNvbG9yOiAjMDAwMDAwO1xufSJdfQ== */");
+
+/***/ }),
+
+/***/ "./src/app/pages/trunk/trunk.page.ts":
+/*!*******************************************!*\
+  !*** ./src/app/pages/trunk/trunk.page.ts ***!
+  \*******************************************/
+/*! exports provided: TrunkPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "TrunkPage", function() { return TrunkPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! src/app/services/contacts.service */ "./src/app/services/contacts.service.ts");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+/* harmony import */ var _services_users_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../services/users.service */ "./src/app/services/users.service.ts");
+/* harmony import */ var src_app_services_trunk_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/trunk.service */ "./src/app/services/trunk.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+
+
+
+
+
+
+
+
+let TrunkPage = class TrunkPage {
+    constructor(contactsService, storage, userService, TrunkService, router, alertController, platform) {
+        this.contactsService = contactsService;
+        this.storage = storage;
+        this.userService = userService;
+        this.TrunkService = TrunkService;
+        this.router = router;
+        this.alertController = alertController;
+        this.platform = platform;
+        this.passwordTrunk = '';
+        platform.ready().then(() => {
+            this.platform.pause.subscribe(() => {
+                //  this.logout();
+            });
+            this.platform.resume.subscribe(() => {
+                console.log('[INFO] App resumed');
+            });
+        });
+    }
+    ngOnInit() {
+        this.args = this.storage.get('username').then((result) => {
+            this.userStorage = result;
+            this.userService.getSekretId(this.userStorage).subscribe(response => {
+                this.sekretidrec = response.user[0].sekretid;
+                this.idUser = response.user[0]._id;
+                this.TrunkService.getTrunksbyUser(this.idUser).subscribe(res => {
+                    this.trunks = res.trunks;
+                });
+            });
+        });
+        this.presentAlertPrompt();
+    }
+    logout() {
+        console.log("Logging out user");
+        this.router.navigate(['/home']);
+    }
+    getName(idUser) {
+        this.userService.getusernameById(idUser).subscribe(response => {
+            this.objectUser = response.user[0];
+            this.username = this.objectUser.username;
+            console.log('#$#$#$#$', this.username);
+        });
+        return this.username;
+    }
+    deletTrunk(param) {
+        console.log('ELIMINAR', param);
+    }
+    alertDelete(param) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const alert = yield this.alertController.create({
+                cssClass: 'my-custom-class',
+                header: 'Atención!',
+                message: '¿Está seguro que desea eliminar la conversación?',
+                buttons: [
+                    {
+                        text: 'Cancelar',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: (blah) => {
+                            console.log('Confirm Cancel: blah');
+                        }
+                    }, {
+                        text: 'Aceptar',
+                        handler: () => {
+                            this.TrunkService.deleteTrunk(param).subscribe(res => {
+                                console.log('Respuesta del servicio eliminar', res);
+                                this.ngOnInit();
+                            });
+                        }
+                    }
+                ]
+            });
+            yield alert.present();
+        });
+    }
+    presentAlertPrompt() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const alert = yield this.alertController.create({
+                cssClass: 'mdal',
+                header: 'Ingresar contraseña',
+                message: `<img src="assets/safe2.png" alt="g-maps" style="">`,
+                subHeader: `Puede asignarla en el perfil`,
+                inputs: [
+                    {
+                        name: 'password',
+                        type: 'password',
+                        placeholder: 'Contraseña del baúl'
+                    }
+                ],
+                buttons: [
+                    {
+                        text: 'Cancelar',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: (alertData) => {
+                            console.log('Confirm Cancel');
+                            this.router.navigate(['/contacts']);
+                        }
+                    }, {
+                        text: 'Ingresar',
+                        handler: (alertData) => {
+                            console.log('Confirm Ok', alertData.password);
+                            this.loginsecondPass(alertData.password);
+                        }
+                    }
+                ]
+            });
+            yield alert.present();
+        });
+    }
+    loginsecondPass(pass) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const valid = yield this.userService.loginSecondPass(this.idUser, pass);
+            if (valid) {
+                console.log('VALIDACION DE SEGUNDO PASSWORD', valid);
+            }
+        });
+    }
+};
+TrunkPage.ctorParameters = () => [
+    { type: src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_2__["ContactsService"] },
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"] },
+    { type: _services_users_service__WEBPACK_IMPORTED_MODULE_4__["UsersService"] },
+    { type: src_app_services_trunk_service__WEBPACK_IMPORTED_MODULE_5__["TrunkService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["AlertController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["Platform"] }
+];
+TrunkPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-trunk',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./trunk.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/trunk/trunk.page.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./trunk.page.scss */ "./src/app/pages/trunk/trunk.page.scss")).default]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_2__["ContactsService"],
+        _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"],
+        _services_users_service__WEBPACK_IMPORTED_MODULE_4__["UsersService"],
+        src_app_services_trunk_service__WEBPACK_IMPORTED_MODULE_5__["TrunkService"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["AlertController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["Platform"]])
+], TrunkPage);
+
+
+
+/***/ })
+
+}]);
+//# sourceMappingURL=pages-trunk-trunk-module-es2015.js.map

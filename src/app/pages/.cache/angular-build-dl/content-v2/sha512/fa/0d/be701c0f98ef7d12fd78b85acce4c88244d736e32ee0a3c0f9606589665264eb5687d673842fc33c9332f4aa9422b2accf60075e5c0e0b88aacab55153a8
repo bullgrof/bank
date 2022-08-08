@@ -1,0 +1,210 @@
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-callreply-callreply-module"],{
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/callreply/callreply.page.html":
+/*!*******************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/callreply/callreply.page.html ***!
+  \*******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-content class=\"bgcolor\">\n  <div id=\"errorMsg\"></div>\n  <div style=\"position: relative;\" class=\"bgcolor\">\n    <div style=\"position: absolute; left: 10px; top: 25px; z-index: 1;\">\n      <video id=\"partner-video\" (click)=\"swapVideo('my-video')\" autoplay playsinline class=\"mvideo\">\n      </video>\n    </div>\n    <div style=\"position: absolute; left: 80%; top: 450px; z-index: 3;\">\n      <video id=\"my-video\" (click)=\"swapVideo('partner-video')\" autoplay playsinline class=\"mvideoa\">\n      </video>\n    </div>\n\n  </div>\n  <ion-fab vertical=\"bottom\" horizontal=\"center\" slot=\"fixed\">\n    <ion-fab-button color=\"danger\" (click)=\"endCall()\">\n      <ion-icon name=\"call\" class=\"rotate\"></ion-icon>\n    </ion-fab-button>\n  </ion-fab>\n\n</ion-content>\n\n\n<!--ion-content>\n  <div id=\"errorMsg\"></div>\n  <div style=\"position: relative;\" class=\"bcolor\">\n    <div style=\"position: absolute; left: 10px; top: 25px; z-index: 1;\">\n      <video id=\"partner-video\" \n             (click)=\"swapVideo('my-video')\" \n             autoplay \n             playsinline\n            [ngClass]=\"{'top-video': topVideoFrame === 'partner-video', 'main-video': topVideoFrame != 'partner-video'}\" \n            class=\"mvideo\">\n      </video>\n    </div>\n    <div style=\"position: absolute; left: 80%; top: 450px; z-index: 3;\">\n      <video id=\"my-video\" (click)=\"swapVideo('partner-video')\" autoplay playsinline class=\"mvideoa\">\n      </video>\n    </div>\n\n  </div>\n\n\n\n\n\n\n<!--video id=\"partner-video\" (click)=\"swapVideo('my-video')\" autoplay playsinline\n    [ngClass]=\"{'top-video': topVideoFrame === 'partner-video', 'main-video': topVideoFrame != 'partner-video'}\">\n  </video-->\n  <!--video id=\"my-video\" (click)=\"swapVideo('partner-video')\" autoplay playsinline\n    [ngClass]=\"{'top-video': topVideoFrame === 'my-video', 'main-video': topVideoFrame != 'my-video'}\" >\n  </video-->\n\n  <!--ion-row nowrap>\n    <ion-button (click)=\"inita()\">Login As: </ion-button>\n    <ion-item>\n      <ion-input type=\"text\" [(ngModel)]=\"userId\" placeholder=\"enter your nick name\"></ion-input>\n    </ion-item>\n  </ion-row>\n\n  <ion-row nowrap>\n    <ion-button (click)=\"calla()\">Call To: </ion-button>\n    <ion-item>\n      <ion-input type=\"text\" [(ngModel)]=\"partnerId\" placeholder=\"your partner nick name\"></ion-input>\n    </ion-item>\n  </ion-row>  \n\n</ion-content-->\n");
+
+/***/ }),
+
+/***/ "./src/app/pages/callreply/callreply.module.ts":
+/*!*****************************************************!*\
+  !*** ./src/app/pages/callreply/callreply.module.ts ***!
+  \*****************************************************/
+/*! exports provided: CallreplyPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CallreplyPageModule", function() { return CallreplyPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _callreply_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./callreply.page */ "./src/app/pages/callreply/callreply.page.ts");
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _callreply_page__WEBPACK_IMPORTED_MODULE_6__["CallreplyPage"]
+    }
+];
+let CallreplyPageModule = class CallreplyPageModule {
+};
+CallreplyPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
+        ],
+        declarations: [_callreply_page__WEBPACK_IMPORTED_MODULE_6__["CallreplyPage"]]
+    })
+], CallreplyPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/callreply/callreply.page.scss":
+/*!*****************************************************!*\
+  !*** ./src/app/pages/callreply/callreply.page.scss ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".top-video {\n  position: absolute;\n  top: 100px;\n  right: 100px;\n  max-width: 100px;\n  z-index: 2;\n}\n\n.main-video {\n  width: 100%;\n  max-height: 70%;\n}\n\nion-content {\n  --ion-background-color:#111D12;\n}\n\n.mvideo {\n  width: 100%;\n  height: 100%;\n}\n\n.mvideoa {\n  width: 65px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY2FsbHJlcGx5L0M6XFxVc2Vyc1xcTmVtZXNzaXNcXERlc2t0b3BcXGR2XFxmc3UgLSBDb3B5IC0gY29waWEvc3JjXFxhcHBcXHBhZ2VzXFxjYWxscmVwbHlcXGNhbGxyZXBseS5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL2NhbGxyZXBseS9jYWxscmVwbHkucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksa0JBQUE7RUFDQSxVQUFBO0VBQ0EsWUFBQTtFQUNBLGdCQUFBO0VBQ0EsVUFBQTtBQ0NKOztBREVBO0VBQ0ksV0FBQTtFQUNBLGVBQUE7QUNDSjs7QURHQTtFQUNJLDhCQUFBO0FDQUo7O0FESUE7RUFDSSxXQUFBO0VBQ0EsWUFBQTtBQ0RKOztBREtBO0VBQ0ksV0FBQTtBQ0ZKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvY2FsbHJlcGx5L2NhbGxyZXBseS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIudG9wLXZpZGVve1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgdG9wOiAxMDBweDtcclxuICAgIHJpZ2h0OiAxMDBweDtcclxuICAgIG1heC13aWR0aDogMTAwcHg7XHJcbiAgICB6LWluZGV4OiAyO1xyXG59XHJcblxyXG4ubWFpbi12aWRlb3tcclxuICAgIHdpZHRoOiAxMDAlO1xyXG4gICAgbWF4LWhlaWdodDogNzAlO1xyXG59XHJcblxyXG5cclxuaW9uLWNvbnRlbnR7XHJcbiAgICAtLWlvbi1iYWNrZ3JvdW5kLWNvbG9yOiMxMTFEMTI7XHJcbiAgfVxyXG5cclxuICBcclxuLm12aWRlb3tcclxuICAgIHdpZHRoOjEwMCU7XHJcbiAgICBoZWlnaHQ6IDEwMCU7XHJcbn1cclxuXHJcblxyXG4ubXZpZGVvYXtcclxuICAgIHdpZHRoOiA2NXB4O1xyXG4gICAgXHJcbn1cclxuIiwiLnRvcC12aWRlbyB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAxMDBweDtcbiAgcmlnaHQ6IDEwMHB4O1xuICBtYXgtd2lkdGg6IDEwMHB4O1xuICB6LWluZGV4OiAyO1xufVxuXG4ubWFpbi12aWRlbyB7XG4gIHdpZHRoOiAxMDAlO1xuICBtYXgtaGVpZ2h0OiA3MCU7XG59XG5cbmlvbi1jb250ZW50IHtcbiAgLS1pb24tYmFja2dyb3VuZC1jb2xvcjojMTExRDEyO1xufVxuXG4ubXZpZGVvIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbn1cblxuLm12aWRlb2Ege1xuICB3aWR0aDogNjVweDtcbn0iXX0= */");
+
+/***/ }),
+
+/***/ "./src/app/pages/callreply/callreply.page.ts":
+/*!***************************************************!*\
+  !*** ./src/app/pages/callreply/callreply.page.ts ***!
+  \***************************************************/
+/*! exports provided: CallreplyPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "CallreplyPage", function() { return CallreplyPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var src_app_services_push_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/push.service */ "./src/app/services/push.service.ts");
+/* harmony import */ var src_app_services_users_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/users.service */ "./src/app/services/users.service.ts");
+/* harmony import */ var src_app_services_webrtc_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/webrtc.service */ "./src/app/services/webrtc.service.ts");
+
+
+
+
+
+
+let CallreplyPage = class CallreplyPage {
+    constructor(activatedRoute, router, elRef, webRTC, userService, PushService) {
+        this.activatedRoute = activatedRoute;
+        this.router = router;
+        this.elRef = elRef;
+        this.webRTC = webRTC;
+        this.userService = userService;
+        this.PushService = PushService;
+        this.topVideoFrame = 'partner-video';
+        this.notificate = {
+            apid: '',
+            notid: '',
+            partnerId: '',
+            sid: ''
+        };
+    }
+    ngOnInit() {
+        console.log('????????? PASOOOOOO ??????????????');
+        this.partner = this.activatedRoute.snapshot.paramMap.get('par');
+        console.log('99999999 PASO A RESPONDER LLAMADA 999999999', this.partner);
+        this.myPartner = this.makeid(10);
+        this.inita(this.myPartner);
+        // this.call(this.partner);
+        console.log('** *** ** ', this.partner, '++ +++ ++ +++ ++');
+        /* CREATE AN NOTIFICATION */
+        this.userService.getUserNameBySekretId(this.partner).subscribe(responseContact => {
+            console.log('ID QUE BUSCO', this.partner);
+            this.arrayContact = responseContact.user[0];
+            console.log('ID QUE ENCUENTRO', this.arrayContact.sekretid);
+            // this.idContact = this.arrayContact._id;
+            this.usernameContact = this.arrayContact.username;
+            this.notiIdContact = this.arrayContact.notificationId;
+            this.appid = this.arrayContact.appidn;
+            this.notificate = {
+                apid: this.appid,
+                notid: this.notiIdContact,
+                partnerId: this.myPartner,
+                sid: this.callerId
+            };
+            console.log('- - - - - - - - - - - - - - - - - - - - -');
+            this.PushService.sendPushRepplyCall(this.notificate).subscribe(rsPush => {
+                console.log('..:::..:::..::..:::', rsPush, ':::..:::..:::..::::');
+            });
+        });
+        /* END CREATE NOTIFICATION */
+    }
+    init() {
+        this.myEl = this.elRef.nativeElement.querySelector('#my-video');
+        this.partnerEl = this.elRef.nativeElement.querySelector('#partner-video');
+        this.webRTC.init(this.userId, this.myEl, this.partnerEl);
+    }
+    inita(partnerMy) {
+        console.log('==== USUARIO QUE INICIA', this.userId);
+        this.myEl = this.elRef.nativeElement.querySelector('#my-video');
+        this.partnerEl = this.elRef.nativeElement.querySelector('#partner-video');
+        this.webRTC.init(partnerMy, this.myEl, this.partnerEl);
+    }
+    makeid(length) {
+        let result = '';
+        let characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+        let charactersLength = characters.length;
+        for (let i = 0; i < length; i++) {
+            result += characters.charAt(Math.floor(Math.random() *
+                charactersLength));
+        }
+        return result;
+    }
+    call(partnerIncoming) {
+        this.webRTC.call(partnerIncoming);
+        this.swapVideo('my-video');
+    }
+    calla() {
+        console.log('***** USUARIO QUE LLAMA', this.partnerId);
+        this.webRTC.call(this.partnerId);
+        this.swapVideo('my-video');
+    }
+    swapVideo(topVideo) {
+        this.topVideoFrame = topVideo;
+    }
+    endCall() {
+        this.webRTC.closeCall();
+        this.router.navigate(['/contacts']);
+    }
+};
+CallreplyPage.ctorParameters = () => [
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"] },
+    { type: _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"] },
+    { type: src_app_services_webrtc_service__WEBPACK_IMPORTED_MODULE_5__["WebrtcService"] },
+    { type: src_app_services_users_service__WEBPACK_IMPORTED_MODULE_4__["UsersService"] },
+    { type: src_app_services_push_service__WEBPACK_IMPORTED_MODULE_3__["PushService"] }
+];
+CallreplyPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-callreply',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./callreply.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/callreply/callreply.page.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./callreply.page.scss */ "./src/app/pages/callreply/callreply.page.scss")).default]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"],
+        _angular_core__WEBPACK_IMPORTED_MODULE_1__["ElementRef"],
+        src_app_services_webrtc_service__WEBPACK_IMPORTED_MODULE_5__["WebrtcService"],
+        src_app_services_users_service__WEBPACK_IMPORTED_MODULE_4__["UsersService"],
+        src_app_services_push_service__WEBPACK_IMPORTED_MODULE_3__["PushService"]])
+], CallreplyPage);
+
+
+
+/***/ })
+
+}]);
+//# sourceMappingURL=pages-callreply-callreply-module-es2015.js.map

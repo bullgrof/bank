@@ -1,0 +1,300 @@
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-add-u-add-u-module"],{
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/add-u/add-u.page.html":
+/*!***********************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/add-u/add-u.page.html ***!
+  \***********************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar color=\"warning\">\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"/contacts\" icon-only></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>{{'ADDCONTACT.title' | translate}}</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content> \r\n\r\n  \r\n \r\n\r\n<ion-card>  \r\n  <ion-item>\r\n    <ion-icon src=\"/assets/icons/qr-code-outline.svg\" class=\"qr\" (click)=\"scan()\"></ion-icon>\r\n  </ion-item>\r\n  <ion-card-content>\r\n    <ion-button expand=\"block\" (click)=\"scan()\" color=\"dark\">\r\n      \r\n      {{'ADDCONTACT.searchBar.form.buttonScann' | translate}}\r\n    </ion-button>\r\n    <ion-item>\r\n      <label for=\"\">{{'ADDCONTACT.searchBar.form.scannedCode' | translate}}: {{scannedCode}}</label>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-input placeholder=\"Sekret ID\" [(ngModel)]=\"contact.sidcontact\"></ion-input>\r\n      \r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-input placeholder=\"{{'ADDCONTACT.searchBar.form.apodo' | translate}}\" [(ngModel)]=\"contact.alias\"></ion-input>\r\n    </ion-item>\r\n    <ion-item>\r\n      <ion-textarea placeholder=\"{{'ADDCONTACT.searchBar.form.tellYourContact' | translate}}\" [(ngModel)]=\"contact.message\"></ion-textarea>\r\n    </ion-item>\r\n    <ion-button expand=\"full\"\r\n                color=\"warning\"\r\n                (click)=\"addContact()\"\r\n                [disabled]=\"contact.sidcontact.length < 1\">\r\n                {{'ADDCONTACT.searchBar.form.btnAddContact' | translate}}\r\n    </ion-button>    \r\n  </ion-card-content>\r\n</ion-card>\r\n\r\n<ion-content>\r\n  <img src=\"assets/softwarb_qr_scanner_white.png\" alt=\"\">\r\n</ion-content>\r\n\r\n\r\n\r\n</ion-content>\r\n");
+
+/***/ }),
+
+/***/ "./src/app/pages/add-u/add-u.module.ts":
+/*!*********************************************!*\
+  !*** ./src/app/pages/add-u/add-u.module.ts ***!
+  \*********************************************/
+/*! exports provided: AddUPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddUPageModule", function() { return AddUPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _add_u_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./add-u.page */ "./src/app/pages/add-u/add-u.page.ts");
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
+
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _add_u_page__WEBPACK_IMPORTED_MODULE_6__["AddUPage"]
+    }
+];
+let AddUPageModule = class AddUPageModule {
+};
+AddUPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes),
+            _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateModule"]
+        ],
+        declarations: [_add_u_page__WEBPACK_IMPORTED_MODULE_6__["AddUPage"]]
+    })
+], AddUPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/add-u/add-u.page.scss":
+/*!*********************************************!*\
+  !*** ./src/app/pages/add-u/add-u.page.scss ***!
+  \*********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".text-cender {\n  text-align: center;\n  font-size: 16px;\n}\n\nion-app.cameraView, ion-app.cameraView ion-content, ion-app.cameraView .nav-decor {\n  background: transparent none !important;\n}\n\nadd-user img {\n  opacity: 0.5;\n  max-width: 95%;\n  max-height: calc(98% - 100px);\n  position: fixed;\n  top: 50%;\n  left: 50%;\n  /* bring your own prefixes */\n  transform: translate(-50%, -50%);\n}\n\n.imagen {\n  width: 100px;\n  height: 100px;\n  margin-left: 35%;\n}\n\n.qr {\n  font-size: 94px;\n  text-align: center;\n  color: black;\n  margin-left: 32%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvYWRkLXUvQzpcXFVzZXJzXFxOZW1lc3Npc1xcRGVza3RvcFxcZnN1IC0gQ29weS9zcmNcXGFwcFxccGFnZXNcXGFkZC11XFxhZGQtdS5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL2FkZC11L2FkZC11LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGtCQUFBO0VBQ0EsZUFBQTtBQ0NKOztBREVBO0VBQ0ksdUNBQUE7QUNDSjs7QURLUTtFQUNFLFlBQUE7RUFDQSxjQUFBO0VBQ0EsNkJBQUE7RUFDQSxlQUFBO0VBQ0EsUUFBQTtFQUNBLFNBQUE7RUFDQSw0QkFBQTtFQUNBLGdDQUFBO0FDRlY7O0FEU0U7RUFDRSxZQUFBO0VBQ0EsYUFBQTtFQUNBLGdCQUFBO0FDTko7O0FEU0U7RUFDRSxlQUFBO0VBQ0Esa0JBQUE7RUFDQSxZQUFBO0VBQ0EsZ0JBQUE7QUNOSiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2FkZC11L2FkZC11LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi50ZXh0LWNlbmRlcntcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGZvbnQtc2l6ZTogMTZweDtcclxufVxyXG5cclxuaW9uLWFwcC5jYW1lcmFWaWV3LCBpb24tYXBwLmNhbWVyYVZpZXcgaW9uLWNvbnRlbnQsIGlvbi1hcHAuY2FtZXJhVmlldyAubmF2LWRlY29yIHtcclxuICAgIGJhY2tncm91bmQ6IHRyYW5zcGFyZW50IG5vbmUgIWltcG9ydGFudDtcclxuICB9XHJcblxyXG5cclxuICBhZGQtdXNlciB7XHJcbiAgICBcclxuICAgICAgICBpbWcge1xyXG4gICAgICAgICAgb3BhY2l0eTogMC41O1xyXG4gICAgICAgICAgbWF4LXdpZHRoOiA5NSU7XHJcbiAgICAgICAgICBtYXgtaGVpZ2h0OiBjYWxjKDk4JSAtIDEwMHB4KTtcclxuICAgICAgICAgIHBvc2l0aW9uOiBmaXhlZDtcclxuICAgICAgICAgIHRvcDogNTAlO1xyXG4gICAgICAgICAgbGVmdDogNTAlO1xyXG4gICAgICAgICAgLyogYnJpbmcgeW91ciBvd24gcHJlZml4ZXMgKi9cclxuICAgICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlKC01MCUsIC01MCUpO1xyXG4gICAgICAgIH1cclxuICAgIFxyXG4gIH1cclxuXHJcblxyXG5cclxuICAuaW1hZ2Vue1xyXG4gICAgd2lkdGg6IDEwMHB4O1xyXG4gICAgaGVpZ2h0OiAxMDBweDtcclxuICAgIG1hcmdpbi1sZWZ0OiAzNSU7XHJcbiAgfVxyXG5cclxuICAucXJ7XHJcbiAgICBmb250LXNpemU6IDk0cHg7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICBjb2xvcjogYmxhY2s7XHJcbiAgICBtYXJnaW4tbGVmdDogMzIlO1xyXG4gIH0iLCIudGV4dC1jZW5kZXIge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGZvbnQtc2l6ZTogMTZweDtcbn1cblxuaW9uLWFwcC5jYW1lcmFWaWV3LCBpb24tYXBwLmNhbWVyYVZpZXcgaW9uLWNvbnRlbnQsIGlvbi1hcHAuY2FtZXJhVmlldyAubmF2LWRlY29yIHtcbiAgYmFja2dyb3VuZDogdHJhbnNwYXJlbnQgbm9uZSAhaW1wb3J0YW50O1xufVxuXG5hZGQtdXNlciBpbWcge1xuICBvcGFjaXR5OiAwLjU7XG4gIG1heC13aWR0aDogOTUlO1xuICBtYXgtaGVpZ2h0OiBjYWxjKDk4JSAtIDEwMHB4KTtcbiAgcG9zaXRpb246IGZpeGVkO1xuICB0b3A6IDUwJTtcbiAgbGVmdDogNTAlO1xuICAvKiBicmluZyB5b3VyIG93biBwcmVmaXhlcyAqL1xuICB0cmFuc2Zvcm06IHRyYW5zbGF0ZSgtNTAlLCAtNTAlKTtcbn1cblxuLmltYWdlbiB7XG4gIHdpZHRoOiAxMDBweDtcbiAgaGVpZ2h0OiAxMDBweDtcbiAgbWFyZ2luLWxlZnQ6IDM1JTtcbn1cblxuLnFyIHtcbiAgZm9udC1zaXplOiA5NHB4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGNvbG9yOiBibGFjaztcbiAgbWFyZ2luLWxlZnQ6IDMyJTtcbn0iXX0= */");
+
+/***/ }),
+
+/***/ "./src/app/pages/add-u/add-u.page.ts":
+/*!*******************************************!*\
+  !*** ./src/app/pages/add-u/add-u.page.ts ***!
+  \*******************************************/
+/*! exports provided: AddUPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "AddUPage", function() { return AddUPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _ionic_native_base64_to_gallery_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/base64-to-gallery/ngx */ "./node_modules/@ionic-native/base64-to-gallery/ngx/index.js");
+/* harmony import */ var src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/contacts.service */ "./src/app/services/contacts.service.ts");
+/* harmony import */ var _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic-native/barcode-scanner/ngx */ "./node_modules/@ionic-native/barcode-scanner/ngx/index.js");
+/* harmony import */ var _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/qr-scanner/ngx */ "./node_modules/@ionic-native/qr-scanner/ngx/index.js");
+/* harmony import */ var src_app_services_users_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/services/users.service */ "./src/app/services/users.service.ts");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var src_app_services_closeapp_service__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/app/services/closeapp.service */ "./src/app/services/closeapp.service.ts");
+
+
+
+
+
+
+
+
+
+
+
+
+
+let AddUPage = class AddUPage {
+    constructor(modalController, barcodeScanner, base64ToGallery, ContactService, qrScanner, storage, userService, navCtrl, platform, router, toastCtrl, closeApp) {
+        this.modalController = modalController;
+        this.barcodeScanner = barcodeScanner;
+        this.base64ToGallery = base64ToGallery;
+        this.ContactService = ContactService;
+        this.qrScanner = qrScanner;
+        this.storage = storage;
+        this.userService = userService;
+        this.navCtrl = navCtrl;
+        this.platform = platform;
+        this.router = router;
+        this.toastCtrl = toastCtrl;
+        this.closeApp = closeApp;
+        this.scannedCode = null;
+        this.contact = {
+            siduser: '',
+            sidcontact: '',
+            alias: '',
+            message: ''
+        };
+        this.encodedData = '';
+        this.isOn = false;
+        this.stateCamera = 0;
+        this.platform.backButton.subscribeWithPriority(10, () => {
+            document.getElementsByTagName("body")[0].style.opacity = "1";
+            this.scaned.unsubscribe();
+        });
+        this.closeApp.comproveStateApp();
+    }
+    ngOnInit() {
+        // this.getSI();
+        console.log('desde onoinit', this.siduser);
+    }
+    logout() {
+        console.log("Logging out user");
+        this.router.navigate(['/home']);
+    }
+    closeModal() {
+        this.modalController.dismiss();
+    }
+    getSI() {
+    }
+    downloadQR() {
+        const AddUser = document.querySelector('AddUser');
+        const imageData = AddUser.toDataURL('image/jpeg').toString();
+        console.log('data: ', imageData);
+    }
+    addContact() {
+        this.args = this.storage.get('username').then((result) => {
+            this.usernameStorage = result;
+            console.log('usuario loggeado', this.usernameStorage);
+            this.userService.getSekretId(result).subscribe(response => {
+                this.siduser = response.user[0].sekretid;
+                console.log('Respuesta de usuarios', response.user[0].sekretid);
+                this.contact.siduser = response.user[0].sekretid;
+                console.log('[INFO]', this.contact);
+                console.log('[INFO] : SID Contacto', this.contact.sidcontact);
+                if (this.contact.sidcontact.length < 10 || this.contact.sidcontact.length > 10) {
+                    this.showToast('El contacto no existe');
+                }
+                else {
+                    this.ContactService.getInfoUserBySekretId(this.contact.sidcontact).subscribe(res => {
+                        if (res.total === 1) {
+                            if (this.contact.siduser === this.contact.sidcontact) {
+                                this.showToast('No puedes agregarte a ti mismo');
+                            }
+                            else {
+                                this.ContactService.getAlreadyHave(this.contact.siduser, this.contact.sidcontact).subscribe(resp => {
+                                    console.log('[GET] ', resp.total);
+                                    if (resp.total === 0) {
+                                        // add Contact                    
+                                        this.ContactService.AddContact(this.contact);
+                                        this.userService.getUserNameBySekretId(this.contact.sidcontact).subscribe(data => {
+                                            this.arrayUserContact = data.user[0];
+                                            this.pushId = this.arrayUserContact.notificationId;
+                                            this.pushService.sendPushRequest(this.pushId).subscribe(res => {
+                                                console.log('notificacion enviada', res);
+                                            });
+                                            this.navCtrl.navigateRoot('/contacts', { animated: true });
+                                            this.navCtrl.navigateBack('/contacts', { animated: true });
+                                            this.router.navigateByUrl('/contacts');
+                                            console.log('redirige');
+                                        }); // get iduser
+                                    }
+                                    else {
+                                        this.showToast('Ya hace parte de tus contactos');
+                                    }
+                                });
+                            }
+                        }
+                        else {
+                            this.showToast('El contacto no existe');
+                        }
+                    });
+                }
+            });
+        });
+        // this.navCtrl.navigateRoot('/contacts', { animated: true });
+    }
+    scan() {
+        this.swcamera = true;
+        this.stateCamera = 1;
+        this.userService.saveStateCamera(this.stateCamera);
+        this.qrScanner.prepare().then((status) => {
+            if (status.authorized) {
+                this.qrScanner.show();
+                document.getElementsByTagName("body")[0].style.opacity = "0";
+                this.scaned = this.qrScanner.scan().subscribe((textFound) => {
+                    document.getElementsByTagName("body")[0].style.opacity = "1";
+                    this.scannedCode = textFound;
+                    this.contact.sidcontact = textFound;
+                    this.qrScanner.hide();
+                    this.scaned.unsubscribe();
+                    this.qrScanner.destroy();
+                    this.scaned.destroy();
+                    this.closeScanner();
+                }, (err) => {
+                    console.log(err);
+                });
+            }
+            else if (status.denied) {
+            }
+            else {
+            }
+        });
+    }
+    closeScanner() {
+        this.isOn = false;
+        this.qrScanner.hide();
+        this.qrScanner.destroy();
+    }
+    showToast(msg) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            let toast = yield this.toastCtrl.create({
+                message: msg,
+                position: 'middle',
+                duration: 3000
+            });
+            toast.present();
+        });
+    }
+};
+AddUPage.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] },
+    { type: _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_5__["BarcodeScanner"] },
+    { type: _ionic_native_base64_to_gallery_ngx__WEBPACK_IMPORTED_MODULE_3__["Base64ToGallery"] },
+    { type: src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_4__["ContactsService"] },
+    { type: _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_6__["QRScanner"] },
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_8__["Storage"] },
+    { type: src_app_services_users_service__WEBPACK_IMPORTED_MODULE_7__["UsersService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_9__["Router"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"] },
+    { type: src_app_services_closeapp_service__WEBPACK_IMPORTED_MODULE_10__["CloseappService"] }
+];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], AddUPage.prototype, "sekretid", void 0);
+AddUPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-add-u',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./add-u.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/add-u/add-u.page.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./add-u.page.scss */ "./src/app/pages/add-u/add-u.page.scss")).default]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"],
+        _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_5__["BarcodeScanner"],
+        _ionic_native_base64_to_gallery_ngx__WEBPACK_IMPORTED_MODULE_3__["Base64ToGallery"],
+        src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_4__["ContactsService"],
+        _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_6__["QRScanner"],
+        _ionic_storage__WEBPACK_IMPORTED_MODULE_8__["Storage"],
+        src_app_services_users_service__WEBPACK_IMPORTED_MODULE_7__["UsersService"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["NavController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_9__["Router"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"],
+        src_app_services_closeapp_service__WEBPACK_IMPORTED_MODULE_10__["CloseappService"]])
+], AddUPage);
+
+
+
+/***/ })
+
+}]);
+//# sourceMappingURL=pages-add-u-add-u-module-es2015.js.map

@@ -1,0 +1,594 @@
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-profile-profile-module"], {
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/profile/profile.page.html":
+  /*!***************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/profile/profile.page.html ***!
+    \***************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppPagesProfileProfilePageHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar color=\"warning\">\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"/contacts\" icon-only></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>{{'PROFILE.title' | translate}}</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n  <ion-card class=\"ios hydrated ion-no-padding backgrounUser\" >\r\n    <!--img src=\"/assets/tech-3041437_640.jpg\" style=\"width: 100%;  height: 100% !important;\"-->\r\n    <img src=\"/assets/avatars/{{avatarProfile}}\"  class=\"ip2\">\r\n    <ion-card-header class=\"ion-inherit-color ios hydrated\">\r\n      <div class=\"centerr\">    \r\n        <ion-slides [options]=\"avatarSlide\">\r\n          <ion-slide *ngFor=\"let avatar of avatars\">\r\n            <ion-img class=\"pick-avatar\" src=\"/assets/avatars/{{avatar.img}}\"\r\n              [ngClass]=\"{ 'pick-avatar-selected': avatar.selected }\" (click)=\"selectAvatar(avatar)\"></ion-img>\r\n          </ion-slide>\r\n        </ion-slides>\r\n    \r\n        <ion-button class=\"btnselect\" color=\"warning\" (click)=\"changeAvatar(avatar, idUser)\">{{'PROFILE.selectimage' |\r\n          translate}}</ion-button>    \r\n      </div>\r\n    \r\n    </ion-card-header>\r\n      <ion-card-content class=\"ios card-content-ios hydrated\">    \r\n    </ion-card-content>\r\n    \r\n\r\n    <ion-row>        \r\n      <ion-col size=\"6\">\r\n        <ion-icon src=\"assets/icons/person.svg\" class=\"icons-page iconuser\" color=\"warning\"></ion-icon>\r\n        <label for=\"\" class=\"primary-label\" (click)=\"copySid(sidUser)\">Usuario: </label><br>\r\n        <label for=\"\" class=\"secundary-label labelUsers\" (click)=\"copySid(sidUser)\">{{userName}}</label>\r\n      </ion-col>\r\n      <ion-col size=\"6\" class=\"left\">\r\n        <ion-icon src=\"assets/icons/today-outline.svg\" class=\"icons-page iconuser\" color=\"warning\"></ion-icon>\r\n        <label for=\"\" class=\"primary-label\" (click)=\"copySid(sidUser)\">Sekret ID: </label><br>\r\n        <label for=\"\" class=\"secundary-label labelUsers\" (click)=\"copySid(sidUser)\">{{sidUser}}</label>\r\n      </ion-col>\r\n      <ion-col size=\"12\" class=\"ce\">\r\n        <ion-icon src=\"assets/icons/calendar-outline.svg\" class=\"icons-page iconuser\" color=\"warning\"></ion-icon>\r\n        <label for=\"\" class=\"primary-label\">Plan: </label><br>\r\n        <label for=\"\" class=\"secundary-label labelUsers\">{{plan}}</label>\r\n      </ion-col>\r\n      \r\n    </ion-row>  \r\n\r\n    <ion-button class=\"btcChangepassword\"  color=\"warning\" (click)=\"ChangePassword()\">\r\n      <ion-icon src=\"assets/icons/key.svg\" slot=\"start\"></ion-icon> {{'PROFILE.changePassword' | translate}}\r\n    </ion-button>\r\n\r\n    <ion-button class=\"btcChangepassword\"  color=\"danger\" fill=\"outline\" (click)=\"ChangePasswordTrunk()\">\r\n      <ion-icon src=\"assets/icons/key.svg\" slot=\"start\" ></ion-icon> Configuración Baúl\r\n    </ion-button>\r\n\r\n  </ion-card>\r\n\r\n\r\n\r\n  <ion-card class=\"centerr\"> \r\n    <ion-card-content >\r\n      <ngx-qrcode\r\n        class=\"centerr qr\"\r\n        [qrc-element-type]=\"element-type\"        \r\n        [qrc-value] = \"sidUser\" \r\n        cssClass=\"bshadow\">        \r\n    </ngx-qrcode>\r\n    <ion-button class=\"centerr\" color=\"warning\" (click)=\"disclaimer();\" ><ion-icon src=\"assets/icons/book-outline.svg\" slot=\"start\"></ion-icon> {{'PROFILE.terms' | translate}}</ion-button>\r\n    </ion-card-content>\r\n  </ion-card>\r\n  <ion-card>\r\n  </ion-card>\r\n\r\n\r\n\r\n\r\n\r\n</ion-content>\r\n";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/profile/profile.module.ts":
+  /*!*************************************************!*\
+    !*** ./src/app/pages/profile/profile.module.ts ***!
+    \*************************************************/
+
+  /*! exports provided: ProfilePageModule */
+
+  /***/
+  function srcAppPagesProfileProfileModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ProfilePageModule", function () {
+      return ProfilePageModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @ngx-translate/core */
+    "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _profile_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ./profile.page */
+    "./src/app/pages/profile/profile.page.ts");
+    /* harmony import */
+
+
+    var ngx_qrcode2__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! ngx-qrcode2 */
+    "./node_modules/ngx-qrcode2/index.js");
+
+    var routes = [{
+      path: '',
+      component: _profile_page__WEBPACK_IMPORTED_MODULE_7__["ProfilePage"]
+    }];
+
+    var ProfilePageModule = function ProfilePageModule() {
+      _classCallCheck(this, ProfilePageModule);
+    };
+
+    ProfilePageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes), ngx_qrcode2__WEBPACK_IMPORTED_MODULE_8__["NgxQRCodeModule"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_5__["TranslateModule"]],
+      declarations: [_profile_page__WEBPACK_IMPORTED_MODULE_7__["ProfilePage"]]
+    })], ProfilePageModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/profile/profile.page.scss":
+  /*!*************************************************!*\
+    !*** ./src/app/pages/profile/profile.page.scss ***!
+    \*************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppPagesProfileProfilePageScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = ".imageprofile {\n  width: 120px;\n  text-align: center;\n  margin-left: 33%;\n}\n\n--ion-card-subtitle {\n  text-align: center;\n}\n\n.text-cender {\n  text-align: center;\n}\n\n.qrcode {\n  margin-left: 30%;\n}\n\n.user {\n  font-weight: bold;\n  color: black;\n  font-size: 32px;\n}\n\n.username {\n  color: black;\n  font-weight: bold;\n  font-size: 24px;\n  text-align: center;\n}\n\n.sid {\n  color: black;\n  font-weight: bold;\n  font-size: 32px;\n}\n\n.bell {\n  margin-right: 4px;\n}\n\n.btnnotifications {\n  text-align: center;\n  margin-left: 13%;\n}\n\n.centera {\n  margin-left: 18%;\n}\n\n.centerb {\n  margin-left: 15%;\n}\n\n.centerr {\n  text-align: center;\n  margin-top: 1px;\n}\n\n.imageprofile2 {\n  width: 120px;\n  text-align: center;\n  margin-left: 30%;\n}\n\nimg {\n  width: 120px;\n}\n\n.pick-avatar {\n  width: 80px;\n  opacity: 0.3;\n}\n\n.pick-avatar-selected {\n  transition: opacity 0.5s linear;\n  opacity: 1 !important;\n}\n\n.chip {\n  margin-top: 45px;\n  margin-left: 27%;\n  color: #ffffff;\n}\n\n.delete {\n  margin-left: 45px;\n  margin-top: 10px;\n}\n\n.favCard {\n  width: 320px;\n  height: 230px;\n  border-radius: 10px;\n  box-shadow: -1px 3px 5px 0px rgba(0, 0, 0, 0.75);\n  margin: auto;\n  margin-top: 30px;\n  margin-bottom: 90px;\n  overflow: visible;\n}\n\n.info {\n  z-index: 9;\n  border-radius: 50px;\n  box-shadow: -1px 10px 5px 0px rgba(0, 0, 0, 0.75);\n  margin-top: -12%;\n  z-index: 3;\n  position: absolute;\n  margin-left: 50px;\n  width: 220px;\n  background-color: white;\n}\n\n.ppp {\n  position: absolute;\n  height: 100px;\n  width: 100px;\n  top: 40px;\n  left: 164px;\n  margin-top: 26px;\n  z-index: 1;\n}\n\n.btnselect {\n  margin-top: 10px;\n}\n\n.labelUsers {\n  color: black;\n  font-size: 18px;\n}\n\n.iconuser {\n  margin-right: 2px;\n}\n\n.btcChangepassword {\n  margin-left: 22%;\n}\n\n.btcChangepasswordBaul {\n  margin-left: 15%;\n}\n\n.ip2 {\n  margin-left: 33%;\n}\n\n.backgrounUser {\n  background: url('back.jpg') no-repeat center center fixed;\n}\n\n.noti {\n  background-color: #252539;\n}\n\n.qr {\n  width: 10px;\n  height: 10px;\n}\n\n.bshadow {\n  display: flex;\n  align-items: center;\n  justify-content: center;\n  -webkit-filter: drop-shadow(5px 5px 5px #222222);\n          filter: drop-shadow(5px 5px 5px #222222);\n  opacity: 0.5;\n}\n\n.ce {\n  justify-content: center;\n  text-align: center;\n}\n\n.left {\n  text-align: right;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcHJvZmlsZS9DOlxcVXNlcnNcXE5lbWVzc2lzXFxEZXNrdG9wXFxwcm9qZWN0c1xcanVuaW9cXGNhbGxzXFxjcFxcZnN1IC0gQ29weS9zcmNcXGFwcFxccGFnZXNcXHByb2ZpbGVcXHByb2ZpbGUucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9wcm9maWxlL3Byb2ZpbGUucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksWUFBQTtFQUNBLGtCQUFBO0VBQ0EsZ0JBQUE7QUNDSjs7QURFQTtFQUNJLGtCQUFBO0FDQ0o7O0FERUE7RUFDSSxrQkFBQTtBQ0NKOztBREdBO0VBQ0ksZ0JBQUE7QUNBSjs7QURHQTtFQUNJLGlCQUFBO0VBQ0EsWUFBQTtFQUNBLGVBQUE7QUNBSjs7QURHQTtFQUNJLFlBQUE7RUFDQSxpQkFBQTtFQUNBLGVBQUE7RUFDQSxrQkFBQTtBQ0FKOztBREdBO0VBQ0ksWUFBQTtFQUNBLGlCQUFBO0VBQ0EsZUFBQTtBQ0FKOztBRElBO0VBQ0ksaUJBQUE7QUNESjs7QURJQTtFQUNJLGtCQUFBO0VBQ0EsZ0JBQUE7QUNESjs7QURJQTtFQUNJLGdCQUFBO0FDREo7O0FES0E7RUFDSSxnQkFBQTtBQ0ZKOztBREtBO0VBQ0ksa0JBQUE7RUFDQSxlQUFBO0FDRko7O0FES0E7RUFDSSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSxnQkFBQTtBQ0ZKOztBRE9BO0VBQ0ksWUFBQTtBQ0pKOztBRE9BO0VBQ0ksV0FBQTtFQUNBLFlBQUE7QUNKSjs7QURPQTtFQUNJLCtCQUFBO0VBQ0EscUJBQUE7QUNKSjs7QURPQTtFQUNJLGdCQUFBO0VBQ0EsZ0JBQUE7RUFDQSxjQUFBO0FDSko7O0FEUUE7RUFDSSxpQkFBQTtFQUNBLGdCQUFBO0FDTEo7O0FET0E7RUFDSSxZQUFBO0VBQ0EsYUFBQTtFQUNBLG1CQUFBO0VBQ0EsZ0RBQUE7RUFDQSxZQUFBO0VBQ0EsZ0JBQUE7RUFDQSxtQkFBQTtFQUNBLGlCQUFBO0FDSko7O0FETUE7RUFDSSxVQUFBO0VBQ0EsbUJBQUE7RUFFQSxpREFBQTtFQUNBLGdCQUFBO0VBQ0EsVUFBQTtFQUNBLGtCQUFBO0VBQ0EsaUJBQUE7RUFDQSxZQUFBO0VBQ0EsdUJBQUE7QUNISjs7QURPQTtFQUNJLGtCQUFBO0VBQ0YsYUFBQTtFQUNBLFlBQUE7RUFDQSxTQUFBO0VBQ0EsV0FBQTtFQUNELGdCQUFBO0VBQ0MsVUFBQTtBQ0pGOztBRE9BO0VBQ0ksZ0JBQUE7QUNKSjs7QURPQTtFQUNJLFlBQUE7RUFDQSxlQUFBO0FDSko7O0FET0E7RUFDSSxpQkFBQTtBQ0pKOztBRE9BO0VBQ0ksZ0JBQUE7QUNKSjs7QURPQTtFQUNJLGdCQUFBO0FDSko7O0FEU0E7RUFDSSxnQkFBQTtBQ05KOztBRFVBO0VBRUkseURBQUE7QUNSSjs7QURXQTtFQUNJLHlCQUFBO0FDUko7O0FEV0E7RUFDSSxXQUFBO0VBQ0EsWUFBQTtBQ1JKOztBRFlBO0VBQ0ksYUFBQTtFQUNBLG1CQUFBO0VBQ0EsdUJBQUE7RUFDQSxnREFBQTtVQUFBLHdDQUFBO0VBQ0EsWUFBQTtBQ1RKOztBRFlFO0VBQ0ksdUJBQUE7RUFFQSxrQkFBQTtBQ1ZOOztBRGFFO0VBQ0ksaUJBQUE7QUNWTiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3Byb2ZpbGUvcHJvZmlsZS5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaW1hZ2Vwcm9maWxle1xyXG4gICAgd2lkdGg6IDEyMHB4O1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgbWFyZ2luLWxlZnQgOiAzMyU7XHJcbn1cclxuXHJcbi0taW9uLWNhcmQtc3VidGl0bGV7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbi50ZXh0LWNlbmRlcntcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIC8vZm9udC1zaXplOiAxNnB4O1xyXG59XHJcblxyXG4ucXJjb2Rle1xyXG4gICAgbWFyZ2luLWxlZnQ6IDMwJTs7XHJcbn1cclxuXHJcbi51c2Vye1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICBjb2xvcjpibGFjaztcclxuICAgIGZvbnQtc2l6ZTogMzJweDtcclxufVxyXG5cclxuLnVzZXJuYW1le1xyXG4gICAgY29sb3I6IGJsYWNrO1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICBmb250LXNpemU6IDI0cHg7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbi5zaWR7XHJcbiAgICBjb2xvcjogYmxhY2s7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIGZvbnQtc2l6ZTogMzJweDtcclxuICAgIFxyXG59XHJcblxyXG4uYmVsbHtcclxuICAgIG1hcmdpbi1yaWdodDogNHB4O1xyXG59XHJcblxyXG4uYnRubm90aWZpY2F0aW9uc3tcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIG1hcmdpbi1sZWZ0OiAxMyU7XHJcbn1cclxuXHJcbi5jZW50ZXJhe1xyXG4gICAgbWFyZ2luLWxlZnQ6IDE4JTtcclxuICAgIFxyXG59XHJcblxyXG4uY2VudGVyYntcclxuICAgIG1hcmdpbi1sZWZ0OiAxNSU7XHJcbn1cclxuXHJcbi5jZW50ZXJye1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gICAgbWFyZ2luLXRvcDogMXB4O1xyXG59XHJcblxyXG4uaW1hZ2Vwcm9maWxlMntcclxuICAgIHdpZHRoOiAxMjBweDtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIG1hcmdpbi1sZWZ0OiAzMCU7XHJcbn1cclxuXHJcblxyXG5cclxuaW1nIHtcclxuICAgIHdpZHRoOiAxMjBweDtcclxufVxyXG5cclxuLnBpY2stYXZhdGFyIHtcclxuICAgIHdpZHRoOiA4MHB4O1xyXG4gICAgb3BhY2l0eTogMC4zO1xyXG59XHJcblxyXG4ucGljay1hdmF0YXItc2VsZWN0ZWQge1xyXG4gICAgdHJhbnNpdGlvbjogb3BhY2l0eSAwLjVzIGxpbmVhcjtcclxuICAgIG9wYWNpdHk6IDEgIWltcG9ydGFudDtcclxufVxyXG5cclxuLmNoaXB7XHJcbiAgICBtYXJnaW4tdG9wOiA0NXB4O1xyXG4gICAgbWFyZ2luLWxlZnQ6IDI3JTtcclxuICAgIGNvbG9yOiAjZmZmZmZmO1xyXG59XHJcblxyXG5cclxuLmRlbGV0ZXtcclxuICAgIG1hcmdpbi1sZWZ0OiA0NXB4O1xyXG4gICAgbWFyZ2luLXRvcDogMTBweDsgXHJcbn1cclxuLmZhdkNhcmR7XHJcbiAgICB3aWR0aDogMzIwcHg7XHJcbiAgICBoZWlnaHQ6IDIzMHB4O1xyXG4gICAgYm9yZGVyLXJhZGl1czogMTBweDtcclxuICAgIGJveC1zaGFkb3c6IC0xcHggM3B4IDVweCAwcHggcmdiYSgwLDAsMCwwLjc1KTtcclxuICAgIG1hcmdpbjogYXV0bztcclxuICAgIG1hcmdpbi10b3A6IDMwcHg7XHJcbiAgICBtYXJnaW4tYm90dG9tOiA5MHB4O1xyXG4gICAgb3ZlcmZsb3c6IHZpc2libGU7XHJcbn1cclxuLmluZm97XHJcbiAgICB6LWluZGV4OiA5O1xyXG4gICAgYm9yZGVyLXJhZGl1czogNTBweDtcclxuICAgIC13ZWJraXQtYm94LXNoYWRvdzogLTFweCAxMHB4IDVweCAwcHggcmdiYSgwLDAsMCwwLjc1KTtcclxuICAgIGJveC1zaGFkb3c6IC0xcHggMTBweCA1cHggMHB4IHJnYmEoMCwwLDAsMC43NSk7XHJcbiAgICBtYXJnaW4tdG9wOiAtMTIlO1xyXG4gICAgei1pbmRleDogMztcclxuICAgIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICAgIG1hcmdpbi1sZWZ0OiA1MHB4O1xyXG4gICAgd2lkdGg6IDIyMHB4O1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogd2hpdGU7XHJcbn1cclxuXHJcblxyXG4ucHBwe1xyXG4gICAgcG9zaXRpb246YWJzb2x1dGU7XHJcbiAgaGVpZ2h0OjEwMHB4O1xyXG4gIHdpZHRoOjEwMHB4O1xyXG4gIHRvcDogNDBweDtcclxuICBsZWZ0IDogMTY0cHg7IFxyXG4gbWFyZ2luLXRvcDogMjZweDtcclxuICB6LWluZGV4OiAxO1xyXG59XHJcblxyXG4uYnRuc2VsZWN0e1xyXG4gICAgbWFyZ2luLXRvcDogMTBweDtcclxufVxyXG5cclxuLmxhYmVsVXNlcnN7XHJcbiAgICBjb2xvcjogYmxhY2s7XHJcbiAgICBmb250LXNpemU6IDE4cHg7XHJcbn1cclxuXHJcbi5pY29udXNlcntcclxuICAgIG1hcmdpbi1yaWdodDogMnB4O1xyXG59XHJcblxyXG4uYnRjQ2hhbmdlcGFzc3dvcmR7XHJcbiAgICBtYXJnaW4tbGVmdDogMjIlO1xyXG59XHJcblxyXG4uYnRjQ2hhbmdlcGFzc3dvcmRCYXVse1xyXG4gICAgbWFyZ2luLWxlZnQ6IDE1JTtcclxufVxyXG5cclxuXHJcblxyXG4uaXAye1xyXG4gICAgbWFyZ2luLWxlZnQ6IDMzJTtcclxuXHJcbn1cclxuXHJcbi5iYWNrZ3JvdW5Vc2Vye1xyXG4gICAgLy9iYWNrZ3JvdW5kLWltYWdlOiAnL2Fzc2V0cy9iYWNrLmpwZyc7XHJcbiAgICBiYWNrZ3JvdW5kOiB1cmwoJy4uLy4uLy4uL2Fzc2V0cy9iYWNrLmpwZycpIG5vLXJlcGVhdCBjZW50ZXIgY2VudGVyIGZpeGVkO1xyXG59XHJcblxyXG4ubm90aXtcclxuICAgIGJhY2tncm91bmQtY29sb3IgOiMyNTI1Mzk7XHJcbn1cclxuXHJcbi5xcntcclxuICAgIHdpZHRoOiAxMHB4O1xyXG4gICAgaGVpZ2h0OiAxMHB4O1xyXG59XHJcblxyXG5cclxuLmJzaGFkb3cge1xyXG4gICAgZGlzcGxheTogZmxleDtcclxuICAgIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIGZpbHRlcjogZHJvcC1zaGFkb3coNXB4IDVweCA1cHggIzIyMjIyMik7XHJcbiAgICBvcGFjaXR5OiAuNTsgIFxyXG4gIH1cclxuXHJcbiAgLmNle1xyXG4gICAgICBqdXN0aWZ5LWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgICAgLy9tYXJnaW4tbGVmdDogMzUlO1xyXG4gICAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgfVxyXG5cclxuICAubGVmdHtcclxuICAgICAgdGV4dC1hbGlnbjogcmlnaHQ7XHJcbiAgfSIsIi5pbWFnZXByb2ZpbGUge1xuICB3aWR0aDogMTIwcHg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgbWFyZ2luLWxlZnQ6IDMzJTtcbn1cblxuLS1pb24tY2FyZC1zdWJ0aXRsZSB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLnRleHQtY2VuZGVyIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4ucXJjb2RlIHtcbiAgbWFyZ2luLWxlZnQ6IDMwJTtcbn1cblxuLnVzZXIge1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgY29sb3I6IGJsYWNrO1xuICBmb250LXNpemU6IDMycHg7XG59XG5cbi51c2VybmFtZSB7XG4gIGNvbG9yOiBibGFjaztcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIGZvbnQtc2l6ZTogMjRweDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4uc2lkIHtcbiAgY29sb3I6IGJsYWNrO1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgZm9udC1zaXplOiAzMnB4O1xufVxuXG4uYmVsbCB7XG4gIG1hcmdpbi1yaWdodDogNHB4O1xufVxuXG4uYnRubm90aWZpY2F0aW9ucyB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgbWFyZ2luLWxlZnQ6IDEzJTtcbn1cblxuLmNlbnRlcmEge1xuICBtYXJnaW4tbGVmdDogMTglO1xufVxuXG4uY2VudGVyYiB7XG4gIG1hcmdpbi1sZWZ0OiAxNSU7XG59XG5cbi5jZW50ZXJyIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBtYXJnaW4tdG9wOiAxcHg7XG59XG5cbi5pbWFnZXByb2ZpbGUyIHtcbiAgd2lkdGg6IDEyMHB4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIG1hcmdpbi1sZWZ0OiAzMCU7XG59XG5cbmltZyB7XG4gIHdpZHRoOiAxMjBweDtcbn1cblxuLnBpY2stYXZhdGFyIHtcbiAgd2lkdGg6IDgwcHg7XG4gIG9wYWNpdHk6IDAuMztcbn1cblxuLnBpY2stYXZhdGFyLXNlbGVjdGVkIHtcbiAgdHJhbnNpdGlvbjogb3BhY2l0eSAwLjVzIGxpbmVhcjtcbiAgb3BhY2l0eTogMSAhaW1wb3J0YW50O1xufVxuXG4uY2hpcCB7XG4gIG1hcmdpbi10b3A6IDQ1cHg7XG4gIG1hcmdpbi1sZWZ0OiAyNyU7XG4gIGNvbG9yOiAjZmZmZmZmO1xufVxuXG4uZGVsZXRlIHtcbiAgbWFyZ2luLWxlZnQ6IDQ1cHg7XG4gIG1hcmdpbi10b3A6IDEwcHg7XG59XG5cbi5mYXZDYXJkIHtcbiAgd2lkdGg6IDMyMHB4O1xuICBoZWlnaHQ6IDIzMHB4O1xuICBib3JkZXItcmFkaXVzOiAxMHB4O1xuICBib3gtc2hhZG93OiAtMXB4IDNweCA1cHggMHB4IHJnYmEoMCwgMCwgMCwgMC43NSk7XG4gIG1hcmdpbjogYXV0bztcbiAgbWFyZ2luLXRvcDogMzBweDtcbiAgbWFyZ2luLWJvdHRvbTogOTBweDtcbiAgb3ZlcmZsb3c6IHZpc2libGU7XG59XG5cbi5pbmZvIHtcbiAgei1pbmRleDogOTtcbiAgYm9yZGVyLXJhZGl1czogNTBweDtcbiAgLXdlYmtpdC1ib3gtc2hhZG93OiAtMXB4IDEwcHggNXB4IDBweCByZ2JhKDAsIDAsIDAsIDAuNzUpO1xuICBib3gtc2hhZG93OiAtMXB4IDEwcHggNXB4IDBweCByZ2JhKDAsIDAsIDAsIDAuNzUpO1xuICBtYXJnaW4tdG9wOiAtMTIlO1xuICB6LWluZGV4OiAzO1xuICBwb3NpdGlvbjogYWJzb2x1dGU7XG4gIG1hcmdpbi1sZWZ0OiA1MHB4O1xuICB3aWR0aDogMjIwcHg7XG4gIGJhY2tncm91bmQtY29sb3I6IHdoaXRlO1xufVxuXG4ucHBwIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBoZWlnaHQ6IDEwMHB4O1xuICB3aWR0aDogMTAwcHg7XG4gIHRvcDogNDBweDtcbiAgbGVmdDogMTY0cHg7XG4gIG1hcmdpbi10b3A6IDI2cHg7XG4gIHotaW5kZXg6IDE7XG59XG5cbi5idG5zZWxlY3Qge1xuICBtYXJnaW4tdG9wOiAxMHB4O1xufVxuXG4ubGFiZWxVc2VycyB7XG4gIGNvbG9yOiBibGFjaztcbiAgZm9udC1zaXplOiAxOHB4O1xufVxuXG4uaWNvbnVzZXIge1xuICBtYXJnaW4tcmlnaHQ6IDJweDtcbn1cblxuLmJ0Y0NoYW5nZXBhc3N3b3JkIHtcbiAgbWFyZ2luLWxlZnQ6IDIyJTtcbn1cblxuLmJ0Y0NoYW5nZXBhc3N3b3JkQmF1bCB7XG4gIG1hcmdpbi1sZWZ0OiAxNSU7XG59XG5cbi5pcDIge1xuICBtYXJnaW4tbGVmdDogMzMlO1xufVxuXG4uYmFja2dyb3VuVXNlciB7XG4gIGJhY2tncm91bmQ6IHVybChcIi4uLy4uLy4uL2Fzc2V0cy9iYWNrLmpwZ1wiKSBuby1yZXBlYXQgY2VudGVyIGNlbnRlciBmaXhlZDtcbn1cblxuLm5vdGkge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjMjUyNTM5O1xufVxuXG4ucXIge1xuICB3aWR0aDogMTBweDtcbiAgaGVpZ2h0OiAxMHB4O1xufVxuXG4uYnNoYWRvdyB7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICBmaWx0ZXI6IGRyb3Atc2hhZG93KDVweCA1cHggNXB4ICMyMjIyMjIpO1xuICBvcGFjaXR5OiAwLjU7XG59XG5cbi5jZSB7XG4gIGp1c3RpZnktY29udGVudDogY2VudGVyO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbi5sZWZ0IHtcbiAgdGV4dC1hbGlnbjogcmlnaHQ7XG59Il19 */";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/profile/profile.page.ts":
+  /*!***********************************************!*\
+    !*** ./src/app/pages/profile/profile.page.ts ***!
+    \***********************************************/
+
+  /*! exports provided: ProfilePage */
+
+  /***/
+  function srcAppPagesProfileProfilePageTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ProfilePage", function () {
+      return ProfilePage;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _ionic_storage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @ionic/storage */
+    "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+    /* harmony import */
+
+
+    var src_app_services_users_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! src/app/services/users.service */
+    "./src/app/services/users.service.ts");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @ionic-native/qr-scanner/ngx */
+    "./node_modules/@ionic-native/qr-scanner/ngx/index.js");
+    /* harmony import */
+
+
+    var _ionic_native_base64_to_gallery_ngx__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @ionic-native/base64-to-gallery/ngx */
+    "./node_modules/@ionic-native/base64-to-gallery/ngx/index.js");
+    /* harmony import */
+
+
+    var src_app_services_push_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! src/app/services/push.service */
+    "./src/app/services/push.service.ts");
+    /* harmony import */
+
+
+    var _ionic_native_clipboard_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! @ionic-native/clipboard/ngx */
+    "./node_modules/@ionic-native/clipboard/ngx/index.js"); //import { QrCodeAllModule } from 'ngx-qrcode-all';
+
+
+    var ProfilePage = /*#__PURE__*/function () {
+      function ProfilePage(storage, userService, router, alertController, qrScanner, base64ToGallery, pushService, toastCtrl, clipboard, platform) {
+        var _this = this;
+
+        _classCallCheck(this, ProfilePage);
+
+        this.storage = storage;
+        this.userService = userService;
+        this.router = router;
+        this.alertController = alertController;
+        this.qrScanner = qrScanner;
+        this.base64ToGallery = base64ToGallery;
+        this.pushService = pushService;
+        this.toastCtrl = toastCtrl;
+        this.clipboard = clipboard;
+        this.platform = platform;
+        this.idUser = '';
+        this.sidUser = '';
+        this.userName = '';
+        this.discla = " <p>Al usar SEKRET, usted acepta y está sujeto a estos Términos y condiciones en su totalidad y, sin reservas, a todas las leyes y regulaciones aplicables, y acepta que es responsable del cumplimiento de las leyes aplicables. Estos Términos de servicio rigen su uso de esta APP. Si no está de acuerdo con alguno de estos términos, tiene prohibido utilizar SEKRET.</p>";
+        this.discla2 = "<p>Uso aceptable:</p>";
+        this.discla3 = "<p>• No debe usar SEKRET de ninguna manera que pueda causar daño a SEKRET o de cualquier manera que sea ilegal, fraudulenta o dañina, o en conexión con cualquier actividad ilegal.</p>";
+        this.discla4 = "<p>• No debe utilizar esta APP para enviar ningún tipo de comunicaciones comerciales.</p>";
+        this.discla5 = "<p>• No debe utilizar esta APP para ningún propósito relacionado con actividad Ilícita o prohibida por el gobierno local donde se use SEKRET.</p>";
+        this.discla6 = "<p>Afiliación :</p>";
+        this.discla7 = "<p>Esta política puede cambiar en cualquier momento, por favor regístrese antes de usar el sitio.</p>";
+        this.discla8 = "<p>• Los usuarios deben proporcionar información válida y veraz durante todas las etapas.</p>";
+        this.discla9 = "<p>• Los usuarios no deben crear más de una cuenta por persona, ya que tener varias cuentas puede resultar en la suspensión de todas las cuentas y la pérdida de la información.</p>";
+        this.discla10 = "<p>• Los usuarios no deben utilizar un proxy ni intentar enmascarar o desviar su conexión a Internet. Eso resultará en la suspensión de todas sus cuentas.</p>";
+        this.discla11 = "<p>    • El saldo de la cuenta no se puede transferir, intercambiar, vender ni cambiar de propiedad bajo ninguna circunstancia, excepto por SEKRET</p>";
+        this.discla12 = "<p>• Nos reservamos el derecho de cerrar su cuenta y eliminar su información si ha violado nuestro acuerdo de términos de servicio.</p>";
+        this.discla13 = "<p>• Nos reservamos el derecho de cerrar su cuenta debido a inactividad de 3 o más meses. Una cuenta inactiva se define como una cuenta que no ha obtenido acceso durante 3 meses o más.</p>";
+        this.discla14 = "<p>Sin garantías:</p>";
+        this.discla15 = "<p>SEKRET se proporciona 'tal cual', sin ninguna representación ni garantía. SEKRET no hace representaciones ni garantías en relación con esta APP o la información y materiales proporcionados en la APP.</p>";
+        this.discla16 = "<p></p>";
+        this.discla17 = "<p>SEKRET garantiza que:</p>";
+        this.discla18 = "<p>• La información en esta APP es completa, verdadera o no engañosa.</p>";
+        this.discla19 = "<p>    • No se almacena ningún tipo de información de usuarios ni de conexiones a la Plataforma.</p>";
+        this.discla20 = "<p>    • No vendemos información ni suministramos accesos a terceros en nuestra plataforma.</p>";
+        this.discla21 = "<p>Privacidad:</p>";
+        this.discla22 = "<p>Para obtener detalles sobre nuestra política de privacidad, consulte la sección de política de privacidad.</p>";
+        this.discla23 = "<p>Disposiciones inaplicables:</p>";
+        this.discla24 = "<p>Si alguna disposición de este descargo de responsabilidad de la APP es o se determina que no se puede hacer cumplir según la ley aplicable, eso no afectará la aplicabilidad de las otras disposiciones de este descargo de responsabilidad del sitio web.  Enlaces : https://www.sekret.es/  </p>";
+        this.discla25 = "<p>Modificaciones:</p>";
+        this.discla26 = "<p>SEKRET puede revisar estos términos de uso de su APP en cualquier momento sin previo aviso. Al utilizar esta APP, usted acepta estar sujeto a la versión actual de estos términos de servicio.  Incumplimientos de estos términos y condiciones:  </p>";
+        this.discla27 = "<p>• SEKRET se reserva el derecho en virtud de estos términos y condiciones de tomar medidas si incumple estos términos y condiciones de alguna manera.</p>";
+        this.discla28 = "<p>• SEKRET puede tomar las acciones que considere apropiadas para hacer frente a la infracción, incluida la suspensión de su acceso a la APP, la eliminación de la cuenta de la  APP SEKRET y la prohibición de acceder al servicio.</p>";
+        this.disclaFinale = this.discla + this.discla2 + this.discla3 + this.discla4 + this.discla5 + this.discla6 + this.discla7 + this.discla8 + this.discla9 + this.discla10 + this.discla11 + this.discla12 + this.discla13 + this.discla14 + this.discla15 + this.discla16 + this.discla17 + this.discla18 + this.discla19 + this.discla20 + this.discla21 + this.discla22 + this.discla23 + this.discla24 + this.discla25 + this.discla26 + this.discla27 + this.discla28;
+        this.avatars = [{
+          img: 'av-1.png',
+          selected: false
+        }, {
+          img: 'av-2.png',
+          selected: false
+        }, {
+          img: 'av-3.png',
+          selected: false
+        }, {
+          img: 'av-4.png',
+          selected: false
+        }, {
+          img: 'av-5.png',
+          selected: false
+        }, {
+          img: 'av-6.png',
+          selected: false
+        }, {
+          img: 'av-7.png',
+          selected: false
+        }, {
+          img: 'av-8.png',
+          selected: false
+        }, {
+          img: 'av-9.png',
+          selected: false
+        }, {
+          img: 'av-10.png',
+          selected: false
+        }, {
+          img: 'av-11.png',
+          selected: false
+        }, {
+          img: 'av-12.png',
+          selected: false
+        }, {
+          img: 'av-13.png',
+          selected: false
+        }, {
+          img: 'av-14.png',
+          selected: false
+        }, {
+          img: 'av-15.png',
+          selected: false
+        }, {
+          img: 'av-16.png',
+          selected: false
+        }, {
+          img: 'av-17.png',
+          selected: false
+        }, {
+          img: 'av-18.png',
+          selected: false
+        }, {
+          img: 'av-19.png',
+          selected: false
+        }, {
+          img: 'av-20.png',
+          selected: false
+        }, {
+          img: 'av-21.png',
+          selected: false
+        }, {
+          img: 'av-22.png',
+          selected: false
+        }, {
+          img: 'av-23.png',
+          selected: false
+        }, {
+          img: 'av-24.png',
+          selected: false
+        }, {
+          img: 'av-25.png',
+          selected: false
+        }, {
+          img: 'av-26.png',
+          selected: false
+        }, {
+          img: 'av-27.png',
+          selected: false
+        }, {
+          img: 'av-28.png',
+          selected: false
+        }, {
+          img: 'av-29.png',
+          selected: false
+        }, {
+          img: 'av-30.png',
+          selected: false
+        }, {
+          img: 'av-31.png',
+          selected: false
+        }, {
+          img: 'av-32.png',
+          selected: false
+        }, {
+          img: 'av-33.png',
+          selected: false
+        }, {
+          img: 'av-34.png',
+          selected: false
+        }];
+        this.avatarSlide = {
+          slidesPerView: 4.5
+        };
+        this.avatar = '';
+        this.userUpdateAvatar = {
+          avatar: '',
+          idUser: '',
+          sid: ''
+        };
+        platform.ready().then(function () {
+          _this.platform.pause.subscribe(function () {//  this.logout();
+          });
+
+          _this.platform.resume.subscribe(function () {
+            console.log('[INFO] App resumed');
+          });
+        });
+      }
+
+      _createClass(ProfilePage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          var _this2 = this;
+
+          this.qrScanner.hide();
+          this.qrScanner.destroy(); //get sender id and name
+
+          this.storage.get('username').then(function (result) {
+            _this2.userService.getSekretId(result).subscribe(function (response) {
+              _this2.idUser = response.user[0]._id;
+              _this2.sidUser = response.user[0].sekretid;
+              _this2.userName = response.user[0].username;
+              _this2.plan = response.user[0].plan;
+              _this2.avatarProfile = response.user[0].avatar;
+              console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%', _this2.avatarProfile);
+            });
+          });
+        }
+      }, {
+        key: "ChangePassword",
+        value: function ChangePassword() {
+          this.router.navigate(['/change-password', this.idUser]);
+        }
+      }, {
+        key: "ChangePasswordTrunk",
+        value: function ChangePasswordTrunk() {
+          this.router.navigate(['/safe']);
+        }
+      }, {
+        key: "logout",
+        value: function logout() {
+          console.log("Logging out user");
+          this.router.navigate(['/home']);
+        }
+      }, {
+        key: "disclaimer",
+        value: function disclaimer() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var alert;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return this.alertController.create({
+                      header: 'Disclaimer!',
+                      message: this.disclaFinale,
+                      buttons: [{
+                        text: 'Cancelar',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: function handler(blah) {
+                          console.log('Confirm Cancel: blah');
+                        }
+                      }, {
+                        text: 'Aceptar',
+                        handler: function handler() {
+                          console.log('Confirm Okay');
+                        }
+                      }]
+                    });
+
+                  case 2:
+                    alert = _context.sent;
+                    _context.next = 5;
+                    return alert.present();
+
+                  case 5:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
+        }
+      }, {
+        key: "checkandUpdate",
+        value: function checkandUpdate(sidUser) {
+          var _this3 = this;
+
+          this.newNotificationId = this.pushService.getuserIdOneSignal();
+          console.log('Notification Id', this.newNotificationId);
+          this.userService.getUserNameBySekretId(this.sidUser).subscribe(function (res) {
+            console.log('respuesta usuario: ', res);
+            _this3.arUser = res.user[0];
+
+            _this3.userService.updateNotifications(_this3.arUser._id, _this3.newNotificationId).subscribe(function (response) {
+              console.log(response); // this.resup = response.ok;
+
+              _this3.presentToast('Se han activado las notificaciones');
+            });
+          });
+        }
+      }, {
+        key: "presentToast",
+        value: function presentToast(message) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            var toast;
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    _context2.next = 2;
+                    return this.toastCtrl.create({
+                      message: message,
+                      duration: 3000,
+                      position: 'middle'
+                    });
+
+                  case 2:
+                    toast = _context2.sent;
+                    toast.present();
+
+                  case 4:
+                  case "end":
+                    return _context2.stop();
+                }
+              }
+            }, _callee2, this);
+          }));
+        }
+      }, {
+        key: "copySid",
+        value: function copySid(contact) {
+          this.clipboard.copy(contact);
+          this.presentToast('Se ha copiado el Sekret ID');
+        }
+      }, {
+        key: "selectAvatar",
+        value: function selectAvatar(avatar) {
+          this.avatars.forEach(function (av) {
+            return av.selected = false;
+          });
+          console.log('avatar seleccionado', avatar);
+          avatar.selected = true;
+          this.avatar = avatar;
+        }
+      }, {
+        key: "changeAvatar",
+        value: function changeAvatar(avatar, idUser) {
+          console.log('Avatar qeu ingresa por revision para actualizar', avatar);
+
+          if (avatar === '') {
+            console.log('=============');
+            avatar = {
+              img: 'av-1.png',
+              selected: true
+            };
+          }
+
+          this.userUpdateAvatar = {
+            avatar: avatar.img,
+            idUser: idUser,
+            sid: this.sidUser
+          };
+          console.log('arreglo d eactualizacion ', this.userUpdateAvatar);
+          this.userService.updateAvatar(this.userUpdateAvatar).subscribe(function (response) {
+            console.log('RESPUESTA DEL SERVICIO DE ACTUALIZACION', response);
+          });
+          this.presentToast('Se ha actualizado la imagen del perfil');
+          this.ngOnInit();
+          this.ngOnInit();
+        }
+      }]);
+
+      return ProfilePage;
+    }();
+
+    ProfilePage.ctorParameters = function () {
+      return [{
+        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_2__["Storage"]
+      }, {
+        type: src_app_services_users_service__WEBPACK_IMPORTED_MODULE_3__["UsersService"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["AlertController"]
+      }, {
+        type: _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_6__["QRScanner"]
+      }, {
+        type: _ionic_native_base64_to_gallery_ngx__WEBPACK_IMPORTED_MODULE_7__["Base64ToGallery"]
+      }, {
+        type: src_app_services_push_service__WEBPACK_IMPORTED_MODULE_8__["PushService"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ToastController"]
+      }, {
+        type: _ionic_native_clipboard_ngx__WEBPACK_IMPORTED_MODULE_9__["Clipboard"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Platform"]
+      }];
+    };
+
+    ProfilePage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-profile',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./profile.page.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/profile/profile.page.html"))["default"],
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./profile.page.scss */
+      "./src/app/pages/profile/profile.page.scss"))["default"]]
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_2__["Storage"], src_app_services_users_service__WEBPACK_IMPORTED_MODULE_3__["UsersService"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["AlertController"], _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_6__["QRScanner"], _ionic_native_base64_to_gallery_ngx__WEBPACK_IMPORTED_MODULE_7__["Base64ToGallery"], src_app_services_push_service__WEBPACK_IMPORTED_MODULE_8__["PushService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["ToastController"], _ionic_native_clipboard_ngx__WEBPACK_IMPORTED_MODULE_9__["Clipboard"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["Platform"]])], ProfilePage);
+    /***/
+  }
+}]);
+//# sourceMappingURL=pages-profile-profile-module-es5.js.map

@@ -1,0 +1,223 @@
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-support-support-module"],{
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/support/support.page.html":
+/*!***************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/support/support.page.html ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar color=\"warning\">\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"/contacts\" icon-only></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>{{'SUPPORT.title' | translate}}</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  \r\n  <ion-card>\r\n    <ion-item>\r\n      <img src=\"../../../assets/support.png\" alt=\"\">\r\n      <ion-label>ion-item in a card, icon left, button right</ion-label>\r\n      \r\n    </ion-item>\r\n  \r\n    <ion-card-content>\r\n    <h3 class=\"idsupport\">{{'SUPPORT.support' | translate}}:</h3>\r\n    <h3 class=\"idsupport id\" (click)=\"copySid()\">{{sidSupport}}</h3>\r\n    \r\n    </ion-card-content>\r\n  </ion-card>\r\n\r\n\r\n  <ion-card class=\"cardtext\"> \r\n    \r\n  \r\n    <ion-card-content>\r\n      \r\n    <h5 class=\"textcopy\">{{'SUPPORT.text' | translate}}</h5>\r\n    </ion-card-content>\r\n  </ion-card>\r\n\r\n  <ion-card>\r\n    <h4 class=\"textdownload\">Para descargar la aplicación escanea este código QR</h4>\r\n    <img src=\"../../../assets/qrdownload.png\" class=\"qrdownload\">\r\n  </ion-card>\r\n\r\n\r\n\r\n</ion-content>\r\n");
+
+/***/ }),
+
+/***/ "./src/app/pages/support/support.module.ts":
+/*!*************************************************!*\
+  !*** ./src/app/pages/support/support.module.ts ***!
+  \*************************************************/
+/*! exports provided: SupportPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SupportPageModule", function() { return SupportPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _support_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./support.page */ "./src/app/pages/support/support.page.ts");
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
+
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _support_page__WEBPACK_IMPORTED_MODULE_6__["SupportPage"]
+    }
+];
+let SupportPageModule = class SupportPageModule {
+};
+SupportPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes),
+            _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateModule"]
+        ],
+        declarations: [_support_page__WEBPACK_IMPORTED_MODULE_6__["SupportPage"]]
+    })
+], SupportPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/support/support.page.scss":
+/*!*************************************************!*\
+  !*** ./src/app/pages/support/support.page.scss ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".idsupport {\n  font-weight: bold;\n  font-size: 18px;\n  color: black;\n  text-align: center;\n}\n\n.id {\n  margin-top: 12px;\n  font-size: 43px;\n}\n\n.textcopy {\n  color: #000000;\n  font-size: 16px;\n  text-align: center;\n}\n\n.cardtext {\n  margin-top: 16px;\n}\n\n.qrdownload {\n  width: 65%;\n  align-items: center;\n  margin-left: 16%;\n}\n\n.textdownload {\n  text-align: center;\n  color: #000000;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvc3VwcG9ydC9DOlxcVXNlcnNcXE5lbWVzc2lzXFxEZXNrdG9wXFxmc3UgLSBDb3B5MjJcXGZzdSAtIENvcHkvc3JjXFxhcHBcXHBhZ2VzXFxzdXBwb3J0XFxzdXBwb3J0LnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvc3VwcG9ydC9zdXBwb3J0LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGlCQUFBO0VBQ0EsZUFBQTtFQUNBLFlBQUE7RUFDQSxrQkFBQTtBQ0NKOztBREVBO0VBQ0ksZ0JBQUE7RUFDQSxlQUFBO0FDQ0o7O0FERUE7RUFDSSxjQUFBO0VBQ0EsZUFBQTtFQUNBLGtCQUFBO0FDQ0o7O0FERUE7RUFDSSxnQkFBQTtBQ0NKOztBREVBO0VBQ0ksVUFBQTtFQUNBLG1CQUFBO0VBQ0EsZ0JBQUE7QUNDSjs7QURFQTtFQUNJLGtCQUFBO0VBQ0EsY0FBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvc3VwcG9ydC9zdXBwb3J0LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5pZHN1cHBvcnR7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxuICAgIGZvbnQtc2l6ZTogMThweDtcclxuICAgIGNvbG9yOiBibGFjaztcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG5cclxuLmlke1xyXG4gICAgbWFyZ2luLXRvcDogMTJweDtcclxuICAgIGZvbnQtc2l6ZTogNDNweDtcclxufVxyXG5cclxuLnRleHRjb3B5e1xyXG4gICAgY29sb3I6ICMwMDAwMDA7XHJcbiAgICBmb250LXNpemU6IDE2cHg7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbi5jYXJkdGV4dHtcclxuICAgIG1hcmdpbi10b3A6IDE2cHg7O1xyXG59XHJcblxyXG4ucXJkb3dubG9hZHtcclxuICAgIHdpZHRoOiA2NSU7XHJcbiAgICBhbGlnbi1pdGVtczogY2VudGVyO1xyXG4gICAgbWFyZ2luLWxlZnQ6IDE2JTtcclxufVxyXG5cclxuLnRleHRkb3dubG9hZHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGNvbG9yOiAjMDAwMDAwO1xyXG59IiwiLmlkc3VwcG9ydCB7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xuICBmb250LXNpemU6IDE4cHg7XG4gIGNvbG9yOiBibGFjaztcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xufVxuXG4uaWQge1xuICBtYXJnaW4tdG9wOiAxMnB4O1xuICBmb250LXNpemU6IDQzcHg7XG59XG5cbi50ZXh0Y29weSB7XG4gIGNvbG9yOiAjMDAwMDAwO1xuICBmb250LXNpemU6IDE2cHg7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLmNhcmR0ZXh0IHtcbiAgbWFyZ2luLXRvcDogMTZweDtcbn1cblxuLnFyZG93bmxvYWQge1xuICB3aWR0aDogNjUlO1xuICBhbGlnbi1pdGVtczogY2VudGVyO1xuICBtYXJnaW4tbGVmdDogMTYlO1xufVxuXG4udGV4dGRvd25sb2FkIHtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBjb2xvcjogIzAwMDAwMDtcbn0iXX0= */");
+
+/***/ }),
+
+/***/ "./src/app/pages/support/support.page.ts":
+/*!***********************************************!*\
+  !*** ./src/app/pages/support/support.page.ts ***!
+  \***********************************************/
+/*! exports provided: SupportPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SupportPage", function() { return SupportPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/qr-scanner/ngx */ "./node_modules/@ionic-native/qr-scanner/ngx/index.js");
+/* harmony import */ var _ionic_native_clipboard_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic-native/clipboard/ngx */ "./node_modules/@ionic-native/clipboard/ngx/index.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _services_info_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/info.service */ "./src/app/services/info.service.ts");
+
+
+
+
+
+
+
+
+let SupportPage = class SupportPage {
+    constructor(qrScanner, clipboard, toastCtrl, router, platform, infoService) {
+        this.qrScanner = qrScanner;
+        this.clipboard = clipboard;
+        this.toastCtrl = toastCtrl;
+        this.router = router;
+        this.platform = platform;
+        this.infoService = infoService;
+        this.ssupport = 'uPzMQ5DZyr';
+        platform.ready().then(() => {
+            this.platform.pause.subscribe(() => {
+                // this.logout();
+            });
+            this.platform.resume.subscribe(() => {
+                console.log('[INFO] App resumed');
+            });
+        });
+    }
+    ngOnInit() {
+        this.qrScanner.hide();
+        this.qrScanner.destroy();
+        this.getSIDSupport();
+    }
+    logout() {
+        console.log("Logging out user");
+        this.router.navigate(['/home']);
+    }
+    copySid() {
+        this.clipboard.copy(this.sidSupport);
+        console.log('SID SUPPORT', this.sidSupport);
+        this.presentToast('Se ha copiado el Sekret ID de soporte');
+    }
+    presentToast(message) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const toast = yield this.toastCtrl.create({
+                message,
+                duration: 2000,
+                position: 'top'
+            });
+            toast.present();
+        });
+    }
+    getSIDSupport() {
+        this.infoService.getSidInfo().subscribe(res => {
+            const sids = res.supportDB;
+            console.log('<<<<<< SID INFO >>>>>>', sids[0].sidsuport);
+            this.sidSupport = sids[0].sidsuport;
+        });
+    }
+};
+SupportPage.ctorParameters = () => [
+    { type: _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_2__["QRScanner"] },
+    { type: _ionic_native_clipboard_ngx__WEBPACK_IMPORTED_MODULE_3__["Clipboard"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"] },
+    { type: _services_info_service__WEBPACK_IMPORTED_MODULE_6__["InfoService"] }
+];
+SupportPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-support',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./support.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/support/support.page.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./support.page.scss */ "./src/app/pages/support/support.page.scss")).default]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_2__["QRScanner"],
+        _ionic_native_clipboard_ngx__WEBPACK_IMPORTED_MODULE_3__["Clipboard"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"],
+        _services_info_service__WEBPACK_IMPORTED_MODULE_6__["InfoService"]])
+], SupportPage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/info.service.ts":
+/*!******************************************!*\
+  !*** ./src/app/services/info.service.ts ***!
+  \******************************************/
+/*! exports provided: InfoService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InfoService", function() { return InfoService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common/http */ "./node_modules/@angular/common/fesm2015/http.js");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+
+
+
+
+const URL = src_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].url;
+let InfoService = class InfoService {
+    constructor(http) {
+        this.http = http;
+    }
+    getSidInfo() {
+        return this.http.get(`${URL}/support/get`);
+    }
+};
+InfoService.ctorParameters = () => [
+    { type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"] }
+];
+InfoService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]])
+], InfoService);
+
+
+
+/***/ })
+
+}]);
+//# sourceMappingURL=pages-support-support-module-es2015.js.map

@@ -1,0 +1,28 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" src="../../../assets/icons/arrow-back-outline.svg"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Crear nuevo producto</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form class="formlogin" #formenroll="ngForm" (ngSubmit)="createProduct()">
+    <ion-list>  
+
+        <ion-item>
+          <ion-label position="floating" required="true">Descripcion de Cuenta corriente: </ion-label>
+          <ion-input type="text" name="account" [(ngModel)]="product.description" [value]="product.description" required>
+          </ion-input>
+        </ion-item>
+
+        <ion-button expand="block" fill="outline" type="submit" color="primary">
+          <ion-icon name="log-in" class="marginicon"></ion-icon> Abrir producto
+        </ion-button>
+
+      </ion-list>
+  
+    </form>
+  
+</ion-content>

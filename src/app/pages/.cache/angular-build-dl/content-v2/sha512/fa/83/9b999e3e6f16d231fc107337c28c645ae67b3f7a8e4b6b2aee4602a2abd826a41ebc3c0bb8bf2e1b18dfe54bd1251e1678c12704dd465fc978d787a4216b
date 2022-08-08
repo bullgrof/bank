@@ -1,0 +1,435 @@
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-admingroups-admingroups-module"], {
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/admingroups/admingroups.page.html":
+  /*!***********************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/admingroups/admingroups.page.html ***!
+    \***********************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppPagesAdmingroupsAdmingroupsPageHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<ion-header>\n  <ion-toolbar color=\"warning\">\n    <ion-buttons slot=\"start\">\n      <ion-back-button defaultHref=\"/groups\" icon-only></ion-back-button>\n    </ion-buttons>\n    <ion-title>Administrar</ion-title>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n\n  <ion-card>\n    <ion-card-header>\n      <ion-card-subtitle>Participantes</ion-card-subtitle>\n    </ion-card-header>\n  \n    <ion-card-content>\n      current user :<br>\n      \n      <ion-list>\n        <ion-item *ngFor=\"let member of members; let i = index\">\n          <ion-label> {{ member.name }} </ion-label>\n          <ion-icon name=\"star\" slot=\"start\" *ngIf=\"member.isadmin === currentUser\" class=\"star\"></ion-icon>\n          <ion-icon name=\"person-remove\" \n                    slot=\"end\" \n                    *ngIf=\"member.isadmin === currentUser && member.idMember === currentUser\" \n                    class=\"remove\"\n                    (click)=\"removeFromGroup(member.id, member.idMember)\"></ion-icon>\n\n\n\n                  <!--usuario no administradror-->\n          <ion-icon name=\"person-remove\" \n                    slot=\"end\" \n                    *ngIf=\"member.idMember === currentUser && member.isadmin === ''\" \n                    class=\"remove\"\n                    (click)=\"removeFromGroup(member.id, member.idMember)\"></ion-icon>\n        \n        </ion-item>\n      </ion-list>\n    </ion-card-content>\n  </ion-card>\n\n  <ion-card  *ngIf=\"admin === currentUser\">\n  <ion-card-header>\n      <ion-card-subtitle>Administración</ion-card-subtitle>\n    </ion-card-header>\n    <ion-card-content>\n      <ion-button expand=\"block\" color=\"danger\" (click)=\"presentAlertConfirm(groupId)\">Eliminar Grupo</ion-button>\n    </ion-card-content>\n  </ion-card>\n\n</ion-content>\n";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/admingroups/admingroups.module.ts":
+  /*!*********************************************************!*\
+    !*** ./src/app/pages/admingroups/admingroups.module.ts ***!
+    \*********************************************************/
+
+  /*! exports provided: AdmingroupsPageModule */
+
+  /***/
+  function srcAppPagesAdmingroupsAdmingroupsModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "AdmingroupsPageModule", function () {
+      return AdmingroupsPageModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _admingroups_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./admingroups.page */
+    "./src/app/pages/admingroups/admingroups.page.ts");
+
+    var routes = [{
+      path: '',
+      component: _admingroups_page__WEBPACK_IMPORTED_MODULE_6__["AdmingroupsPage"]
+    }];
+
+    var AdmingroupsPageModule = function AdmingroupsPageModule() {
+      _classCallCheck(this, AdmingroupsPageModule);
+    };
+
+    AdmingroupsPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)],
+      declarations: [_admingroups_page__WEBPACK_IMPORTED_MODULE_6__["AdmingroupsPage"]]
+    })], AdmingroupsPageModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/admingroups/admingroups.page.scss":
+  /*!*********************************************************!*\
+    !*** ./src/app/pages/admingroups/admingroups.page.scss ***!
+    \*********************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppPagesAdmingroupsAdmingroupsPageScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = ".star {\n  color: gold;\n}\n\n.remove {\n  color: red;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvYWRtaW5ncm91cHMvQzpcXFVzZXJzXFxOZW1lc3Npc1xcRGVza3RvcFxcZHZcXGZzdSAtIENvcHkgLSBjb3BpYS9zcmNcXGFwcFxccGFnZXNcXGFkbWluZ3JvdXBzXFxhZG1pbmdyb3Vwcy5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL2FkbWluZ3JvdXBzL2FkbWluZ3JvdXBzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFdBQUE7QUNDSjs7QURFQTtFQUNJLFVBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2FkbWluZ3JvdXBzL2FkbWluZ3JvdXBzLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5zdGFye1xyXG4gICAgY29sb3I6IGdvbGQ7XHJcbn1cclxuXHJcbi5yZW1vdmV7XHJcbiAgICBjb2xvcjogcmVkO1xyXG59IiwiLnN0YXIge1xuICBjb2xvcjogZ29sZDtcbn1cblxuLnJlbW92ZSB7XG4gIGNvbG9yOiByZWQ7XG59Il19 */";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/admingroups/admingroups.page.ts":
+  /*!*******************************************************!*\
+    !*** ./src/app/pages/admingroups/admingroups.page.ts ***!
+    \*******************************************************/
+
+  /*! exports provided: AdmingroupsPage */
+
+  /***/
+  function srcAppPagesAdmingroupsAdmingroupsPageTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "AdmingroupsPage", function () {
+      return AdmingroupsPage;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _services_chat_group_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../../services/chat-group.service */
+    "./src/app/services/chat-group.service.ts");
+    /* harmony import */
+
+
+    var _services_users_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ../../services/users.service */
+    "./src/app/services/users.service.ts");
+    /* harmony import */
+
+
+    var _ionic_storage__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @ionic/storage */
+    "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+
+    var AdmingroupsPage = /*#__PURE__*/function () {
+      function AdmingroupsPage(activatedRoute, groupService, userService, alertController, router, storage) {
+        _classCallCheck(this, AdmingroupsPage);
+
+        this.activatedRoute = activatedRoute;
+        this.groupService = groupService;
+        this.userService = userService;
+        this.alertController = alertController;
+        this.router = router;
+        this.storage = storage;
+        this.groupId = '';
+        this.members = [];
+        this.arrDelMember = {
+          groupId: "",
+          userId: "",
+          idUser: ""
+        };
+        this.toDeleteGroup = {
+          idgroup: '',
+          members: []
+        };
+        this.arrDelGroupUserC = {
+          idUser: "",
+          msgId: ""
+        };
+        this.gInfoMembers = [];
+      }
+
+      _createClass(AdmingroupsPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          var _this = this;
+
+          this.groupId = this.activatedRoute.snapshot.paramMap.get('idgroup');
+          console.log('============================ID GROUP========================', this.groupId);
+          console.log('=================================================================================', this.groupId);
+          this.getParticipants();
+          this.storage.get('username').then(function (result) {
+            _this.userService.getSekretId(result).subscribe(function (responseUser) {
+              _this.currentUser = responseUser.user[0]._id;
+
+              _this.getInfoG(_this.groupId, _this.currentUser);
+            });
+          });
+        }
+      }, {
+        key: "getInfoG",
+        value: function getInfoG(gid, currentUser) {
+          var _this2 = this;
+
+          this.groupService.getInfoGroup(gid).subscribe(function (rsInfoGroup) {
+            _this2.gInfoMembers = rsInfoGroup.chatGroup[0].participants;
+            console.log('XX XX XX XX ', _this2.gInfoMembers);
+            console.log('$$ $$ $$ $$', _this2.currentUser);
+
+            _this2.gInfoMembers.map(function (elem) {
+              if (elem.isadmin === '1') {
+                _this2.admin = elem.receiverId;
+                console.log('### ### ### ### ###', _this2.admin);
+                /* if (elem.receiverId === currentUser ) {
+                  this.admin =  elemn;
+                }*/
+              }
+            });
+          });
+        }
+      }, {
+        key: "getParticipants",
+        value: function getParticipants() {
+          var _this3 = this;
+
+          this.groupService.getGroupInfo(this.groupId).subscribe(function (responseGroupInfo) {
+            _this3.storage.get('username').then(function (result) {
+              _this3.userService.getSekretId(result).subscribe(function (responseUser) {
+                _this3.currentUser = responseUser.user[0]._id; // this.getInfoG(this.groupId, this.currentUser);
+
+                _this3.rsGroup = responseGroupInfo.data[0];
+                _this3.membersWithoutUsername = _this3.rsGroup.participants;
+
+                _this3.membersWithoutUsername.map(function (elem) {
+                  _this3.userService.getusernameById(elem.receiverId).subscribe(function (responseNameUser) {
+                    _this3.rsUser = responseNameUser.user[0];
+                    _this3.userName = _this3.rsUser.username;
+                    console.log('USERNAME => ', _this3.userName);
+
+                    if (elem.isadmin === "1") {
+                      console.log('ADMIN DETECTED', _this3.currentUser);
+                      _this3.adminUser = _this3.currentUser;
+                      _this3.adm = _this3.currentUser;
+                    } else {
+                      _this3.adminUser = '';
+                    }
+
+                    _this3.members.push({
+                      isadmin: _this3.adminUser,
+                      idMember: elem.receiverId,
+                      name: _this3.userName,
+                      id: elem._id
+                    });
+                  });
+                });
+
+                console.log('Pariticpantes del grupo', _this3.members);
+              });
+            });
+          });
+        }
+      }, {
+        key: "Admingroup",
+        value: function Admingroup(members) {
+          console.log('$%&', members);
+          members.map(function (elem) {
+            console.log('ELEMENTO ', elem);
+          });
+        }
+      }, {
+        key: "removeFromGroup",
+        value: function removeFromGroup(idMember, idu) {
+          var _this4 = this;
+
+          this.arrDelMember = {
+            groupId: this.groupId,
+            userId: idMember,
+            idUser: idu
+          };
+          this.groupService.deleteMemberOfGroup(this.arrDelMember).subscribe(function (responseDelMem) {
+            console.log(responseDelMem);
+
+            if (responseDelMem.ok === true) {
+              _this4.arrDelGroupUserC = {
+                idUser: idu,
+                msgId: _this4.groupId
+              };
+              console.log('ARREGLO DEL USUARIO QUE SE VA A ELIMINAR', _this4.arrDelGroupUserC);
+
+              _this4.groupService.deleteGroupOfUser(_this4.arrDelGroupUserC).subscribe(function (responseDelUsGroup) {
+                console.log('++--++--++--++--++--++--', responseDelUsGroup);
+                console.log('++--++--++--GROUP ID++--++--++--', _this4.groupId);
+
+                _this4.groupService.deleteGroupFromUser(_this4.arrDelGroupUserC).subscribe(function (rsDeleteGroupU) {
+                  console.log('#$#$#$#$#$# #$#$#$#$%# #$#$#$#$', rsDeleteGroupU);
+
+                  if (rsDeleteGroupU.ok === true) {
+                    _this4.router.navigate(['/groups']);
+                  }
+                });
+              });
+            }
+          });
+        }
+      }, {
+        key: "deleteGroup",
+        value: function deleteGroup(groupId) {
+          var _this5 = this;
+
+          console.log(groupId);
+          console.log('+ + + Miembros del grupo + + +', this.members);
+          this.toDeleteGroup = {
+            idgroup: groupId,
+            members: this.members
+          };
+          this.groupService.deleteGroup(this.toDeleteGroup).subscribe(function (responseDeleteG) {
+            console.log('======> Response DELETE GROUP => ', responseDeleteG);
+
+            if (responseDeleteG.ok === true) {
+              _this5.router.navigate(['/groups']);
+            }
+          });
+        }
+      }, {
+        key: "presentAlertConfirm",
+        value: function presentAlertConfirm(idGroup) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var _this6 = this;
+
+            var alert;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return this.alertController.create({
+                      header: 'Atención!',
+                      message: 'Esta <strong>Seguro </strong>que desea eliminar el Grupo?',
+                      buttons: [{
+                        text: 'Cancelar',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: function handler(blah) {
+                          console.log('Confirm Cancel: blah');
+                        }
+                      }, {
+                        text: 'Si',
+                        handler: function handler() {
+                          console.log('Confirm Okay');
+
+                          _this6.deleteGroup(idGroup);
+                        }
+                      }]
+                    });
+
+                  case 2:
+                    alert = _context.sent;
+                    _context.next = 5;
+                    return alert.present();
+
+                  case 5:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
+        }
+      }]);
+
+      return AdmingroupsPage;
+    }();
+
+    AdmingroupsPage.ctorParameters = function () {
+      return [{
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]
+      }, {
+        type: _services_chat_group_service__WEBPACK_IMPORTED_MODULE_4__["ChatGroupService"]
+      }, {
+        type: _services_users_service__WEBPACK_IMPORTED_MODULE_5__["UsersService"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }, {
+        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"]
+      }];
+    };
+
+    AdmingroupsPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-admingroups',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./admingroups.page.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/admingroups/admingroups.page.html"))["default"],
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./admingroups.page.scss */
+      "./src/app/pages/admingroups/admingroups.page.scss"))["default"]]
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], _services_chat_group_service__WEBPACK_IMPORTED_MODULE_4__["ChatGroupService"], _services_users_service__WEBPACK_IMPORTED_MODULE_5__["UsersService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _ionic_storage__WEBPACK_IMPORTED_MODULE_6__["Storage"]])], AdmingroupsPage);
+    /***/
+  }
+}]);
+//# sourceMappingURL=pages-admingroups-admingroups-module-es5.js.map

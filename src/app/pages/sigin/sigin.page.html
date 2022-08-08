@@ -1,0 +1,56 @@
+<ion-content  class="ion-padding animated fadeIn login auth-page">
+  <div class="theme-bg"></div>
+  <div class="auth-content">
+
+    <!-- Logo -->
+    <div  class="animated fadeInDown padding-horizontal text-center">
+      <div class="logo"></div>
+      <h4 class="ion-no-margin">
+        <img src="../../../assets/logo.svg" alt="">
+      </h4>
+    </div>
+
+    <!-- Login form -->
+    <form [formGroup]="onLoginForm" class="list-form">
+      <ion-item  class="ion-no-padding animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="mail" item-start></ion-icon>
+          Usuario
+        </ion-label>
+        <ion-input color="secondary" type="email" formControlName="email" class="padding"></ion-input>
+      </ion-item>
+      <p ion-text class="text08" *ngIf="onLoginForm.get('email').touched && onLoginForm.get('email').hasError('required')">
+        <ion-text color="warning">
+          Campo Requerido
+        </ion-text>
+      </p>
+
+      <ion-item  class="ion-no-padding animated fadeInUp">
+        <ion-label position="floating">
+          <ion-icon name="lock" item-start></ion-icon>
+          Password
+        </ion-label>
+        <ion-input color="secondary" type="password" formControlName="password"></ion-input>
+      </ion-item>
+      <p ion-text color="warning" class="text08" *ngIf="onLoginForm.get('password').touched && onLoginForm.get('password').hasError('required')">
+        <ion-text color="warning">
+          Campo Requerido
+        </ion-text>
+        </p>
+    </form>
+
+  
+    <div>
+      <ion-button icon-left size="medium" expand="full" shape="round" color="dark" (click)="login()" [disabled]="!onLoginForm.valid" tappable>
+        <ion-icon name="log-in"></ion-icon>
+        Iniciar
+      </ion-button>
+    </div>
+
+
+
+  </div>
+
+
+</ion-content>
+

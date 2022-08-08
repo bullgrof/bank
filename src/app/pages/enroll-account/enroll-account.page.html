@@ -1,0 +1,67 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" src="../../../assets/icons/arrow-back-outline.svg"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Inscribir Cuentas</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content padding="30">
+  <form class="formlogin" #formenroll="ngForm" (ngSubmit)="enroll()">
+    <ion-list>
+      
+
+        <ion-item>
+          <ion-label position="floating" required="true">alias: </ion-label>
+          <ion-input type="text" name="account" [(ngModel)]="enrollAccount.alias" [value]="enrollAccount.alias" required>
+          </ion-input>
+        </ion-item>
+
+
+      <ion-item>
+        <ion-label position="floating" required="true">Banco: </ion-label>
+        <ion-input type="text" name="value" [(ngModel)]="enrollAccount.banking"
+          required #input>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating" required="true">Tipo: </ion-label>      
+          <ion-select placeholder="Seleccion Tipo de cuenta" [(ngModel)]="enrollAccount.type" name="type" required> 
+            <ion-select-option value="Ahorros">Ahorros</ion-select-option>
+            <ion-select-option value="Corriente">Corriente</ion-select-option>
+          </ion-select>      
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating" required="true">Numero de cuenta: </ion-label>
+        <ion-input type="number" name="description" min="1" max="9999999999" [(ngModel)]="enrollAccount.account" required #input2>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating" required="true">Cedula: </ion-label>
+        <ion-input type="number" name="description" [(ngModel)]="enrollAccount.id" required #input2>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating" required="true">Moneda: </ion-label>
+        
+          <ion-select placeholder="Seleccion la moneda" [(ngModel)]="enrollAccount.currency" name="type" required> 
+            <ion-select-option value="COP">Pesos Colombianos</ion-select-option>
+            <ion-select-option value="USD">Dolares</ion-select-option>
+          </ion-select>  
+        
+      </ion-item>
+
+      <ion-button expand="block" fill="outline" type="submit" color="warning">
+        <ion-icon name="log-in" class="marginicon"></ion-icon> Inscribir
+      </ion-button>
+    </ion-list>
+
+  </form>
+
+
+</ion-content>

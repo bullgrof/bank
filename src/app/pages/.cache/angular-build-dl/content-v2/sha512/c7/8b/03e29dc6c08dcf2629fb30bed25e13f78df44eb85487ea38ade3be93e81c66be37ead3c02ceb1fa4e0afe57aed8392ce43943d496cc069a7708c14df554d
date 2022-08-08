@@ -1,0 +1,373 @@
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-chat-new-chat-new-module"],{
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/chat-new/chat-new.page.html":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/chat-new/chat-new.page.html ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\n  <ion-toolbar color=\"warning\">\n    <ion-buttons slot=\"start\">\n      <ion-button (click)=\"goToContacts()\">\n      <ion-icon src=\"assets/icons/arrow-back.svg\"></ion-icon>\n    </ion-button>\n  </ion-buttons>\n\n  <ion-buttons class=\"\">\n    <ion-avatar slot=\"\" color=\"warning\">\n      <img src=\"../../../assets/avatars/av-10.png\" class=\"avatar\">\n    </ion-avatar>\n    <label class=\"username\">{{usernameContact}} ({{nameContact}})</label>\n  </ion-buttons>\n\n  <ion-buttons slot=\"primary\">\n    <ion-button  (click)=\"logout()\">\n      <ion-icon  slot=\"end\" src=\"/assets/icons/power.svg\" class=\"icon-logout\" ></ion-icon>\n    </ion-button>\n  </ion-buttons>    \n  </ion-toolbar>\n</ion-header>\n\n<ion-content>\n  <!--space to menu lateral rigth-->\n  \n<ion-row *ngFor=\"let message of messages; let i = index\">\n\n\n  <ion-col size=\"9\" *ngIf=\"message.senderId !== currentUser && message.type === '1' \"\n          class=\"message other-message\">\n          <div *ngIf=\"currentUser  !== message.deleteAlpha || currentUser === message.deletebetha\">\n            <div *ngIf=\"currentUser !== message.deletebetha\">\n              <div class=\"user\" >\n                <ion-icon src=\"/assets/icons/redo.svg\" class=\"icon-app\" (click)=\"presentMenuBar(message.body, message.receiverId)\"></ion-icon> \n                {{ nameContact }} <br>\n              </div>\n              <span>{{ decrypt(message.body)}}</span>\n              <div class=\"mess text-right\">{{ message.createdAt}}</div>\n              <div class=\"decode text-right\">Decoded {{message.createAt | date:'short'}}</div>\n            </div>\n          </div>\n        </ion-col>\n\n        <ion-col offset=\"3\" size=\"9\" *ngIf=\"message.senderId === currentUser && message.type === '1' && currentUser !== message.deleteAlpha\"\n          class=\"message my-message\">\n          <div *ngIf=\"currentUser  !== message.deleteAlpha || currentUser === message.deletebetha\">\n            <div *ngIf=\"currentUser !== message.deletebetha\">\n              <div class=\"user\"><br>\n                <ion-icon src=\"/assets/icons/redo.svg\" class=\"icon-app\" (click)=\"presentMenuBar(message.body, message.receiverId)\"></ion-icon>\n                 {{ myUsername }}<br>\n              </div>\n              <span>{{ decrypt(message.body) }}</span>\n              <div class=\"mess text-right\">{{ message.createdAt}}</div>\n              <div class=\"decode text-right\">Encoded {{message.createAt | date:'short' }}</div>\n              <ion-icon src=\"assets/icons/checkmark-outline.svg\" *ngIf=\"message.isread === '0'\"></ion-icon>\n              <ion-icon src=\"assets/icons/checkmark-done-outline.svg\" *ngIf=\"message.isread === '1'\"></ion-icon>\n            </div>\n          </div>\n        </ion-col>\n</ion-row>\n  \n</ion-content>\n\n\n<ion-footer color=\"warning\">\n  <ion-toolbar color=\"light\">\n    <ion-row class=\"align-items-center\" class=\"ion-no-padding\">\n      <ion-col size=\"10\">\n        <textarea autosize maxRows=\"4\" [(ngModel)]=\"message\" class=\"message-input\"></textarea>\n      </ion-col>\n      <ion-col size=\"2\">\n        <ion-button expand=\"block\" fill=\"clear\" color=\"warning\" [disabled]=\"message === ''\" class=\"msg-btn\"\n          (click)=\"sendMessage()\">\n          <ion-icon src=\"assets/icons/send.svg\" slot=\"icon-only\"></ion-icon>\n        </ion-button>\n      </ion-col>\n    </ion-row>\n  </ion-toolbar>\n</ion-footer>");
+
+/***/ }),
+
+/***/ "./src/app/pages/chat-new/chat-new.module.ts":
+/*!***************************************************!*\
+  !*** ./src/app/pages/chat-new/chat-new.module.ts ***!
+  \***************************************************/
+/*! exports provided: ChatNewPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChatNewPageModule", function() { return ChatNewPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _chat_new_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./chat-new.page */ "./src/app/pages/chat-new/chat-new.page.ts");
+/* harmony import */ var ngx_autosize__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-autosize */ "./node_modules/ngx-autosize/fesm2015/ngx-autosize.js");
+
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _chat_new_page__WEBPACK_IMPORTED_MODULE_6__["ChatNewPage"]
+    }
+];
+let ChatNewPageModule = class ChatNewPageModule {
+};
+ChatNewPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes),
+            ngx_autosize__WEBPACK_IMPORTED_MODULE_7__["AutosizeModule"]
+        ],
+        declarations: [_chat_new_page__WEBPACK_IMPORTED_MODULE_6__["ChatNewPage"]]
+    })
+], ChatNewPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/chat-new/chat-new.page.scss":
+/*!***************************************************!*\
+  !*** ./src/app/pages/chat-new/chat-new.page.scss ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".avatar {\n  width: 75%;\n  height: 75%;\n  margin-top: 10%; }\n\n.username {\n  font-size: 13px; }\n\n.icon-logout {\n  color: red;\n  font-size: 20px; }\n\n.message-input {\n  width: 100%;\n  border: 1px solid var(--ion-color-medium);\n  border-radius: 10px;\n  background: #fff;\n  resize: none;\n  padding-left: 10px;\n  padding-right: 10px; }\n\n.msg-btn {\n  --padding-start: 0.5em;\n  --padding-end: 0.5em; }\n\n/*Messages*/\n\n.message {\n  border-radius: 10px;\n  margin-bottom: 4px;\n  white-space: pre-wrap; }\n\n.other-message {\n  background: #ffffff;\n  color: #000000;\n  border-color: #c0c0c0;\n  border-width: thin;\n  border-style: solid; }\n\n.my-message {\n  background: #dddbdb;\n  color: #000000;\n  border-color: #c0c0c0;\n  border-width: thin;\n  border-style: solid; }\n\n.user {\n  font-weight: bold;\n  font-size: 18px;\n  color: #3B3B3B; }\n\n.user2 {\n  font-weight: bold;\n  font-size: 18px;\n  color: #3B3B3B;\n  margin-top: -19px; }\n\n/*END MESSAGEs*/\n\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY2hhdC1uZXcvQzpcXFVzZXJzXFxOZW1lc3Npc1xcRGVza3RvcFxcZGV2XFxBYnJpbFxcZnN1L3NyY1xcYXBwXFxwYWdlc1xcY2hhdC1uZXdcXGNoYXQtbmV3LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLFVBQVU7RUFDVixXQUFXO0VBQ1gsZUFBZSxFQUFBOztBQUduQjtFQUNJLGVBQWMsRUFBQTs7QUFHbEI7RUFDRyxVQUFVO0VBQ1YsZUFBZSxFQUFBOztBQUdsQjtFQUNJLFdBQVc7RUFDWCx5Q0FBeUM7RUFDekMsbUJBQW1CO0VBQ25CLGdCQUFnQjtFQUNoQixZQUFZO0VBQ1osa0JBQWtCO0VBQ2xCLG1CQUFtQixFQUFBOztBQUdyQjtFQUNFLHNCQUFnQjtFQUNoQixvQkFBYyxFQUFBOztBQUloQixXQUFBOztBQUNBO0VBRUUsbUJBQW1CO0VBQ25CLGtCQUFrQjtFQUNsQixxQkFBcUIsRUFBQTs7QUFHdkI7RUFDRSxtQkFBbUI7RUFDbkIsY0FBYztFQUNkLHFCQUFxQjtFQUNyQixrQkFBa0I7RUFDbEIsbUJBQW1CLEVBQUE7O0FBR3JCO0VBQ0UsbUJBQW1CO0VBQ25CLGNBQWM7RUFDZCxxQkFBcUI7RUFDckIsa0JBQWtCO0VBQ2xCLG1CQUFtQixFQUFBOztBQUlyQjtFQUNFLGlCQUFpQjtFQUNqQixlQUFlO0VBQ2YsY0FBYyxFQUFBOztBQUloQjtFQUNFLGlCQUFpQjtFQUNqQixlQUFlO0VBQ2YsY0FBYztFQUNkLGlCQUFpQixFQUFBOztBQUduQixlQUFBIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvY2hhdC1uZXcvY2hhdC1uZXcucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLmF2YXRhcntcclxuICAgIHdpZHRoOiA3NSU7XHJcbiAgICBoZWlnaHQ6IDc1JTtcclxuICAgIG1hcmdpbi10b3A6IDEwJTtcclxufVxyXG5cclxuLnVzZXJuYW1le1xyXG4gICAgZm9udC1zaXplOjEzcHg7XHJcbn1cclxuXHJcbi5pY29uLWxvZ291dHtcclxuICAgY29sb3I6IHJlZDtcclxuICAgZm9udC1zaXplOiAyMHB4O1xyXG59XHJcblxyXG4ubWVzc2FnZS1pbnB1dCB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWlvbi1jb2xvci1tZWRpdW0pO1xyXG4gICAgYm9yZGVyLXJhZGl1czogMTBweDtcclxuICAgIGJhY2tncm91bmQ6ICNmZmY7XHJcbiAgICByZXNpemU6IG5vbmU7XHJcbiAgICBwYWRkaW5nLWxlZnQ6IDEwcHg7XHJcbiAgICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xyXG4gIH1cclxuXHJcbiAgLm1zZy1idG4ge1xyXG4gICAgLS1wYWRkaW5nLXN0YXJ0OiAwLjVlbTtcclxuICAgIC0tcGFkZGluZy1lbmQ6IDAuNWVtO1xyXG4gIH1cclxuXHJcblxyXG4gIC8qTWVzc2FnZXMqL1xyXG4gIC5tZXNzYWdlIHtcclxuICAgIC8vcGFkZGluZzogMTBweDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7XHJcbiAgICBtYXJnaW4tYm90dG9tOiA0cHg7XHJcbiAgICB3aGl0ZS1zcGFjZTogcHJlLXdyYXA7XHJcbiAgfVxyXG4gICBcclxuICAub3RoZXItbWVzc2FnZSB7XHJcbiAgICBiYWNrZ3JvdW5kOiAjZmZmZmZmO1xyXG4gICAgY29sb3I6ICMwMDAwMDA7XHJcbiAgICBib3JkZXItY29sb3I6ICNjMGMwYzA7XHJcbiAgICBib3JkZXItd2lkdGg6IHRoaW47XHJcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkO1xyXG4gIH1cclxuXHJcbiAgLm15LW1lc3NhZ2Uge1xyXG4gICAgYmFja2dyb3VuZDogI2RkZGJkYjtcclxuICAgIGNvbG9yOiAjMDAwMDAwO1xyXG4gICAgYm9yZGVyLWNvbG9yOiAjYzBjMGMwO1xyXG4gICAgYm9yZGVyLXdpZHRoOiB0aGluO1xyXG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcclxuICBcclxuICB9XHJcblxyXG4gIC51c2Vye1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICBmb250LXNpemU6IDE4cHg7XHJcbiAgICBjb2xvcjogIzNCM0IzQjtcclxuICAgIFxyXG4gIH1cclxuXHJcbiAgLnVzZXIye1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICBmb250LXNpemU6IDE4cHg7XHJcbiAgICBjb2xvcjogIzNCM0IzQjtcclxuICAgIG1hcmdpbi10b3A6IC0xOXB4O1xyXG4gIH1cclxuXHJcbiAgLypFTkQgTUVTU0FHRXMqLyJdfQ== */");
+
+/***/ }),
+
+/***/ "./src/app/pages/chat-new/chat-new.page.ts":
+/*!*************************************************!*\
+  !*** ./src/app/pages/chat-new/chat-new.page.ts ***!
+  \*************************************************/
+/*! exports provided: ChatNewPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChatNewPage", function() { return ChatNewPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+/* harmony import */ var src_app_services_users_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/users.service */ "./src/app/services/users.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/contacts.service */ "./src/app/services/contacts.service.ts");
+/* harmony import */ var src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/chat.service */ "./src/app/services/chat.service.ts");
+/* harmony import */ var crypto_js_enc_utf8__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! crypto-js/enc-utf8 */ "./node_modules/crypto-js/enc-utf8.js");
+/* harmony import */ var crypto_js_enc_utf8__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(crypto_js_enc_utf8__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var crypto_js_aes__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! crypto-js/aes */ "./node_modules/crypto-js/aes.js");
+/* harmony import */ var crypto_js_aes__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(crypto_js_aes__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _ionic_native_aes_256_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/aes-256/ngx */ "./node_modules/@ionic-native/aes-256/ngx/index.js");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var src_app_services_push_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! src/app/services/push.service */ "./src/app/services/push.service.ts");
+/* harmony import */ var ngx_socket_io__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ngx-socket-io */ "./node_modules/ngx-socket-io/fesm2015/ngx-socket-io.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+let ChatNewPage = class ChatNewPage {
+    constructor(storage, userService, activatedRoute, contactsService, router, chatService, aes256, pushService, socket) {
+        this.storage = storage;
+        this.userService = userService;
+        this.activatedRoute = activatedRoute;
+        this.contactsService = contactsService;
+        this.router = router;
+        this.chatService = chatService;
+        this.aes256 = aes256;
+        this.pushService = pushService;
+        this.socket = socket;
+        //varsMessages
+        this.page = 0;
+        this.allMessages = {
+            sender: '',
+            receiver: '',
+        };
+        this.part = {
+            senderId: '',
+            receiverId: ''
+        };
+        this.messages = [];
+        this.message = '';
+        this.cipherMessage = '';
+        this.cipher = '';
+        this.key1 = '123456789abcdefghijklmnopqrstuuvwxyz';
+        this.decodedMessage = '';
+        this.skey = src_environments_environment__WEBPACK_IMPORTED_MODULE_10__["environment"].sekretKey;
+        this.messageBody = {
+            message: '',
+            receiverid: '',
+            senderid: '',
+            type: '',
+            image: '',
+            secureKey: '',
+            secureIv: '',
+            createAt: Date.now(),
+        };
+        this.toSocket = {
+            convId: '',
+            msg: '',
+            type: '',
+            senderId: '',
+            receiverId: '',
+            audioFile: ''
+        };
+        this.m = [];
+    }
+    ngOnInit() {
+    } //end on init
+    ionViewDidEnter() {
+        this.socket.connect();
+        this.sidContact = this.activatedRoute.snapshot.paramMap.get('hash');
+        //Get Var current User
+        this.socket.fromEvent('privateMessage').subscribe(responseSockPriv => {
+            console.log('Respuesta SOcket', responseSockPriv);
+        });
+        this.socket.fromEvent('messageP').subscribe(resSockMessage => {
+            console.log("PASOOOOOOOOOOOOOOOOOOOOOOO");
+            console.log("@@@@@@@@@@@@@@@@@@@@", resSockMessage);
+        });
+        this.socket.fromEvent('testConnection').subscribe(resMessIn => {
+            this.messageInSocket = resMessIn;
+            this.m = this.messageInSocket.msg;
+            console.log('[INFO]', resMessIn);
+            /* if (this.messageInSocket.asd.senderId !== this.currentUser) {
+              console.log('EL QUE ENVIA ES DIFERENTE')
+             }else{
+               console.log('EL QUE ENVIA IGUAL')
+             }*/
+        });
+        this.socket.fromEvent('user-connected').subscribe(resls => {
+            console.log('++SOCKET CONECTADO++');
+        });
+        this.socket.fromEvent('joined').subscribe(resls => {
+            console.log('++Sala Creada++', resls);
+        });
+        this.socket.fromEvent('message').subscribe(resmessage => {
+            this.messageInSocket = resmessage;
+            if (this.messageInSocket.msg !== '') {
+                console.log('MENSJAES ES DIFERENTE DE NULL');
+                this.messages.push({
+                    body: this.messageInSocket.msg,
+                    createAt: Date.now(),
+                    image: "",
+                    isread: '0',
+                    receiverid: this.messageInSocket.receiverId,
+                    secureIv: "",
+                    secureKey: "",
+                    senderId: this.messageInSocket.senderId,
+                    type: this.messageInSocket.type,
+                    audioFile: this.messageInSocket.audioFile
+                });
+            }
+            console.log('===MESSAGES===', this.messages);
+        });
+        this.storage.get('username').then((result) => {
+            this.userService.getSekretId(result).subscribe(responseUser => {
+                this.mySid = responseUser.user[0].sekretid;
+                this.myId = responseUser.user[0]._id;
+                this.currentUser = this.myId;
+                this.myUsername = responseUser.user[0].username;
+                // For more vars
+                //Get Vars Contact User
+                this.userService.getUserNameBySekretId(this.sidContact).subscribe(responseContact => {
+                    this.arrayContact = responseContact.user[0];
+                    this.idContact = this.arrayContact._id;
+                    this.usernameContact = this.arrayContact.username;
+                    this.notiIdContact = this.arrayContact.notificationId;
+                    // for more vars
+                    this.getRename();
+                    this.loadData();
+                    this.generateSecureKeyAndIV();
+                    // this.socket.fromEvent('messageP').subscribe()
+                }); //end userService Contact
+            }); //end userService My Current user      
+        });
+    }
+    loadData(ev) {
+        this.page++;
+        let mmsg;
+        this.allMessages = {
+            sender: this.myId,
+            receiver: this.idContact,
+        };
+        this.part = {
+            senderId: this.myId,
+            receiverId: this.idContact
+        };
+        this.chatService.getCoversationid(this.part).subscribe(resConvId => {
+            this.toSocket = {
+                convId: resConvId.idConver,
+                msg: '',
+                type: '',
+                senderId: '',
+                receiverId: '',
+                audioFile: ''
+            };
+            this.socket.emit('send-message', { msg: this.toSocket });
+        });
+        console.log('PAGE', this.page);
+        console.log('PART', this.part);
+        this.chatService.getMessagesNew(this.allMessages, this.page).subscribe(responseChat => {
+            console.log('================', responseChat);
+            mmsg = responseChat.response;
+            mmsg.map(elem => {
+                console.log('FUCKING ARRAY ELEMENT', elem);
+                this.messages.unshift(elem.message);
+            });
+            console.log('????????', this.messages);
+            if (ev) {
+                ev.target.complete();
+                if (responseChat.response.length === 0) {
+                    ev.target.disabled = true;
+                    this.page = 0;
+                }
+            }
+        });
+    }
+    sendMessage(formChat) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            let messageInput = this.message;
+            this.cipherMessage = yield this.encrypt(messageInput);
+            this.messageBody = {
+                message: this.cipherMessage,
+                receiverid: this.idContact,
+                senderid: this.myId,
+                type: '1',
+                image: '',
+                secureKey: this.secureKEY,
+                secureIv: this.secureIV,
+                createAt: Date.now(),
+            };
+            this.chatService.getCoversationid(this.part).subscribe(resConvId => {
+                this.toSocket = {
+                    convId: resConvId.idConver,
+                    msg: this.cipherMessage,
+                    type: this.messageBody.type,
+                    senderId: this.myId,
+                    receiverId: this.idContact,
+                    audioFile: ''
+                };
+                // console.log('++++++++++++++', this.toSocket);
+                this.socket.emit('send-message', { msg: this.toSocket });
+            });
+            //sendMessage
+            this.chatService.send(this.messageBody).subscribe(responseSendMessage => {
+            });
+            //send notification
+            this.pushService.sendPushNotification(this.notiIdContact).subscribe(responseNoti => { });
+            this.message = '';
+        });
+    } //end Send Message
+    encrypt(data) {
+        const dat2 = data.toString();
+        this.cipher = crypto_js_aes__WEBPACK_IMPORTED_MODULE_8__["encrypt"](JSON.stringify(data), this.key1).toString();
+        return this.cipher;
+    }
+    decrypt(encryptedData) {
+        this.decodedMessage = crypto_js_aes__WEBPACK_IMPORTED_MODULE_8__["decrypt"](encryptedData, this.key1).toString(crypto_js_enc_utf8__WEBPACK_IMPORTED_MODULE_7__);
+        return this.decodedMessage;
+    }
+    generateSecureKeyAndIV() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            this.secureKEY = yield this.aes256.generateSecureKey(this.skey); // Returns a 32 bytes string
+            this.secureIV = yield this.aes256.generateSecureIV(this.skey); // Returns a 16 bytes string
+        });
+    }
+    getRename() {
+        let contacts = {
+            sidUser: this.mySid,
+            sidcontact: this.sidContact
+        };
+        this.contactsService.getAliasContact(contacts).subscribe(responseContacts => {
+            this.nameContact = responseContacts.alias;
+        });
+    }
+    goToContacts() {
+        this.router.navigate(['/contacts']);
+    }
+};
+ChatNewPage.ctorParameters = () => [
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_2__["Storage"] },
+    { type: src_app_services_users_service__WEBPACK_IMPORTED_MODULE_3__["UsersService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"] },
+    { type: src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_5__["ContactsService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
+    { type: src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_6__["ChatService"] },
+    { type: _ionic_native_aes_256_ngx__WEBPACK_IMPORTED_MODULE_9__["AES256"] },
+    { type: src_app_services_push_service__WEBPACK_IMPORTED_MODULE_11__["PushService"] },
+    { type: ngx_socket_io__WEBPACK_IMPORTED_MODULE_12__["Socket"] }
+];
+ChatNewPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-chat-new',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./chat-new.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/chat-new/chat-new.page.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./chat-new.page.scss */ "./src/app/pages/chat-new/chat-new.page.scss")).default]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_2__["Storage"],
+        src_app_services_users_service__WEBPACK_IMPORTED_MODULE_3__["UsersService"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"],
+        src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_5__["ContactsService"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
+        src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_6__["ChatService"],
+        _ionic_native_aes_256_ngx__WEBPACK_IMPORTED_MODULE_9__["AES256"],
+        src_app_services_push_service__WEBPACK_IMPORTED_MODULE_11__["PushService"],
+        ngx_socket_io__WEBPACK_IMPORTED_MODULE_12__["Socket"]])
+], ChatNewPage);
+
+//this.receiverSid =
+
+
+/***/ })
+
+}]);
+//# sourceMappingURL=pages-chat-new-chat-new-module-es2015.js.map

@@ -1,0 +1,1053 @@
+function _toConsumableArray(arr) { return _arrayWithoutHoles(arr) || _iterableToArray(arr) || _unsupportedIterableToArray(arr) || _nonIterableSpread(); }
+
+function _nonIterableSpread() { throw new TypeError("Invalid attempt to spread non-iterable instance.\nIn order to be iterable, non-array objects must have a [Symbol.iterator]() method."); }
+
+function _unsupportedIterableToArray(o, minLen) { if (!o) return; if (typeof o === "string") return _arrayLikeToArray(o, minLen); var n = Object.prototype.toString.call(o).slice(8, -1); if (n === "Object" && o.constructor) n = o.constructor.name; if (n === "Map" || n === "Set") return Array.from(o); if (n === "Arguments" || /^(?:Ui|I)nt(?:8|16|32)(?:Clamped)?Array$/.test(n)) return _arrayLikeToArray(o, minLen); }
+
+function _iterableToArray(iter) { if (typeof Symbol !== "undefined" && Symbol.iterator in Object(iter)) return Array.from(iter); }
+
+function _arrayWithoutHoles(arr) { if (Array.isArray(arr)) return _arrayLikeToArray(arr); }
+
+function _arrayLikeToArray(arr, len) { if (len == null || len > arr.length) len = arr.length; for (var i = 0, arr2 = new Array(len); i < len; i++) { arr2[i] = arr[i]; } return arr2; }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-chat-group-chat-group-module"], {
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/chat-group/chat-group.page.html":
+  /*!*********************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/chat-group/chat-group.page.html ***!
+    \*********************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppPagesChatGroupChatGroupPageHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar color=\"warning\">\r\n    <ion-buttons slot=\"start\">\r\n      <!--ion-button (click)=\"navigate()\"-->\r\n      <ion-button [routerLink]=\"['/groups']\">\r\n        <ion-icon src=\"assets/icons/arrow-back.svg\"></ion-icon>\r\n      </ion-button>     \r\n    </ion-buttons>\r\n\r\n    <ion-buttons class=\"buttonmiddle\">\r\n      <ion-avatar slot=\"\" color=\"warning\">\r\n        <img src=\"../../../assets/avatars/group.png\" class=\"avatar11\">\r\n      </ion-avatar>\r\n      <label class=\"username1\">  {{nameGroup}}   </label>\r\n    </ion-buttons>\r\n    \r\n    <ion-buttons slot=\"primary\">      \r\n      <ion-button color=\"danger\" (click)=\"logout()\">        \r\n        <ion-icon slot=\"end\" ios=\"power\" md=\"power\" color=\"white\"></ion-icon>\r\n      </ion-button>\r\n    </ion-buttons>\r\n    \r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content  #scrollElement class=\"ion-padding\" [scrollEvents]=\"true\">\r\n \r\n  <ion-fab horizontal=\"end\" vertical=\"top\" slot=\"fixed\" color=\"warning\" *ngIf=\"planActive === 'Plan Plus'\">\r\n\r\n    <ion-fab-button class=\"ios ion-activatable ion-focusable hydrated\" color=\"warning\">\r\n      <ion-icon name=\"add\"></ion-icon>\r\n    </ion-fab-button>\r\n    <ion-fab-list side=\"\">\r\n\r\n      <ion-fab-button color=\"warning\"  data-desc=\"Administrar\" [routerLink]=\"['/admingroups', idg]\">\r\n        <ion-icon name=\"settings-outline\" role=\"img\" class=\"ios hydrated\" aria-label=\"logo facebook\"></ion-icon>\r\n      </ion-fab-button>\r\n\r\n      <ion-fab-button color=\"warning\"  data-desc=\"Cámara\" (click)=\"captureImage()\">\r\n        <ion-icon name=\"camera\" role=\"img\" class=\"ios hydrated\" aria-label=\"logo facebook\"></ion-icon>\r\n      </ion-fab-button>\r\n\r\n      <ion-fab-button color=\"warning\"  data-desc=\"Galería\" (click)=\"imageGallery()\">\r\n        <ion-icon name=\"image\" role=\"img\" class=\"ios hydrated\" aria-label=\"logo twitter\"></ion-icon>\r\n      </ion-fab-button>\r\n\r\n      <!--ion-fab-button color=\"warning\"  data-desc=\"Enviar al Baúl\" (click)=\"sendTrunk()\">\r\n        <ion-icon name=\"lock-closed\" role=\"img\" class=\"ios hydrated\" aria-label=\"logo twitter\"></ion-icon>\r\n      </ion-fab-button>\r\n\r\n      <ion-fab-button color=\"warning\"  data-desc=\"Eliminar mensajes\" (click)=\"deleteMeessages()\">\r\n        <ion-icon name=\"trash\" role=\"img\" class=\"ios hydrated\" aria-label=\"logo vimeo\"></ion-icon>\r\n      </ion-fab-button-->\r\n      \r\n\r\n\r\n    </ion-fab-list>\r\n  </ion-fab>\r\n\r\n\r\n\r\n  <ion-row *ngFor=\"let message of messages; let i = index\" >\r\n\r\n    <ion-col size=\"9\" *ngIf=\"message.senderId !== userId && message.type === '2' && message.body !== ''\" class=\"message other-message\">\r\n      <div class=\"user\">{{ message.username }}</div>\r\n      <span class=\"msg\"> {{ decrypt(message.body) }} </span>\r\n      <div class=\"mess text-right\">{{ message.createAt | date:'short' }} </div>      \r\n    </ion-col>\r\n\r\n    <ion-col size=\"9\" offset=\"3\" *ngIf=\"message.senderId === userId && message.type === '2'\" class=\"message my-message\">\r\n      <div class=\"user\">{{ message.username }}</div>\r\n      <span> {{ decrypt(message.body) }} </span>\r\n      <div class=\"mess text-right\">{{ message.createAt  | date:'short' }} </div>      \r\n    </ion-col>\r\n\r\n    <ion-col size=\"11\" *ngIf=\"message.senderId !== userId && message.type === '3'\" class=\"message other-message\">\r\n      <div class=\"user\">{{ message.username }}</div> \r\n      <ion-img [src]=\"message.body | image\" (click)=\"openGallery(message.body)\"></ion-img>\r\n      <div class=\"mess text-right\">{{ message.createAt  | date:'short' }} </div>      \r\n    </ion-col>\r\n\r\n    <ion-col size=\"11\" offset=\"1\" *ngIf=\"message.senderId === userId && message.type === '3'\" class=\"message my-message\">\r\n      <div class=\"user\">{{ message.username }}</div>\r\n      <ion-img [src]=\"message.body | image\" (click)=\"openGallery(message.body)\"></ion-img>\r\n      <div class=\"mess text-right\">{{ message.createAt  | date:'short'}} </div>   \r\n    </ion-col>\r\n\r\n  </ion-row>\r\n</ion-content>\r\n\r\n<ion-footer color=\"warning\">\r\n  <ion-toolbar color=\"light\">\r\n    <ion-row class=\"align-items-center\">\r\n    <ion-col size=\"10\">\r\n        <ion-textarea auto-grow class=\"message-input\" rows=\"1\" [(ngModel)]=\"message\" ></ion-textarea><!--(click)=\"activeTape()\"-->\r\n      </ion-col>\r\n      <ion-col size=\"2\">\r\n        <ion-button expand=\"block\" fill=\"clear\" color=\"warning\" [disabled]=\"message === ''\" class=\"msg-btn\"\r\n          (click)=\"sendMessage()\">\r\n          <ion-icon src=\"assets/icons/send.svg\" slot=\"icon-only\" class=\"boton-send\"></ion-icon>\r\n        </ion-button>\r\n      </ion-col>\r\n    </ion-row>\r\n  </ion-toolbar>\r\n</ion-footer>";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/chat-group/chat-group.module.ts":
+  /*!*******************************************************!*\
+    !*** ./src/app/pages/chat-group/chat-group.module.ts ***!
+    \*******************************************************/
+
+  /*! exports provided: ChatGroupPageModule */
+
+  /***/
+  function srcAppPagesChatGroupChatGroupModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ChatGroupPageModule", function () {
+      return ChatGroupPageModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _chat_group_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./chat-group.page */
+    "./src/app/pages/chat-group/chat-group.page.ts");
+    /* harmony import */
+
+
+    var src_app_pipes_pipes_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! src/app/pipes/pipes.module */
+    "./src/app/pipes/pipes.module.ts");
+
+    var routes = [{
+      path: '',
+      component: _chat_group_page__WEBPACK_IMPORTED_MODULE_6__["ChatGroupPage"]
+    }];
+
+    var ChatGroupPageModule = function ChatGroupPageModule() {
+      _classCallCheck(this, ChatGroupPageModule);
+    };
+
+    ChatGroupPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes), src_app_pipes_pipes_module__WEBPACK_IMPORTED_MODULE_7__["PipesModule"]],
+      declarations: [_chat_group_page__WEBPACK_IMPORTED_MODULE_6__["ChatGroupPage"]]
+    })], ChatGroupPageModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/chat-group/chat-group.page.scss":
+  /*!*******************************************************!*\
+    !*** ./src/app/pages/chat-group/chat-group.page.scss ***!
+    \*******************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppPagesChatGroupChatGroupPageScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = ".message-input {\n  margin-top: 0px;\n  border: 1px solid var(--ion-color-medium);\n  border-radius: 10px;\n  background: #fff;\n}\n\n.msg-btn {\n  --padding-start: 0.5em;\n  --padding-end: 0.5em;\n}\n\n.message {\n  padding: 10px;\n  border-radius: 10px;\n  margin-bottom: 4px;\n  white-space: pre-wrap;\n}\n\n.my-message {\n  background: #dddbdb;\n  color: #000000;\n  border-color: #c0c0c0;\n  border-width: thin;\n  border-style: solid;\n}\n\n.other-message {\n  background: #ffffff;\n  color: #000000;\n  border-color: #c0c0c0;\n  border-width: thin;\n  border-style: solid;\n}\n\n.username {\n  font-size: small;\n  margin-left: 7px;\n}\n\n.decode {\n  color: #dfdfdf;\n  float: right;\n  font-size: 10px;\n}\n\n.text-right {\n  color: #000000;\n}\n\n.mess {\n  color: #000000;\n  font-size: 10px;\n  margin-top: 3px;\n}\n\n.avatar11 {\n  width: 43px;\n  height: 43px;\n  margin-top: 13px;\n}\n\nion-fab-button[data-desc] {\n  position: relative;\n}\n\nion-fab-button[data-desc]::after {\n  position: absolute;\n  content: attr(data-desc);\n  z-index: 1;\n  right: 55px;\n  bottom: 4px;\n  background-color: var(--ion-color-dark);\n  padding: 9px;\n  border-radius: 15px;\n  color: white;\n  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);\n}\n\n.msg {\n  white-space: pre-wrap !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY2hhdC1ncm91cC9DOlxcVXNlcnNcXE5lbWVzc2lzXFxEZXNrdG9wXFxmc3UgLSBDb3B5MjJcXHBydWViYSByZW5kaW1pZW50b1xcZnN1IC0gQ29weS9zcmNcXGFwcFxccGFnZXNcXGNoYXQtZ3JvdXBcXGNoYXQtZ3JvdXAucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9jaGF0LWdyb3VwL2NoYXQtZ3JvdXAucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksZUFBQTtFQUNBLHlDQUFBO0VBQ0EsbUJBQUE7RUFDQSxnQkFBQTtBQ0NKOztBREVFO0VBQ0Usc0JBQUE7RUFDQSxvQkFBQTtBQ0NKOztBREdFO0VBQ0UsYUFBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7RUFDQSxxQkFBQTtBQ0FKOztBREdFO0VBQ0UsbUJBQUE7RUFDQSxjQUFBO0VBRUEscUJBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0FDREo7O0FES0U7RUFDRSxtQkFBQTtFQUNBLGNBQUE7RUFDQSxxQkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7QUNGSjs7QURNRTtFQUNFLGdCQUFBO0VBQ0EsZ0JBQUE7QUNISjs7QURNQTtFQUNFLGNBQUE7RUFDQSxZQUFBO0VBQ0EsZUFBQTtBQ0hGOztBRE1BO0VBQ0UsY0FBQTtBQ0hGOztBRE1BO0VBQ0UsY0FBQTtFQUNBLGVBQUE7RUFDQSxlQUFBO0FDSEY7O0FETUE7RUFDRSxXQUFBO0VBQ0EsWUFBQTtFQUNBLGdCQUFBO0FDSEY7O0FET0E7RUFDRSxrQkFBQTtBQ0pGOztBRE9BO0VBQ0Usa0JBQUE7RUFDQSx3QkFBQTtFQUNBLFVBQUE7RUFDQSxXQUFBO0VBQ0EsV0FBQTtFQUNBLHVDQUFBO0VBQ0EsWUFBQTtFQUNBLG1CQUFBO0VBQ0EsWUFBQTtFQUNBLGlIQUFBO0FDSkY7O0FET0E7RUFDRSxnQ0FBQTtBQ0pGIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvY2hhdC1ncm91cC9jaGF0LWdyb3VwLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5tZXNzYWdlLWlucHV0IHtcclxuICAgIG1hcmdpbi10b3A6IDBweDtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWlvbi1jb2xvci1tZWRpdW0pO1xyXG4gICAgYm9yZGVyLXJhZGl1czogMTBweDtcclxuICAgIGJhY2tncm91bmQ6ICNmZmY7XHJcbiAgfVxyXG5cclxuICAubXNnLWJ0biB7XHJcbiAgICAtLXBhZGRpbmctc3RhcnQ6IDAuNWVtO1xyXG4gICAgLS1wYWRkaW5nLWVuZDogMC41ZW07XHJcbiAgfVxyXG5cclxuXHJcbiAgLm1lc3NhZ2Uge1xyXG4gICAgcGFkZGluZzogMTBweDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7XHJcbiAgICBtYXJnaW4tYm90dG9tOiA0cHg7XHJcbiAgICB3aGl0ZS1zcGFjZTogcHJlLXdyYXA7XHJcbiAgfVxyXG5cclxuICAubXktbWVzc2FnZSB7XHJcbiAgICBiYWNrZ3JvdW5kOiAjZGRkYmRiO1xyXG4gICAgY29sb3I6ICMwMDAwMDA7XHJcblxyXG4gICAgYm9yZGVyLWNvbG9yOiAjYzBjMGMwO1xyXG4gICAgYm9yZGVyLXdpZHRoOiB0aGluO1xyXG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcclxuICBcclxuICB9XHJcbiAgIFxyXG4gIC5vdGhlci1tZXNzYWdlIHtcclxuICAgIGJhY2tncm91bmQ6ICNmZmZmZmY7XHJcbiAgICBjb2xvcjogIzAwMDAwMDtcclxuICAgIGJvcmRlci1jb2xvcjogI2MwYzBjMDtcclxuICAgIGJvcmRlci13aWR0aDogdGhpbjtcclxuICAgIGJvcmRlci1zdHlsZTogc29saWQ7XHJcblxyXG4gIH1cclxuXHJcbiAgLnVzZXJuYW1le1xyXG4gICAgZm9udC1zaXplOiBzbWFsbDtcclxuICAgIG1hcmdpbi1sZWZ0OiA3cHg7XHJcbn1cclxuXHJcbi5kZWNvZGUge1xyXG4gIGNvbG9yOiAjZGZkZmRmO1xyXG4gIGZsb2F0OiByaWdodDtcclxuICBmb250LXNpemU6IDEwcHg7XHJcbn1cclxuXHJcbi50ZXh0LXJpZ2h0e1xyXG4gIGNvbG9yOiAjMDAwMDAwO1xyXG59XHJcblxyXG4ubWVzc3tcclxuICBjb2xvcjogIzAwMDAwMDtcclxuICBmb250LXNpemU6IDEwcHg7XHJcbiAgbWFyZ2luLXRvcDogM3B4O1xyXG59XHJcblxyXG4uYXZhdGFyMTF7XHJcbiAgd2lkdGg6IDQzcHg7XHJcbiAgaGVpZ2h0OiA0M3B4O1xyXG4gIG1hcmdpbi10b3A6IDEzcHg7XHJcbn1cclxuXHJcblxyXG5pb24tZmFiLWJ1dHRvbltkYXRhLWRlc2NdIHtcclxuICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbn1cclxuXHJcbmlvbi1mYWItYnV0dG9uW2RhdGEtZGVzY106OmFmdGVyIHtcclxuICBwb3NpdGlvbjogYWJzb2x1dGU7XHJcbiAgY29udGVudDogYXR0cihkYXRhLWRlc2MpO1xyXG4gIHotaW5kZXg6IDE7XHJcbiAgcmlnaHQ6IDU1cHg7XHJcbiAgYm90dG9tOiA0cHg7XHJcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0taW9uLWNvbG9yLWRhcmspO1xyXG4gIHBhZGRpbmc6IDlweDtcclxuICBib3JkZXItcmFkaXVzOiAxNXB4O1xyXG4gIGNvbG9yOiB3aGl0ZTtcclxuICBib3gtc2hhZG93OiAwIDNweCA1cHggLTFweCByZ2JhKDAsMCwwLDAuMiksIDAgNnB4IDEwcHggMCByZ2JhKDAsMCwwLDAuMTQpLCAwIDFweCAxOHB4IDAgcmdiYSgwLDAsMCwwLjEyKTtcclxufVxyXG5cclxuLm1zZ3tcclxuICB3aGl0ZS1zcGFjZTogcHJlLXdyYXAhaW1wb3J0YW50O1xyXG59IiwiLm1lc3NhZ2UtaW5wdXQge1xuICBtYXJnaW4tdG9wOiAwcHg7XG4gIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWlvbi1jb2xvci1tZWRpdW0pO1xuICBib3JkZXItcmFkaXVzOiAxMHB4O1xuICBiYWNrZ3JvdW5kOiAjZmZmO1xufVxuXG4ubXNnLWJ0biB7XG4gIC0tcGFkZGluZy1zdGFydDogMC41ZW07XG4gIC0tcGFkZGluZy1lbmQ6IDAuNWVtO1xufVxuXG4ubWVzc2FnZSB7XG4gIHBhZGRpbmc6IDEwcHg7XG4gIGJvcmRlci1yYWRpdXM6IDEwcHg7XG4gIG1hcmdpbi1ib3R0b206IDRweDtcbiAgd2hpdGUtc3BhY2U6IHByZS13cmFwO1xufVxuXG4ubXktbWVzc2FnZSB7XG4gIGJhY2tncm91bmQ6ICNkZGRiZGI7XG4gIGNvbG9yOiAjMDAwMDAwO1xuICBib3JkZXItY29sb3I6ICNjMGMwYzA7XG4gIGJvcmRlci13aWR0aDogdGhpbjtcbiAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbn1cblxuLm90aGVyLW1lc3NhZ2Uge1xuICBiYWNrZ3JvdW5kOiAjZmZmZmZmO1xuICBjb2xvcjogIzAwMDAwMDtcbiAgYm9yZGVyLWNvbG9yOiAjYzBjMGMwO1xuICBib3JkZXItd2lkdGg6IHRoaW47XG4gIGJvcmRlci1zdHlsZTogc29saWQ7XG59XG5cbi51c2VybmFtZSB7XG4gIGZvbnQtc2l6ZTogc21hbGw7XG4gIG1hcmdpbi1sZWZ0OiA3cHg7XG59XG5cbi5kZWNvZGUge1xuICBjb2xvcjogI2RmZGZkZjtcbiAgZmxvYXQ6IHJpZ2h0O1xuICBmb250LXNpemU6IDEwcHg7XG59XG5cbi50ZXh0LXJpZ2h0IHtcbiAgY29sb3I6ICMwMDAwMDA7XG59XG5cbi5tZXNzIHtcbiAgY29sb3I6ICMwMDAwMDA7XG4gIGZvbnQtc2l6ZTogMTBweDtcbiAgbWFyZ2luLXRvcDogM3B4O1xufVxuXG4uYXZhdGFyMTEge1xuICB3aWR0aDogNDNweDtcbiAgaGVpZ2h0OiA0M3B4O1xuICBtYXJnaW4tdG9wOiAxM3B4O1xufVxuXG5pb24tZmFiLWJ1dHRvbltkYXRhLWRlc2NdIHtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xufVxuXG5pb24tZmFiLWJ1dHRvbltkYXRhLWRlc2NdOjphZnRlciB7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgY29udGVudDogYXR0cihkYXRhLWRlc2MpO1xuICB6LWluZGV4OiAxO1xuICByaWdodDogNTVweDtcbiAgYm90dG9tOiA0cHg7XG4gIGJhY2tncm91bmQtY29sb3I6IHZhcigtLWlvbi1jb2xvci1kYXJrKTtcbiAgcGFkZGluZzogOXB4O1xuICBib3JkZXItcmFkaXVzOiAxNXB4O1xuICBjb2xvcjogd2hpdGU7XG4gIGJveC1zaGFkb3c6IDAgM3B4IDVweCAtMXB4IHJnYmEoMCwgMCwgMCwgMC4yKSwgMCA2cHggMTBweCAwIHJnYmEoMCwgMCwgMCwgMC4xNCksIDAgMXB4IDE4cHggMCByZ2JhKDAsIDAsIDAsIDAuMTIpO1xufVxuXG4ubXNnIHtcbiAgd2hpdGUtc3BhY2U6IHByZS13cmFwICFpbXBvcnRhbnQ7XG59Il19 */";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/chat-group/chat-group.page.ts":
+  /*!*****************************************************!*\
+    !*** ./src/app/pages/chat-group/chat-group.page.ts ***!
+    \*****************************************************/
+
+  /*! exports provided: ChatGroupPage */
+
+  /***/
+  function srcAppPagesChatGroupChatGroupPageTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ChatGroupPage", function () {
+      return ChatGroupPage;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _services_chat_group_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! ../../services/chat-group.service */
+    "./src/app/services/chat-group.service.ts");
+    /* harmony import */
+
+
+    var crypto_js_enc_utf8__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! crypto-js/enc-utf8 */
+    "./node_modules/crypto-js/enc-utf8.js");
+    /* harmony import */
+
+
+    var crypto_js_enc_utf8__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(crypto_js_enc_utf8__WEBPACK_IMPORTED_MODULE_4__);
+    /* harmony import */
+
+
+    var crypto_js_aes__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! crypto-js/aes */
+    "./node_modules/crypto-js/aes.js");
+    /* harmony import */
+
+
+    var crypto_js_aes__WEBPACK_IMPORTED_MODULE_5___default = /*#__PURE__*/__webpack_require__.n(crypto_js_aes__WEBPACK_IMPORTED_MODULE_5__);
+    /* harmony import */
+
+
+    var _ionic_native_aes_256_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @ionic-native/aes-256/ngx */
+    "./node_modules/@ionic-native/aes-256/ngx/index.js");
+    /* harmony import */
+
+
+    var _ionic_storage__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @ionic/storage */
+    "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+    /* harmony import */
+
+
+    var _services_users_service__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! ../../services/users.service */
+    "./src/app/services/users.service.ts");
+    /* harmony import */
+
+
+    var src_environments_environment__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! src/environments/environment */
+    "./src/environments/environment.ts");
+    /* harmony import */
+
+
+    var ngx_socket_io__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! ngx-socket-io */
+    "./node_modules/ngx-socket-io/fesm2015/ngx-socket-io.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    /*! @ionic-native/File/ngx */
+    "./node_modules/@ionic-native/File/ngx/index.js");
+    /* harmony import */
+
+
+    var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    /*! @ionic-native/camera/ngx */
+    "./node_modules/@ionic-native/camera/ngx/index.js");
+    /* harmony import */
+
+
+    var src_app_services_push_service__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    /*! src/app/services/push.service */
+    "./src/app/services/push.service.ts");
+    /* harmony import */
+
+
+    var src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    /*! src/app/services/chat.service */
+    "./src/app/services/chat.service.ts");
+    /* harmony import */
+
+
+    var _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(
+    /*! @ionic-native/ionic-webview/ngx */
+    "./node_modules/@ionic-native/ionic-webview/ngx/index.js");
+    /* harmony import */
+
+
+    var _image_modal_image_modal_page__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(
+    /*! ../image-modal/image-modal.page */
+    "./src/app/pages/image-modal/image-modal.page.ts");
+
+    var STORAGE_KEY = 'my_images';
+
+    var ChatGroupPage = /*#__PURE__*/function () {
+      //push
+      function ChatGroupPage(activatedRoute, socket, groupService, storage, userService, aes256, cameranew, file, pushService, chatService, toastCtrl, modalCtrl, webview, router, platform) {
+        _classCallCheck(this, ChatGroupPage);
+
+        this.activatedRoute = activatedRoute;
+        this.socket = socket;
+        this.groupService = groupService;
+        this.storage = storage;
+        this.userService = userService;
+        this.aes256 = aes256;
+        this.cameranew = cameranew;
+        this.file = file;
+        this.pushService = pushService;
+        this.chatService = chatService;
+        this.toastCtrl = toastCtrl;
+        this.modalCtrl = modalCtrl;
+        this.webview = webview;
+        this.router = router;
+        this.platform = platform; // MESAGE vars
+
+        this.message = '';
+        this.messages = [];
+        this.pa = [];
+        this.groupNotificate = {
+          participants: [],
+          sender: ''
+        };
+        this.skey = src_environments_environment__WEBPACK_IMPORTED_MODULE_9__["environment"].sekretKey;
+        this.sh1 = '123456789abcdefghijklmnopqrstuuvwxyz';
+        this.show = true;
+        this.dataResFiles = [];
+        this.images = [];
+      }
+
+      _createClass(ChatGroupPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          this.socket.connect();
+        }
+      }, {
+        key: "ionViewWillEnter",
+        value: function ionViewWillEnter() {
+          var _this = this;
+
+          this.idgroup = this.activatedRoute.snapshot.paramMap.get('idgroup');
+          this.getMessages(this.idgroup);
+          window.menu.ngOnInit();
+          this.storage.get('username').then(function (result) {
+            _this.usernameStorage = result;
+
+            _this.userService.getSekretId(_this.usernameStorage).subscribe(function (response) {
+              _this.userId = response.user[0]._id;
+              _this.nameUser = response.user[0].username;
+              _this.planActive = response.user[0].plan;
+
+              _this.updateReadMessage();
+
+              console.log('<<<<<<<[Plan Active]>>>>>>', _this.planActive);
+            });
+          });
+          this.platform.ready().then(function () {
+            // this.qrScanner.hide();
+            _this.platform.pause.subscribe(function () {
+              console.log("[INFO] PAUSE");
+            });
+
+            _this.platform.resume.subscribe(function () {
+              console.log('[INFO] RESUME');
+
+              _this.storage.get('stateCamera').then(function (result) {
+                console.log('[INFO] STATE CAMERA : ', result);
+
+                if (result === 1) {
+                  console.log('[INFO]: Se esta usando la camara NO CERRAR');
+
+                  _this.userService.saveStateCamera(0);
+                } else {
+                  console.log('[INFO]: Mandar al Login');
+
+                  _this.logout();
+                }
+              });
+            });
+          });
+          this.skem = {
+            convId: this.idgroup,
+            msg: '',
+            type: "2",
+            senderId: "asdasdasdasdas",
+            secureKey: '',
+            secureIv: '',
+            username: ''
+          }; //console.log('MENSAJE PARA EL SOCKET',this.skem)
+
+          this.socket.emit('joinGroup', {
+            msg: this.skem
+          });
+          this.socket.fromEvent('messageG').subscribe(function (message) {
+            _this.socketIn = message; // console.log('NEW MESSAGE', this.socketIn);
+
+            if (_this.socketIn.msg.senderId !== _this.userId) {
+              // console.log('NEW MESSAGE', this.socketIn);
+              var msgIn = {
+                body: _this.socketIn.msg.msg,
+                createAt: Date.now(),
+                isread: "0",
+                senderId: _this.socketIn.msg.senderId,
+                type: _this.socketIn.msg.type,
+                username: _this.socketIn.msg.username,
+                _id: "5f6c52708705a704b4a5159d"
+              };
+
+              _this.messages.push(msgIn);
+            } else {
+              var _msgIn = {
+                body: _this.socketIn.msg.msg,
+                createAt: Date.now(),
+                isread: "0",
+                senderId: _this.socketIn.msg.senderId,
+                type: _this.socketIn.msg.type,
+                username: _this.socketIn.msg.username,
+                _id: "5f6c52708705a704b4a5159d"
+              };
+
+              _this.messages.push(_msgIn);
+            }
+
+            _this.scrollToBottomInChat();
+          });
+          this.generateSecureKeyAndIV();
+          this.getInfoGroup(this.idgroup); //this.getMessages(this.idgroup);
+
+          this.getUsername('5f61e188a23a3346ecac036b');
+        }
+      }, {
+        key: "getInfoGroup",
+        value: function getInfoGroup(idgroup) {
+          var _this2 = this;
+
+          this.groupService.getInfoGroup(idgroup).subscribe(function (response) {
+            _this2.nameGroup = response.chatGroup[0].groupname;
+            console.log('[INFOOOO] XXXXXXXXX', response);
+            _this2.participants = response.chatGroup[0].participants;
+            _this2.idg = response.chatGroup[0]._id;
+          });
+        }
+      }, {
+        key: "getMessages",
+        value: function getMessages(idgroup) {
+          var _this3 = this;
+
+          setTimeout(function () {
+            _this3.groupService.getMessages(idgroup).subscribe(function (resp) {
+              //console.log('INFO RESPUESTA MENSAJES', resp);
+              _this3.arrmsgs = resp.msg;
+              _this3.messages = _this3.arrmsgs[0].message;
+
+              _this3.scrollToBottomInChat();
+            });
+          }, 1500);
+        }
+      }, {
+        key: "sendMessage",
+        value: function sendMessage() {
+          var _this4 = this;
+
+          var msgInput = this.message;
+          this.cipherMessage = this.encrypt(msgInput);
+          var msg1 = {
+            "idGroup": this.idgroup,
+            "message": {
+              "senderId": this.userId,
+              "body": this.cipherMessage,
+              "type": "2",
+              "secureKey": this.secureKEY,
+              "secureIv": this.secureIV,
+              "username": this.nameUser
+            }
+          };
+          this.skem = {
+            convId: this.idgroup,
+            msg: this.cipherMessage,
+            type: "2",
+            senderId: this.userId,
+            secureKey: this.secureKEY,
+            secureIv: this.secureIV,
+            username: this.nameUser
+          };
+          this.socket.emit('joinGroup', {
+            msg: this.skem
+          });
+          this.groupService.postSendMessage(msg1).subscribe(function (resp) {//  console.log('[INFO] MENSJAE ENVIADO: ', resp);
+          });
+          this.groupService.getIdNotificationsPar(this.participants, this.userId).subscribe(function (responseParticipants) {
+            _this4.groupNotificate = {
+              participants: responseParticipants.arrNotIds,
+              sender: _this4.userId
+            };
+
+            _this4.pushService.sendPushNotificationGroupNew(_this4.groupNotificate).subscribe(function (responsea) {
+              console.log('RESPUESTA PUSH NOTIFICATION', responsea);
+            });
+          });
+          this.updateUsersGroup(this.idgroup, this.participants);
+          this.message = '';
+        }
+      }, {
+        key: "encrypt",
+        value: function encrypt(data) {
+          this.cipher = crypto_js_aes__WEBPACK_IMPORTED_MODULE_5__["encrypt"](JSON.stringify(data), this.sh1).toString();
+          return this.cipher;
+        }
+      }, {
+        key: "generateSecureKeyAndIV",
+        value: function generateSecureKeyAndIV() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return this.aes256.generateSecureKey(this.skey);
+
+                  case 2:
+                    this.secureKEY = _context.sent;
+                    _context.next = 5;
+                    return this.aes256.generateSecureIV(this.skey);
+
+                  case 5:
+                    this.secureIV = _context.sent;
+
+                  case 6:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
+        }
+      }, {
+        key: "decrypt",
+        value: function decrypt(encryptedData) {
+          this.decodedMessage = crypto_js_aes__WEBPACK_IMPORTED_MODULE_5__["decrypt"](encryptedData, this.sh1).toString(crypto_js_enc_utf8__WEBPACK_IMPORTED_MODULE_4__);
+          var obj = JSON.parse(this.decodedMessage.toString());
+          return obj;
+        }
+      }, {
+        key: "getInfoUser",
+        value: function getInfoUser() {
+          var _this5 = this;
+
+          this.storage.get('username').then(function (result) {
+            _this5.usernameStorage = result;
+
+            _this5.userService.getSekretId(_this5.usernameStorage).subscribe(function (response) {
+              _this5.userId = response.user[0].sekretid;
+            });
+          });
+        }
+      }, {
+        key: "getUsername",
+        value: function getUsername(idUserPart) {
+          this.userService.getusernameById(idUserPart).subscribe(function (resp) {// console.log('[INFO] RESPUESTA DEL USUARIO aaa',resp.user[0])
+          });
+          var name = '1';
+          return name;
+        }
+      }, {
+        key: "reload",
+        value: function reload() {
+          var _this6 = this;
+
+          this.show = false;
+          setTimeout(function () {
+            return _this6.show = true;
+          });
+        }
+      }, {
+        key: "scrollToBottomInChat",
+        value: function scrollToBottomInChat() {
+          var _this7 = this;
+
+          setTimeout(function () {
+            if (_this7.content.scrollToBottom) {
+              _this7.content.scrollToBottom(100);
+            }
+          }, 1000);
+        }
+      }, {
+        key: "captureImage",
+        value: function captureImage() {
+          var _this8 = this;
+
+          this.swcamera = 1;
+          console.log("?? Accediendo a la camara"); //this.swcamera = 1;
+
+          this.userService.saveStateCamera(this.swcamera);
+          var sourceType = this.cameranew.PictureSourceType.CAMERA;
+          var options = {
+            quality: 50,
+            sourceType: sourceType,
+            saveToPhotoAlbum: false,
+            correctOrientation: true
+          };
+          this.cameranew.getPicture(options).then(function (imagePath) {
+            var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
+            var correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
+
+            _this8.copytoNew(correctPath, currentName);
+          });
+          this.swcamera = '';
+        } //end capture Imnage
+
+      }, {
+        key: "copytoNew",
+        value: function copytoNew(path, namePic) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            var _this9 = this;
+
+            var rs, fP;
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    fP = path + namePic;
+                    _context2.next = 3;
+                    return this.upImage(fP);
+
+                  case 3:
+                    this.dataResFiles = _context2.sent;
+
+                    if (this.dataResFiles === '') {
+                      setTimeout(function () {
+                        rs = _this9.dataResFiles.name;
+
+                        _this9.sendMessageImage(_this9.dataResFiles.name);
+                      }, 1000);
+                    } else {
+                      console.log('paso al ELSE');
+                      this.sendMessageImage(this.dataResFiles.name);
+                      rs = 'file:///storage/emulated/0/Pictures/';
+                      this.file.removeFile(fP, namePic);
+                    }
+
+                  case 5:
+                  case "end":
+                    return _context2.stop();
+                }
+              }
+            }, _callee2, this);
+          }));
+        } // END COPU TO NEW
+
+      }, {
+        key: "sendMessageImage",
+        value: function sendMessageImage(image) {
+          var _this10 = this;
+
+          var imageRecive = image;
+          var msg1 = {
+            "idGroup": this.idgroup,
+            "message": {
+              "senderId": this.userId,
+              "body": imageRecive,
+              "type": "3",
+              "secureKey": this.secureKEY,
+              "secureIv": this.secureIV,
+              "username": this.nameUser
+            }
+          };
+          this.groupService.postSendMessage(msg1).subscribe(function (resp) {//console.log('[INFO] MENSJAE ENVIADO: ', resp);
+          });
+          this.skem = {
+            convId: this.idgroup,
+            msg: imageRecive,
+            type: "3",
+            senderId: this.userId,
+            secureKey: this.secureKEY,
+            secureIv: this.secureIV,
+            username: this.nameUser
+          };
+          this.socket.emit('joinGroup', {
+            msg: this.skem
+          });
+          this.groupService.getIdNotificationsPar(this.participants, this.userId).subscribe(function (responseParticipants) {
+            _this10.groupNotificate = {
+              participants: responseParticipants.arrNotIds,
+              sender: _this10.userId
+            };
+
+            _this10.pushService.sendPushNotificationGroupNew(_this10.groupNotificate).subscribe(function (responsea) {
+              console.log('RESPUESTA PUSH NOTIFICATION', responsea);
+            });
+          });
+          this.message = '';
+        }
+      }, {
+        key: "upImage",
+        value: function upImage(file) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+            var imageSennder, resultImageSender;
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    imageSennder = file;
+
+                    if (!(file != null)) {
+                      _context3.next = 7;
+                      break;
+                    }
+
+                    _context3.next = 4;
+                    return this.chatService.uploadimage(imageSennder);
+
+                  case 4:
+                    resultImageSender = _context3.sent;
+                    _context3.next = 8;
+                    break;
+
+                  case 7:
+                    this.showToast('se ha encontrado algun error');
+
+                  case 8:
+                    return _context3.abrupt("return", resultImageSender);
+
+                  case 9:
+                  case "end":
+                    return _context3.stop();
+                }
+              }
+            }, _callee3, this);
+          }));
+        }
+      }, {
+        key: "showToast",
+        value: function showToast(msg) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+            var toast;
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+              while (1) {
+                switch (_context4.prev = _context4.next) {
+                  case 0:
+                    _context4.next = 2;
+                    return this.toastCtrl.create({
+                      message: msg,
+                      position: 'middle',
+                      duration: 3000
+                    });
+
+                  case 2:
+                    toast = _context4.sent;
+                    toast.present();
+
+                  case 4:
+                  case "end":
+                    return _context4.stop();
+                }
+              }
+            }, _callee4, this);
+          }));
+        }
+      }, {
+        key: "openGallery",
+        value: function openGallery(imagensend) {
+          this.modalCtrl.create({
+            component: _image_modal_image_modal_page__WEBPACK_IMPORTED_MODULE_17__["ImageModalPage"],
+            componentProps: {
+              img: imagensend
+            }
+          }).then(function (modal) {
+            return modal.present();
+          });
+        }
+      }, {
+        key: "imageGallery",
+        value: function imageGallery() {
+          var _this11 = this;
+
+          this.swcamera = 1;
+          this.userService.saveStateCamera(1); //  console.log('[INFO] Paso a la galeria');
+
+          var sourceType = this.cameranew.PictureSourceType.PHOTOLIBRARY;
+          var options = {
+            quality: 50,
+            sourceType: sourceType,
+            saveToPhotoAlbum: false,
+            correctOrientation: true
+          };
+          this.cameranew.getPicture(options).then(function (imagePath) {
+            var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
+            var correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1); //this.copyFileToLocalDir2(correctPath, currentName, this.createFileName());
+            //this.copyFileToLocalDir(correctPath, currentName);
+            // var pth = window.Ionic.WebView.convertFileSrc(imagePath)
+            //console.log('[YYYY]',pth);
+            // var tmp = currentName.split('?');
+            //currentName = tmp[0];
+            // console.log('[INFO New] : ', currentName);
+
+            _this11.copytoNew2(correctPath, currentName); // console.log('CORRECT PATH', correctPath); 2
+            // console.log('CURRENT NAME', currentName);
+
+          });
+        }
+      }, {
+        key: "copyFileToLocalDir2",
+        value: function copyFileToLocalDir2(namePath, currentName, newFileName) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee5() {
+            var _this12 = this;
+
+            return regeneratorRuntime.wrap(function _callee5$(_context5) {
+              while (1) {
+                switch (_context5.prev = _context5.next) {
+                  case 0:
+                    this.file.copyFile(namePath, currentName, this.file.dataDirectory, newFileName).then(function (success) {
+                      _this12.updateStoredImages(newFileName);
+
+                      _this12.fpath = namePath + currentName;
+                      _this12.dataResFiles = _this12.upImage(_this12.fpath);
+                      _this12.result22 = _this12.dataResFiles.name;
+
+                      if (_this12.result22 === '') {
+                        setTimeout(function () {
+                          console.log('paso aqui');
+                          _this12.result22 = _this12.dataResFiles.name;
+
+                          _this12.sendMessageImage(_this12.result22);
+                        }, 1000);
+                      } else {
+                        console.log('=========paso por el otro');
+
+                        _this12.sendMessageImage(_this12.result22);
+
+                        _this12.file.removeFile(namePath, currentName);
+                      }
+                    }, function (error) {
+                      //this.presentToast('Error while storing file.');
+                      console.log('Error while storing file.');
+                    });
+
+                  case 1:
+                  case "end":
+                    return _context5.stop();
+                }
+              }
+            }, _callee5, this);
+          }));
+        }
+      }, {
+        key: "copyFileToLocalDir",
+        value: function copyFileToLocalDir(fullPath, namePic) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee6() {
+            var _this13 = this;
+
+            var myPath, result, im, ph;
+            return regeneratorRuntime.wrap(function _callee6$(_context6) {
+              while (1) {
+                switch (_context6.prev = _context6.next) {
+                  case 0:
+                    // console.log("PASO");
+                    // console.log('INGRESA', fullPath, 'name pic', namePic);
+                    myPath = fullPath;
+
+                    // Make sure we copy from the right location
+                    if (fullPath.indexOf('file://') < 0) {
+                      myPath = 'file://' + fullPath; // console.log('//////////////////', myPath);
+                    }
+
+                    _context6.next = 4;
+                    return this.upImage(myPath);
+
+                  case 4:
+                    this.dataResFiles = _context6.sent;
+                    result = this.dataResFiles.name;
+
+                    if (result === '') {
+                      setTimeout(function () {
+                        result = _this13.dataResFiles.name;
+
+                        _this13.sendMessageImage(result);
+                      }, 1000);
+                    } else {
+                      this.sendMessageImage(result);
+                      ph = 'file:///storage/emulated/0/Pictures/';
+                      this.file.removeFile(ph, namePic);
+                    }
+
+                  case 7:
+                  case "end":
+                    return _context6.stop();
+                }
+              }
+            }, _callee6, this);
+          }));
+        }
+      }, {
+        key: "copytoNew2",
+        value: function copytoNew2(path, namePic) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee7() {
+            var _this14 = this;
+
+            var fP, rs;
+            return regeneratorRuntime.wrap(function _callee7$(_context7) {
+              while (1) {
+                switch (_context7.prev = _context7.next) {
+                  case 0:
+                    // console.log('paso al metodo copiar  nuevo');
+                    //console.log('PATH', path, 'PICCCCC', namePic);
+                    fP = path + namePic;
+                    _context7.next = 3;
+                    return this.upImage(fP);
+
+                  case 3:
+                    this.dataResFiles = _context7.sent;
+
+                    //console.log('image upload******', this.dataResFiles.name);
+                    if (this.dataResFiles === '') {
+                      setTimeout(function () {
+                        rs = _this14.dataResFiles.name;
+
+                        _this14.sendMessageImage(_this14.dataResFiles.name);
+                      }, 1000);
+                    } else {
+                      this.sendMessageImage(this.dataResFiles.name);
+                      rs = 'file:///storage/emulated/0/Pictures/';
+                      this.file.removeFile(fP, namePic);
+                    }
+
+                  case 5:
+                  case "end":
+                    return _context7.stop();
+                }
+              }
+            }, _callee7, this);
+          }));
+        }
+      }, {
+        key: "createFileName",
+        value: function createFileName() {
+          var d = new Date(),
+              n = d.getTime(),
+              newFileName = n + ".jpg";
+          return newFileName;
+        }
+      }, {
+        key: "updateStoredImages",
+        value: function updateStoredImages(name) {
+          var _this15 = this;
+
+          this.storage.get(STORAGE_KEY).then(function (images) {
+            var arr = JSON.parse(images);
+
+            if (!arr) {
+              var newImages = [name];
+
+              _this15.storage.set(STORAGE_KEY, JSON.stringify(newImages));
+            } else {
+              arr.push(name);
+
+              _this15.storage.set(STORAGE_KEY, JSON.stringify(arr));
+            }
+
+            var filePath = _this15.file.dataDirectory + name;
+
+            var resPath = _this15.pathForImage(filePath);
+
+            var newEntry = {
+              name: name,
+              path: resPath,
+              filePath: filePath
+            };
+            _this15.images = [newEntry].concat(_toConsumableArray(_this15.images)); //this.ref.detectChanges(); // trigger change detection cycle
+          });
+        }
+      }, {
+        key: "pathForImage",
+        value: function pathForImage(img) {
+          if (img === null) {
+            return '';
+          } else {
+            var converted = this.webview.convertFileSrc(img);
+            return converted;
+          }
+        }
+      }, {
+        key: "logout",
+        value: function logout() {
+          console.log("Logging out user");
+          this.router.navigate(['/home']);
+        }
+      }, {
+        key: "updateUsersGroup",
+        value: function updateUsersGroup(group, users) {
+          var arrUpdateUsers = {
+            idGroup: group,
+            idusers: users
+          };
+          this.groupService.postUpdateBadge(arrUpdateUsers).subscribe(function (rs) {//console.log('* [RESPUESTA ACTUALIZACION BADGE]', rs);
+          });
+          console.log('[ARREGLO PARA ACTUALIZACION DE BADGETS]', arrUpdateUsers);
+        }
+      }, {
+        key: "updateReadMessage",
+        value: function updateReadMessage() {
+          console.log('**************USER', this.userId);
+          console.log('Group', this.idgroup);
+          var updateBadge = {
+            "userId": this.userId,
+            "groupId": this.idgroup
+          };
+          console.log('XXXXXXXXXXXXXXXXXXidGroup', updateBadge);
+          this.groupService.postUpdateRead(updateBadge).subscribe(function (rrs) {
+            console.log('{**INFO--}', rrs);
+          });
+        }
+      }]);
+
+      return ChatGroupPage;
+    }(); // ENd Class
+
+
+    ChatGroupPage.ctorParameters = function () {
+      return [{
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]
+      }, {
+        type: ngx_socket_io__WEBPACK_IMPORTED_MODULE_10__["Socket"]
+      }, {
+        type: _services_chat_group_service__WEBPACK_IMPORTED_MODULE_3__["ChatGroupService"]
+      }, {
+        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_7__["Storage"]
+      }, {
+        type: _services_users_service__WEBPACK_IMPORTED_MODULE_8__["UsersService"]
+      }, {
+        type: _ionic_native_aes_256_ngx__WEBPACK_IMPORTED_MODULE_6__["AES256"]
+      }, {
+        type: _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_13__["Camera"]
+      }, {
+        type: _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_12__["File"]
+      }, {
+        type: src_app_services_push_service__WEBPACK_IMPORTED_MODULE_14__["PushService"]
+      }, {
+        type: src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_15__["ChatService"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_11__["ToastController"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_11__["ModalController"]
+      }, {
+        type: _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_16__["WebView"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_11__["Platform"]
+      }];
+    };
+
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('scrollElement', {
+      "static": false
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _ionic_angular__WEBPACK_IMPORTED_MODULE_11__["IonContent"])], ChatGroupPage.prototype, "content", void 0);
+    ChatGroupPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-chat-group',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./chat-group.page.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/chat-group/chat-group.page.html"))["default"],
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./chat-group.page.scss */
+      "./src/app/pages/chat-group/chat-group.page.scss"))["default"]]
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], ngx_socket_io__WEBPACK_IMPORTED_MODULE_10__["Socket"], _services_chat_group_service__WEBPACK_IMPORTED_MODULE_3__["ChatGroupService"], _ionic_storage__WEBPACK_IMPORTED_MODULE_7__["Storage"], _services_users_service__WEBPACK_IMPORTED_MODULE_8__["UsersService"], _ionic_native_aes_256_ngx__WEBPACK_IMPORTED_MODULE_6__["AES256"], _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_13__["Camera"], _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_12__["File"], src_app_services_push_service__WEBPACK_IMPORTED_MODULE_14__["PushService"], src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_15__["ChatService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_11__["ToastController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_11__["ModalController"], _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_16__["WebView"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_11__["Platform"]])], ChatGroupPage);
+    /***/
+  }
+}]);
+//# sourceMappingURL=pages-chat-group-chat-group-module-es5.js.map

@@ -1,0 +1,227 @@
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-password-trunk-password-trunk-module"],{
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/password-trunk/password-trunk.page.html":
+/*!*****************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/password-trunk/password-trunk.page.html ***!
+  \*****************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar color=\"warning\">\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"/contacts\" icon-only></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title> Cambiar contraseña</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n  <ion-card >\r\n    <img src=\"../../../assets/safe2.png\" class=\"ssl\">      \r\n    <p class=\"success\"></p>  \r\n    <ion-card-content>\r\n      <form (ngSubmit)=\"changePassword(fchangep)\" #fchangep=\"ngForm\">\r\n        <ion-row>\r\n          <ion-col>    \r\n            <ion-list>    \r\n              <ion-item>\r\n                <ion-label></ion-label>\r\n                <ion-input name=\"password\"\r\n                           type=\"text\" \r\n                           required\r\n                           [(ngModel)]=\"oldPassword\"\r\n                           min=\"5\"\r\n                           (input)=\"inputValidator($event)\"\r\n                           placeholder=\"Contraseña actual\" ></ion-input>\r\n              </ion-item>\r\n              <ion-item>\r\n                <ion-label></ion-label>\r\n                <ion-input name=\"password\"\r\n                           type=\"text\" \r\n                           required\r\n                           [(ngModel)]=\"password.pass\"\r\n                           min=\"5\"\r\n                           (input)=\"inputValidator($event)\"\r\n                           placeholder=\"Contraseña nueva\" ></ion-input>\r\n              </ion-item>\r\n              <ion-item>\r\n                <ion-label></ion-label>\r\n                <ion-input name=\"repassword\"\r\n                           type=\"text\"                            \r\n                           [(ngModel)]=\"password.repass\"\r\n                           (onChage)=\"verifyPasswords(password.repass)\"\r\n                           placeholder=\"Repetir contraseña\" \r\n                           (input)=\"inputValidator($event)\"\r\n                           min=\"5\"\r\n                           required></ion-input>\r\n              </ion-item>\r\n            </ion-list>\r\n          </ion-col>\r\n        </ion-row>\r\n    \r\n        <ion-row>\r\n          <ion-col>\r\n            <ion-button type=\"submit\" \r\n                        color=\"warning\" \r\n                        shape=\"round\" \r\n                        expand=\"block\"\r\n                        [disabled]=\"fchangep.invalid\">\r\n              Cambiar contraseña\r\n            </ion-button>\r\n          </ion-col>\r\n        </ion-row>\r\n    \r\n      </form>\r\n    </ion-card-content>\r\n  </ion-card>\r\n  \r\n</ion-content>\r\n");
+
+/***/ }),
+
+/***/ "./src/app/pages/password-trunk/password-trunk.module.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/pages/password-trunk/password-trunk.module.ts ***!
+  \***************************************************************/
+/*! exports provided: PasswordTrunkPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PasswordTrunkPageModule", function() { return PasswordTrunkPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _password_trunk_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./password-trunk.page */ "./src/app/pages/password-trunk/password-trunk.page.ts");
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _password_trunk_page__WEBPACK_IMPORTED_MODULE_6__["PasswordTrunkPage"]
+    }
+];
+let PasswordTrunkPageModule = class PasswordTrunkPageModule {
+};
+PasswordTrunkPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)
+        ],
+        declarations: [_password_trunk_page__WEBPACK_IMPORTED_MODULE_6__["PasswordTrunkPage"]]
+    })
+], PasswordTrunkPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/password-trunk/password-trunk.page.scss":
+/*!***************************************************************!*\
+  !*** ./src/app/pages/password-trunk/password-trunk.page.scss ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".ssl {\n  width: 40%;\n  height: 100%;\n  margin-left: 32%;\n  margin-top: 12px;\n}\n\n.success {\n  color: #000000;\n  text-align: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcGFzc3dvcmQtdHJ1bmsvQzpcXFVzZXJzXFxOZW1lc3Npc1xcRGVza3RvcFxcZnN1IC0gQ29weTIyXFxmc3UgLSBDb3B5L3NyY1xcYXBwXFxwYWdlc1xccGFzc3dvcmQtdHJ1bmtcXHBhc3N3b3JkLXRydW5rLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvcGFzc3dvcmQtdHJ1bmsvcGFzc3dvcmQtdHJ1bmsucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksVUFBQTtFQUNBLFlBQUE7RUFDQSxnQkFBQTtFQUNBLGdCQUFBO0FDQ0o7O0FERUE7RUFDSSxjQUFBO0VBQ0Esa0JBQUE7QUNDSiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3Bhc3N3b3JkLXRydW5rL3Bhc3N3b3JkLXRydW5rLnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIi5zc2x7XHJcbiAgICB3aWR0aDogNDAlO1xyXG4gICAgaGVpZ2h0OiAxMDAlO1xyXG4gICAgbWFyZ2luLWxlZnQ6IDMyJTtcclxuICAgIG1hcmdpbi10b3A6IDEycHg7XHJcbn1cclxuXHJcbi5zdWNjZXNze1xyXG4gICAgY29sb3I6ICMwMDAwMDA7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcblxyXG59XHJcbiIsIi5zc2wge1xuICB3aWR0aDogNDAlO1xuICBoZWlnaHQ6IDEwMCU7XG4gIG1hcmdpbi1sZWZ0OiAzMiU7XG4gIG1hcmdpbi10b3A6IDEycHg7XG59XG5cbi5zdWNjZXNzIHtcbiAgY29sb3I6ICMwMDAwMDA7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn0iXX0= */");
+
+/***/ }),
+
+/***/ "./src/app/pages/password-trunk/password-trunk.page.ts":
+/*!*************************************************************!*\
+  !*** ./src/app/pages/password-trunk/password-trunk.page.ts ***!
+  \*************************************************************/
+/*! exports provided: PasswordTrunkPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "PasswordTrunkPage", function() { return PasswordTrunkPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+/* harmony import */ var _services_users_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../services/users.service */ "./src/app/services/users.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
+
+
+
+
+
+
+let PasswordTrunkPage = class PasswordTrunkPage {
+    constructor(storage, userService, toastCtrl, alertController, router) {
+        this.storage = storage;
+        this.userService = userService;
+        this.toastCtrl = toastCtrl;
+        this.alertController = alertController;
+        this.router = router;
+        this.oldPassword = '';
+        this.password = {
+            pass: '',
+            repass: '',
+            user: ''
+        };
+    }
+    ngOnInit() {
+        this.storage.get('username').then((result) => {
+            this.userService.getSekretId(result).subscribe(response => {
+                this.password.user = response.user[0]._id;
+                this.sidUser = response.user[0].sekretid;
+                this.sp = response.user[0].spt;
+                if (!this.sp) {
+                    this.presentAlert();
+                    this.router.navigate(['/safe']);
+                }
+            });
+        });
+    }
+    changePassword() {
+        console.log('================', this.oldPassword);
+        this.userService.comprobeSecond(this.sidUser, this.oldPassword).subscribe(res => {
+            console.log('++++++++++++', res);
+            if (res.ispass === 1) {
+                if (this.password.pass.length < 5) {
+                    this.presentToast('La contraseña debe tener mínimo 5 caracteres');
+                    this.password.pass = '';
+                    this.password.repass = '';
+                }
+                else {
+                    if (this.password.pass === this.password.repass) {
+                        this.userService.updateSecondPassword(this.password).subscribe(rs => {
+                            this.rs = rs;
+                            if (this.rs.ok === true) {
+                                this.router.navigate(['/contacts']);
+                                this.presentToast('Se ha cambiado la contraseña de baúl con éxito');
+                            }
+                        });
+                    }
+                    else {
+                        this.presentToast('las contraseñas ingresadas no coinciden');
+                        this.password.pass = '';
+                        this.password.repass = '';
+                    }
+                }
+            }
+            else {
+                this.presentToast('Contraseña anterior del baúl incorrecta');
+            }
+        });
+    }
+    presentToast(message) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const toast = yield this.toastCtrl.create({
+                message,
+                duration: 3500,
+                position: 'middle'
+            });
+            toast.present();
+        });
+    }
+    presentAlert() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const alert = yield this.alertController.create({
+                cssClass: 'mdal',
+                header: 'Atención',
+                message: `No ha asignado aún una contraseña`,
+                subHeader: `¡ Importante !`,
+                buttons: [
+                    {
+                        text: 'Aceptar',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: (alertData) => {
+                            console.log('Confirm Cancel');
+                            this.router.navigate(['/safe']);
+                        }
+                    }
+                ]
+            });
+            yield alert.present();
+        });
+    }
+    inputValidator(event) {
+        console.log('paso al metod de validacion');
+        console.log(event.target.value);
+        const pattern = /^[a-zA-Z0-9]*$/;
+        //let inputChar = String.fromCharCode(event.charCode)
+        if (!pattern.test(event.target.value)) {
+            event.target.value = event.target.value.replace(/[^a-zA-Z0-9]/g, "");
+            // invalid character, prevent input
+        }
+    }
+};
+PasswordTrunkPage.ctorParameters = () => [
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_2__["Storage"] },
+    { type: _services_users_service__WEBPACK_IMPORTED_MODULE_3__["UsersService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"] }
+];
+PasswordTrunkPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-password-trunk',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./password-trunk.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/password-trunk/password-trunk.page.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./password-trunk.page.scss */ "./src/app/pages/password-trunk/password-trunk.page.scss")).default]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_2__["Storage"],
+        _services_users_service__WEBPACK_IMPORTED_MODULE_3__["UsersService"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["AlertController"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]])
+], PasswordTrunkPage);
+
+
+
+/***/ })
+
+}]);
+//# sourceMappingURL=pages-password-trunk-password-trunk-module-es2015.js.map

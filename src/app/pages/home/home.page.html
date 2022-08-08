@@ -1,0 +1,40 @@
+<ion-header class="no-border">
+  <ion-toolbar>
+    <ion-title class="title">
+      <img src="../../../assets/logo.svg" class="logo no-border" alt="">
+      F-Bank
+    </ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content class="background">
+  <ion-card class="card">
+    <ion-item>
+      <ion-icon name="pin" slot="start"></ion-icon>
+      <ion-label class="card">Bienvenido</ion-label>
+      <ion-button 
+        fill="outline" 
+        slot="end"
+        [routerLink]="['/sigin']">Iniciar sesión</ion-button>
+    </ion-item>
+  
+    <ion-card-content>
+      <p class="card-c">
+        Bienvenido a su banco, Ingrese a nuestros excelentes servicios de Banca Móvil
+      </p> 
+    </ion-card-content>
+  </ion-card>
+
+  <ion-slides pager="true" [options]="slideOpts">
+    <ion-slide>
+      <img src="../../../assets/img/money-ga735485be_640.jpg" alt="">
+    </ion-slide>
+    <ion-slide>
+      <img src="../../../assets/img/credit-card-gf2338e54e_640.jpg" alt="">
+    </ion-slide>
+    <ion-slide>
+      <img src="../../../assets/img/money-g68c29150e_640.jpg" alt="">
+    </ion-slide>
+  </ion-slides>
+  
+</ion-content>

@@ -1,0 +1,1693 @@
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-chat-new-chat-new-module"],{
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/chat-new/chat-new.page.html":
+/*!*****************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/chat-new/chat-new.page.html ***!
+  \*****************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header class=\"headera\">\n  <ion-toolbar color=\"warning\">\n    <ion-buttons slot=\"start\" class=\"backarrow\">\n      <ion-button (click)=\"goToContacts()\">\n        <ion-icon src=\"assets/icons/arrow-back.svg\"></ion-icon>\n      </ion-button>\n    </ion-buttons>\n\n    <ion-buttons class=\"\">\n      <ion-avatar slot=\"\" color=\"warning\">\n        <img src=\"../../../assets/avatars/{{avatarUser}}\" class=\"avatar\">\n      </ion-avatar>\n      <label class=\"username\">{{usernameContact}} ({{nameContact}})</label>\n    </ion-buttons>\n\n    <ion-buttons slot=\"primary\" class=\"powerbutton\">\n      <ion-button (click)=\"logout()\">\n        <ion-icon slot=\"end\" src=\"/assets/icons/power.svg\" class=\"icon-logout\"></ion-icon>\n      </ion-button>\n\n    </ion-buttons>\n  </ion-toolbar>\n</ion-header>\n\n<ion-content #scrollElement class=\"ion-padding2 contentt\" [scrollEvents]=\"true\" fullscreen  id=\"myContent\">\n  <ion-fab horizontal=\"end\" vertical=\"top\" slot=\"fixed\" color=\"warning\">\n    <ion-fab-button class=\"ios ion-activatable ion-focusable hydrated\" color=\"warning\">\n      <ion-icon name=\"add\"></ion-icon>\n    </ion-fab-button>\n\n    <ion-fab-list side=\"\">\n      <ion-fab-button color=\"warning\" data-desc=\"Camara\" (click)=\"captureImage()\"\n        *ngIf=\"planActive  === 'Plan Plus' || planActive === 'Plan Promocional'\">\n        <ion-icon name=\"camera\" role=\"img\" class=\"ios hydrated\" aria-label=\"logo facebook\"></ion-icon>\n      </ion-fab-button>\n\n      <ion-fab-button color=\"warning\" data-desc=\"Galería\" (click)=\"imageGallery()\"\n        *ngIf=\"planActive  === 'Plan Plus' || planActive === 'Plan Promocional'\">\n        <ion-icon name=\"image\" role=\"img\" class=\"ios hydrated\" aria-label=\"logo twitter\"></ion-icon>\n      </ion-fab-button>\n\n      <ion-fab-button color=\"warning\" data-desc=\"Enviar al Baúl\" (click)=\"sendTrunk()\"\n        *ngIf=\"planActive  === 'Plan Plus' || planActive === 'Plan Promocional'\">\n        <ion-icon src=\"/assets/icons/lock-closed.svg\" class=\"\"></ion-icon>\n      </ion-fab-button>\n\n      <ion-fab-button color=\"warning\" data-desc=\"Eliminar mensajes\" (click)=\"deleteMeessages()\">\n        <ion-icon name=\"trash\" role=\"img\" class=\"ios hydrated\" ></ion-icon>\n      </ion-fab-button>\n\n      <ion-fab-button color=\"warning\" data-desc=\"Mensaje de voz\" (click)=\"activeTape()\">\n        <ion-icon src=\"/assets/icons/mic-circle.svg\" role=\"img\" class=\"ios hydrated\" class=\"iconfav\"></ion-icon>\n      </ion-fab-button>\n\n    </ion-fab-list>\n  </ion-fab>\n\n  <div class=\"messages-container\">\n    <!--space to menu lateral rigth-->\n\n\n\n    <div class=\"\" fullscreen=\"true\">\n      <ion-grid>\n\n        <ion-infinite-scroll position=\"top\" threshold=\"100px\" (ionInfinite)=\"loadData($event)\">\n          <ion-infinite-scroll-content loadingSpinner=\"bubbles\" loadingText=\"Cargando mensajes...\">\n          </ion-infinite-scroll-content>\n        </ion-infinite-scroll>\n        <div class=\"messages-container\">\n          <ion-row radio-group *ngFor=\"let message of messages; let i = index\">\n\n\n            <ion-col size=\"9\">\n              <div\n                *ngIf=\"message.senderId !== currentUser && message.type === '1' && currentUser !== message.deleteAlpha\">\n\n                <div class=\"bubble me\" *ngIf=\"currentUser !== message.deletebetha\">\n                  <div class=\"user\">\n\n                    <ion-radio slot=\"start\" *ngIf=\"checks === 'on'\" (click)=\"addSelectResend(message)\"\n                      value=\"message._id\">\n                    </ion-radio>\n                    <ion-radio slot=\"start\" *ngIf=\"trunkChecks === 'on'\" (click)=\"addTrunk(message)\"></ion-radio>\n                    <ion-icon src=\"/assets/icons/redo.svg\" class=\"icon-app\" (click)=\"presentSelect()\"\n                      *ngIf=\"arrowControl === 'off'\"></ion-icon>\n                    {{ nameContact }} <br>\n                  </div>\n                  <div class=\"msg\">\n                    {{ decrypt(message.body)}}\n                  </div>\n                  <div class=\"footer-bubble\">\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Decoded {{message.createAt | date:'short'}}</div>\n                  </div>\n                </div>\n              </div>\n            </ion-col>\n\n\n            <ion-col offset=\"3\" size=\"9\"\n              *ngIf=\"message.senderId === currentUser && message.type === '1' && currentUser !== message.deleteAlpha\">\n              <div *ngIf=\"currentUser !== message.deletebetha\">\n                <div class=\"bubble you\">\n                  <div class=\"user\">\n                    <ion-radio slot=\"start\" *ngIf=\"checks === 'on'\" (click)=\"addSelectResend(message)\"\n                      value=\"message._id\">\n                    </ion-radio>\n                    <ion-radio slot=\"start\" *ngIf=\"trunkChecks === 'on'\" (click)=\"addTrunk(message)\"></ion-radio>\n                    <ion-icon src=\"/assets/icons/redo.svg\" class=\"icon-app\" (click)=\"presentSelect()\"\n                      *ngIf=\"arrowControl === 'off'\">\n                    </ion-icon>\n                    {{ myUsername }}<br>\n                  </div>\n                  <div class=\"msg2\">\n                    {{ decrypt(message.body)}}\n                  </div>\n                  <div class=\"footer-bubble\">\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Encoded {{message.createAt | date:'short'}}</div>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-outline.svg\" *ngIf=\"message.isread === '0'\">\n                    </ion-icon>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-done-outline.svg\"\n                      *ngIf=\"message.isread === '1'\">\n                    </ion-icon>\n                  </div>\n                </div>\n              </div>\n            </ion-col>\n\n            <!--Ressend-->\n            <ion-col offset=\"3\" size=\"9\"\n              *ngIf=\"message.senderId === currentUser && message.type === '11' && currentUser !== message.deleteAlpha \">\n              <div *ngIf=\"currentUser !== message.deletebetha\">\n                <div class=\"bubbleorange you\">\n                  <div class=\"user\">\n                    <ion-radio slot=\"start\" *ngIf=\"checks === 'on'\" (click)=\"addSelectResend(message)\"\n                      value=\"message._id\"></ion-radio>\n                    <ion-radio slot=\"start\" *ngIf=\"trunkChecks === 'on'\" (click)=\"addTrunk(message)\"></ion-radio>\n                    <ion-icon src=\"/assets/icons/redo.svg\" class=\"icon-app\" (click)=\"presentSelect()\"\n                      *ngIf=\"arrowControl === 'off'\"></ion-icon>\n                    {{ myUsername }}<br>\n                  </div>\n                  <div class=\"msg2\">\n                    {{ decrypt(message.body)}}\n                  </div>\n                  <div class=\"footer-bubble\">\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Decoded {{message.createAt | date:'short'}}</div>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-outline.svg\" *ngIf=\"message.isread === '0'\">\n                    </ion-icon>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-done-outline.svg\"\n                      *ngIf=\"message.isread === '1'\">\n                    </ion-icon>\n                  </div>\n                </div>\n              </div>\n            </ion-col>\n\n            <ion-col size=\"9\"\n              *ngIf=\"message.senderId !== currentUser && message.type === '11' && currentUser !== message.deleteAlpha \">\n              <div *ngIf=\"currentUser !== message.deletebetha\">\n                <div class=\"bubbleorange me\">\n                  <div class=\"user\">\n                    <ion-radio slot=\"start\" *ngIf=\"checks === 'on'\" (click)=\"addSelectResend(message)\"\n                      value=\"message._id\"></ion-radio>\n                    <ion-radio slot=\"start\" *ngIf=\"trunkChecks === 'on'\" (click)=\"addTrunk(message)\"></ion-radio>\n                    <ion-icon src=\"/assets/icons/redo.svg\" class=\"icon-app\" (click)=\"presentSelect()\"\n                      *ngIf=\"arrowControl === 'off'\"></ion-icon>\n                    {{ nameContact }} <br>\n                  </div>\n                  <div class=\"msg\">\n                    {{ decrypt(message.body)}}\n                  </div>\n                  <div class=\"footer-bubble\">\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Decoded {{message.createAt | date:'short'}}</div>\n                  </div>\n                </div>\n              </div>\n            </ion-col>\n\n            <!--Resend Images-->\n            <ion-col size=\"10\" offset=\"2\"\n              *ngIf=\"message.senderId === currentUser && message.type === '22' && currentUser !== message.deleteAlpha \">\n              <div *ngIf=\"currentUser !== message.deletebetha\">\n                <div class=\"bubbleorange you\">\n                  <ion-radio slot=\"start\" *ngIf=\"checks === 'on'\" (click)=\"addSelectResend(message)\"\n                    value=\"message._id\">\n                  </ion-radio>\n                  <ion-radio slot=\"start\" *ngIf=\"trunkChecks === 'on'\" (click)=\"addTrunk(message)\"></ion-radio>\n                  <ion-icon src=\"/assets/icons/redo.svg\" class=\"icon-app\" (click)=\"presentSelect()\"\n                    *ngIf=\"arrowControl === 'off'\"></ion-icon>\n                  {{ myUsername }} <br>\n                  <div class=\"msg2\">\n                    <ion-img [src]=\"message.body | image\" (click)=\"openGallery(message.body)\"></ion-img>\n                  </div>\n                  <div class=\"footer-bubble\">\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Encoded {{message.createAt | date:'short'}}</div>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-outline.svg\" *ngIf=\"message.isread === '0'\">\n                    </ion-icon>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-done-outline.svg\"\n                      *ngIf=\"message.isread === '1'\">\n                    </ion-icon>\n                  </div>\n                </div>\n              </div>\n            </ion-col>\n\n            <ion-col size=\"10\"\n              *ngIf=\"message.senderId !== currentUser && message.type === '22' && currentUser !== message.deleteAlpha\">\n              <div *ngIf=\"currentUser !== message.deletebetha\">\n                <div class=\"bubbleorange me\">\n                  <ion-radio slot=\"start\" *ngIf=\"checks === 'on'\" (click)=\"addSelectResend(message)\"\n                    value=\"message._id\">\n                  </ion-radio>\n                  <ion-radio slot=\"start\" *ngIf=\"trunkChecks === 'on'\" (click)=\"addTrunk(message)\"></ion-radio>\n                  <ion-icon src=\"/assets/icons/redo.svg\" class=\"icon-app\" (click)=\"presentSelect()\"\n                    *ngIf=\"arrowControl === 'off'\"></ion-icon>\n                  {{ nameContact }} <br>\n                  <div class=\"msg2\">\n                    <ion-img [src]=\"message.body | image\" (click)=\"openGallery(message.body)\"></ion-img>\n                  </div>\n                  <div class=\"footer-bubble\">\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Decoded {{message.createAt | date:'short'}}</div>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-outline.svg\" *ngIf=\"message.isread === '0'\">\n                    </ion-icon>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-done-outline.svg\"\n                      *ngIf=\"message.isread === '1'\">\n                    </ion-icon>\n                  </div>\n                </div>\n              </div>\n            </ion-col>\n\n            <!--End Resend Images-->\n\n\n            <!--end Resend-->\n            <ion-col size=\"10\" offset=\"2\"\n              *ngIf=\"message.senderId === currentUser && message.type === '2' && currentUser !== message.deleteAlpha\">\n              <div *ngIf=\"currentUser !== message.deletebetha\">\n                <div class=\"bubble you\">\n                  <ion-radio slot=\"start\" *ngIf=\"checks === 'on'\" (click)=\"addSelectResend(message)\"\n                    value=\"message._id\">\n                  </ion-radio>\n                  <ion-radio slot=\"start\" *ngIf=\"trunkChecks === 'on'\" (click)=\"addTrunk(message)\"></ion-radio>\n                  <ion-icon src=\"/assets/icons/redo.svg\" class=\"icon-app\" (click)=\"presentSelect()\"\n                    *ngIf=\"arrowControl === 'off'\"></ion-icon>\n                  {{ myUsername }} <br>\n                  <div class=\"msg2\">\n                    <ion-img [src]=\"message.body | image\" (click)=\"openGallery(message.body)\"></ion-img>\n                  </div>\n                  <div class=\"footer-bubble\">\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Decoded {{message.createAt | date:'short'}}</div>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-outline.svg\" *ngIf=\"message.isread === '0'\">\n                    </ion-icon>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-done-outline.svg\"\n                      *ngIf=\"message.isread === '1'\">\n                    </ion-icon>\n                  </div>\n                </div>\n              </div>\n            </ion-col>\n\n            <ion-col size=\"10\"\n              *ngIf=\"message.senderId !== currentUser && message.type === '2' && currentUser !== message.deleteAlpha\">\n              <div *ngIf=\"currentUser !== message.deletebetha\">\n                <div class=\"bubble me\">\n                  <ion-radio slot=\"start\" *ngIf=\"checks === 'on'\" (click)=\"addSelectResend(message)\"\n                    value=\"message._id\">\n                  </ion-radio>\n                  <ion-radio slot=\"start\" *ngIf=\"trunkChecks === 'on'\" (click)=\"addTrunk(message)\"></ion-radio>\n                  <ion-icon src=\"/assets/icons/redo.svg\" class=\"icon-app\" (click)=\"presentSelect()\"\n                    *ngIf=\"arrowControl === 'off'\"></ion-icon>\n                  {{ nameContact }} <br>\n                  <div class=\"msg2\">\n                    <ion-img [src]=\"message.body | image\" (click)=\"openGallery(message.body)\"></ion-img>\n                  </div>\n                  <div class=\"footer-bubble\">\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Decoded {{message.createAt | date:'short'}}</div>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-outline.svg\" *ngIf=\"message.isread === '0'\">\n                    </ion-icon>\n                    <ion-icon class=\"check\" src=\"assets/icons/checkmark-done-outline.svg\"\n                      *ngIf=\"message.isread === '1'\">\n                    </ion-icon>\n                  </div>\n                </div>\n              </div>\n            </ion-col>\n\n            <ion-col size=\"10\"\n              *ngIf=\"message.senderId !== currentUser && message.type === '3' && currentUser !== message.deleteAlpha\">\n              <div *ngIf=\"currentUser !== message.deletebetha\">\n                <div class=\"bubble me\">\n                  <div> {{ nameContact }}</div>                  \n                    <div class=\"playermessage\">\n                      <div class=\"imh2\" *ngIf=\"waves === 'off'\">\n                        <ion-icon name=\"play\" (click)=\"play(message.audioFile)\" class=\"iconsplayer\"></ion-icon>\n                        <ion-icon name=\"pause\" (click)=\"pause(message.audioFile)\" class=\"iconsplayer\"></ion-icon>\n                      </div>\n                    <div class=\"imh\" *ngIf=\"waves === 'on'\">\n                      <ion-icon src=\"/assets/icons/play.svg\" (click)=\"play(message.audioFile)\" class=\"iconsplayer\"></ion-icon>\n                      <ion-icon src=\"/assets/icons/pause.svg\" (click)=\"pause(message.audioFile)\" class=\"iconsplayer\"></ion-icon>\n                    </div>\n                  </div>\n                  <div class=\"encodeplayer text-right\">Decoded {{message.createAt | date:'short'}}</div>\n                </div>\n              </div>\n            </ion-col>\n\n            <ion-col size=\"10\" offset=\"2\"\n              *ngIf=\"message.senderId === currentUser && message.type === '3' && currentUser !== message.deleteAlpha\">\n              <div *ngIf=\"currentUser !== message.deletebetha\">\n                <div class=\"bubble you\">\n                  <div> {{myUsername}} </div>\n                  <div class=\"playermessage\">\n                    <div class=\"imh2\" *ngIf=\"waves === 'off'\">\n                      <ion-icon name=\"play\" (click)=\"play(message.audioFile)\" class=\"iconsplayer\"></ion-icon>\n                      <ion-icon name=\"pause\" (click)=\"pause(message.audioFile)\" class=\"iconsplayer\"></ion-icon>\n                    </div>\n                  <div class=\"imh\" *ngIf=\"waves === 'on'\">\n                    <ion-icon name=\"play\" (click)=\"play(message.audioFile)\" class=\"iconsplayer\"></ion-icon>\n                    <ion-icon name=\"pause\" (click)=\"pause(message.audioFile)\" class=\"iconsplayer\"></ion-icon>\n                  </div>\n                  </div>\n                  <div class=\"encodeplayer text-right\">Encode {{message.createAt | date:'short'}}</div>\n                </div>\n              </div>\n            </ion-col>\n\n\n\n            <!--ion-col size=\"9\" *ngIf=\"message.senderId !== currentUser && message.type === '1' \"\n                class=\"message other-message\">\n                <div *ngIf=\"currentUser  !== message.deleteAlpha || currentUser === message.deletebetha\">\n                  <div *ngIf=\"currentUser !== message.deletebetha\">\n                    <div class=\"user\" >\n                      <ion-icon src=\"/assets/icons/redo.svg\" class=\"icon-app\" (click)=\"presentMenuBar(message.body, message.receiverId)\"></ion-icon> \n                      {{ nameContact }} <br>\n                    </div>\n                    <span>{{ decrypt(message.body)}}</span>\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Decoded {{message.createAt | date:'short'}}</div>\n                  </div>\n                </div>\n              </ion-col-->\n\n            <!--ion-col offset=\"3\" size=\"9\" *ngIf=\"message.senderId === currentUser && message.type === '1' && currentUser !== message.deleteAlpha\"\n                class=\"message my-message\">\n                <div *ngIf=\"currentUser  !== message.deleteAlpha || currentUser === message.deletebetha\">\n                  <div *ngIf=\"currentUser !== message.deletebetha\">\n                    <div class=\"user\">\n                      <ion-icon src=\"/assets/icons/redo.svg\" class=\"icon-app\" (click)=\"presentMenuBar(message.body, message.receiverId)\"></ion-icon>\n                      {{ myUsername }}<br>\n                    </div>\n                    <span>{{ decrypt(message.body) }}</span>\n                    <div class=\"mess text-right\">{{ message.createdAt}}</div>\n                    <div class=\"decode text-right\">Encoded {{message.createAt | date:'short' }}</div>\n                    <ion-icon src=\"assets/icons/checkmark-outline.svg\" *ngIf=\"message.isread === '0'\"></ion-icon>\n                    <ion-icon src=\"assets/icons/checkmark-done-outline.svg\" *ngIf=\"message.isread === '1'\"></ion-icon>\n                  </div>\n                </div>\n              </ion-col-->\n\n          </ion-row>\n        </div>\n      </ion-grid>\n    </div>\n  </div>\n  \n  \n</ion-content>\n\n<ion-footer color=\"warning\">\n\n  <ion-card *ngIf=\"hidde1\" >\n    <ion-card-header>\n      <ion-icon name=\"close\" class=\"closeButton\" (click)=\"closeRecord()\"></ion-icon>\n      <ion-card-title> {{status}}</ion-card-title>      \n    </ion-card-header>\n  \n    <ion-card-content>\n      <img src=\"../../../assets/espetro.gif\" class=\"wave\">\n      <ion-grid>\n        <ion-row>\n          <ion-col size=\"6\">\n            <div>            \n              <ion-button color=\"medium\" (click)=\"recordAudio()\" class=\"btnPlayer\" disabled=\"{{recordButton}}\">\n                <ion-icon name=\"mic-circle-outline\"  class=\"botonsAudioRecord\" ></ion-icon>\n                Grabar\n              </ion-button>           \n            </div>\n          </ion-col>\n          <ion-col size=\"6\">\n            <div>\n              <ion-button  (click)=\"stopRecording()\" color=\"medium\" class=\"btnPlayer\">\n                <ion-icon name=\"stop-circle-outline\"  class=\"botonsAudioStop\" slot=\"start\"></ion-icon>\n                Detener\n              </ion-button>              \n            </div>\n          </ion-col>\n          <ion-col>\n            <div>\n              <ion-button expand=\"full\" color=\"medium\" (click)=\"sendAudio(file)\" class=\"btnPlayer\" disabled={{sendAudioButton}}>\n                <ion-icon  src=\"assets/icons/send.svg\" slot=\"icon-only\"></ion-icon>\n              </ion-button>\n            </div>\n          </ion-col>\n        </ion-row>\n      </ion-grid>      \n    </ion-card-content>\n  </ion-card>\n\n\n\n\n  <!--ion-card *ngIf=\"hidde1\">\n    <ion-item class=\"ion-activated\">\n      <ion-label slot=\"start\"> </ion-label>\n        <ion-card-content>\n          \n        </ion-card-content>\n      <ion-label>\n     \n      </ion-label>\n      <ion-icon name=\"mic-circle-outline\" (click)=\"recordAudio()\" class=\"botonsAudioRecord\"></ion-icon>\n      <ion-icon name=\"stop-circle-outline\" (click)=\"stopRecording()\" class=\"botonsAudioStop\"></ion-icon>\n      <ion-button expand=\"block\" fill=\"clear\" color=\"warning\"  class=\"msg-btn\"\n          (click)=\"sendAudio(audioFile)\">\n          <ion-icon name=\"send-outline\" slot=\"icon-only\" class=\"boton-send\"></ion-icon>\n        </ion-button>\n    </ion-item>\n  </ion-card-->\n\n\n  <ion-toolbar color=\"light\" *ngIf=\"checks === 'on'\">\n    <ion-button expand=\"block\" (click)=\"resendMessage()\"\n      class=\"ios button button-block button-solid ion-activatable ion-focusable hydrated\" color=\"warning\">Seleccionar\n      contacto</ion-button>\n    <ion-button expand=\"block\" (click)=\"canelResend()\"\n      class=\"ios button button-block button-solid ion-activatable ion-focusable hydrated\" color=\"danger\">Cancelar\n    </ion-button>\n  </ion-toolbar>\n  <ion-toolbar color=\"light\" *ngIf=\"trunkChecks === 'on'\">\n    <ion-input type=\"text\" [(ngModel)]=\"nameTrunk\" placeholder=\"Asignar nombre\" required=\"true\">\n    </ion-input>\n\n    <ion-button expand=\"block\" (click)=\"sendtoTrunk()\"\n      class=\"ios button button-block button-solid ion-activatable ion-focusable hydrated\" color=\"warning\">Enviar al Baúl\n    </ion-button>\n    <ion-button expand=\"block\" (click)=\"canelResend()\"\n      class=\"ios button button-block button-solid ion-activatable ion-focusable hydrated\" color=\"danger\">Cancelar\n    </ion-button>\n  </ion-toolbar>\n  <ion-toolbar color=\"light\" *ngIf=\"checks === 'off' \">\n    <ion-row class=\"align-items-center\" class=\"ion-no-padding\">\n      <!--ion-col size=\"1\">       \n        <ion-icon name=\"ellipsis-vertical-outline\"\n                  (click)=\"presentFooterMenu()\"\n                  class=\"btnmenufooter\">\n        </ion-icon>\n      \n    </ion-col-->\n      <ion-col size=\"10\">\n        <textarea autosize maxRows=\"4\" [(ngModel)]=\"message\" class=\"message-input\"></textarea>\n      </ion-col>\n      <ion-col size=\"2\">\n        <ion-button expand=\"block\" fill=\"clear\" color=\"warning\" [disabled]=\"message === ''\" class=\"msg-btn\"\n          (click)=\"sendMessage()\">\n          <ion-icon src=\"assets/icons/send.svg\" slot=\"icon-only\"></ion-icon>\n        </ion-button>\n      </ion-col>\n    </ion-row>\n  </ion-toolbar>\n</ion-footer>");
+
+/***/ }),
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/modal-contacts/modal-contacts.page.html":
+/*!*****************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/modal-contacts/modal-contacts.page.html ***!
+  \*****************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header no-border>\r\n  \r\n<ion-toolbar>\r\n  <ion-buttons slot=\"primary\">\r\n    <ion-button color=\"warning\" (click)=\"exitWithOutArguments()\">\r\n      <ion-icon slot=\"icon-only\" ios=\"close\" md=\"close\"></ion-icon>\r\n    </ion-button>\r\n  </ion-buttons>\r\n  <ion-title> {{'MODALCONTACTS.title' | translate}}</ion-title>\r\n</ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-card>\r\n    <ion-card-content>\r\n    <!--init list-->\r\n    <ion-list class=\"ios list-ios hydrated\">\r\n      <ion-list-header class=\"ios hydrated\">\r\n        Mensaje[s] :\r\n      </ion-list-header>\r\n\r\n      <ion-item *ngFor=\"let message of objMessage; let i = index\" class=\"item ios in-list ion-focusable hydrated item-label\">\r\n        <ion-avatar slot=\"start\" class=\"ios hydrated avataral\">\r\n          <ion-icon *ngIf=\"message.type === 1\" src=\"assets/icons/chatbox-outline.svg\"></ion-icon>\r\n          <!--ion-icon *ngIf=\"message.type === 2\" src=\"assets/icons/image.svg\"></ion-icon-->\r\n        </ion-avatar>\r\n        <ion-label class=\"sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated\">\r\n          <h2>{{myUsername}}</h2>\r\n          <h3 *ngIf=\"message.type === '1' && message.type !== 11 \" >{{ decrypt(message.body)}}</h3>\r\n          <h3 *ngIf=\"message.type === '11'\" >{{ decrypt(message.body)}}</h3>\r\n          <ion-img *ngIf=\"message.type === '2'\"\r\n                    [src]=\"message.body | image\"  \r\n                    class=\"imageResend\" ></ion-img>\r\n          <ion-img *ngIf=\"message.type === '22'\"\r\n                    [src]=\"message.body | image\"  \r\n                    class=\"imageResend\" ></ion-img>         \r\n          <p *ngIf=\"message.type === '1'\">Decoded: {{ message.createAt | date:'short'}}</p>\r\n        </ion-label>\r\n      </ion-item>\r\n\r\n    </ion-list>\r\n    <!-- end list-->\r\n    </ion-card-content>\r\n  </ion-card>\r\n\r\n \r\n  <ion-list>\r\n    <ion-item-sliding *ngFor=\"let contact of contacts\">\r\n      <ion-item class=\"itemheight\">\r\n        <ion-avatar slot=\"start\">\r\n          <img src=\"../../../assets/avatars/defaultavatar.png\">\r\n        </ion-avatar>\r\n        <ion-label class=\"sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated\">\r\n          <h3 class=\"nameUser\">{{ contact.alias }}</h3>\r\n        </ion-label>\r\n        <ion-icon slot=\"end\" name=\"chevron-back-outline\" class=\"backArrow\"></ion-icon>\r\n        <label slot=\"end\" class=\"swip\">{{'MODALCONTACTS.swipe' | translate}} </label> \r\n      </ion-item>\r\n      <!--ion-item-options side=\"end\" (click)=\"resendMessageOwner(objMessage,sender, contact.sidcontact, contact.siduser)\"-->\r\n      <ion-item-options side=\"end\" (click)=\"newResendMessage(objMessage,contact.sidcontact, contact.siduser)\">\r\n      <ion-item-option color=\"primary\">\r\n          {{'MODALCONTACTS.send' | translate}}\r\n        </ion-item-option>\r\n        <ion-item-option  color=\"primary\">\r\n          <ion-icon name=\"send-outline\"></ion-icon>\r\n        </ion-item-option>\r\n      </ion-item-options>\r\n    </ion-item-sliding>\r\n  </ion-list>\r\n\r\n</ion-content>\r\n");
+
+/***/ }),
+
+/***/ "./src/app/pages/chat-new/chat-new.module.ts":
+/*!***************************************************!*\
+  !*** ./src/app/pages/chat-new/chat-new.module.ts ***!
+  \***************************************************/
+/*! exports provided: ChatNewPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChatNewPageModule", function() { return ChatNewPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _chat_new_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./chat-new.page */ "./src/app/pages/chat-new/chat-new.page.ts");
+/* harmony import */ var ngx_autosize__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ngx-autosize */ "./node_modules/ngx-autosize/fesm2015/ngx-autosize.js");
+/* harmony import */ var _modal_contacts_modal_contacts_page__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../modal-contacts/modal-contacts.page */ "./src/app/pages/modal-contacts/modal-contacts.page.ts");
+/* harmony import */ var _modal_contacts_modal_contacts_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../modal-contacts/modal-contacts.module */ "./src/app/pages/modal-contacts/modal-contacts.module.ts");
+/* harmony import */ var src_app_pipes_pipes_module__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/app/pipes/pipes.module */ "./src/app/pipes/pipes.module.ts");
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
+
+
+
+
+
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _chat_new_page__WEBPACK_IMPORTED_MODULE_6__["ChatNewPage"]
+    }
+];
+let ChatNewPageModule = class ChatNewPageModule {
+};
+ChatNewPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        entryComponents: [
+            _modal_contacts_modal_contacts_page__WEBPACK_IMPORTED_MODULE_8__["ModalContactsPage"],
+        ],
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes),
+            ngx_autosize__WEBPACK_IMPORTED_MODULE_7__["AutosizeModule"],
+            _modal_contacts_modal_contacts_module__WEBPACK_IMPORTED_MODULE_9__["ModalContactsPageModule"],
+            src_app_pipes_pipes_module__WEBPACK_IMPORTED_MODULE_10__["PipesModule"],
+            _ngx_translate_core__WEBPACK_IMPORTED_MODULE_11__["TranslateModule"],
+        ],
+        declarations: [_chat_new_page__WEBPACK_IMPORTED_MODULE_6__["ChatNewPage"]]
+    })
+], ChatNewPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/chat-new/chat-new.page.scss":
+/*!***************************************************!*\
+  !*** ./src/app/pages/chat-new/chat-new.page.scss ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("@charset \"UTF-8\";\n.avatar {\n  width: 60%;\n  height: 60%;\n  margin-top: 8%;\n}\n.username {\n  font-size: 13px;\n  margin-top: -5%;\n}\n.backarrow {\n  margin-top: -4%;\n}\n.powerbutton {\n  margin-top: -3%;\n}\n.icon-logout {\n  font-size: 20px;\n  background: #f19936;\n  width: 28px;\n  height: 28px;\n  border-radius: 50%;\n  line-height: 50px;\n  text-align: center;\n  color: #000000;\n}\n.message-input {\n  width: 100%;\n  border: 1px solid var(--ion-color-medium);\n  border-radius: 10px;\n  background: #fff;\n  resize: none;\n  padding-left: 10px;\n  padding-right: 10px;\n}\n.msg-btn {\n  --padding-start: 0.5em;\n  --padding-end: 0.5em;\n}\n/*Messages*/\n.message {\n  border-radius: 10px;\n  margin-bottom: 4px;\n  white-space: pre-wrap;\n}\n.other-message {\n  background: #ffffff;\n  color: #000000;\n  border-color: #c0c0c0;\n  border-width: thin;\n  border-style: solid;\n}\n.my-message {\n  background: #dddbdb;\n  color: #000000;\n  border-color: #c0c0c0;\n  border-width: thin;\n  border-style: solid;\n}\n.user {\n  font-weight: bold;\n  font-size: 18px;\n  color: #3B3B3B;\n}\n.user2 {\n  font-weight: bold;\n  font-size: 18px;\n  color: #3B3B3B;\n  margin-top: -19px;\n}\n.bubble {\n  background-color: #F2F2F2;\n  border-radius: 5px;\n  box-shadow: 0 0 6px #B2B2B2;\n  display: inline-block;\n  padding: 10px 18px;\n  position: relative;\n  vertical-align: top;\n  width: 100%;\n}\n.bubble::before {\n  background-color: #F2F2F2;\n  content: \" \";\n  display: block;\n  height: 16px;\n  position: absolute;\n  top: 11px;\n  transform: rotate(29deg) skew(-35deg);\n  -moz-transform: rotate(29deg) skew(-35deg);\n  -ms-transform: rotate(29deg) skew(-35deg);\n  -o-transform: rotate(29deg) skew(-35deg);\n  -webkit-transform: rotate(29deg) skew(-35deg);\n  width: 20px;\n}\n.me {\n  float: left;\n  margin: -6px 5px 5px 20px;\n}\n.me::before {\n  box-shadow: -2px 2px 2px 0 rgba(178, 178, 178, 0.4);\n  left: -9px;\n}\n.you {\n  float: right;\n  margin: -6px 20px 5px 45px;\n  background-color: #dddbdb;\n}\n.you::before {\n  box-shadow: 2px -2px 2px 0 #dddbdb;\n  background-color: #dddbdb;\n  right: -9px;\n}\n.footer-bubble {\n  margin-top: 5px;\n  font-size: 11px;\n}\n.msg {\n  font-size: 18px;\n  text-align: left;\n  white-space: pre-wrap !important;\n}\n.msg2 {\n  font-size: 18px;\n  text-align: left;\n  white-space: pre-wrap !important;\n}\n.check {\n  font-size: 16px;\n}\n.ion-padding2 {\n  padding: 5px;\n}\n.contentt {\n  height: auto;\n}\n/*END MESSAGEs*/\nion-input[placeholder] {\n  text-align: center;\n}\nion-fab-button[data-desc] {\n  position: relative;\n}\nion-fab-button[data-desc]::after {\n  position: absolute;\n  content: attr(data-desc);\n  z-index: 1;\n  right: 55px;\n  bottom: 4px;\n  background-color: var(--ion-color-dark);\n  padding: 9px;\n  border-radius: 15px;\n  color: white;\n  box-shadow: 0 3px 5px -1px rgba(0, 0, 0, 0.2), 0 6px 10px 0 rgba(0, 0, 0, 0.14), 0 1px 18px 0 rgba(0, 0, 0, 0.12);\n}\n.bubbleorange {\n  background-color: #f6a03f;\n  border-radius: 5px;\n  box-shadow: 0 0 6px #000000;\n  display: inline-block;\n  padding: 10px 18px;\n  position: relative;\n  vertical-align: top;\n  width: 100%;\n}\n.bubbleorange::before {\n  background-color: #f6a03f;\n  content: \" \";\n  display: block;\n  height: 16px;\n  position: absolute;\n  top: 11px;\n  transform: rotate(29deg) skew(-35deg);\n  -moz-transform: rotate(29deg) skew(-35deg);\n  -ms-transform: rotate(29deg) skew(-35deg);\n  -o-transform: rotate(29deg) skew(-35deg);\n  -webkit-transform: rotate(29deg) skew(-35deg);\n  width: 20px;\n}\n.messages-container {\n  position: relative;\n  overflow: hidden;\n  margin: 0 auto;\n}\nion-header ion-toolbar {\n  height: 50px;\n}\n.btnmenufooter {\n  color: #f6a03f;\n  font-size: 28px;\n  margin-top: 7px;\n}\n.messages-container {\n  position: relative;\n  overflow: hidden;\n  margin: 0 auto;\n}\n.botonsAudioRecord {\n  font-size: 36px;\n  color: red;\n}\n.botonsAudioStop {\n  font-size: 36px;\n  color: #0012E8;\n}\nion-card {\n  background: #000000;\n  color: #3B3B3B;\n}\n.wave {\n  height: 120px;\n}\n.btnPlayer {\n  width: 100%;\n  font-size: 12px;\n}\n.closeButton {\n  font-size: 36px;\n}\nion-card-title {\n  text-align: center;\n  color: #dddbdb;\n}\n.playermessage {\n  border-radius: 4px;\n  color: #dddbdb;\n  align-items: center;\n  text-align: center;\n  font-size: 35px;\n}\n.iconsplayer {\n  margin-top: 15px;\n  margin-bottom: 10px;\n  z-index: 1;\n  color: #000;\n}\n.imh {\n  background: url('espetro.gif');\n  height: 90px;\n}\n.imh {\n  height: 90px;\n}\n.encodeplayer {\n  font-size: 11px;\n}\n.iconfav {\n  color: #fff;\n  font-size: 24px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY2hhdC1uZXcvY2hhdC1uZXcucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9jaGF0LW5ldy9DOlxcVXNlcnNcXE5lbWVzc2lzXFxEZXNrdG9wXFxmc3UgLSBDb3B5L3NyY1xcYXBwXFxwYWdlc1xcY2hhdC1uZXdcXGNoYXQtbmV3LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQSxnQkFBZ0I7QUNBaEI7RUFDSSxVQUFBO0VBQ0EsV0FBQTtFQUNBLGNBQUE7QURFSjtBQ0NBO0VBQ0ksZUFBQTtFQUNBLGVBQUE7QURFSjtBQ0NBO0VBQ0UsZUFBQTtBREVGO0FDQ0E7RUFDRSxlQUFBO0FERUY7QUNDQTtFQUVHLGVBQUE7RUFFQSxtQkFBQTtFQUNBLFdBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSxpQkFBQTtFQUNBLGtCQUFBO0VBQ0EsY0FBQTtBREFIO0FDR0E7RUFDSSxXQUFBO0VBQ0EseUNBQUE7RUFDQSxtQkFBQTtFQUNBLGdCQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7QURBSjtBQ0dFO0VBQ0Usc0JBQUE7RUFDQSxvQkFBQTtBREFKO0FDSUUsV0FBQTtBQUNBO0VBRUUsbUJBQUE7RUFDQSxrQkFBQTtFQUNBLHFCQUFBO0FERko7QUNLRTtFQUNFLG1CQUFBO0VBQ0EsY0FBQTtFQUNBLHFCQUFBO0VBQ0Esa0JBQUE7RUFDQSxtQkFBQTtBREZKO0FDS0U7RUFDRSxtQkFBQTtFQUNBLGNBQUE7RUFDQSxxQkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7QURGSjtBQ01FO0VBQ0UsaUJBQUE7RUFDQSxlQUFBO0VBQ0EsY0FBQTtBREhKO0FDT0U7RUFDRSxpQkFBQTtFQUNBLGVBQUE7RUFDQSxjQUFBO0VBQ0EsaUJBQUE7QURKSjtBQ09FO0VBQ0UseUJBQUE7RUFDQSxrQkFBQTtFQUNBLDJCQUFBO0VBQ0EscUJBQUE7RUFDQSxrQkFBQTtFQUNBLGtCQUFBO0VBQ0EsbUJBQUE7RUFDQSxXQUFBO0FESko7QUNPQTtFQUNJLHlCQUFBO0VBQ0EsWUFBQTtFQUNBLGNBQUE7RUFDQSxZQUFBO0VBQ0Esa0JBQUE7RUFDQSxTQUFBO0VBQ0EscUNBQUE7RUFDSSwwQ0FBQTtFQUNBLHlDQUFBO0VBQ0Esd0NBQUE7RUFDQSw2Q0FBQTtFQUNKLFdBQUE7QURKSjtBQ09BO0VBQ0ksV0FBQTtFQUNBLHlCQUFBO0FESko7QUNPQTtFQUNJLG1EQUFBO0VBQ0EsVUFBQTtBREpKO0FDT0E7RUFDSSxZQUFBO0VBQ0EsMEJBQUE7RUFDQSx5QkFBQTtBREpKO0FDT0E7RUFDSSxrQ0FBQTtFQUNBLHlCQUFBO0VBQ0EsV0FBQTtBREpKO0FDT0E7RUFDRSxlQUFBO0VBQ0EsZUFBQTtBREpGO0FDT0E7RUFDRSxlQUFBO0VBQ0EsZ0JBQUE7RUFDQSxnQ0FBQTtBREpGO0FDT0E7RUFDRSxlQUFBO0VBQ0EsZ0JBQUE7RUFFRCxnQ0FBQTtBRExEO0FDUUE7RUFDRSxlQUFBO0FETEY7QUNRQTtFQUNFLFlBQUE7QURMRjtBQ1FBO0VBQ0UsWUFBQTtBRExGO0FDT0UsZUFBQTtBQUVGO0VBQ0Usa0JBQUE7QURMRjtBQ1FFO0VBQ0Usa0JBQUE7QURMSjtBQ1FFO0VBQ0Usa0JBQUE7RUFDQSx3QkFBQTtFQUNBLFVBQUE7RUFDQSxXQUFBO0VBQ0EsV0FBQTtFQUNBLHVDQUFBO0VBQ0EsWUFBQTtFQUNBLG1CQUFBO0VBQ0EsWUFBQTtFQUNBLGlIQUFBO0FETEo7QUNRRTtFQUNFLHlCQUFBO0VBQ0Esa0JBQUE7RUFDQSwyQkFBQTtFQUNBLHFCQUFBO0VBQ0Esa0JBQUE7RUFDQSxrQkFBQTtFQUNBLG1CQUFBO0VBQ0EsV0FBQTtBRExKO0FDUUE7RUFDRSx5QkFBQTtFQUNBLFlBQUE7RUFDQSxjQUFBO0VBQ0EsWUFBQTtFQUNBLGtCQUFBO0VBQ0EsU0FBQTtFQUNBLHFDQUFBO0VBQ0ksMENBQUE7RUFDQSx5Q0FBQTtFQUNBLHdDQUFBO0VBQ0EsNkNBQUE7RUFDSixXQUFBO0FETEY7QUNRQTtFQUdFLGtCQUFBO0VBRUEsZ0JBQUE7RUFDRCxjQUFBO0FEUkQ7QUNZRTtFQUNFLFlBQUE7QURUSjtBQ2FBO0VBQ0UsY0FBQTtFQUNBLGVBQUE7RUFDQSxlQUFBO0FEVkY7QUNjQTtFQUdFLGtCQUFBO0VBRUEsZ0JBQUE7RUFDQSxjQUFBO0FEZEY7QUNrQkE7RUFDRSxlQUFBO0VBQ0EsVUFBQTtBRGZGO0FDa0JBO0VBQ0UsZUFBQTtFQUNBLGNBQUE7QURmRjtBQ2tCQTtFQUNFLG1CQUFBO0VBQ0EsY0FBQTtBRGZGO0FDbUJBO0VBRUUsYUFBQTtBRGpCRjtBQ29CQTtFQUNFLFdBQUE7RUFDQSxlQUFBO0FEakJGO0FDb0JBO0VBQ0EsZUFBQTtBRGpCQTtBQ29CQTtFQUNFLGtCQUFBO0VBQ0EsY0FBQTtBRGpCRjtBQ29CQTtFQUlFLGtCQUFBO0VBQ0EsY0FBQTtFQUNBLG1CQUFBO0VBQ0Esa0JBQUE7RUFDQSxlQUFBO0FEcEJGO0FDd0JBO0VBQ0UsZ0JBQUE7RUFDQSxtQkFBQTtFQUNBLFVBQUE7RUFDQSxXQUFBO0FEckJGO0FDd0JBO0VBQ0UsOEJBQUE7RUFDQSxZQUFBO0FEckJGO0FDeUJBO0VBRUUsWUFBQTtBRHZCRjtBQzJCQTtFQUNFLGVBQUE7QUR4QkY7QUMyQkE7RUFDRSxXQUFBO0VBQ0EsZUFBQTtBRHhCRiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2NoYXQtbmV3L2NoYXQtbmV3LnBhZ2Uuc2NzcyIsInNvdXJjZXNDb250ZW50IjpbIkBjaGFyc2V0IFwiVVRGLThcIjtcbi5hdmF0YXIge1xuICB3aWR0aDogNjAlO1xuICBoZWlnaHQ6IDYwJTtcbiAgbWFyZ2luLXRvcDogOCU7XG59XG5cbi51c2VybmFtZSB7XG4gIGZvbnQtc2l6ZTogMTNweDtcbiAgbWFyZ2luLXRvcDogLTUlO1xufVxuXG4uYmFja2Fycm93IHtcbiAgbWFyZ2luLXRvcDogLTQlO1xufVxuXG4ucG93ZXJidXR0b24ge1xuICBtYXJnaW4tdG9wOiAtMyU7XG59XG5cbi5pY29uLWxvZ291dCB7XG4gIGZvbnQtc2l6ZTogMjBweDtcbiAgYmFja2dyb3VuZDogI2YxOTkzNjtcbiAgd2lkdGg6IDI4cHg7XG4gIGhlaWdodDogMjhweDtcbiAgYm9yZGVyLXJhZGl1czogNTAlO1xuICBsaW5lLWhlaWdodDogNTBweDtcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xuICBjb2xvcjogIzAwMDAwMDtcbn1cblxuLm1lc3NhZ2UtaW5wdXQge1xuICB3aWR0aDogMTAwJTtcbiAgYm9yZGVyOiAxcHggc29saWQgdmFyKC0taW9uLWNvbG9yLW1lZGl1bSk7XG4gIGJvcmRlci1yYWRpdXM6IDEwcHg7XG4gIGJhY2tncm91bmQ6ICNmZmY7XG4gIHJlc2l6ZTogbm9uZTtcbiAgcGFkZGluZy1sZWZ0OiAxMHB4O1xuICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xufVxuXG4ubXNnLWJ0biB7XG4gIC0tcGFkZGluZy1zdGFydDogMC41ZW07XG4gIC0tcGFkZGluZy1lbmQ6IDAuNWVtO1xufVxuXG4vKk1lc3NhZ2VzKi9cbi5tZXNzYWdlIHtcbiAgYm9yZGVyLXJhZGl1czogMTBweDtcbiAgbWFyZ2luLWJvdHRvbTogNHB4O1xuICB3aGl0ZS1zcGFjZTogcHJlLXdyYXA7XG59XG5cbi5vdGhlci1tZXNzYWdlIHtcbiAgYmFja2dyb3VuZDogI2ZmZmZmZjtcbiAgY29sb3I6ICMwMDAwMDA7XG4gIGJvcmRlci1jb2xvcjogI2MwYzBjMDtcbiAgYm9yZGVyLXdpZHRoOiB0aGluO1xuICBib3JkZXItc3R5bGU6IHNvbGlkO1xufVxuXG4ubXktbWVzc2FnZSB7XG4gIGJhY2tncm91bmQ6ICNkZGRiZGI7XG4gIGNvbG9yOiAjMDAwMDAwO1xuICBib3JkZXItY29sb3I6ICNjMGMwYzA7XG4gIGJvcmRlci13aWR0aDogdGhpbjtcbiAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcbn1cblxuLnVzZXIge1xuICBmb250LXdlaWdodDogYm9sZDtcbiAgZm9udC1zaXplOiAxOHB4O1xuICBjb2xvcjogIzNCM0IzQjtcbn1cblxuLnVzZXIyIHtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIGZvbnQtc2l6ZTogMThweDtcbiAgY29sb3I6ICMzQjNCM0I7XG4gIG1hcmdpbi10b3A6IC0xOXB4O1xufVxuXG4uYnViYmxlIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogI0YyRjJGMjtcbiAgYm9yZGVyLXJhZGl1czogNXB4O1xuICBib3gtc2hhZG93OiAwIDAgNnB4ICNCMkIyQjI7XG4gIGRpc3BsYXk6IGlubGluZS1ibG9jaztcbiAgcGFkZGluZzogMTBweCAxOHB4O1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIHZlcnRpY2FsLWFsaWduOiB0b3A7XG4gIHdpZHRoOiAxMDAlO1xufVxuXG4uYnViYmxlOjpiZWZvcmUge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjRjJGMkYyO1xuICBjb250ZW50OiBcIsKgXCI7XG4gIGRpc3BsYXk6IGJsb2NrO1xuICBoZWlnaHQ6IDE2cHg7XG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcbiAgdG9wOiAxMXB4O1xuICB0cmFuc2Zvcm06IHJvdGF0ZSgyOWRlZykgc2tldygtMzVkZWcpO1xuICAtbW96LXRyYW5zZm9ybTogcm90YXRlKDI5ZGVnKSBza2V3KC0zNWRlZyk7XG4gIC1tcy10cmFuc2Zvcm06IHJvdGF0ZSgyOWRlZykgc2tldygtMzVkZWcpO1xuICAtby10cmFuc2Zvcm06IHJvdGF0ZSgyOWRlZykgc2tldygtMzVkZWcpO1xuICAtd2Via2l0LXRyYW5zZm9ybTogcm90YXRlKDI5ZGVnKSBza2V3KC0zNWRlZyk7XG4gIHdpZHRoOiAyMHB4O1xufVxuXG4ubWUge1xuICBmbG9hdDogbGVmdDtcbiAgbWFyZ2luOiAtNnB4IDVweCA1cHggMjBweDtcbn1cblxuLm1lOjpiZWZvcmUge1xuICBib3gtc2hhZG93OiAtMnB4IDJweCAycHggMCByZ2JhKDE3OCwgMTc4LCAxNzgsIDAuNCk7XG4gIGxlZnQ6IC05cHg7XG59XG5cbi55b3Uge1xuICBmbG9hdDogcmlnaHQ7XG4gIG1hcmdpbjogLTZweCAyMHB4IDVweCA0NXB4O1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZGRkYmRiO1xufVxuXG4ueW91OjpiZWZvcmUge1xuICBib3gtc2hhZG93OiAycHggLTJweCAycHggMCAjZGRkYmRiO1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZGRkYmRiO1xuICByaWdodDogLTlweDtcbn1cblxuLmZvb3Rlci1idWJibGUge1xuICBtYXJnaW4tdG9wOiA1cHg7XG4gIGZvbnQtc2l6ZTogMTFweDtcbn1cblxuLm1zZyB7XG4gIGZvbnQtc2l6ZTogMThweDtcbiAgdGV4dC1hbGlnbjogbGVmdDtcbiAgd2hpdGUtc3BhY2U6IHByZS13cmFwICFpbXBvcnRhbnQ7XG59XG5cbi5tc2cyIHtcbiAgZm9udC1zaXplOiAxOHB4O1xuICB0ZXh0LWFsaWduOiBsZWZ0O1xuICB3aGl0ZS1zcGFjZTogcHJlLXdyYXAgIWltcG9ydGFudDtcbn1cblxuLmNoZWNrIHtcbiAgZm9udC1zaXplOiAxNnB4O1xufVxuXG4uaW9uLXBhZGRpbmcyIHtcbiAgcGFkZGluZzogNXB4O1xufVxuXG4uY29udGVudHQge1xuICBoZWlnaHQ6IGF1dG87XG59XG5cbi8qRU5EIE1FU1NBR0VzKi9cbmlvbi1pbnB1dFtwbGFjZWhvbGRlcl0ge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbmlvbi1mYWItYnV0dG9uW2RhdGEtZGVzY10ge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG59XG5cbmlvbi1mYWItYnV0dG9uW2RhdGEtZGVzY106OmFmdGVyIHtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICBjb250ZW50OiBhdHRyKGRhdGEtZGVzYyk7XG4gIHotaW5kZXg6IDE7XG4gIHJpZ2h0OiA1NXB4O1xuICBib3R0b206IDRweDtcbiAgYmFja2dyb3VuZC1jb2xvcjogdmFyKC0taW9uLWNvbG9yLWRhcmspO1xuICBwYWRkaW5nOiA5cHg7XG4gIGJvcmRlci1yYWRpdXM6IDE1cHg7XG4gIGNvbG9yOiB3aGl0ZTtcbiAgYm94LXNoYWRvdzogMCAzcHggNXB4IC0xcHggcmdiYSgwLCAwLCAwLCAwLjIpLCAwIDZweCAxMHB4IDAgcmdiYSgwLCAwLCAwLCAwLjE0KSwgMCAxcHggMThweCAwIHJnYmEoMCwgMCwgMCwgMC4xMik7XG59XG5cbi5idWJibGVvcmFuZ2Uge1xuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjZhMDNmO1xuICBib3JkZXItcmFkaXVzOiA1cHg7XG4gIGJveC1zaGFkb3c6IDAgMCA2cHggIzAwMDAwMDtcbiAgZGlzcGxheTogaW5saW5lLWJsb2NrO1xuICBwYWRkaW5nOiAxMHB4IDE4cHg7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgdmVydGljYWwtYWxpZ246IHRvcDtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi5idWJibGVvcmFuZ2U6OmJlZm9yZSB7XG4gIGJhY2tncm91bmQtY29sb3I6ICNmNmEwM2Y7XG4gIGNvbnRlbnQ6IFwiwqBcIjtcbiAgZGlzcGxheTogYmxvY2s7XG4gIGhlaWdodDogMTZweDtcbiAgcG9zaXRpb246IGFic29sdXRlO1xuICB0b3A6IDExcHg7XG4gIHRyYW5zZm9ybTogcm90YXRlKDI5ZGVnKSBza2V3KC0zNWRlZyk7XG4gIC1tb3otdHJhbnNmb3JtOiByb3RhdGUoMjlkZWcpIHNrZXcoLTM1ZGVnKTtcbiAgLW1zLXRyYW5zZm9ybTogcm90YXRlKDI5ZGVnKSBza2V3KC0zNWRlZyk7XG4gIC1vLXRyYW5zZm9ybTogcm90YXRlKDI5ZGVnKSBza2V3KC0zNWRlZyk7XG4gIC13ZWJraXQtdHJhbnNmb3JtOiByb3RhdGUoMjlkZWcpIHNrZXcoLTM1ZGVnKTtcbiAgd2lkdGg6IDIwcHg7XG59XG5cbi5tZXNzYWdlcy1jb250YWluZXIge1xuICBwb3NpdGlvbjogcmVsYXRpdmU7XG4gIG92ZXJmbG93OiBoaWRkZW47XG4gIG1hcmdpbjogMCBhdXRvO1xufVxuXG5pb24taGVhZGVyIGlvbi10b29sYmFyIHtcbiAgaGVpZ2h0OiA1MHB4O1xufVxuXG4uYnRubWVudWZvb3RlciB7XG4gIGNvbG9yOiAjZjZhMDNmO1xuICBmb250LXNpemU6IDI4cHg7XG4gIG1hcmdpbi10b3A6IDdweDtcbn1cblxuLm1lc3NhZ2VzLWNvbnRhaW5lciB7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcbiAgbWFyZ2luOiAwIGF1dG87XG59XG5cbi5ib3RvbnNBdWRpb1JlY29yZCB7XG4gIGZvbnQtc2l6ZTogMzZweDtcbiAgY29sb3I6IHJlZDtcbn1cblxuLmJvdG9uc0F1ZGlvU3RvcCB7XG4gIGZvbnQtc2l6ZTogMzZweDtcbiAgY29sb3I6ICMwMDEyRTg7XG59XG5cbmlvbi1jYXJkIHtcbiAgYmFja2dyb3VuZDogIzAwMDAwMDtcbiAgY29sb3I6ICMzQjNCM0I7XG59XG5cbi53YXZlIHtcbiAgaGVpZ2h0OiAxMjBweDtcbn1cblxuLmJ0blBsYXllciB7XG4gIHdpZHRoOiAxMDAlO1xuICBmb250LXNpemU6IDEycHg7XG59XG5cbi5jbG9zZUJ1dHRvbiB7XG4gIGZvbnQtc2l6ZTogMzZweDtcbn1cblxuaW9uLWNhcmQtdGl0bGUge1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG4gIGNvbG9yOiAjZGRkYmRiO1xufVxuXG4ucGxheWVybWVzc2FnZSB7XG4gIGJvcmRlci1yYWRpdXM6IDRweDtcbiAgY29sb3I6ICNkZGRiZGI7XG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgZm9udC1zaXplOiAzNXB4O1xufVxuXG4uaWNvbnNwbGF5ZXIge1xuICBtYXJnaW4tdG9wOiAxNXB4O1xuICBtYXJnaW4tYm90dG9tOiAxMHB4O1xuICB6LWluZGV4OiAxO1xuICBjb2xvcjogIzAwMDtcbn1cblxuLmltaCB7XG4gIGJhY2tncm91bmQ6IHVybChcIi4uLy4uLy4uL2Fzc2V0cy9lc3BldHJvLmdpZlwiKTtcbiAgaGVpZ2h0OiA5MHB4O1xufVxuXG4uaW1oIHtcbiAgaGVpZ2h0OiA5MHB4O1xufVxuXG4uZW5jb2RlcGxheWVyIHtcbiAgZm9udC1zaXplOiAxMXB4O1xufVxuXG4uaWNvbmZhdiB7XG4gIGNvbG9yOiAjZmZmO1xuICBmb250LXNpemU6IDI0cHg7XG59IiwiLmF2YXRhcntcclxuICAgIHdpZHRoOiA2MCU7XHJcbiAgICBoZWlnaHQ6IDYwJTtcclxuICAgIG1hcmdpbi10b3A6IDglO1xyXG59XHJcblxyXG4udXNlcm5hbWV7XHJcbiAgICBmb250LXNpemU6MTNweDtcclxuICAgIG1hcmdpbi10b3A6IC01JTtcclxufVxyXG5cclxuLmJhY2thcnJvd3tcclxuICBtYXJnaW4tdG9wOiAtNCU7XHJcbn1cclxuXHJcbi5wb3dlcmJ1dHRvbntcclxuICBtYXJnaW4tdG9wOiAtMyU7XHJcbn1cclxuXHJcbi5pY29uLWxvZ291dHtcclxuIFxyXG4gICBmb250LXNpemU6IDIwcHg7XHJcblxyXG4gICBiYWNrZ3JvdW5kOiAjZjE5OTM2O1xyXG4gICB3aWR0aDogMjhweDtcclxuICAgaGVpZ2h0OiAyOHB4O1xyXG4gICBib3JkZXItcmFkaXVzOiA1MCU7XHJcbiAgIGxpbmUtaGVpZ2h0OiA1MHB4O1xyXG4gICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgIGNvbG9yOiAjMDAwMDAwO1xyXG59XHJcblxyXG4ubWVzc2FnZS1pbnB1dCB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGJvcmRlcjogMXB4IHNvbGlkIHZhcigtLWlvbi1jb2xvci1tZWRpdW0pO1xyXG4gICAgYm9yZGVyLXJhZGl1czogMTBweDtcclxuICAgIGJhY2tncm91bmQ6ICNmZmY7XHJcbiAgICByZXNpemU6IG5vbmU7XHJcbiAgICBwYWRkaW5nLWxlZnQ6IDEwcHg7XHJcbiAgICBwYWRkaW5nLXJpZ2h0OiAxMHB4O1xyXG4gIH1cclxuXHJcbiAgLm1zZy1idG4ge1xyXG4gICAgLS1wYWRkaW5nLXN0YXJ0OiAwLjVlbTtcclxuICAgIC0tcGFkZGluZy1lbmQ6IDAuNWVtO1xyXG4gIH1cclxuXHJcblxyXG4gIC8qTWVzc2FnZXMqL1xyXG4gIC5tZXNzYWdlIHtcclxuICAgIC8vcGFkZGluZzogMTBweDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDEwcHg7XHJcbiAgICBtYXJnaW4tYm90dG9tOiA0cHg7XHJcbiAgICB3aGl0ZS1zcGFjZTogcHJlLXdyYXA7XHJcbiAgfVxyXG4gICBcclxuICAub3RoZXItbWVzc2FnZSB7XHJcbiAgICBiYWNrZ3JvdW5kOiAjZmZmZmZmO1xyXG4gICAgY29sb3I6ICMwMDAwMDA7XHJcbiAgICBib3JkZXItY29sb3I6ICNjMGMwYzA7XHJcbiAgICBib3JkZXItd2lkdGg6IHRoaW47XHJcbiAgICBib3JkZXItc3R5bGU6IHNvbGlkO1xyXG4gIH1cclxuXHJcbiAgLm15LW1lc3NhZ2Uge1xyXG4gICAgYmFja2dyb3VuZDogI2RkZGJkYjtcclxuICAgIGNvbG9yOiAjMDAwMDAwO1xyXG4gICAgYm9yZGVyLWNvbG9yOiAjYzBjMGMwO1xyXG4gICAgYm9yZGVyLXdpZHRoOiB0aGluO1xyXG4gICAgYm9yZGVyLXN0eWxlOiBzb2xpZDtcclxuICBcclxuICB9XHJcblxyXG4gIC51c2Vye1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICBmb250LXNpemU6IDE4cHg7XHJcbiAgICBjb2xvcjogIzNCM0IzQjtcclxuICAgIFxyXG4gIH1cclxuXHJcbiAgLnVzZXIye1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbiAgICBmb250LXNpemU6IDE4cHg7XHJcbiAgICBjb2xvcjogIzNCM0IzQjtcclxuICAgIG1hcmdpbi10b3A6IC0xOXB4O1xyXG4gIH1cclxuXHJcbiAgLmJ1YmJsZXtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNGMkYyRjI7XHJcbiAgICBib3JkZXItcmFkaXVzOiA1cHg7XHJcbiAgICBib3gtc2hhZG93OiAwIDAgNnB4ICNCMkIyQjI7XHJcbiAgICBkaXNwbGF5OiBpbmxpbmUtYmxvY2s7XHJcbiAgICBwYWRkaW5nOiAxMHB4IDE4cHg7XHJcbiAgICBwb3NpdGlvbjogcmVsYXRpdmU7XHJcbiAgICB2ZXJ0aWNhbC1hbGlnbjogdG9wO1xyXG4gICAgd2lkdGg6IDEwMCU7XHJcbn1cclxuXHJcbi5idWJibGU6OmJlZm9yZSB7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiAjRjJGMkYyO1xyXG4gICAgY29udGVudDogXCJcXDAwYTBcIjtcclxuICAgIGRpc3BsYXk6IGJsb2NrO1xyXG4gICAgaGVpZ2h0OiAxNnB4O1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgdG9wOiAxMXB4O1xyXG4gICAgdHJhbnNmb3JtOiAgICAgICAgICAgICByb3RhdGUoIDI5ZGVnICkgc2tldyggLTM1ZGVnICk7XHJcbiAgICAgICAgLW1vei10cmFuc2Zvcm06ICAgIHJvdGF0ZSggMjlkZWcgKSBza2V3KCAtMzVkZWcgKTtcclxuICAgICAgICAtbXMtdHJhbnNmb3JtOiAgICAgcm90YXRlKCAyOWRlZyApIHNrZXcoIC0zNWRlZyApO1xyXG4gICAgICAgIC1vLXRyYW5zZm9ybTogICAgICByb3RhdGUoIDI5ZGVnICkgc2tldyggLTM1ZGVnICk7XHJcbiAgICAgICAgLXdlYmtpdC10cmFuc2Zvcm06IHJvdGF0ZSggMjlkZWcgKSBza2V3KCAtMzVkZWcgKTtcclxuICAgIHdpZHRoOiAgMjBweDtcclxufVxyXG5cclxuLm1lIHtcclxuICAgIGZsb2F0OiBsZWZ0OyAgIFxyXG4gICAgbWFyZ2luOiAtNnB4IDVweCA1cHggMjBweDsgICAgICAgICBcclxufVxyXG5cclxuLm1lOjpiZWZvcmUge1xyXG4gICAgYm94LXNoYWRvdzogLTJweCAycHggMnB4IDAgcmdiYSggMTc4LCAxNzgsIDE3OCwgLjQgKTtcclxuICAgIGxlZnQ6IC05cHg7ICAgICAgICAgICBcclxufVxyXG5cclxuLnlvdSB7XHJcbiAgICBmbG9hdDogcmlnaHQ7ICAgIFxyXG4gICAgbWFyZ2luOiAtNnB4IDIwcHggNXB4IDQ1cHg7ICAgIFxyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2RkZGJkYjsgICAgIFxyXG59XHJcblxyXG4ueW91OjpiZWZvcmUge1xyXG4gICAgYm94LXNoYWRvdzogMnB4IC0ycHggMnB4IDAgI2RkZGJkYjtcclxuICAgIGJhY2tncm91bmQtY29sb3I6ICNkZGRiZGI7XHJcbiAgICByaWdodDogLTlweDsgICAgXHJcbn1cclxuXHJcbi5mb290ZXItYnViYmxle1xyXG4gIG1hcmdpbi10b3A6IDVweDtcclxuICBmb250LXNpemU6IDExcHg7XHJcbn1cclxuXHJcbi5tc2d7XHJcbiAgZm9udC1zaXplOiAxOHB4O1xyXG4gIHRleHQtYWxpZ246IGxlZnQ7XHJcbiAgd2hpdGUtc3BhY2U6IHByZS13cmFwIWltcG9ydGFudDtcclxufVxyXG5cclxuLm1zZzJ7XHJcbiAgZm9udC1zaXplOiAxOHB4O1xyXG4gIHRleHQtYWxpZ246IGxlZnQ7XHJcbiAvLyB3aGl0ZS1zcGFjZTogcHJlLWxpbmUhaW1wb3J0YW50O1xyXG4gd2hpdGUtc3BhY2U6IHByZS13cmFwIWltcG9ydGFudDtcclxufVxyXG5cclxuLmNoZWNre1xyXG4gIGZvbnQtc2l6ZTogMTZweDtcclxufVxyXG5cclxuLmlvbi1wYWRkaW5nMntcclxuICBwYWRkaW5nOiA1cHg7XHJcbn1cclxuXHJcbi5jb250ZW50dHtcclxuICBoZWlnaHQ6IGF1dG87XHJcbn1cclxuICAvKkVORCBNRVNTQUdFcyovXHJcblxyXG5pb24taW5wdXRbcGxhY2Vob2xkZXJdIHtcclxuICB0ZXh0LWFsaWduOmNlbnRlcjtcclxufVxyXG5cclxuICBpb24tZmFiLWJ1dHRvbltkYXRhLWRlc2NdIHtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICB9XHJcbiAgXHJcbiAgaW9uLWZhYi1idXR0b25bZGF0YS1kZXNjXTo6YWZ0ZXIge1xyXG4gICAgcG9zaXRpb246IGFic29sdXRlO1xyXG4gICAgY29udGVudDogYXR0cihkYXRhLWRlc2MpO1xyXG4gICAgei1pbmRleDogMTtcclxuICAgIHJpZ2h0OiA1NXB4O1xyXG4gICAgYm90dG9tOiA0cHg7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiB2YXIoLS1pb24tY29sb3ItZGFyayk7XHJcbiAgICBwYWRkaW5nOiA5cHg7XHJcbiAgICBib3JkZXItcmFkaXVzOiAxNXB4O1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG4gICAgYm94LXNoYWRvdzogMCAzcHggNXB4IC0xcHggcmdiYSgwLDAsMCwwLjIpLCAwIDZweCAxMHB4IDAgcmdiYSgwLDAsMCwwLjE0KSwgMCAxcHggMThweCAwIHJnYmEoMCwwLDAsMC4xMik7XHJcbiAgfVxyXG5cclxuICAuYnViYmxlb3Jhbmdle1xyXG4gICAgYmFja2dyb3VuZC1jb2xvcjogI2Y2YTAzZjtcclxuICAgIGJvcmRlci1yYWRpdXM6IDVweDtcclxuICAgIGJveC1zaGFkb3c6IDAgMCA2cHggIzAwMDAwMDtcclxuICAgIGRpc3BsYXk6IGlubGluZS1ibG9jaztcclxuICAgIHBhZGRpbmc6IDEwcHggMThweDtcclxuICAgIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuICAgIHZlcnRpY2FsLWFsaWduOiB0b3A7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufVxyXG5cclxuLmJ1YmJsZW9yYW5nZTo6YmVmb3JlIHtcclxuICBiYWNrZ3JvdW5kLWNvbG9yOiAjZjZhMDNmO1xyXG4gIGNvbnRlbnQ6IFwiXFwwMGEwXCI7XHJcbiAgZGlzcGxheTogYmxvY2s7XHJcbiAgaGVpZ2h0OiAxNnB4O1xyXG4gIHBvc2l0aW9uOiBhYnNvbHV0ZTtcclxuICB0b3A6IDExcHg7XHJcbiAgdHJhbnNmb3JtOiAgICAgICAgICAgICByb3RhdGUoIDI5ZGVnICkgc2tldyggLTM1ZGVnICk7XHJcbiAgICAgIC1tb3otdHJhbnNmb3JtOiAgICByb3RhdGUoIDI5ZGVnICkgc2tldyggLTM1ZGVnICk7XHJcbiAgICAgIC1tcy10cmFuc2Zvcm06ICAgICByb3RhdGUoIDI5ZGVnICkgc2tldyggLTM1ZGVnICk7XHJcbiAgICAgIC1vLXRyYW5zZm9ybTogICAgICByb3RhdGUoIDI5ZGVnICkgc2tldyggLTM1ZGVnICk7XHJcbiAgICAgIC13ZWJraXQtdHJhbnNmb3JtOiByb3RhdGUoIDI5ZGVnICkgc2tldyggLTM1ZGVnICk7XHJcbiAgd2lkdGg6ICAyMHB4O1xyXG59XHJcblxyXG4ubWVzc2FnZXMtY29udGFpbmVye1xyXG4gLy8gbWluLWhlaWdodDogMTAwJTtcclxuIC8vIHdpZHRoOiAxMDAlO1xyXG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcclxuIC8vIGRpc3BsYXk6IGZsZXg7XHJcbiAgb3ZlcmZsb3c6IGhpZGRlbjtcclxuIG1hcmdpbjogMCBhdXRvO1xyXG59XHJcblxyXG5pb24taGVhZGVyIHtcclxuICBpb24tdG9vbGJhciB7XHJcbiAgICBoZWlnaHQ6IDUwcHg7XHJcbiAgfVxyXG59XHJcblxyXG4uYnRubWVudWZvb3RlcntcclxuICBjb2xvcjogI2Y2YTAzZjtcclxuICBmb250LXNpemU6IDI4cHg7XHJcbiAgbWFyZ2luLXRvcDogN3B4O1xyXG59XHJcblxyXG5cclxuLm1lc3NhZ2VzLWNvbnRhaW5lciB7XHJcbiAgLy9taW4taGVpZ2h0OiAxMDAlO1xyXG4gLy8gd2lkdGg6IDEwMCU7XHJcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gLy8gZGlzcGxheTogZmxleDtcclxuICBvdmVyZmxvdzogaGlkZGVuO1xyXG4gIG1hcmdpbjogMCBhdXRvO1xyXG59XHJcblxyXG5cclxuLmJvdG9uc0F1ZGlvUmVjb3Jke1xyXG4gIGZvbnQtc2l6ZTogMzZweDtcclxuICBjb2xvcjogcmVkO1xyXG59XHJcblxyXG4uYm90b25zQXVkaW9TdG9we1xyXG4gIGZvbnQtc2l6ZTogMzZweDtcclxuICBjb2xvcjogIzAwMTJFODtcclxufVxyXG5cclxuaW9uLWNhcmR7XHJcbiAgYmFja2dyb3VuZDogIzAwMDAwMDtcclxuICBjb2xvcjojM0IzQjNCIDtcclxuICBcclxufVxyXG5cclxuLndhdmV7XHJcbi8vICB3aWR0aDogYXV0b3B4O1xyXG4gIGhlaWdodDogMTIwcHg7XHJcbn1cclxuXHJcbi5idG5QbGF5ZXJ7XHJcbiAgd2lkdGg6IDEwMCU7XHJcbiAgZm9udC1zaXplOiAxMnB4O1xyXG59XHJcblxyXG4uY2xvc2VCdXR0b257XHJcbmZvbnQtc2l6ZTogMzZweDtcclxufVxyXG5cclxuaW9uLWNhcmQtdGl0bGV7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIGNvbG9yOiAjZGRkYmRiO1xyXG59XHJcblxyXG4ucGxheWVybWVzc2FnZXtcclxuIC8vIGJhY2tncm91bmQ6ICM1NjU2NTY7XHJcbiAgXHJcbiAvLyBoZWlnaHQ6IDcxcHg7XHJcbiAgYm9yZGVyLXJhZGl1czogNHB4O1xyXG4gIGNvbG9yOiAjZGRkYmRiO1xyXG4gIGFsaWduLWl0ZW1zOiBjZW50ZXI7XHJcbiAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG4gIGZvbnQtc2l6ZTogMzVweDtcclxuIC8vIG1hcmdpbi10b3A6IDVweDs7XHJcbn1cclxuXHJcbi5pY29uc3BsYXllcntcclxuICBtYXJnaW4tdG9wOiAxNXB4O1xyXG4gIG1hcmdpbi1ib3R0b206IDEwcHg7XHJcbiAgei1pbmRleDogMTtcclxuICBjb2xvcjogIzAwMDtcclxufVxyXG5cclxuLmltaHtcclxuICBiYWNrZ3JvdW5kOiB1cmwoJy4uLy4uLy4uL2Fzc2V0cy9lc3BldHJvLmdpZicpO1xyXG4gIGhlaWdodDogOTBweDtcclxuICAvL21hcmdpbi10b3A6IDVweDtcclxufVxyXG5cclxuLmltaHtcclxuICBcclxuICBoZWlnaHQ6IDkwcHg7XHJcbiAgLy9tYXJnaW4tdG9wOiA1cHg7XHJcbn1cclxuXHJcbi5lbmNvZGVwbGF5ZXJ7XHJcbiAgZm9udC1zaXplOiAxMXB4O1xyXG59XHJcblxyXG4uaWNvbmZhdntcclxuICBjb2xvcjogI2ZmZjtcclxuICBmb250LXNpemU6IDI0cHggO1xyXG59Il19 */");
+
+/***/ }),
+
+/***/ "./src/app/pages/chat-new/chat-new.page.ts":
+/*!*************************************************!*\
+  !*** ./src/app/pages/chat-new/chat-new.page.ts ***!
+  \*************************************************/
+/*! exports provided: ChatNewPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ChatNewPage", function() { return ChatNewPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+/* harmony import */ var src_app_services_users_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/users.service */ "./src/app/services/users.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/contacts.service */ "./src/app/services/contacts.service.ts");
+/* harmony import */ var src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! src/app/services/chat.service */ "./src/app/services/chat.service.ts");
+/* harmony import */ var crypto_js_enc_utf8__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! crypto-js/enc-utf8 */ "./node_modules/crypto-js/enc-utf8.js");
+/* harmony import */ var crypto_js_enc_utf8__WEBPACK_IMPORTED_MODULE_7___default = /*#__PURE__*/__webpack_require__.n(crypto_js_enc_utf8__WEBPACK_IMPORTED_MODULE_7__);
+/* harmony import */ var crypto_js_aes__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! crypto-js/aes */ "./node_modules/crypto-js/aes.js");
+/* harmony import */ var crypto_js_aes__WEBPACK_IMPORTED_MODULE_8___default = /*#__PURE__*/__webpack_require__.n(crypto_js_aes__WEBPACK_IMPORTED_MODULE_8__);
+/* harmony import */ var _ionic_native_aes_256_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/aes-256/ngx */ "./node_modules/@ionic-native/aes-256/ngx/index.js");
+/* harmony import */ var src_environments_environment__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! src/environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var src_app_services_push_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! src/app/services/push.service */ "./src/app/services/push.service.ts");
+/* harmony import */ var ngx_socket_io__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(/*! ngx-socket-io */ "./node_modules/ngx-socket-io/fesm2015/ngx-socket-io.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _modal_contacts_modal_contacts_page__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(/*! ../modal-contacts/modal-contacts.page */ "./src/app/pages/modal-contacts/modal-contacts.page.ts");
+/* harmony import */ var _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(/*! @ionic-native/camera/ngx */ "./node_modules/@ionic-native/camera/ngx/index.js");
+/* harmony import */ var _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_16__ = __webpack_require__(/*! @ionic-native/File/ngx */ "./node_modules/@ionic-native/File/ngx/index.js");
+/* harmony import */ var _image_modal_image_modal_page__WEBPACK_IMPORTED_MODULE_17__ = __webpack_require__(/*! ../image-modal/image-modal.page */ "./src/app/pages/image-modal/image-modal.page.ts");
+/* harmony import */ var _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_18__ = __webpack_require__(/*! @ionic-native/ionic-webview/ngx */ "./node_modules/@ionic-native/ionic-webview/ngx/index.js");
+/* harmony import */ var src_app_services_trunk_service__WEBPACK_IMPORTED_MODULE_19__ = __webpack_require__(/*! src/app/services/trunk.service */ "./src/app/services/trunk.service.ts");
+/* harmony import */ var src_app_services_data_service_service__WEBPACK_IMPORTED_MODULE_20__ = __webpack_require__(/*! src/app/services/data-service.service */ "./src/app/services/data-service.service.ts");
+/* harmony import */ var src_app_services_events_service__WEBPACK_IMPORTED_MODULE_21__ = __webpack_require__(/*! src/app/services/events.service */ "./src/app/services/events.service.ts");
+/* harmony import */ var _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_22__ = __webpack_require__(/*! @ionic-native/android-permissions/ngx */ "./node_modules/@ionic-native/android-permissions/ngx/index.js");
+/* harmony import */ var src_app_services_closeapp_service__WEBPACK_IMPORTED_MODULE_23__ = __webpack_require__(/*! src/app/services/closeapp.service */ "./src/app/services/closeapp.service.ts");
+/* harmony import */ var _ionic_native_media_ngx__WEBPACK_IMPORTED_MODULE_24__ = __webpack_require__(/*! @ionic-native/media/ngx */ "./node_modules/@ionic-native/media/ngx/index.js");
+/* harmony import */ var _ionic_native_media_capture_ngx__WEBPACK_IMPORTED_MODULE_25__ = __webpack_require__(/*! @ionic-native/media-capture/ngx */ "./node_modules/@ionic-native/media-capture/ngx/index.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+//import {VideoProvider} from '../../providers/video';
+
+
+
+
+
+const STORAGE_KEY = 'my_images';
+
+let ChatNewPage = class ChatNewPage {
+    /* END AUDIO VARS */
+    constructor(storage, userService, activatedRoute, contactsService, router, chatService, aes256, pushService, socket, actionSheetController, modalCtrl, toastCtrl, cameranew, file, webview, navCtrl, trunkService, 
+    //public videoProvider: VideoProvider,
+    dataService, events, androidPermissions, closeApp, media, platform, mediaCapture) {
+        this.storage = storage;
+        this.userService = userService;
+        this.activatedRoute = activatedRoute;
+        this.contactsService = contactsService;
+        this.router = router;
+        this.chatService = chatService;
+        this.aes256 = aes256;
+        this.pushService = pushService;
+        this.socket = socket;
+        this.actionSheetController = actionSheetController;
+        this.modalCtrl = modalCtrl;
+        this.toastCtrl = toastCtrl;
+        this.cameranew = cameranew;
+        this.file = file;
+        this.webview = webview;
+        this.navCtrl = navCtrl;
+        this.trunkService = trunkService;
+        this.dataService = dataService;
+        this.events = events;
+        this.androidPermissions = androidPermissions;
+        this.closeApp = closeApp;
+        this.media = media;
+        this.platform = platform;
+        this.mediaCapture = mediaCapture;
+        //vars not
+        this.notificate = {
+            apid: '',
+            notid: ''
+        };
+        //varsMessages
+        this.page = 0;
+        this.allMessages = {
+            sender: '',
+            receiver: '',
+        };
+        this.part = {
+            senderId: '',
+            receiverId: ''
+        };
+        this.messages = [];
+        this.message = '';
+        this.cipherMessage = '';
+        this.cipher = '';
+        this.key1 = '123456789abcdefghijklmnopqrstuuvwxyz';
+        this.decodedMessage = '';
+        this.skey = src_environments_environment__WEBPACK_IMPORTED_MODULE_10__["environment"].sekretKey;
+        this.messageBody = {
+            message: '',
+            receiverid: '',
+            senderid: '',
+            type: '',
+            image: '',
+            secureKey: '',
+            secureIv: '',
+            createAt: Date.now(),
+        };
+        this.toSocket = {
+            convId: '',
+            msg: '',
+            type: '',
+            senderId: '',
+            receiverId: '',
+            audioFile: ''
+        };
+        this.m = [];
+        this.toResend = [];
+        this.toResendContacts = [];
+        this.checks = 'off';
+        this.trunkChecks = 'off';
+        this.arrowControl = 'off';
+        this.messageTrunk = {
+            owner: '',
+            senderId: '',
+            receiverId: '',
+            create: '',
+            receiverName: '',
+            messages: []
+        };
+        this.nameTrunk = '';
+        this.dataResFiles = [];
+        this.images = [];
+        this.stateCamera = 0;
+        /* AUDIO */
+        this.hidde1 = false;
+        this.hiddeAll = false;
+        this.isrecord = false;
+        this.status = "Pulse para grabar";
+        this.pathaudio = {};
+        this.participants = {
+            senderId: '',
+            receiverId: ''
+        };
+        this.skem = {
+            convId: '',
+            msg: '',
+            type: '',
+            senderId: '',
+            receiverId: '',
+            audioFile: ''
+        };
+        this.duration = -1;
+        this.position = 0;
+        this.base = src_environments_environment__WEBPACK_IMPORTED_MODULE_10__["environment"].url;
+        this.waves = 'off';
+        this.recordButton = false;
+        this.sendAudioButton = true;
+        this.closeApp.comproveStateApp();
+        this.platform.pause.subscribe(() => tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            this.fileA.stop();
+        }));
+    }
+    ngOnInit() {
+        this.comproveState(this.stateCamera);
+        this.closeApp.comproveStateApp();
+        /* PRe ION WILL ENTER */
+        this.socket.connect();
+        this.canelResend();
+        this.sidContact = this.activatedRoute.snapshot.paramMap.get('hash');
+        this.socket.fromEvent('user-connected').subscribe(resls => {
+        });
+        this.socket.fromEvent('joined').subscribe(resls => {
+            console.log('+0+0+00+0+0+0+0+0+', resls);
+        });
+        this.storage.get('username').then((result) => {
+            this.userService.getSekretId(result).subscribe(responseUser => {
+                this.mySid = responseUser.user[0].sekretid;
+                this.myId = responseUser.user[0]._id;
+                this.currentUser = this.myId;
+                this.myUsername = responseUser.user[0].username;
+                this.planActive = responseUser.user[0].plan;
+                // For more vars  
+                //Get Vars Contact User
+                this.userService.getUserNameBySekretId(this.sidContact).subscribe(responseContact => {
+                    //console.log('99999999999999999', responseContact.user );
+                    this.arrayContact = responseContact.user[0];
+                    this.idContact = this.arrayContact._id;
+                    this.usernameContact = this.arrayContact.username;
+                    this.notiIdContact = this.arrayContact.notificationId;
+                    this.appid = this.arrayContact.appidn;
+                    // console.log('AAAAAHHHHHAAA', this.appid);
+                    this.avatarUser = this.arrayContact.avatar;
+                    console.log('=== AVATAR ===', this.avatarUser);
+                    //  console.log('HHHHHHHHHHH',this.usernameContact)
+                    this.userService.getSekretId(this.usernameContact).subscribe(rsCon2 => {
+                        //console.log('1000000010000',rsCon2);
+                    });
+                    this.notificate = {
+                        apid: this.appid,
+                        notid: this.notiIdContact
+                    };
+                    // for more vars
+                    this.generateSecureKeyAndIV();
+                    this.getRename();
+                    this.loadData();
+                    this.updateChecks();
+                    this.updateBadgeRead();
+                    // this.socket.fromEvent('messageP').subscribe()
+                }); //end userService Contact  
+            }); //end userService My Current user      
+        });
+        /* END ION WILL ENTER */
+    } //end on init
+    // AUDIO START
+    activeTape() {
+        this.hidde1 = !this.hidde1;
+        this.checkActiveButton();
+    }
+    checkActiveButton() {
+        if (this.hidde1) {
+            this.hiddeAll = true;
+        }
+        else if (!this.hidde1) {
+            this.hiddeAll = false;
+        }
+    }
+    stopRecording() {
+        this.recordButton = false;
+        this.sendAudioButton = false;
+        this.isrecord = false;
+        this.audioFile.stopRecord();
+        this.status = "Detenido";
+    }
+    recordAudio() {
+        this.recordButton = true;
+        this.sendAudioButton = true;
+        this.isrecord = true;
+        // let date = new Date();
+        /*  this.audioAlpha = this.media.create('file:///storage/emulated/0/audioFile.mp3');
+          
+      
+        /*  this.mediaCapture.captureAudio().then(
+            (data: MediaFile[]) => this.audioFileaa = data,
+          (err: CaptureError) => console.error(err)
+        );
+          this.audioAlpha.startRecord();
+          console.log('=)=)=)=)=)=)=)=)=)=)=)=)=)=)', this.audioFile);
+      */
+        this.file.createFile(this.file.tempDirectory, 'audioFile.mp3', true).then(() => {
+            let mediaObject = this.media.create(this.file.tempDirectory.replace(/^file:\/\//, '') + 'audioFile.mp3');
+            mediaObject.startRecord();
+            window.setTimeout(() => {
+                mediaObject.stopRecord();
+                mediaObject.release();
+                /** Do something with the record file and then delete */
+                this.file.removeFile(this.file.tempDirectory, 'audioFile.mp3');
+            }, 10000);
+        });
+        this.status = "Grabando...";
+    }
+    sendAudio(fileAudio) {
+        this.recordButton = false;
+        this.sendAudioButton = true;
+        this.pathaudio = fileAudio.MediaObject;
+        let path = {};
+        let nameAudio;
+        //path = 'file:///storage/emulated/0/audioFile.mp3';
+        path = 'file:///storage/emulated/0/audioFile.mp3';
+        nameAudio = this.uploadAudio(path);
+    }
+    uploadAudio(file) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            let resultAudioSender;
+            let nameFileAudio = '';
+            if (file != null) {
+                //send message was Adudio         
+                resultAudioSender = yield this.chatService.uploadAudio(file);
+                nameFileAudio = resultAudioSender.name;
+            }
+            else {
+                this.showToast('se ha encontrado algun error');
+            }
+            let messageBodyA = {
+                message: nameFileAudio,
+                receiverid: this.idContact,
+                senderid: this.myId,
+                type: '3',
+                image: '',
+                audioFile: nameFileAudio,
+                secureKey: this.secureKEY,
+                secureIv: this.secureIV,
+                createAt: Date.now()
+            };
+            this.chatService.send(messageBodyA).subscribe(data => {
+                console.log('===== RESPUESTA  AUDIO DE SUBIDA', data);
+            });
+            this.chatService.getCoversationid(this.part).subscribe(resConvId => {
+                this.toSocket = {
+                    convId: resConvId.idConver,
+                    msg: nameFileAudio,
+                    type: '3',
+                    senderId: this.myId,
+                    receiverId: this.idContact,
+                    audioFile: nameFileAudio
+                };
+                this.socket.emit('send-message', { msg: this.toSocket });
+            });
+            this.pushService.sendPushNotificacionNew(this.notificate).subscribe(resnoti => {
+                console.log('*****************', resnoti);
+            });
+            this.contactsService.getContactsId(this.mySid, this.sidContact).subscribe(res => {
+                this.idContacts = res;
+                this.idDef1 = this.idContacts.idDef;
+                let idde = this.idContacts.idDef2;
+                this.contactsService.updatebadgeTalk(idde).subscribe(start => {
+                    console.log('RESPONSE START ', start);
+                });
+                console.log('----------idDef1----------', this.idDef1);
+                this.contactsService.updateBadge(this.idDef1).subscribe(test => {
+                    console.log('--------------------', this.idDef1);
+                });
+            });
+            this.hidde1 = !this.hidde1;
+            this.checkActiveButton();
+            //  this.socket.emit('send-message-audio', { text: messageBodyA });
+            this.message = '';
+            return resultAudioSender;
+        });
+    }
+    play(audioFile) {
+        this.waves = 'on';
+        let pathVoice = this.base + '/image/infrahell/' + audioFile;
+        this.fileA = this.media.create(pathVoice);
+        this.duration = this.fileA.getDuration();
+        this.fileA.stop();
+        this.fileA.play();
+    }
+    pause(audioFile) {
+        this.waves = 'off';
+        console.log('++ ++ ++ ++ ++ ++ ++ +', audioFile, '++ ++ ++ ++ ++ ++ ++ ++ ++ audio file');
+        let pathVoice = this.base + '/image/infrahell/' + audioFile;
+        //const file: MediaObject = this.media.create(pathVoice);
+        this.fileA.stop();
+        //file.pause();
+    }
+    closeRecord() {
+        this.hidde1 = !this.hidde1;
+        this.recordButton = false;
+        this.sendAudioButton = true;
+    }
+    // AUDIO END
+    comproveState(param) {
+        console.log('00 00 00 000 000 000 000 000 00', param);
+        if (this.stateCamera === 0) {
+            this.closeApp.comproveStateApp();
+        }
+    }
+    ionViewWillLeave() {
+        console.log('SOCKET DESCONECTADO');
+        this.socket.disconnect();
+        this.pause();
+    }
+    //ionViewDidEnter() {
+    ionViewWillEnter() {
+        this.socket.fromEvent('message').subscribe(resmessage => {
+            this.messageInSocket = resmessage;
+            if (this.messageInSocket.msg !== '') {
+                this.messages.push({
+                    body: this.messageInSocket.msg,
+                    createAt: Date.now(),
+                    image: "",
+                    isread: '0',
+                    receiverid: this.messageInSocket.receiverId,
+                    secureIv: "",
+                    secureKey: "",
+                    senderId: this.messageInSocket.senderId,
+                    type: this.messageInSocket.type,
+                    audioFile: this.messageInSocket.audioFile
+                });
+                this.updateChecks();
+            }
+            this.scrollToBottomInChat();
+        });
+        // let element = document.getElementById("myContent");
+        this.content.scrollToBottom(1);
+    }
+    loadData(ev) {
+        this.page++;
+        let mmsg;
+        this.allMessages = {
+            sender: this.myId,
+            receiver: this.idContact,
+        };
+        this.part = {
+            senderId: this.myId,
+            receiverId: this.idContact
+        };
+        this.chatService.getCoversationid(this.part).subscribe(resConvId => {
+            this.toSocket = {
+                convId: resConvId.idConver,
+                msg: '',
+                type: '',
+                senderId: '',
+                receiverId: '',
+                audioFile: ''
+            };
+            this.socket.emit('send-message', { msg: this.toSocket });
+            this.updateChecks();
+        });
+        this.chatService.getMessagesNew(this.allMessages, this.page).subscribe(responseChat => {
+            mmsg = responseChat.response;
+            mmsg.map(elem => {
+                this.messages.unshift(elem.message);
+            });
+            console.log('????????', this.messages);
+            if (ev) {
+                ev.target.complete();
+                if (responseChat.response.length === 0) {
+                    ev.target.disabled = true;
+                    this.page = 0;
+                }
+            }
+            this.updateChecks();
+        });
+    }
+    sendMessage(formChat) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            let messageInput = this.message;
+            this.cipherMessage = yield this.encrypt(messageInput);
+            this.messageBody = {
+                message: this.cipherMessage,
+                receiverid: this.idContact,
+                senderid: this.myId,
+                type: '1',
+                image: '',
+                secureKey: this.secureKEY,
+                secureIv: this.secureIV,
+                createAt: Date.now(),
+            };
+            this.chatService.getCoversationid(this.part).subscribe(resConvId => {
+                this.toSocket = {
+                    convId: resConvId.idConver,
+                    msg: this.cipherMessage,
+                    type: this.messageBody.type,
+                    senderId: this.myId,
+                    receiverId: this.idContact,
+                    audioFile: ''
+                };
+                this.socket.emit('send-message', { msg: this.toSocket });
+                this.contactsService.getContactsId(this.mySid, this.sidContact).subscribe(res => {
+                    this.idContacts = res;
+                    this.idDef1 = this.idContacts.idDef;
+                    let idde = this.idContacts.idDef2;
+                    this.contactsService.updatebadgeTalk(idde).subscribe(start => {
+                        console.log('RESPONSE START ', start);
+                    });
+                    console.log('----------idDef1----------', this.idDef1);
+                    this.contactsService.updateBadge(this.idDef1).subscribe(test => {
+                        console.log('--------------------', this.idDef1);
+                    });
+                });
+            });
+            //sendMessage
+            this.chatService.send(this.messageBody).subscribe(responseSendMessage => {
+                console.log('¿¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡¡ ', responseSendMessage);
+            });
+            this.updateChecks();
+            console.log('================== THIS NOTIFICATE =============', this.notificate, '+++++', this.appid);
+            /*  this.userService.getUserNameBySekretId(this.sidContact).subscribe(rsCont => {
+                let arContact = rsCont.user[0];
+                console.log('##$$$$####$$$$###$$$$###$$$$###$$$', arContact);
+                this.notificate = {
+                  apid: rsCont.appidn ,
+                  notid: rsCont.notificationId
+                }
+                console.log('¡?¡?¡?¡?¡?¡?¡?NOTIFGICAION ?¡?¡?¡?¡?¡?¡?¡?¡?¡?', this.notificate);
+              })*/
+            this.pushService.sendPushNotificacionNew(this.notificate).subscribe(resnoti => {
+                console.log('*****************', resnoti);
+            });
+            this.message = '';
+        });
+    } //end Send Message
+    encrypt(data) {
+        const dat2 = data.toString();
+        this.cipher = crypto_js_aes__WEBPACK_IMPORTED_MODULE_8__["encrypt"](JSON.stringify(data), this.key1).toString();
+        return this.cipher;
+    }
+    decrypt(encryptedData) {
+        this.decodedMessage = crypto_js_aes__WEBPACK_IMPORTED_MODULE_8__["decrypt"](encryptedData, this.key1).toString(crypto_js_enc_utf8__WEBPACK_IMPORTED_MODULE_7__);
+        let obj = JSON.parse(this.decodedMessage.toString());
+        return obj;
+    }
+    generateSecureKeyAndIV() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            this.secureKEY = yield this.aes256.generateSecureKey(this.skey); // Returns a 32 bytes string
+            this.secureIV = yield this.aes256.generateSecureIV(this.skey); // Returns a 16 bytes string
+        });
+    }
+    getRename() {
+        let contacts = {
+            sidUser: this.mySid,
+            sidcontact: this.sidContact
+        };
+        this.contactsService.getAliasContact(contacts).subscribe(responseContacts => {
+            this.nameContact = responseContacts.alias;
+        });
+    }
+    goToContacts() {
+        this.toResend = [];
+        this.checks = 'off';
+        this.router.navigate(['/contacts']);
+    }
+    scrollToBottomInChat() {
+        setTimeout(() => {
+            if (this.content.scrollToBottom) {
+                this.content.scrollToBottom(100);
+            }
+        }, 500);
+    }
+    addSelectResend(msg) {
+        if (this.toResendContacts.length === 0) {
+            this.toResendContacts.push({
+                id: msg._id,
+                body: msg.body,
+                createAt: Date.now(),
+                image: msg.image,
+                isread: '0',
+                receiverid: msg.receiverId,
+                secureIv: this.secureIV,
+                secureKey: this.secureKEY,
+                senderId: this.myId,
+                type: msg.type,
+                audioFile: msg.audioFile
+            });
+            console.log('ARREGLO PARA R-ENVIAR', this.toResendContacts);
+        }
+        else {
+            console.log('entro por el else');
+            var res = this.searchInArray(this.toResendContacts, msg);
+            console.log('RRRRTTTTT', res);
+            if (res === 0) {
+                this.toResendContacts.push({
+                    id: msg._id,
+                    body: msg.body,
+                    createAt: Date.now(),
+                    image: msg.image,
+                    isread: '0',
+                    receiverid: msg.receiverId,
+                    secureIv: this.secureIV,
+                    secureKey: this.secureKEY,
+                    senderId: this.myId,
+                    type: msg.type,
+                    audioFile: msg.audioFile
+                });
+                console.log('ARREGLO PARA R-ENVIAR POR EL ELSE', this.toResendContacts);
+            }
+            else {
+                this.presentToast('Ya ha seleccionado este mensaje');
+                // console.log('ya se ha seleccionado el mensaje', this.toResendContacts);
+            }
+            console.log('===========CONTINUA========');
+        }
+    }
+    searchInArray(arr, msg) {
+        console.log('???????????????', msg);
+        console.log('???????????????', arr);
+        var found = arr.find(array => array.body === msg.body);
+        console.log('ENCONTRADO', found);
+        if (found === undefined) {
+            return 0; //not found
+            arr = '';
+        }
+        else {
+            return 1; //founded
+            arr = '';
+        }
+    }
+    addTrunk(msg) {
+        // console.log('Mensaje que ingresa desde el selct', msg);
+        this.toResend.push({
+            body: msg.body,
+            createAt: Date.now(),
+            image: msg.image,
+            isread: '0',
+            receiverId: msg.receiverId,
+            secureIv: this.secureIV,
+            secureKey: this.secureKEY,
+            senderId: this.myId,
+            type: msg.type,
+            audioFile: msg.audioFile
+        });
+        // console.log('ARREGLO PARA ENVIAR', this.toResend);
+        /* this.pushService.sendPushNotificacionNew(this.notificate).subscribe(resnoti => {
+           console.log(resnoti);
+         }) */
+    }
+    presentSelect() {
+        this.checks = 'on';
+        this.arrowControl = 'on';
+    }
+    resendMessage(resendMessage) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            // console.log('ARREGLO PARA ENVIAR', this.toResend);
+            if (this.toResendContacts.length > 0) {
+                // console.log("L1 aaaa", this.secureIV, "l2aaa", this.secureKEY);
+                const modal = yield this.modalCtrl.create({
+                    component: _modal_contacts_modal_contacts_page__WEBPACK_IMPORTED_MODULE_14__["ModalContactsPage"],
+                    componentProps: {
+                        'objMessage': this.toResendContacts,
+                        'l1': this.secureIV,
+                        'l2': this.secureKEY,
+                        'mySid': this.mySid,
+                        'ids': this.myId,
+                        'sidu': this.sidContact
+                    }
+                });
+                modal.onDidDismiss().then(() => {
+                    this.canelResend();
+                });
+                yield modal.present();
+                this.checks = 'off'; //finale line
+            }
+            else {
+                this.presentToast('Debe seleccionar almenos un mensaje');
+            }
+        });
+    }
+    canelResend() {
+        this.toResend = [];
+        this.toResendContacts = [];
+        // console.log('ARREGLO CANCELAR', this.toResend);
+        this.checks = 'off';
+        this.trunkChecks = 'off';
+        this.arrowControl = 'off';
+    }
+    getContacts(resendMessage) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const modal = yield this.modalCtrl.create({
+                component: _modal_contacts_modal_contacts_page__WEBPACK_IMPORTED_MODULE_14__["ModalContactsPage"],
+                componentProps: {
+                    'objMessage': resendMessage
+                }
+            });
+            yield modal.present();
+        });
+    }
+    presentToast(message) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const toast = yield this.toastCtrl.create({
+                message,
+                duration: 3000,
+                position: 'middle'
+            });
+            toast.present();
+        });
+    }
+    logout() {
+        this.router.navigate(['/home']);
+    }
+    captureImage() {
+        this.stateCamera = 1;
+        this.userService.saveStateCamera(this.stateCamera);
+        let sourceType = this.cameranew.PictureSourceType.CAMERA;
+        var options = {
+            quality: 50,
+            sourceType: sourceType,
+            saveToPhotoAlbum: false,
+            correctOrientation: true
+        };
+        this.cameranew.getPicture(options).then(imagePath => {
+            var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
+            var correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
+            this.copytoNew(correctPath, currentName);
+        });
+    } //end capture Imnage
+    copytoNew(path, namePic) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            let fP;
+            let rs;
+            fP = path + namePic;
+            this.dataResFiles = yield this.upImage(fP);
+            if (this.dataResFiles === '') {
+                setTimeout(() => {
+                    // console.log('paso al if')
+                    rs = this.dataResFiles.name;
+                    this.sendMessageImage(this.dataResFiles.name);
+                }, 1000);
+            }
+            else {
+                // console.log('paso al ELSE')
+                this.sendMessageImage(this.dataResFiles.name);
+                rs = 'file:///storage/emulated/0/Pictures/';
+                this.file.removeFile(fP, namePic);
+            }
+        });
+    }
+    upImage(file) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            let imageSennder = file;
+            let resultImageSender;
+            if (file != null) {
+                //send message was photo     
+                resultImageSender = yield this.chatService.uploadimage(imageSennder);
+            }
+            else {
+                this.showToast('se ha encontrado algun error');
+            }
+            return resultImageSender;
+        });
+    }
+    sendMessageImage(image) {
+        let imageRecive = image;
+        this.messageBody = {
+            message: imageRecive,
+            receiverid: this.idContact,
+            senderid: this.myId,
+            type: '2',
+            image: imageRecive,
+            secureKey: this.secureKEY,
+            secureIv: this.secureIV,
+            createAt: Date.now()
+        };
+        this.chatService.send(this.messageBody).subscribe(data => { });
+        this.part = {
+            senderId: this.messageBody.senderid,
+            receiverId: this.messageBody.receiverid
+        };
+        //send notification
+        this.pushService.sendPushNotificacionNew(this.notiIdContact).subscribe(responseNoti => { });
+        this.contactsService.getContactsId(this.mySid, this.sidContact).subscribe(res => {
+            this.idContacts = res;
+            this.idDef1 = this.idContacts.idDef;
+            let idde = this.idContacts.idDef2;
+            this.contactsService.updatebadgeTalk(idde).subscribe(start => {
+                console.log('RESPONSE START ', start);
+            });
+            this.contactsService.updateBadge(this.idDef1).subscribe(test => {
+                console.log('--------------------', test);
+            });
+        });
+        this.chatService.getCoversationid(this.part).subscribe(resConvId => {
+            this.toSocket = {
+                convId: resConvId.idConver,
+                msg: imageRecive,
+                type: '2',
+                senderId: this.myId,
+                receiverId: this.idContact,
+                audioFile: ''
+            };
+            this.socket.emit('send-message', { msg: this.toSocket });
+        });
+        this.pushService.sendPushNotificacionNew(this.notificate).subscribe(resnoti => {
+        });
+        this.message = '';
+    }
+    showToast(msg) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            let toast = yield this.toastCtrl.create({
+                message: msg,
+                position: 'middle',
+                duration: 3000
+            });
+            toast.present();
+        });
+    }
+    openGallery(imagensend) {
+        this.modalCtrl.create({
+            component: _image_modal_image_modal_page__WEBPACK_IMPORTED_MODULE_17__["ImageModalPage"],
+            componentProps: {
+                img: imagensend
+            }
+        }).then(modal => modal.present());
+    }
+    imageGallery() {
+        this.swcamera = true;
+        this.userService.saveStateCamera(1);
+        // console.log('[INFO] Paso a la galeria');
+        let sourceType = this.cameranew.PictureSourceType.PHOTOLIBRARY;
+        var options = {
+            quality: 50,
+            sourceType: sourceType,
+            saveToPhotoAlbum: false,
+            correctOrientation: true
+        };
+        this.cameranew.getPicture(options).then(imagePath => {
+            var currentName = imagePath.substr(imagePath.lastIndexOf('/') + 1);
+            var correctPath = imagePath.substr(0, imagePath.lastIndexOf('/') + 1);
+            this.copyFileToLocalDir2(correctPath, currentName, this.createFileName());
+            this.copytoNew2(correctPath, currentName);
+        });
+    }
+    copytoNew2(path, namePic) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            //   console.log('paso al metodo copiar  nuevo');
+            let fP;
+            let rs;
+            // console.log('PATH', path, 'PICCCCC', namePic);
+            fP = path + namePic;
+            this.dataResFiles = yield this.upImage(fP);
+            // console.log('image upload******', this.dataResFiles.name);
+            if (this.dataResFiles === '') {
+                setTimeout(() => {
+                    //  console.log('paso al if')
+                    rs = this.dataResFiles.name;
+                    this.sendMessageImage(this.dataResFiles.name);
+                }, 1000);
+            }
+            else {
+                // console.log('paso al ELSE')
+                this.sendMessageImage(this.dataResFiles.name);
+                rs = 'file:///storage/emulated/0/Pictures/';
+                this.file.removeFile(fP, namePic);
+            }
+        });
+    }
+    copyFileToLocalDir2(namePath, currentName, newFileName) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            this.file.copyFile(namePath, currentName, this.file.dataDirectory, newFileName).then(success => {
+                this.updateStoredImages(newFileName);
+                this.fpath = namePath + currentName;
+                this.dataResFiles = this.upImage(this.fpath);
+                this.result22 = this.dataResFiles.name;
+                if (this.result22 === '') {
+                    setTimeout(() => {
+                        this.result22 = this.dataResFiles.name;
+                        this.sendMessageImage(this.result22);
+                    }, 1000);
+                }
+                else {
+                    this.sendMessageImage(this.result22);
+                    this.file.removeFile(namePath, currentName);
+                }
+            }, error => {
+                //this.presentToast('Error while storing file.');
+                //  console.log('Error while storing file.');
+            });
+        });
+    }
+    updateStoredImages(name) {
+        this.storage.get(STORAGE_KEY).then(images => {
+            let arr = JSON.parse(images);
+            if (!arr) {
+                let newImages = [name];
+                this.storage.set(STORAGE_KEY, JSON.stringify(newImages));
+            }
+            else {
+                arr.push(name);
+                this.storage.set(STORAGE_KEY, JSON.stringify(arr));
+            }
+            let filePath = this.file.dataDirectory + name;
+            let resPath = this.pathForImage(filePath);
+            let newEntry = {
+                name: name,
+                path: resPath,
+                filePath: filePath
+            };
+            this.images = [newEntry, ...this.images];
+            //this.ref.detectChanges(); // trigger change detection cycle
+        });
+    }
+    createFileName() {
+        var d = new Date(), n = d.getTime(), newFileName = n + ".jpg";
+        return newFileName;
+    }
+    pathForImage(img) {
+        if (img === null) {
+            return '';
+        }
+        else {
+            let converted = this.webview.convertFileSrc(img);
+            return converted;
+        }
+    }
+    //delete messages
+    deleteMeessages() {
+        this.allMessages = {
+            sender: this.myId,
+            receiver: this.idContact
+        };
+        this.chatService.GetAllMessages(this.allMessages)
+            .subscribe(data => {
+            //console.log('=======$$$======', data)
+            this.idChat = data.messages.conversationId;
+            //  console.log('ID DEL CHAT', this.idChat);
+            //  console.log('SENDER ID', this.myId);
+            let getMyMessages = {
+                idConv: this.idChat,
+                idUser: this.myId
+            };
+            this.chatService.getMyMessages(getMyMessages).subscribe(myMsgResponse => {
+                let mymessages = myMsgResponse.response[0].message;
+                mymessages.map(message => {
+                    if (message.deleteAlpha === '') {
+                        //  console.log('[INFO] PARAMETRO ALPHA OCUPADO')
+                        let updateIsRead = {
+                            idChat: this.idChat,
+                            idmessage: message._id,
+                            idSender: this.myId,
+                            param: 1
+                        };
+                        this.chatService.deleteMyMessages(updateIsRead).subscribe(response => {
+                        });
+                    }
+                    else {
+                        let updateIsRead = {
+                            idChat: this.idChat,
+                            idmessage: message._id,
+                            idSender: this.myId,
+                            param: 2
+                        };
+                        //  console.log('ID DE CADA MENSAJE', updateIsRead.idmessage);
+                        this.chatService.deleteMyMessages(updateIsRead).subscribe(response => {
+                            //  console.log('[INFO]', response);
+                        });
+                    } // END ELSE
+                });
+            }); //end get all messages
+        });
+        this.showToast('Se están eliminando los mensajes');
+        this.navCtrl.navigateRoot('/contacts', { animated: true });
+    }
+    //end Delete messages
+    sendTrunk() {
+        this.canelResend();
+        this.trunkChecks = 'on';
+        this.arrowControl = 'on';
+    }
+    sendtoTrunk() {
+        if (this.toResend.length === 0) {
+            this.showToast('Debe seleccionar almenos un mensje');
+        }
+        else if (this.nameTrunk === '') {
+            this.showToast('Debe asignar un nombre para guardar.');
+        }
+        else {
+            let namet = this.usernameContact + ' - ' + this.nameTrunk;
+            this.messageTrunk = {
+                owner: this.myId,
+                senderId: this.myId,
+                receiverId: this.idContact,
+                create: Date(),
+                receiverName: namet,
+                messages: this.toResend
+            };
+            this.trunkService.createTrunkNew(this.messageTrunk).subscribe(responseCreTru => {
+                if (responseCreTru.ok === true) {
+                    this.nameTrunk = '';
+                    this.toResend = [];
+                    this.canelResend();
+                    this.showToast('Enviado al Baúl');
+                }
+                else {
+                    this.showToast('No se ha podido enviar al baúl revise su conexion');
+                }
+            });
+        }
+    }
+    presentContacts(messages, sender) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const modal = yield this.modalCtrl.create({
+                component: _modal_contacts_modal_contacts_page__WEBPACK_IMPORTED_MODULE_14__["ModalContactsPage"],
+                componentProps: {
+                    'objeMessage': messages
+                }
+            });
+            modal.onDidDismiss().then(() => {
+                console.log('SE HA CERRADO EL MODAL');
+            });
+            return modal.present();
+        });
+    }
+    updateChecks() {
+        this.chatService.getCoversationid(this.part).subscribe(resConId => {
+            let arr = {
+                idConv: resConId.idConver,
+                receiverId: this.myId
+            };
+            this.chatService.updateChecksRead(arr).subscribe(responseUpdate => {
+                console.log('&&&&&&&&&&&&&&&&&&&&', responseUpdate);
+            });
+        });
+    }
+    updateBadgeRead() {
+        this.contactsService.getContactsId(this.mySid, this.sidContact).subscribe(res => {
+            this.contactsService.updateBadgeRead(res.idDef2).subscribe(rees => {
+                console.log('=?=======?==', rees);
+            });
+        });
+    }
+    audioCall() {
+        const optionCall = {
+            audio: true,
+            video: false,
+            group: this.dataService.group
+        };
+        this._call(optionCall);
+    }
+    videoCall() {
+        this.router.navigate(['/call', this.sidContact]);
+        const optionCall = {
+            audio: true,
+            video: true,
+            group: this.dataService.group
+        };
+        this._call(optionCall);
+    }
+    _call(option) {
+        this.events.publishSomeData({
+            type: 'call',
+            data: option
+        });
+    }
+    presentFooterMenu() {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const actionSheet = yield this.actionSheetController.create({
+                cssClass: 'my-custom-class',
+                buttons: [{
+                        icon: 'videocam',
+                        handler: () => {
+                            this.videoCall();
+                        }
+                    }, {
+                        icon: 'call',
+                        handler: () => {
+                            console.log('Share clicked');
+                        }
+                    }]
+            });
+            yield actionSheet.present();
+            const { role } = yield actionSheet.onDidDismiss();
+            console.log('onDidDismiss resolved with role', role);
+        });
+    }
+};
+ChatNewPage.ctorParameters = () => [
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_2__["Storage"] },
+    { type: src_app_services_users_service__WEBPACK_IMPORTED_MODULE_3__["UsersService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"] },
+    { type: src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_5__["ContactsService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"] },
+    { type: src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_6__["ChatService"] },
+    { type: _ionic_native_aes_256_ngx__WEBPACK_IMPORTED_MODULE_9__["AES256"] },
+    { type: src_app_services_push_service__WEBPACK_IMPORTED_MODULE_11__["PushService"] },
+    { type: ngx_socket_io__WEBPACK_IMPORTED_MODULE_12__["Socket"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["ActionSheetController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["ModalController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["ToastController"] },
+    { type: _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_15__["Camera"] },
+    { type: _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_16__["File"] },
+    { type: _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_18__["WebView"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["NavController"] },
+    { type: src_app_services_trunk_service__WEBPACK_IMPORTED_MODULE_19__["TrunkService"] },
+    { type: src_app_services_data_service_service__WEBPACK_IMPORTED_MODULE_20__["DataServiceService"] },
+    { type: src_app_services_events_service__WEBPACK_IMPORTED_MODULE_21__["EventsService"] },
+    { type: _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_22__["AndroidPermissions"] },
+    { type: src_app_services_closeapp_service__WEBPACK_IMPORTED_MODULE_23__["CloseappService"] },
+    { type: _ionic_native_media_ngx__WEBPACK_IMPORTED_MODULE_24__["Media"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["Platform"] },
+    { type: _ionic_native_media_capture_ngx__WEBPACK_IMPORTED_MODULE_25__["MediaCapture"] }
+];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["ViewChild"])('scrollElement', { static: false }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["IonContent"])
+], ChatNewPage.prototype, "content", void 0);
+ChatNewPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-chat-new',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./chat-new.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/chat-new/chat-new.page.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./chat-new.page.scss */ "./src/app/pages/chat-new/chat-new.page.scss")).default]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_storage__WEBPACK_IMPORTED_MODULE_2__["Storage"],
+        src_app_services_users_service__WEBPACK_IMPORTED_MODULE_3__["UsersService"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_4__["ActivatedRoute"],
+        src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_5__["ContactsService"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_4__["Router"],
+        src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_6__["ChatService"],
+        _ionic_native_aes_256_ngx__WEBPACK_IMPORTED_MODULE_9__["AES256"],
+        src_app_services_push_service__WEBPACK_IMPORTED_MODULE_11__["PushService"],
+        ngx_socket_io__WEBPACK_IMPORTED_MODULE_12__["Socket"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["ActionSheetController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["ModalController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["ToastController"],
+        _ionic_native_camera_ngx__WEBPACK_IMPORTED_MODULE_15__["Camera"],
+        _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_16__["File"],
+        _ionic_native_ionic_webview_ngx__WEBPACK_IMPORTED_MODULE_18__["WebView"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["NavController"],
+        src_app_services_trunk_service__WEBPACK_IMPORTED_MODULE_19__["TrunkService"],
+        src_app_services_data_service_service__WEBPACK_IMPORTED_MODULE_20__["DataServiceService"],
+        src_app_services_events_service__WEBPACK_IMPORTED_MODULE_21__["EventsService"],
+        _ionic_native_android_permissions_ngx__WEBPACK_IMPORTED_MODULE_22__["AndroidPermissions"],
+        src_app_services_closeapp_service__WEBPACK_IMPORTED_MODULE_23__["CloseappService"],
+        _ionic_native_media_ngx__WEBPACK_IMPORTED_MODULE_24__["Media"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_13__["Platform"],
+        _ionic_native_media_capture_ngx__WEBPACK_IMPORTED_MODULE_25__["MediaCapture"]])
+], ChatNewPage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/modal-contacts/modal-contacts.module.ts":
+/*!***************************************************************!*\
+  !*** ./src/app/pages/modal-contacts/modal-contacts.module.ts ***!
+  \***************************************************************/
+/*! exports provided: ModalContactsPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalContactsPageModule", function() { return ModalContactsPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _modal_contacts_page__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./modal-contacts.page */ "./src/app/pages/modal-contacts/modal-contacts.page.ts");
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
+/* harmony import */ var src_app_pipes_pipes_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/pipes/pipes.module */ "./src/app/pipes/pipes.module.ts");
+
+
+
+
+
+
+
+
+let ModalContactsPageModule = class ModalContactsPageModule {
+};
+ModalContactsPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["IonicModule"],
+            _ngx_translate_core__WEBPACK_IMPORTED_MODULE_6__["TranslateModule"],
+            src_app_pipes_pipes_module__WEBPACK_IMPORTED_MODULE_7__["PipesModule"]
+        ],
+        declarations: [_modal_contacts_page__WEBPACK_IMPORTED_MODULE_5__["ModalContactsPage"]]
+    })
+], ModalContactsPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/modal-contacts/modal-contacts.page.scss":
+/*!***************************************************************!*\
+  !*** ./src/app/pages/modal-contacts/modal-contacts.page.scss ***!
+  \***************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".swip {\n  color: #424242;\n  font-size: 12px;\n}\n\n.backArrow {\n  color: #424242;\n}\n\n.nameUser {\n  font-weight: bold;\n}\n\n.avataral {\n  width: 2%;\n  margin-left: -5%;\n}\n\n.imageResend {\n  width: 35%;\n  height: 35%;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvbW9kYWwtY29udGFjdHMvQzpcXFVzZXJzXFxOZW1lc3Npc1xcRGVza3RvcFxcZnN1IC0gQ29weS9zcmNcXGFwcFxccGFnZXNcXG1vZGFsLWNvbnRhY3RzXFxtb2RhbC1jb250YWN0cy5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL21vZGFsLWNvbnRhY3RzL21vZGFsLWNvbnRhY3RzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGNBQUE7RUFDQSxlQUFBO0FDQ0o7O0FERUE7RUFDSSxjQUFBO0FDQ0o7O0FERUE7RUFDSSxpQkFBQTtBQ0NKOztBREVBO0VBQ0ksU0FBQTtFQUNBLGdCQUFBO0FDQ0o7O0FERUE7RUFDSSxVQUFBO0VBQ0EsV0FBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvbW9kYWwtY29udGFjdHMvbW9kYWwtY29udGFjdHMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnN3aXB7XHJcbiAgICBjb2xvciA6IzQyNDI0MjtcclxuICAgIGZvbnQtc2l6ZTogMTJweDtcclxufVxyXG5cclxuLmJhY2tBcnJvd3tcclxuICAgIGNvbG9yOiAjNDI0MjQyO1xyXG59XHJcblxyXG4ubmFtZVVzZXJ7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxufVxyXG5cclxuLmF2YXRhcmFse1xyXG4gICAgd2lkdGg6IDIlO1xyXG4gICAgbWFyZ2luLWxlZnQ6IC01JTtcclxufVxyXG5cclxuLmltYWdlUmVzZW5ke1xyXG4gICAgd2lkdGg6IDM1JTtcclxuICAgIGhlaWdodDogMzUlO1xyXG59IiwiLnN3aXAge1xuICBjb2xvcjogIzQyNDI0MjtcbiAgZm9udC1zaXplOiAxMnB4O1xufVxuXG4uYmFja0Fycm93IHtcbiAgY29sb3I6ICM0MjQyNDI7XG59XG5cbi5uYW1lVXNlciB7XG4gIGZvbnQtd2VpZ2h0OiBib2xkO1xufVxuXG4uYXZhdGFyYWwge1xuICB3aWR0aDogMiU7XG4gIG1hcmdpbi1sZWZ0OiAtNSU7XG59XG5cbi5pbWFnZVJlc2VuZCB7XG4gIHdpZHRoOiAzNSU7XG4gIGhlaWdodDogMzUlO1xufSJdfQ== */");
+
+/***/ }),
+
+/***/ "./src/app/pages/modal-contacts/modal-contacts.page.ts":
+/*!*************************************************************!*\
+  !*** ./src/app/pages/modal-contacts/modal-contacts.page.ts ***!
+  \*************************************************************/
+/*! exports provided: ModalContactsPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ModalContactsPage", function() { return ModalContactsPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! src/app/services/contacts.service */ "./src/app/services/contacts.service.ts");
+/* harmony import */ var src_app_services_users_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! src/app/services/users.service */ "./src/app/services/users.service.ts");
+/* harmony import */ var src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! src/app/services/chat.service */ "./src/app/services/chat.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var src_app_services_push_service__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! src/app/services/push.service */ "./src/app/services/push.service.ts");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+/* harmony import */ var crypto_js_aes__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! crypto-js/aes */ "./node_modules/crypto-js/aes.js");
+/* harmony import */ var crypto_js_aes__WEBPACK_IMPORTED_MODULE_9___default = /*#__PURE__*/__webpack_require__.n(crypto_js_aes__WEBPACK_IMPORTED_MODULE_9__);
+/* harmony import */ var crypto_js_enc_utf8__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! crypto-js/enc-utf8 */ "./node_modules/crypto-js/enc-utf8.js");
+/* harmony import */ var crypto_js_enc_utf8__WEBPACK_IMPORTED_MODULE_10___default = /*#__PURE__*/__webpack_require__.n(crypto_js_enc_utf8__WEBPACK_IMPORTED_MODULE_10__);
+/* harmony import */ var ngx_socket_io__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ngx-socket-io */ "./node_modules/ngx-socket-io/fesm2015/ngx-socket-io.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+let ModalContactsPage = class ModalContactsPage {
+    constructor(modalCtrl, contactsService, userService, chatService, toastCtrl, platform, router, pushService, socket, storage) {
+        this.modalCtrl = modalCtrl;
+        this.contactsService = contactsService;
+        this.userService = userService;
+        this.chatService = chatService;
+        this.toastCtrl = toastCtrl;
+        this.platform = platform;
+        this.router = router;
+        this.pushService = pushService;
+        this.socket = socket;
+        this.storage = storage;
+        this.contacts = [];
+        this.message = '';
+        this.decodedMessage = '';
+        this.key1 = '123456789abcdefghijklmnopqrstuuvwxyz';
+        this.messageBody = {
+            message: '',
+            receiverid: '',
+            senderid: '',
+            type: '',
+            image: '',
+            secureKey: '',
+            secureIv: '',
+            createAt: Date.now()
+        };
+        this.idnot = '';
+        /*new vars */
+        this.myUsername = '';
+        this.notificate = {
+            apid: '',
+            notid: ''
+        };
+        platform.ready().then(() => {
+            this.platform.pause.subscribe(() => {
+                //  this.logout();
+            });
+            this.platform.resume.subscribe(() => {
+                console.log('[INFO] App resumed');
+                this.modalCtrl.dismiss();
+                //  this.logout();
+            });
+        });
+    }
+    ngOnInit() {
+        this.storage.get('username').then((result) => {
+            this.myUsername = result;
+        });
+        console.log('==========', this.objMessage);
+        this.sid = this.mySid;
+        this.message = this.objMessage.msg;
+        this.receiver = this.objMessage.rec;
+        this.sender = this.objMessage.sen;
+        this.contactsService.getContacts(this.sid).subscribe(response => {
+            this.contacts.push(...response.contacts);
+        });
+    }
+    logout() {
+        this.router.navigate(['/home']);
+    }
+    exitWithOutArguments() {
+        this.modalCtrl.dismiss();
+    }
+    decrypt(encryptedData) {
+        this.decodedMessage = crypto_js_aes__WEBPACK_IMPORTED_MODULE_9__["decrypt"](encryptedData, this.key1).toString(crypto_js_enc_utf8__WEBPACK_IMPORTED_MODULE_10__);
+        let obj = JSON.parse(this.decodedMessage.toString());
+        return obj;
+    }
+    newResendMessage(arrayMessages, sIdContact, mySidSend) {
+        this.userService.getUserNameBySekretId(sIdContact).subscribe(responseReciver => {
+            this.useraArray = responseReciver;
+            this.participants = {
+                senderId: this.ids,
+                receiverId: this.useraArray.user[0]._id
+            };
+            console.log('++ ++ ++ ', this.participants, '++ ++ ++');
+            this.notificate = {
+                apid: this.useraArray.user[0].appidn,
+                notid: this.useraArray.user[0].notificationId
+            };
+            this.chatService.getCoversationid(this.participants).subscribe(resConId => {
+                let toResendMessages = {
+                    conversationId: resConId.idConver,
+                    senderId: this.ids,
+                    receiverId: this.useraArray.user[0]._id,
+                    messages: arrayMessages
+                };
+                this.chatService.resendMessageNew(toResendMessages).subscribe(responseResend => {
+                    console.log('RESPUESTA RESEND', responseResend);
+                    if (responseResend.Ok === true) {
+                        this.pushService.sendPushNotificacionNew(this.notificate).subscribe(resnoti => {
+                            console.log(resnoti);
+                        });
+                    }
+                });
+            });
+        });
+        this.contactsService.getContactsId(this.mySid, sIdContact).subscribe(res => {
+            this.idContacts = res;
+            this.idDef1 = this.idContacts.idDef;
+            let idde = this.idContacts.idDef2;
+            this.contactsService.updatebadgeTalk(idde).subscribe(start => {
+                console.log('RESPONSE START ', start);
+            });
+            console.log('----------idDef1----------', this.idDef1);
+            this.contactsService.updateBadge(this.idDef1).subscribe(test => {
+                console.log('--------------------', this.idDef1);
+            });
+        });
+        /*
+    
+        console.log('?? ?? ?? ?? ?? ??', this.idDef1);
+        this.contactsService.updateBadge(this.idDef1).subscribe(test => {
+          console.log('--------------------',test)
+        }) */
+        this.presentToast('El mensaje se ha reenviado con éxito');
+        this.modalCtrl.dismiss(1);
+        this.router.navigate(['/contacts']);
+    }
+    resendMessage(msg, sen, sIdC) {
+        let reId;
+        let objectUser;
+        let idReciver;
+        this.userService.getUserNameBySekretId(sIdC).subscribe(responseReciver => {
+            objectUser = responseReciver.user[0];
+            this.idnot = objectUser.notificationId;
+            idReciver = objectUser._id;
+            this.messageBody = {
+                message: msg,
+                receiverid: idReciver,
+                senderid: sen,
+                type: '11',
+                image: '',
+                secureKey: '',
+                secureIv: '',
+                createAt: Date.now()
+            };
+            this.pushService.sendPushNotification(this.idnot).subscribe(res => {
+            });
+            this.presentToast('El mensaje se ha reenviado con éxito');
+            this.router.navigate(['/contacts']);
+        });
+    }
+    presentToast(message) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const toast = yield this.toastCtrl.create({
+                message,
+                duration: 3500,
+                position: 'middle'
+            });
+            toast.present();
+        });
+    }
+    resendMessageOwner(msg, sen, sIdC, sid2) {
+        let reId;
+        let objectUser;
+        let idReciver;
+        this.userService.getUserNameBySekretId(sIdC).subscribe(responseReciver => {
+            objectUser = responseReciver.user[0];
+            idReciver = objectUser._id;
+            this.idnot = objectUser.notificationId;
+            this.userService.getUserNameBySekretId(sid2).subscribe(responseS => {
+                this.gr = responseS.user[0];
+                this.xxx = this.gr._id;
+                if (idReciver !== sen) {
+                    console.log('****Son diferentes');
+                    this.messageBody = {
+                        message: msg,
+                        receiverid: idReciver,
+                        senderid: this.xxx,
+                        type: '11',
+                        image: '',
+                        secureKey: '',
+                        secureIv: '',
+                        createAt: Date.now()
+                    };
+                    this.chatService.send(this.messageBody).subscribe(data => {
+                        console.log('envio data', data);
+                    });
+                    this.pushService.sendPushNotification(this.idnot).subscribe(res => {
+                    }); // send notification
+                    /* Soket */
+                    this.participants = {
+                        senderId: idReciver,
+                        receiverId: sen
+                    };
+                    this.chatService.getCoversationid(this.participants).subscribe(resConId => {
+                        this.skem = {
+                            convId: resConId.idConver,
+                            msg: msg,
+                            type: 11,
+                            senderId: sen,
+                            receiverId: idReciver,
+                            audioFile: ''
+                        };
+                        this.socket.emit('join', { msg: this.skem });
+                    });
+                    /*
+                      End Socket
+                    */
+                    this.contactsService.getContactsId(sid2, sIdC).subscribe(res => {
+                        this.idContacts = res;
+                        this.idDef1 = this.idContacts.idDef;
+                        let idde = this.idContacts.idDef2;
+                        this.contactsService.updatebadgeTalk(idde).subscribe(start => {
+                            console.log('RESPONSE START ', start);
+                        });
+                        this.contactsService.updateBadge(this.idDef1).subscribe(test => {
+                        });
+                    });
+                    this.presentToast('El mensaje se ha reenviado con éxito');
+                    this.modalCtrl.dismiss();
+                }
+                else {
+                    this.userService.getUserNameBySekretId(sid2).subscribe(resrec => {
+                        this.arrayuser2 = resrec.user[0];
+                        this.s2 = this.arrayuser2._id;
+                        this.rec = this.s2;
+                        this.messageBody = {
+                            message: msg,
+                            receiverid: sen,
+                            senderid: this.s2,
+                            type: '11',
+                            image: '',
+                            secureKey: '',
+                            secureIv: '',
+                            createAt: Date.now()
+                        };
+                        this.chatService.send(this.messageBody).subscribe(data => {
+                        });
+                        /* Soket */
+                        this.participants = {
+                            senderId: sen,
+                            receiverId: this.rec
+                        };
+                        this.chatService.getCoversationid(this.participants).subscribe(resConId => {
+                            console.log('====(', resConId.idConver, ')=====');
+                            this.skem = {
+                                convId: resConId.idConver,
+                                msg: msg,
+                                type: 11,
+                                senderId: sen,
+                                receiverId: this.rec,
+                                audioFile: ''
+                            };
+                            this.socket.emit('join', { msg: this.skem });
+                        });
+                        /*
+                          End Socket
+                        */
+                        this.pushService.sendPushNotification(this.idnot).subscribe(res => {
+                            // console.log('respuesta notificacion ', res);
+                        }); // send notification
+                        this.presentToast('El mensaje se ha reenviado con éxito');
+                        this.modalCtrl.dismiss();
+                    });
+                    console.log('==========2===========', sIdC, '========2======', sid2);
+                    this.contactsService.getContactsId(sid2, sIdC).subscribe(res => {
+                        console.log('respuesta del servicio', res);
+                        this.idContacts = res;
+                        this.idDef1 = this.idContacts.idDef;
+                        let idde = this.idContacts.idDef2;
+                        console.log('**************MY SEKRET ID', sIdC, 'RECEIVER ID SID', sid2, '**************', 'ID DEFFFFF', this.idDef1);
+                        this.contactsService.updatebadgeTalk(idde).subscribe(start => {
+                            console.log('RESPONSE START ', start);
+                        });
+                        this.contactsService.updateBadge(this.idDef1).subscribe(test => {
+                            console.log('RESPUESTA ACTUALIZACION BADGE', test);
+                        });
+                    });
+                }
+            });
+        });
+    }
+};
+ModalContactsPage.ctorParameters = () => [
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"] },
+    { type: src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_3__["ContactsService"] },
+    { type: src_app_services_users_service__WEBPACK_IMPORTED_MODULE_4__["UsersService"] },
+    { type: src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_5__["ChatService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"] },
+    { type: src_app_services_push_service__WEBPACK_IMPORTED_MODULE_7__["PushService"] },
+    { type: ngx_socket_io__WEBPACK_IMPORTED_MODULE_11__["Socket"] },
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_8__["Storage"] }
+];
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], ModalContactsPage.prototype, "objMessage", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], ModalContactsPage.prototype, "l1", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], ModalContactsPage.prototype, "l2", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], ModalContactsPage.prototype, "mySid", void 0);
+tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Input"])(),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:type", Object)
+], ModalContactsPage.prototype, "ids", void 0);
+ModalContactsPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-modal-contacts',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./modal-contacts.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/modal-contacts/modal-contacts.page.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./modal-contacts.page.scss */ "./src/app/pages/modal-contacts/modal-contacts.page.scss")).default]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ModalController"],
+        src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_3__["ContactsService"],
+        src_app_services_users_service__WEBPACK_IMPORTED_MODULE_4__["UsersService"],
+        src_app_services_chat_service__WEBPACK_IMPORTED_MODULE_5__["ChatService"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["ToastController"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_2__["Platform"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"],
+        src_app_services_push_service__WEBPACK_IMPORTED_MODULE_7__["PushService"],
+        ngx_socket_io__WEBPACK_IMPORTED_MODULE_11__["Socket"],
+        _ionic_storage__WEBPACK_IMPORTED_MODULE_8__["Storage"]])
+], ModalContactsPage);
+
+
+
+/***/ }),
+
+/***/ "./src/app/services/events.service.ts":
+/*!********************************************!*\
+  !*** ./src/app/services/events.service.ts ***!
+  \********************************************/
+/*! exports provided: EventsService */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "EventsService", function() { return EventsService; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var rxjs__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! rxjs */ "./node_modules/rxjs/_esm2015/index.js");
+
+
+
+let EventsService = class EventsService {
+    constructor() {
+        this.fooSubject = new rxjs__WEBPACK_IMPORTED_MODULE_2__["Subject"]();
+    }
+    publishSomeData(data) {
+        this.fooSubject.next(data);
+    }
+    getObservable() {
+        return this.fooSubject;
+    }
+};
+EventsService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+        providedIn: 'root'
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])
+], EventsService);
+
+
+
+/***/ })
+
+}]);
+//# sourceMappingURL=pages-chat-new-chat-new-module-es2015.js.map

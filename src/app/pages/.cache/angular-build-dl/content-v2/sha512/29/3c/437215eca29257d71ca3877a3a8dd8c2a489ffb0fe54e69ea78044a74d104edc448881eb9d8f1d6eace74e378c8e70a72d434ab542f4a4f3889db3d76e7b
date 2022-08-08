@@ -1,0 +1,277 @@
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-releases-releases-module"], {
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/releases/releases.page.html":
+  /*!*****************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/releases/releases.page.html ***!
+    \*****************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppPagesReleasesReleasesPageHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<ion-header >\r\n  <ion-toolbar color=\"warning\">\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"/contacts\" icon-only></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>{{'RELEASES.title' | translate}}</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-card *ngFor=\"let release of releases \">\r\n    <ion-card-header>\r\n      \r\n      <ion-card-title>{{release.title}}</ion-card-title>\r\n    </ion-card-header>\r\n    <ion-card-content>\r\n     {{release.release}}\r\n     <div class=\"datef\">{{release.create_at | date:'short'}}</div>\r\n    </ion-card-content>\r\n  </ion-card>\r\n</ion-content>\r\n";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/releases/releases.module.ts":
+  /*!***************************************************!*\
+    !*** ./src/app/pages/releases/releases.module.ts ***!
+    \***************************************************/
+
+  /*! exports provided: ReleasesPageModule */
+
+  /***/
+  function srcAppPagesReleasesReleasesModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ReleasesPageModule", function () {
+      return ReleasesPageModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _releases_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./releases.page */
+    "./src/app/pages/releases/releases.page.ts");
+    /* harmony import */
+
+
+    var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @ngx-translate/core */
+    "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
+
+    var routes = [{
+      path: '',
+      component: _releases_page__WEBPACK_IMPORTED_MODULE_6__["ReleasesPage"]
+    }];
+
+    var ReleasesPageModule = function ReleasesPageModule() {
+      _classCallCheck(this, ReleasesPageModule);
+    };
+
+    ReleasesPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes), _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateModule"]],
+      declarations: [_releases_page__WEBPACK_IMPORTED_MODULE_6__["ReleasesPage"]]
+    })], ReleasesPageModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/releases/releases.page.scss":
+  /*!***************************************************!*\
+    !*** ./src/app/pages/releases/releases.page.scss ***!
+    \***************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppPagesReleasesReleasesPageScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "--ion-card-content {\n  margin-top: -32px;\n}\n\n.datef {\n  color: black;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcmVsZWFzZXMvQzpcXFVzZXJzXFxOZW1lc3Npc1xcRGVza3RvcFxcZHZcXEZTVSBkZXYvc3JjXFxhcHBcXHBhZ2VzXFxyZWxlYXNlc1xccmVsZWFzZXMucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9yZWxlYXNlcy9yZWxlYXNlcy5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxpQkFBQTtBQ0NKOztBRFFBO0VBRUksWUFBQTtBQ05KIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvcmVsZWFzZXMvcmVsZWFzZXMucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLS1pb24tY2FyZC1jb250ZW50e1xyXG4gICAgbWFyZ2luLXRvcDogLTMycHg7XHJcbn1cclxuXHJcblxyXG5cclxuLmNvbnRlbnRjYXJke1xyXG4gICAgXHJcbn1cclxuXHJcbi5kYXRlZntcclxuICAgIC8vbWFyZ2luLWxlZnQ6IDEzNXB4O1xyXG4gICAgY29sb3I6IGJsYWNrO1xyXG59IiwiLS1pb24tY2FyZC1jb250ZW50IHtcbiAgbWFyZ2luLXRvcDogLTMycHg7XG59XG5cbi5kYXRlZiB7XG4gIGNvbG9yOiBibGFjaztcbn0iXX0= */";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/releases/releases.page.ts":
+  /*!*************************************************!*\
+    !*** ./src/app/pages/releases/releases.page.ts ***!
+    \*************************************************/
+
+  /*! exports provided: ReleasesPage */
+
+  /***/
+  function srcAppPagesReleasesReleasesPageTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ReleasesPage", function () {
+      return ReleasesPage;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var src_app_services_releases_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! src/app/services/releases.service */
+    "./src/app/services/releases.service.ts");
+    /* harmony import */
+
+
+    var _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @ionic-native/qr-scanner/ngx */
+    "./node_modules/@ionic-native/qr-scanner/ngx/index.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var src_app_services_closeapp_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! src/app/services/closeapp.service */
+    "./src/app/services/closeapp.service.ts");
+
+    var ReleasesPage = /*#__PURE__*/function () {
+      function ReleasesPage(releaseService, qrScanner, router, platform, closeApp) {
+        var _this = this;
+
+        _classCallCheck(this, ReleasesPage);
+
+        this.releaseService = releaseService;
+        this.qrScanner = qrScanner;
+        this.router = router;
+        this.platform = platform;
+        this.closeApp = closeApp;
+        platform.ready().then(function () {
+          _this.platform.pause.subscribe(function () {//  this.logout();
+          });
+
+          _this.platform.resume.subscribe(function () {
+            console.log('[INFO] App resumed');
+          });
+        });
+      }
+
+      _createClass(ReleasesPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          this.qrScanner.hide();
+          this.qrScanner.destroy();
+          this.getReleases();
+          this.closeApp.comproveStateApp();
+        }
+      }, {
+        key: "getReleases",
+        value: function getReleases() {
+          var _this2 = this;
+
+          this.releaseService.getReleases().subscribe(function (response) {
+            console.log('Respuesta Releases', response);
+            _this2.releases = response.release;
+            console.log('[INFO RELEASES ORIGINAL]', _this2.releases);
+
+            _this2.releases.sortby({
+              create_at: 1
+            });
+
+            console.log('[NUEVO ******]', _this2.releases);
+          });
+        }
+      }, {
+        key: "logout",
+        value: function logout() {
+          console.log("Logging out user");
+          this.router.navigate(['/home']);
+        }
+      }]);
+
+      return ReleasesPage;
+    }();
+
+    ReleasesPage.ctorParameters = function () {
+      return [{
+        type: src_app_services_releases_service__WEBPACK_IMPORTED_MODULE_2__["ReleasesService"]
+      }, {
+        type: _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_3__["QRScanner"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"]
+      }, {
+        type: src_app_services_closeapp_service__WEBPACK_IMPORTED_MODULE_6__["CloseappService"]
+      }];
+    };
+
+    ReleasesPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-releases',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./releases.page.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/releases/releases.page.html"))["default"],
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./releases.page.scss */
+      "./src/app/pages/releases/releases.page.scss"))["default"]]
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_releases_service__WEBPACK_IMPORTED_MODULE_2__["ReleasesService"], _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_3__["QRScanner"], _angular_router__WEBPACK_IMPORTED_MODULE_5__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"], src_app_services_closeapp_service__WEBPACK_IMPORTED_MODULE_6__["CloseappService"]])], ReleasesPage);
+    /***/
+  }
+}]);
+//# sourceMappingURL=pages-releases-releases-module-es5.js.map

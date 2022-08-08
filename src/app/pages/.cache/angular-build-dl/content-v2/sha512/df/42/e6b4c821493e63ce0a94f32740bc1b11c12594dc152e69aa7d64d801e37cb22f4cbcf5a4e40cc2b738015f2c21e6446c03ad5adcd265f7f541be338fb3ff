@@ -1,0 +1,823 @@
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-contacts-contacts-module"], {
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/contacts/contacts.page.html":
+  /*!*****************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/contacts/contacts.page.html ***!
+    \*****************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppPagesContactsContactsPageHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar color=\"warning\">\r\n    <ion-title>{{'CONTACTS.title' | translate}} ({{ numberContacts }})</ion-title>\r\n    <ion-buttons slot=\"end\" color=\"warning\">\r\n      <ion-menu-button autoHide=\"false\"></ion-menu-button>\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n  <ion-buttons>\r\n    <ion-toolbar>\r\n      <ion-buttons slot=\"primary\">\r\n        <ion-button (click)=\"openModal()\">\r\n          <ion-icon slot=\"icon-only\" src=\"assets/icons/person-add.svg\" color=\"warning\"></ion-icon>\r\n        </ion-button>\r\n        <ion-button [routerLink]=\"['/groups']\">\r\n          <ion-icon slot=\"icon-only\" src=\"assets/icons/people.svg\" color=\"warning\"></ion-icon>\r\n        </ion-button>\r\n        \r\n      </ion-buttons>\r\n      <ion-toolbar >\r\n        <ion-searchbar (ionChange)=\"filterSearch($event)\" \r\n                        animated \r\n                        [debounce]=\"1000\"\r\n                        placeholder=\"{{'CONTACTS.searchBar' | translate}}\"></ion-searchbar>\r\n      </ion-toolbar>\r\n    </ion-toolbar>\r\n  </ion-buttons>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"doRefresh($event)\">\r\n    <ion-refresher-content></ion-refresher-content>\r\n  </ion-refresher>\r\n  <ion-list>\r\n    <ion-item-sliding *ngFor=\"let contact of contacts | filtera: textSerch\" >\r\n      <ion-item class=\"itemheight\" [routerLink]=\"['/chat-new', contact.sidcontact]\">\r\n        <ion-avatar slot=\"start\" >\r\n            <img src=\"../../../assets/avatars/{{contact.avatar}}\">          \r\n        </ion-avatar>\r\n        <ion-label class=\"sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated\">\r\n          <h3 class=\"nameUser\">{{ contact.alias }} </h3>\r\n          <p *ngIf=\"contact.badge === 1\">{{'CONTACTS.messageunread' | translate}}</p>\r\n         \r\n        </ion-label>\r\n        <!--ion-badge color=\"warning\" *ngIf=\"contact.badge > 0\">  {{ contact.badge }}</ion-badge-->\r\n        <ion-icon src=\"assets/icons/chatbox-ellipses.svg\" color=\"warning\" *ngIf=\"contact.badge === 1\"></ion-icon>\r\n        <ion-icon slot=\"end\" src=\"assets/icons/chevron-back.svg\" class=\"backArrow\"></ion-icon>\r\n        <label slot=\"end\" class=\"swip\">{{'CONTACTS.swip' | translate}} </label> \r\n      </ion-item>\r\n      \r\n      \r\n      <ion-item-options side=\"end\">\r\n        <ion-item-option color=\"dark\" (click)=\"copySid(contact.sidcontact)\">\r\n         <P class=\"sq\">{{ contact.sidcontact }}</P>\r\n        </ion-item-option>\r\n        <ion-item-option [routerLink]=\"['/edit-contact', contact.siduser, contact.sidcontact]\" color=\"warning\">\r\n         <p  class=\"textorange\">pro</p>   <ion-icon src=\"assets/icons/person.svg\" class=\"iconwhite\"></ion-icon><p  class=\"textorange\">file</p>\r\n        </ion-item-option>\r\n        <ion-item-option (click)=\"deleteContact( contact.siduser, contact.sidcontact)\" class=\"colorDelete\" >\r\n          <ion-icon src=\"assets/icons/trash.svg\"></ion-icon>\r\n        </ion-item-option>        \r\n      </ion-item-options>\r\n\r\n    </ion-item-sliding>\r\n  </ion-list>\r\n</ion-content>\r\n";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/contacts/contacts.module.ts":
+  /*!***************************************************!*\
+    !*** ./src/app/pages/contacts/contacts.module.ts ***!
+    \***************************************************/
+
+  /*! exports provided: ContactsPageModule */
+
+  /***/
+  function srcAppPagesContactsContactsModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ContactsPageModule", function () {
+      return ContactsPageModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _contacts_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./contacts.page */
+    "./src/app/pages/contacts/contacts.page.ts");
+    /* harmony import */
+
+
+    var src_app_components_components_module__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! src/app/components/components.module */
+    "./src/app/components/components.module.ts");
+    /* harmony import */
+
+
+    var _add_user_add_user_page__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! ../add-user/add-user.page */
+    "./src/app/pages/add-user/add-user.page.ts");
+    /* harmony import */
+
+
+    var _add_user_add_user_module__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! ../add-user/add-user.module */
+    "./src/app/pages/add-user/add-user.module.ts");
+    /* harmony import */
+
+
+    var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! @ngx-translate/core */
+    "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
+    /* harmony import */
+
+
+    var _pipes_pipes_module__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! ../../pipes/pipes.module */
+    "./src/app/pipes/pipes.module.ts");
+
+    var routes = [{
+      path: '',
+      component: _contacts_page__WEBPACK_IMPORTED_MODULE_6__["ContactsPage"]
+    }];
+
+    var ContactsPageModule = /*#__PURE__*/function () {
+      function ContactsPageModule() {
+        _classCallCheck(this, ContactsPageModule);
+      }
+
+      _createClass(ContactsPageModule, [{
+        key: "unread",
+        value: function unread(item) {}
+      }]);
+
+      return ContactsPageModule;
+    }();
+
+    ContactsPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      entryComponents: [_add_user_add_user_page__WEBPACK_IMPORTED_MODULE_8__["AddUserPage"]],
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes), src_app_components_components_module__WEBPACK_IMPORTED_MODULE_7__["ComponentsModule"], _add_user_add_user_module__WEBPACK_IMPORTED_MODULE_9__["AddUserPageModule"], _ngx_translate_core__WEBPACK_IMPORTED_MODULE_10__["TranslateModule"], _pipes_pipes_module__WEBPACK_IMPORTED_MODULE_11__["PipesModule"]],
+      exports: [],
+      declarations: [_contacts_page__WEBPACK_IMPORTED_MODULE_6__["ContactsPage"]]
+    })], ContactsPageModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/contacts/contacts.page.scss":
+  /*!***************************************************!*\
+    !*** ./src/app/pages/contacts/contacts.page.scss ***!
+    \***************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppPagesContactsContactsPageScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = ".exitapp {\n  background-color: red;\n  border-radius: 0.1;\n  border-color: white;\n}\n\n.textorange {\n  color: #f19936;\n}\n\n.iconwhite {\n  color: white;\n}\n\n.colorDelete {\n  background-color: red;\n  width: 60px;\n}\n\n.swip {\n  color: #424242;\n  font-size: 12px;\n}\n\n.backArrow {\n  color: #424242;\n}\n\n.nameUser {\n  font-weight: bold;\n}\n\n.specialClass {\n  color: aqua;\n}\n\n.sq {\n  text-transform: none;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY29udGFjdHMvQzpcXFVzZXJzXFxOZW1lc3Npc1xcRGVza3RvcFxccHJvamVjdHNcXGp1bmlvXFxjYWxsc1xcZnN1IC0gQ29weS9zcmNcXGFwcFxccGFnZXNcXGNvbnRhY3RzXFxjb250YWN0cy5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL2NvbnRhY3RzL2NvbnRhY3RzLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLHFCQUFBO0VBQ0Esa0JBQUE7RUFDQSxtQkFBQTtBQ0NKOztBREVBO0VBQ0ksY0FBQTtBQ0NKOztBREdBO0VBQ0ksWUFBQTtBQ0FKOztBREdBO0VBQ0kscUJBQUE7RUFDQSxXQUFBO0FDQUo7O0FER0E7RUFDSSxjQUFBO0VBQ0EsZUFBQTtBQ0FKOztBREdBO0VBQ0ksY0FBQTtBQ0FKOztBREdBO0VBQ0ksaUJBQUE7QUNBSjs7QURHQTtFQUNJLFdBQUE7QUNBSjs7QURHQTtFQUNJLG9CQUFBO0FDQUoiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9jb250YWN0cy9jb250YWN0cy5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuZXhpdGFwcHtcclxuICAgIGJhY2tncm91bmQtY29sb3I6IHJlZDtcclxuICAgIGJvcmRlci1yYWRpdXM6IDAuMTtcclxuICAgIGJvcmRlci1jb2xvcjogd2hpdGU7XHJcbn1cclxuXHJcbi50ZXh0b3Jhbmdle1xyXG4gICAgY29sb3I6ICNmMTk5MzY7XHJcbn1cclxuXHJcblxyXG4uaWNvbndoaXRle1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG4uY29sb3JEZWxldGV7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiByZWQ7XHJcbiAgICB3aWR0aDogNjBweDtcclxufVxyXG5cclxuLnN3aXB7XHJcbiAgICBjb2xvciA6IzQyNDI0MjtcclxuICAgIGZvbnQtc2l6ZTogMTJweDtcclxufVxyXG5cclxuLmJhY2tBcnJvd3tcclxuICAgIGNvbG9yOiAjNDI0MjQyO1xyXG59XHJcblxyXG4ubmFtZVVzZXJ7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxufVxyXG5cclxuLnNwZWNpYWxDbGFzc3tcclxuICAgIGNvbG9yOiBhcXVhO1xyXG59XHJcblxyXG4uc3F7XHJcbiAgICB0ZXh0LXRyYW5zZm9ybTogbm9uZTtcclxufSIsIi5leGl0YXBwIHtcbiAgYmFja2dyb3VuZC1jb2xvcjogcmVkO1xuICBib3JkZXItcmFkaXVzOiAwLjE7XG4gIGJvcmRlci1jb2xvcjogd2hpdGU7XG59XG5cbi50ZXh0b3JhbmdlIHtcbiAgY29sb3I6ICNmMTk5MzY7XG59XG5cbi5pY29ud2hpdGUge1xuICBjb2xvcjogd2hpdGU7XG59XG5cbi5jb2xvckRlbGV0ZSB7XG4gIGJhY2tncm91bmQtY29sb3I6IHJlZDtcbiAgd2lkdGg6IDYwcHg7XG59XG5cbi5zd2lwIHtcbiAgY29sb3I6ICM0MjQyNDI7XG4gIGZvbnQtc2l6ZTogMTJweDtcbn1cblxuLmJhY2tBcnJvdyB7XG4gIGNvbG9yOiAjNDI0MjQyO1xufVxuXG4ubmFtZVVzZXIge1xuICBmb250LXdlaWdodDogYm9sZDtcbn1cblxuLnNwZWNpYWxDbGFzcyB7XG4gIGNvbG9yOiBhcXVhO1xufVxuXG4uc3Ege1xuICB0ZXh0LXRyYW5zZm9ybTogbm9uZTtcbn0iXX0= */";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/contacts/contacts.page.ts":
+  /*!*************************************************!*\
+    !*** ./src/app/pages/contacts/contacts.page.ts ***!
+    \*************************************************/
+
+  /*! exports provided: ContactsPage */
+
+  /***/
+  function srcAppPagesContactsContactsPageTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ContactsPage", function () {
+      return ContactsPage;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! src/app/services/contacts.service */
+    "./src/app/services/contacts.service.ts");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _ionic_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @ionic/storage */
+    "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+    /* harmony import */
+
+
+    var _services_users_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ../../services/users.service */
+    "./src/app/services/users.service.ts");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _pages_add_user_add_user_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ../../pages/add-user/add-user.page */
+    "./src/app/pages/add-user/add-user.page.ts");
+    /* harmony import */
+
+
+    var _ionic_native_clipboard_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! @ionic-native/clipboard/ngx */
+    "./node_modules/@ionic-native/clipboard/ngx/index.js");
+    /* harmony import */
+
+
+    var _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(
+    /*! @ionic-native/qr-scanner/ngx */
+    "./node_modules/@ionic-native/qr-scanner/ngx/index.js");
+    /* harmony import */
+
+
+    var ngx_socket_io__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(
+    /*! ngx-socket-io */
+    "./node_modules/ngx-socket-io/fesm2015/ngx-socket-io.js");
+    /* harmony import */
+
+
+    var src_app_services_tokens_service__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(
+    /*! src/app/services/tokens.service */
+    "./src/app/services/tokens.service.ts");
+    /* harmony import */
+
+
+    var src_app_services_push_service__WEBPACK_IMPORTED_MODULE_12__ = __webpack_require__(
+    /*! src/app/services/push.service */
+    "./src/app/services/push.service.ts");
+    /* harmony import */
+
+
+    var _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_13__ = __webpack_require__(
+    /*! @ionic-native/onesignal/ngx */
+    "./node_modules/@ionic-native/onesignal/ngx/index.js");
+    /* harmony import */
+
+
+    var src_environments_environment__WEBPACK_IMPORTED_MODULE_14__ = __webpack_require__(
+    /*! src/environments/environment */
+    "./src/environments/environment.ts");
+    /* harmony import */
+
+
+    var _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_15__ = __webpack_require__(
+    /*! @ionic-native/native-audio/ngx */
+    "./node_modules/@ionic-native/native-audio/ngx/index.js");
+
+    var apk = src_environments_environment__WEBPACK_IMPORTED_MODULE_14__["environment"].apik;
+    var api = src_environments_environment__WEBPACK_IMPORTED_MODULE_14__["environment"].id1;
+
+    var ContactsPage = /*#__PURE__*/function () {
+      function ContactsPage(contactsService, activeRoute, storage, userService, router, modalController, nav, menuCtrl, clipboard, toastCtrl, alertController, platform, qrScanner, socket, tokenService, pushService, oneSignal, nativeAudio) {
+        _classCallCheck(this, ContactsPage);
+
+        this.contactsService = contactsService;
+        this.activeRoute = activeRoute;
+        this.storage = storage;
+        this.userService = userService;
+        this.router = router;
+        this.modalController = modalController;
+        this.nav = nav;
+        this.menuCtrl = menuCtrl;
+        this.clipboard = clipboard;
+        this.toastCtrl = toastCtrl;
+        this.alertController = alertController;
+        this.platform = platform;
+        this.qrScanner = qrScanner;
+        this.socket = socket;
+        this.tokenService = tokenService;
+        this.pushService = pushService;
+        this.oneSignal = oneSignal;
+        this.nativeAudio = nativeAudio;
+        this.args = null;
+        this.usernameStorage = '';
+        this.sekretidrec = '';
+        this.contacts = [];
+        this.value = [];
+        this.idcontacts = '';
+        this.data = [];
+        this.responseContacts = [];
+        this.usernameContact = '';
+        this.user = [];
+        this.sid = ''; //components
+
+        this.components = [];
+        this.jsonData = [];
+        this.deleteContacts = {
+          siduser: '',
+          sidcontact: ''
+        };
+        this.swcamera = true;
+        this.avatar = '';
+        this.cl = [];
+        this.textSerch = '';
+        this.audio = new Audio();
+        window.contacts = this;
+        this.initAudio();
+      }
+
+      _createClass(ContactsPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          var _this = this;
+
+          this.socket.connect(); //this.inspectStatus();
+
+          this.getContacts();
+          this.doRefresh('ionRefresh');
+          window.menu.ngOnInit();
+          this.comprove(); // console.log('[INFO] : se ha ingresado en contactos')
+
+          /*
+              this.platform.ready().then(() => {
+                this.platform.pause.subscribe(() => {
+                  if (this.swcamera === true) {
+          
+                  }else{
+                    //this.logout();
+                  }
+                  
+                });
+                this.platform.resume.subscribe(() => {
+                  console.log('[INFO] App resumed Contactos');
+                });
+              })*/
+
+          this.socket.fromEvent('bageIn').subscribe(function (me) {
+            _this.socketIn = me;
+
+            if (_this.socketIn === 1) {
+              _this.ngOnInit();
+            }
+          });
+        } // end ngOnInit
+
+      }, {
+        key: "initAudio",
+        value: function initAudio() {
+          this.audio.src = "/assets/tone.mp3";
+          this.audio.load();
+        }
+      }, {
+        key: "ring",
+        value: function ring() {
+          this.audio.play();
+        }
+      }, {
+        key: "comprove",
+        value: function comprove() {
+          var _this2 = this;
+
+          console.log('STARTING COMPROVE...');
+          this.oneSignal.startInit(apk, api);
+          this.oneSignal.getIds().then(function (inf) {
+            _this2.newNotificationId = inf.userId;
+            _this2.args = _this2.storage.get('username').then(function (result) {
+              _this2.usernameStorage = result;
+
+              _this2.userService.getSekretId(_this2.usernameStorage).subscribe(function (response) {
+                console.log('+-+-+-+-+-+ NOTIFICATION ID IN DB +-+-+-+-+-+-', response.user[0].notificationId);
+                console.log('+-+-+-+-+-+ APP ID IN DB +-+-+-+-+-+-', response.user[0].appidn);
+                console.log('+-+-+-+-+-+ NOTIFICATION ID BY ONE SIGNAL +-+-+-+-+-+-', _this2.newNotificationId);
+                console.log('+-+-+-+-+-+ APP ID BY INEYCTION +-+-+-+-+-+-', apk);
+
+                if (response.user[0].notificationId !== _this2.newNotificationId || response.user[0].notificationId === '') {
+                  _this2.userService.updateNotifications(response.user[0]._id, _this2.newNotificationId).subscribe(function (response) {
+                    console.log(response);
+
+                    _this2.presentToast('Se han activado las notificaciones AAAA');
+                  });
+                }
+
+                if (response.user[0].appidn !== apk || response.user[0].appidn === '') {
+                  _this2.userService.updateNotifications(response.user[0]._id, _this2.newNotificationId).subscribe(function (response) {
+                    console.log(response);
+
+                    _this2.presentToast('Se han activado las notificaciones');
+                  });
+                }
+              });
+            });
+          });
+        }
+      }, {
+        key: "ionViewDidEnter",
+        value: function ionViewDidEnter() {
+          console.log('======================Notifications Activate======================');
+        }
+      }, {
+        key: "logout",
+        value: function logout() {
+          console.log("Logging out user");
+          this.router.navigate(['/home']);
+        }
+      }, {
+        key: "getContacts",
+        value: function getContacts() {
+          var _this3 = this;
+
+          console.log('[INFOO] PASO A GET CONTACTOS');
+          this.args = this.storage.get('username').then(function (result) {
+            _this3.usernameStorage = result;
+
+            _this3.userService.getSekretId(_this3.usernameStorage).subscribe(function (response) {
+              _this3.expireIn = response.user[0].expire_in; //date Expire User
+
+              _this3.exU = _this3.expireIn.split('T');
+              _this3.exU = _this3.exU[0];
+              _this3.exC = _this3.exU.split('-');
+              _this3.exC = _this3.exC[2] + '-' + _this3.exC[1] + '-' + _this3.exC[0];
+              _this3.nW = _this3.tokenService.getDateServer().subscribe(function (res) {
+                _this3.serDate = res.dateShort;
+                _this3.serDate = _this3.serDate.split('/');
+                _this3.serDate = _this3.serDate[0] + '-' + _this3.serDate[1] + '-' + _this3.serDate[2];
+                _this3.restDays = _this3.restaFechas(_this3.serDate, _this3.exC); //console.log('Dias restantes', this.restDays);
+
+                if (_this3.restDays < 0) {
+                  _this3.presentAlert();
+                } else {
+                  _this3.sekretidrec = response.user[0].sekretid;
+                  _this3.sid = response.user[0].sekretid;
+
+                  _this3.contactsService.getContacts(_this3.sekretidrec).subscribe(function (responseContacts) {
+                    //console.log('Contactos', responseContacts);
+                    _this3.contacts = responseContacts.contacts;
+                    console.log('**************', typeof _this3.contacts);
+                    _this3.cl = _this3.contacts;
+                    console.log('-----------++--------------CONTACTOS NATURAL', _this3.contacts); //console.log('CONTACTOS Start', this.contacts )
+
+                    /*      for (let i = 0; i < this.contacts.length; i++) {
+                            this.userService.getAvatarBySid(this.contacts[i].sidcontact).subscribe(resp => {
+                              this.contacts[i].avatar = resp.avatar ;
+                            })
+                            console.log('====================11111================================[INFO] FINAL ARRAY', this.contacts);
+                          }
+                      */
+
+                    _this3.numberContacts = responseContacts.conteo;
+                  });
+                } //end Else
+
+              }); //End Token Service
+            }); //End user Service
+
+          }); //End Local StoragefupdateBadge
+        }
+      }, {
+        key: "createRomms",
+        value: function createRomms(contacts) {
+          var _this4 = this;
+
+          this.cts = contacts;
+          this.cts.map(function (element) {
+            _this4.contactsService.getContactsId(element.siduser, element.sidcontact).subscribe(function (res) {
+              console.log('RESPUESTA DEL SERIVIO', res);
+              console.log('ID DE LOS CONTACTOS++//**', res);
+              _this4.idContacts2 = res;
+              _this4.idDef1 = _this4.idContacts2.idDef;
+              _this4.idDef2 = _this4.idContacts2.idDef2;
+
+              _this4.socket.emit('baget', {
+                msg: _this4.idDef1,
+                type: 2
+              }); // this.socket.emit('baget', { msg: this.idDef2});
+
+            });
+          });
+        }
+      }, {
+        key: "inspectStatus",
+        value: function inspectStatus() {
+          var _this5 = this;
+
+          this.platform.ready().then(function () {
+            _this5.platform.pause.subscribe(function () {
+              console.log("kicking user"); //  this.router.navigate(['/home']);
+            });
+
+            _this5.platform.resume.subscribe(function () {
+              console.log('[INFO] App resumed');
+            });
+          });
+        }
+      }, {
+        key: "ionViewWillEnter",
+        value: function ionViewWillEnter() {
+          console.log('************[INFO] ionViewWillEnter*********');
+          this.nativeAudio.preloadSimple('uniqueId1', 'assets/tone.mp3');
+          this.ngOnInit();
+          this.menuCtrl.enable(true);
+        }
+      }, {
+        key: "filterSearch",
+        value: function filterSearch(ev) {
+          var val = ev.target.value;
+          this.textSerch = ev.detail.value;
+          console.log('el valor es', val);
+        }
+      }, {
+        key: "openModal",
+        value: function openModal() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var modal;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return this.modalController.create({
+                      component: _pages_add_user_add_user_page__WEBPACK_IMPORTED_MODULE_7__["AddUserPage"],
+                      componentProps: {
+                        sekretid: this.sekretidrec
+                      }
+                    });
+
+                  case 2:
+                    modal = _context.sent;
+                    _context.next = 5;
+                    return modal.present();
+
+                  case 5:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
+        }
+      }, {
+        key: "doRefresh",
+        value: function doRefresh(event) {
+          var _this6 = this;
+
+          setTimeout(function () {
+            _this6.contactsService.getContacts(_this6.sekretidrec).subscribe(function (responseContacts) {
+              _this6.contacts = responseContacts.contacts;
+              /*   for (let i = 0; i < this.contacts.length; i++) {
+                  // if (this.contacts[i].avatar === '') {
+                    // let avat = this.getAvatarSid(this.contacts[i].sidcontact);
+                   //  console.log("avatar para mostrar",avat);
+              /*        this.userService.getAvatarBySid(this.contacts[i].sidcontact).subscribe(resp => {
+                     this.contacts[i].avatar = resp.avatar;
+                     console.log('AVATARRRR*********------',this.contacts[i].avatar);
+                   })
+                   
+                  // }
+                  
+                 }*/
+
+              console.log('[INFO CONTACTOS CON AVATAR]', _this6.contacts);
+            });
+
+            event.target.complete();
+          }, 1000);
+        }
+      }, {
+        key: "copySid",
+        value: function copySid(contact) {
+          this.clipboard.copy(contact);
+          this.presentToast('Se ha copiado el Sekret ID');
+        }
+      }, {
+        key: "deleteContact",
+        value: function deleteContact(sidUser, sidContact) {
+          this.presentAlertConfirm(sidUser, sidContact);
+        }
+      }, {
+        key: "confirmDeleteContact",
+        value: function confirmDeleteContact(sidUser, sidContact) {
+          this.deleteContacts = {
+            siduser: sidUser,
+            sidcontact: sidContact
+          };
+          this.contactsService.deleteContacts(this.deleteContacts).subscribe(function (response) {
+            console.log(response);
+          });
+          this.presentToast('El contacto se ha eliminado');
+        }
+      }, {
+        key: "editUsername",
+        value: function editUsername() {
+          this.router.navigate(['/edit-contact']);
+        }
+      }, {
+        key: "presentToast",
+        value: function presentToast(message) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            var toast;
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    _context2.next = 2;
+                    return this.toastCtrl.create({
+                      message: message,
+                      duration: 2000,
+                      position: 'top'
+                    });
+
+                  case 2:
+                    toast = _context2.sent;
+                    toast.present();
+
+                  case 4:
+                  case "end":
+                    return _context2.stop();
+                }
+              }
+            }, _callee2, this);
+          }));
+        }
+      }, {
+        key: "presentAlertConfirm",
+        value: function presentAlertConfirm(sidUser, sidContact) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+            var _this7 = this;
+
+            var alert;
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    _context3.next = 2;
+                    return this.alertController.create({
+                      header: 'Atención!',
+                      message: 'Esta <strong>Seguro </strong>que desea eliminar el contacto?',
+                      buttons: [{
+                        text: 'Cancelar',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: function handler(blah) {
+                          console.log('Confirm Cancel: blah');
+                        }
+                      }, {
+                        text: 'Si',
+                        handler: function handler() {
+                          console.log('Confirm Okay');
+
+                          _this7.confirmDeleteContact(sidUser, sidContact);
+                        }
+                      }]
+                    });
+
+                  case 2:
+                    alert = _context3.sent;
+                    _context3.next = 5;
+                    return alert.present();
+
+                  case 5:
+                  case "end":
+                    return _context3.stop();
+                }
+              }
+            }, _callee3, this);
+          }));
+        }
+      }, {
+        key: "restaFechas",
+        value: function restaFechas(f1, f2) {
+          var aFecha1 = f1.split('-');
+          var aFecha2 = f2.split('-');
+          var fFecha1 = Date.UTC(aFecha1[2], aFecha1[1] - 1, aFecha1[0]);
+          var fFecha2 = Date.UTC(aFecha2[2], aFecha2[1] - 1, aFecha2[0]);
+          var dif = fFecha2 - fFecha1;
+          var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
+          return dias;
+        }
+      }, {
+        key: "presentAlert",
+        value: function presentAlert() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+            var _this8 = this;
+
+            var alert;
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+              while (1) {
+                switch (_context4.prev = _context4.next) {
+                  case 0:
+                    _context4.next = 2;
+                    return this.alertController.create({
+                      header: 'Atención!',
+                      message: 'su plan ha expirado',
+                      buttons: [{
+                        text: 'Cancelar',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: function handler(blah) {
+                          console.log('Confirm Cancel: blah');
+
+                          _this8.router.navigate(['/home']);
+                        }
+                      }, {
+                        text: 'salir',
+                        handler: function handler() {
+                          console.log('Confirm Okay');
+
+                          _this8.router.navigate(['/home']);
+                        }
+                      }]
+                    });
+
+                  case 2:
+                    alert = _context4.sent;
+                    _context4.next = 5;
+                    return alert.present();
+
+                  case 5:
+                  case "end":
+                    return _context4.stop();
+                }
+              }
+            }, _callee4, this);
+          }));
+        }
+      }, {
+        key: "ionViewDidLeave",
+        value: function ionViewDidLeave() {// console.log('[info] : Se ha ingesado a los contactos');
+        }
+      }, {
+        key: "getAvatarSid",
+        value: function getAvatarSid(sid) {
+          var _this9 = this;
+
+          //  console.log("paso", sid)
+          this.userService.getAvatarBySid(sid).subscribe(function (res) {
+            console.log('AVATARRRRRR', res);
+            _this9.avatar = res.avatar;
+          });
+          return this.avatar;
+        }
+      }]);
+
+      return ContactsPage;
+    }();
+
+    ContactsPage.ctorParameters = function () {
+      return [{
+        type: src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_2__["ContactsService"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"]
+      }, {
+        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"]
+      }, {
+        type: _services_users_service__WEBPACK_IMPORTED_MODULE_5__["UsersService"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ModalController"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["NavController"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["MenuController"]
+      }, {
+        type: _ionic_native_clipboard_ngx__WEBPACK_IMPORTED_MODULE_8__["Clipboard"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ToastController"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["Platform"]
+      }, {
+        type: _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_9__["QRScanner"]
+      }, {
+        type: ngx_socket_io__WEBPACK_IMPORTED_MODULE_10__["Socket"]
+      }, {
+        type: src_app_services_tokens_service__WEBPACK_IMPORTED_MODULE_11__["TokenService"]
+      }, {
+        type: src_app_services_push_service__WEBPACK_IMPORTED_MODULE_12__["PushService"]
+      }, {
+        type: _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_13__["OneSignal"]
+      }, {
+        type: _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_15__["NativeAudio"]
+      }];
+    };
+
+    ContactsPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-contacts',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./contacts.page.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/contacts/contacts.page.html"))["default"],
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./contacts.page.scss */
+      "./src/app/pages/contacts/contacts.page.scss"))["default"]]
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_2__["ContactsService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["ActivatedRoute"], _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"], _services_users_service__WEBPACK_IMPORTED_MODULE_5__["UsersService"], _angular_router__WEBPACK_IMPORTED_MODULE_3__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ModalController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["NavController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["MenuController"], _ionic_native_clipboard_ngx__WEBPACK_IMPORTED_MODULE_8__["Clipboard"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["ToastController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["AlertController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["Platform"], _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_9__["QRScanner"], ngx_socket_io__WEBPACK_IMPORTED_MODULE_10__["Socket"], src_app_services_tokens_service__WEBPACK_IMPORTED_MODULE_11__["TokenService"], src_app_services_push_service__WEBPACK_IMPORTED_MODULE_12__["PushService"], _ionic_native_onesignal_ngx__WEBPACK_IMPORTED_MODULE_13__["OneSignal"], _ionic_native_native_audio_ngx__WEBPACK_IMPORTED_MODULE_15__["NativeAudio"]])], ContactsPage);
+    /***/
+  }
+}]);
+//# sourceMappingURL=pages-contacts-contacts-module-es5.js.map

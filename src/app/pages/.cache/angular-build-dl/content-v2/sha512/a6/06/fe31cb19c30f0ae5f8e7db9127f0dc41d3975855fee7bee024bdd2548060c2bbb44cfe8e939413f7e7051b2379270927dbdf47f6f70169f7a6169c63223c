@@ -1,0 +1,621 @@
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-trunk-trunk-module"], {
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/trunk/trunk.page.html":
+  /*!***********************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/trunk/trunk.page.html ***!
+    \***********************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppPagesTrunkTrunkPageHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar color=\"warning\">\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"/contacts\" icon-only></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>{{'TRUNK.title' | translate}}</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n  <ion-list>\r\n    <ion-item-sliding *ngFor=\"let el of trunks\" >      \r\n      <ion-item >\r\n      <ion-avatar slot=\"start\" [routerLink]=\"['/trunk-chat', el._id ]\">\r\n          <img src=\"../../../assets/avatars/lock.png\">\r\n        </ion-avatar>\r\n        <ion-label class=\"sc-ion-label-ios-h sc-ion-label-ios-s ios hydrated\" [routerLink]=\"['/trunk-chat', el._id ]\">\r\n          <h3 class=\"nameUser\">{{ el.receiverName }}</h3>\r\n          <p>{{el.createAt | date:'short' }}</p>         \r\n        </ion-label>\r\n        <ion-button color=\"danger\" slot=\"end\" (click)=\"alertDelete(el._id)\">{{'TRUNK.delete' | translate}}</ion-button>\r\n      </ion-item>  \r\n      \r\n      \r\n    </ion-item-sliding>\r\n  </ion-list>\r\n</ion-content>";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/trunk/trunk.module.ts":
+  /*!*********************************************!*\
+    !*** ./src/app/pages/trunk/trunk.module.ts ***!
+    \*********************************************/
+
+  /*! exports provided: TrunkPageModule */
+
+  /***/
+  function srcAppPagesTrunkTrunkModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "TrunkPageModule", function () {
+      return TrunkPageModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _trunk_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./trunk.page */
+    "./src/app/pages/trunk/trunk.page.ts");
+    /* harmony import */
+
+
+    var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @ngx-translate/core */
+    "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
+
+    var routes = [{
+      path: '',
+      component: _trunk_page__WEBPACK_IMPORTED_MODULE_6__["TrunkPage"]
+    }];
+
+    var TrunkPageModule = function TrunkPageModule() {
+      _classCallCheck(this, TrunkPageModule);
+    };
+
+    TrunkPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes), _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateModule"]],
+      declarations: [_trunk_page__WEBPACK_IMPORTED_MODULE_6__["TrunkPage"]]
+    })], TrunkPageModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/trunk/trunk.page.scss":
+  /*!*********************************************!*\
+    !*** ./src/app/pages/trunk/trunk.page.scss ***!
+    \*********************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppPagesTrunkTrunkPageScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = ".ssl {\n  width: 25%;\n  height: 70%;\n  margin-left: 37%;\n}\n\n.nameUser {\n  font-weight: bold;\n}\n\n.mdal {\n  align-content: center;\n  text-align: center;\n  font-size: 18px;\n  color: #000000;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvdHJ1bmsvQzpcXFVzZXJzXFxOZW1lc3Npc1xcRGVza3RvcFxcZHZcXGNvcHlzXFxGU1UgZGV2L3NyY1xcYXBwXFxwYWdlc1xcdHJ1bmtcXHRydW5rLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvdHJ1bmsvdHJ1bmsucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksVUFBQTtFQUNBLFdBQUE7RUFDQSxnQkFBQTtBQ0NKOztBREVBO0VBQ0ksaUJBQUE7QUNDSjs7QURFQTtFQUNJLHFCQUFBO0VBQ0Esa0JBQUE7RUFDQSxlQUFBO0VBQ0EsY0FBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvdHJ1bmsvdHJ1bmsucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiLnNzbHtcclxuICAgIHdpZHRoOiAyNSU7XHJcbiAgICBoZWlnaHQ6IDcwJTtcclxuICAgIG1hcmdpbi1sZWZ0OiAzNyU7XHJcbn1cclxuXHJcbi5uYW1lVXNlcntcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG59XHJcblxyXG4ubWRhbHtcclxuICAgIGFsaWduLWNvbnRlbnQ6IGNlbnRlcjtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGZvbnQtc2l6ZTogMThweDtcclxuICAgIGNvbG9yOiAjMDAwMDAwO1xyXG59IiwiLnNzbCB7XG4gIHdpZHRoOiAyNSU7XG4gIGhlaWdodDogNzAlO1xuICBtYXJnaW4tbGVmdDogMzclO1xufVxuXG4ubmFtZVVzZXIge1xuICBmb250LXdlaWdodDogYm9sZDtcbn1cblxuLm1kYWwge1xuICBhbGlnbi1jb250ZW50OiBjZW50ZXI7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgZm9udC1zaXplOiAxOHB4O1xuICBjb2xvcjogIzAwMDAwMDtcbn0iXX0= */";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/trunk/trunk.page.ts":
+  /*!*******************************************!*\
+    !*** ./src/app/pages/trunk/trunk.page.ts ***!
+    \*******************************************/
+
+  /*! exports provided: TrunkPage */
+
+  /***/
+  function srcAppPagesTrunkTrunkPageTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "TrunkPage", function () {
+      return TrunkPage;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! src/app/services/contacts.service */
+    "./src/app/services/contacts.service.ts");
+    /* harmony import */
+
+
+    var _ionic_storage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @ionic/storage */
+    "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+    /* harmony import */
+
+
+    var _services_users_service__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! ../../services/users.service */
+    "./src/app/services/users.service.ts");
+    /* harmony import */
+
+
+    var src_app_services_trunk_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! src/app/services/trunk.service */
+    "./src/app/services/trunk.service.ts");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+
+    var TrunkPage = /*#__PURE__*/function () {
+      function TrunkPage(contactsService, storage, userService, TrunkService, router, alertController, platform) {
+        var _this = this;
+
+        _classCallCheck(this, TrunkPage);
+
+        this.contactsService = contactsService;
+        this.storage = storage;
+        this.userService = userService;
+        this.TrunkService = TrunkService;
+        this.router = router;
+        this.alertController = alertController;
+        this.platform = platform;
+        this.passwordTrunk = '';
+        platform.ready().then(function () {
+          _this.platform.pause.subscribe(function () {});
+
+          _this.platform.resume.subscribe(function () {
+            console.log('[INFO] App resumed');
+
+            _this.alertController.dismiss();
+          });
+        });
+      }
+
+      _createClass(TrunkPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          var _this2 = this;
+
+          this.args = this.storage.get('username').then(function (result) {
+            _this2.userStorage = result;
+
+            _this2.userService.getSekretId(_this2.userStorage).subscribe(function (response) {
+              _this2.sekretidrec = response.user[0].sekretid;
+              _this2.idUser = response.user[0]._id;
+
+              _this2.TrunkService.getTrunksbyUser(_this2.idUser).subscribe(function (res) {
+                _this2.trunks = res.trunks;
+              });
+            });
+          });
+          this.presentAlertPrompt();
+        }
+      }, {
+        key: "logout",
+        value: function logout() {
+          console.log("Logging out user");
+          this.router.navigate(['/home']);
+        }
+      }, {
+        key: "getName",
+        value: function getName(idUser) {
+          var _this3 = this;
+
+          this.userService.getusernameById(idUser).subscribe(function (response) {
+            _this3.objectUser = response.user[0];
+            _this3.username = _this3.objectUser.username;
+            console.log('#$#$#$#$', _this3.username);
+          });
+          return this.username;
+        }
+      }, {
+        key: "deletTrunk",
+        value: function deletTrunk(param) {
+          console.log('ELIMINAR', param);
+        }
+      }, {
+        key: "alertDelete",
+        value: function alertDelete(param) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var _this4 = this;
+
+            var alert;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return this.alertController.create({
+                      cssClass: 'my-custom-class',
+                      header: 'Atención!',
+                      message: '¿Está seguro que desea eliminar la conversación?',
+                      buttons: [{
+                        text: 'Cancelar',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: function handler(blah) {
+                          console.log('Confirm Cancel: blah');
+                        }
+                      }, {
+                        text: 'Aceptar',
+                        handler: function handler() {
+                          _this4.TrunkService.deleteTrunk(param).subscribe(function (res) {
+                            console.log('Respuesta del servicio eliminar', res);
+
+                            _this4.ngOnInit();
+                          });
+                        }
+                      }]
+                    });
+
+                  case 2:
+                    alert = _context.sent;
+                    _context.next = 5;
+                    return alert.present();
+
+                  case 5:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
+        }
+      }, {
+        key: "presentAlertPrompt",
+        value: function presentAlertPrompt() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            var _this5 = this;
+
+            var alert;
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    _context2.next = 2;
+                    return this.alertController.create({
+                      cssClass: 'mdal',
+                      header: 'Ingresar contraseña',
+                      message: "<img src=\"assets/safe2.png\" alt=\"g-maps\" style=\"\">",
+                      subHeader: "Puede asignarla en el perfil",
+                      inputs: [{
+                        name: 'password',
+                        type: 'password',
+                        placeholder: 'Contraseña del baúl'
+                      }],
+                      buttons: [{
+                        text: 'Cancelar',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: function handler(alertData) {
+                          console.log('Confirm Cancel');
+
+                          _this5.router.navigate(['/contacts']);
+                        }
+                      }, {
+                        text: 'Ingresar',
+                        handler: function handler(alertData) {
+                          console.log('Confirm Ok', alertData.password);
+
+                          _this5.loginsecondPass(alertData.password);
+                        }
+                      }]
+                    });
+
+                  case 2:
+                    alert = _context2.sent;
+                    _context2.next = 5;
+                    return alert.present();
+
+                  case 5:
+                  case "end":
+                    return _context2.stop();
+                }
+              }
+            }, _callee2, this);
+          }));
+        }
+      }, {
+        key: "loginsecondPass",
+        value: function loginsecondPass(pass) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee3() {
+            var valid;
+            return regeneratorRuntime.wrap(function _callee3$(_context3) {
+              while (1) {
+                switch (_context3.prev = _context3.next) {
+                  case 0:
+                    _context3.next = 2;
+                    return this.userService.loginSecondPass(this.idUser, pass);
+
+                  case 2:
+                    valid = _context3.sent;
+
+                    if (valid) {
+                      console.log('VALIDACION DE SEGUNDO PASSWORD', valid);
+                    }
+
+                  case 4:
+                  case "end":
+                    return _context3.stop();
+                }
+              }
+            }, _callee3, this);
+          }));
+        }
+      }]);
+
+      return TrunkPage;
+    }();
+
+    TrunkPage.ctorParameters = function () {
+      return [{
+        type: src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_2__["ContactsService"]
+      }, {
+        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"]
+      }, {
+        type: _services_users_service__WEBPACK_IMPORTED_MODULE_4__["UsersService"]
+      }, {
+        type: src_app_services_trunk_service__WEBPACK_IMPORTED_MODULE_5__["TrunkService"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["AlertController"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["Platform"]
+      }];
+    };
+
+    TrunkPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-trunk',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./trunk.page.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/trunk/trunk.page.html"))["default"],
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./trunk.page.scss */
+      "./src/app/pages/trunk/trunk.page.scss"))["default"]]
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_2__["ContactsService"], _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"], _services_users_service__WEBPACK_IMPORTED_MODULE_4__["UsersService"], src_app_services_trunk_service__WEBPACK_IMPORTED_MODULE_5__["TrunkService"], _angular_router__WEBPACK_IMPORTED_MODULE_6__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["AlertController"], _ionic_angular__WEBPACK_IMPORTED_MODULE_7__["Platform"]])], TrunkPage);
+    /***/
+  },
+
+  /***/
+  "./src/app/services/trunk.service.ts":
+  /*!*******************************************!*\
+    !*** ./src/app/services/trunk.service.ts ***!
+    \*******************************************/
+
+  /*! exports provided: TrunkService */
+
+  /***/
+  function srcAppServicesTrunkServiceTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "TrunkService", function () {
+      return TrunkService;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common_http__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common/http */
+    "./node_modules/@angular/common/fesm2015/http.js");
+    /* harmony import */
+
+
+    var _ionic_storage__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @ionic/storage */
+    "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+    /* harmony import */
+
+
+    var src_environments_environment__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! src/environments/environment */
+    "./src/environments/environment.ts");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+
+    var URL = src_environments_environment__WEBPACK_IMPORTED_MODULE_4__["environment"].url;
+
+    var TrunkService = /*#__PURE__*/function () {
+      function TrunkService(http, storage, loadingCtrl) {
+        _classCallCheck(this, TrunkService);
+
+        this.http = http;
+        this.storage = storage;
+        this.loadingCtrl = loadingCtrl;
+        this.arrayMesage = {
+          idMessage: '',
+          senderId: '',
+          receiverId: '',
+          body: '',
+          image: '',
+          audioFile: '',
+          type: '',
+          secureKey: '',
+          secureIv: '',
+          isread: '',
+          createAt: ''
+        };
+        this.tru = {
+          idTrunk: ''
+        };
+      }
+
+      _createClass(TrunkService, [{
+        key: "createTrunkNew",
+        value: function createTrunkNew(trunk) {
+          console.log('====????======', trunk);
+          return this.http.post("".concat(URL, "/trunk/createNew"), trunk);
+        }
+      }, {
+        key: "sendTrunk",
+        value: function sendTrunk(messageBody, messages) {
+          var _this6 = this;
+
+          this.toTrunk = messageBody;
+          return this.http.post("".concat(URL, "/trunk/create"), messageBody).subscribe(function (res) {
+            console.log('Respuesta de trunk server', res);
+            _this6.tr = res.trunk;
+            _this6.idTrunk = _this6.tr._id;
+
+            _this6.sendMessageTrunk(messages, _this6.idTrunk);
+
+            _this6.idTrunk;
+          });
+        }
+      }, {
+        key: "sendMessageTrunk",
+        value: function sendMessageTrunk(messageBody, idTrunk) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee4() {
+            var _this7 = this;
+
+            return regeneratorRuntime.wrap(function _callee4$(_context4) {
+              while (1) {
+                switch (_context4.prev = _context4.next) {
+                  case 0:
+                    messageBody.map(function (element) {
+                      _this7.arrayMesage = {
+                        idMessage: idTrunk,
+                        senderId: element.senderId,
+                        receiverId: element.receiverId,
+                        body: element.body,
+                        image: element.image,
+                        audioFile: element.audioFile,
+                        type: element.type,
+                        secureKey: element.secureKey,
+                        secureIv: element.secureIv,
+                        isread: element.isread,
+                        createAt: element.createAt
+                      }; // console.log('GGGGGGGGGGGGGGG', this.arrayMesage);
+                      //this.ServiceMessageTrunk(this.arrayMesage);     
+
+                      _this7.http.post("".concat(URL, "/trunk/create/messages"), _this7.arrayMesage).subscribe(function (res) {
+                        console.log(res);
+                      });
+                    });
+
+                  case 1:
+                  case "end":
+                    return _context4.stop();
+                }
+              }
+            }, _callee4);
+          }));
+        }
+      }, {
+        key: "ServiceMessageTrunk",
+        value: function ServiceMessageTrunk(ar) {
+          this.http.post("".concat(URL, "/trunk/create/messages"), ar).subscribe(function (res) {
+            console.log(res);
+          });
+        }
+      }, {
+        key: "getTrunksbyUser",
+        value: function getTrunksbyUser(idUser) {
+          return this.http.get("".concat(URL, "/trunk/id?idUser=").concat(idUser));
+        }
+      }, {
+        key: "getTrunksById",
+        value: function getTrunksById(idTrunk) {
+          return this.http.get("".concat(URL, "/trunk/idTrunk/?idTrunk=").concat(idTrunk));
+        }
+      }, {
+        key: "deleteTrunk",
+        value: function deleteTrunk(idTrunk) {
+          this.tru = {
+            idTrunk: idTrunk
+          };
+          return this.http.post("".concat(URL, "/trunks/delete"), this.tru);
+        }
+      }]);
+
+      return TrunkService;
+    }();
+
+    TrunkService.ctorParameters = function () {
+      return [{
+        type: _angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"]
+      }, {
+        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["LoadingController"]
+      }];
+    };
+
+    TrunkService = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Injectable"])({
+      providedIn: 'root'
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_common_http__WEBPACK_IMPORTED_MODULE_2__["HttpClient"], _ionic_storage__WEBPACK_IMPORTED_MODULE_3__["Storage"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["LoadingController"]])], TrunkService);
+    /***/
+  }
+}]);
+//# sourceMappingURL=pages-trunk-trunk-module-es5.js.map

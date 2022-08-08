@@ -1,0 +1,112 @@
+<ion-header>
+  <ion-toolbar color="dark">
+    <ion-buttons slot="secondary">
+      <ion-button>
+        <ion-icon slot="icon-only" name="person-circle"></ion-icon>
+      </ion-button>
+      <ion-button (click)="close()">
+        <ion-icon slot="icon-only" name="exit" (click)="close()"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title><img src="../../../assets/logo.svg" width="35px" alt=""> BankApp</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <ion-card>
+    <ion-card-header>
+      <ion-card-title>Hola, {{username}}</ion-card-title>
+      <ion-card-subtitle>Saldo Actual</ion-card-subtitle>
+      <ion-card-title>$ {{balance}}</ion-card-title>
+    </ion-card-header>
+  
+    <ion-card-content>
+      <ion-list class="ios list-ios hydrated" >
+        <ion-list-header class="ios hydrated">
+          Sus Productos Actuales
+        </ion-list-header>
+    
+        <ion-item *ngFor="let account of accounts; let i = index">
+          <ion-thumbnail slot="start" class="ios hydrated" [routerLink]="['/generate-qr', account.number]">
+            <ion-icon *ngIf="account.type === 'AHORROS'" src="../../../assets/icons/qr-code-outline.svg" class="transaccion-icon" color="primary"></ion-icon>
+            <ion-icon *ngIf="account.type === 'CORRIENTE' " src="../../../assets/icons/qr-code-outline.svg" class="transaccion-icon"  color="primary"></ion-icon>
+          </ion-thumbnail>
+          <ion-label>
+            <h3>Saldo: $ {{ account.balance }}</h3>
+            <h4># {{ account.number }} </h4>
+            <h4>Typo:  {{ account.type }} </h4>
+            <h5>Desc: {{ account.description }} </h5>
+          </ion-label>
+        </ion-item>
+      </ion-list>
+    
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle> Crear nuevos productos</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div class="save" [routerLink]="['/add-product', idU]">              
+              <p class="ion-text-center plus">+</p>
+              <p class="ion-text-center">Abrir Cuenta de ahorro</p>              
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="save2" [routerLink]="['/add-productcorriente', idU]" >
+              <p class="ion-text-center plus">+</p>
+              <p class="ion-text-center">Abrir Cuenta Corriente</p>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card>
+    <ion-card-header>
+      <ion-card-subtitle>Portal Transaciciones</ion-card-subtitle>
+      <ion-card-subtitle>Realiza transacciones sin salir de casa</ion-card-subtitle>
+    </ion-card-header>
+    <ion-card-content>
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <div class="ion-text-center">              
+              <ion-icon name="add-circle-outline" class="transaccion-icon" [routerLink]="['/enroll-account', idU]" color="primary"></ion-icon>
+              <p class="ion-text-center">Inscribir Cuentas</p>              
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="ion-text-center" [routerLink]="['/transferprops', idU]">
+              <ion-icon name="logo-bitcoin" class="transaccion-icon"  color="primary"></ion-icon>
+              <p class="ion-text-center">transferencia a cuentas propias</p>
+            </div>
+          </ion-col>
+        </ion-row>
+
+        <ion-row>
+          <ion-col>
+            <div class="ion-text-center" [routerLink]="['/transferenrroll', idU]">              
+              <ion-icon src="../../../assets/icons/send.svg" class="transaccion-icon"  color="primary"></ion-icon>
+              <p class="ion-text-center">Transferencias a cuentas inscritas</p>              
+            </div>
+          </ion-col>
+          <ion-col>
+            <div class="ion-text-center" [routerLink]="['/transfer-with-qr', idU]">
+              <ion-icon src="../../../assets/icons/qr-code-outline.svg" class="transaccion-icon"  color="primary"></ion-icon>
+              <p class="ion-text-center">Transferir con QR</p>
+            </div>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+    </ion-card-content>
+  </ion-card>
+
+
+
+</ion-content>

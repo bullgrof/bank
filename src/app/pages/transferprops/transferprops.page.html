@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-back-button text="" src="../../../assets/icons/arrow-back-outline.svg"></ion-back-button>
+    </ion-buttons>
+    <ion-title>Transferencias a cuentas propias</ion-title>
+  </ion-toolbar>
+</ion-header>
+
+<ion-content>
+  <form class="formlogin" #formtransfer="ngForm" (ngSubmit)="makeTransfer()">
+    <ion-list>
+
+      <ion-item>
+        <ion-label position="floating" required="true">Cuenta a transferir : </ion-label>
+            <ion-select placeholder="Seleccione la cuenta de destino" [(ngModel)]="transfer.destiny" name="account" required> 
+            <ion-select-option *ngFor="let accountS of maccounts; let i = index " value="{{ accountS.number }}" >{{accountS.balance}} ({{accountS.number }})</ion-select-option>
+          </ion-select>  
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating" required="true">Cuenta Origen: </ion-label>
+            <ion-select placeholder="Seleccione la cuenta de Origen" [(ngModel)]="transfer.origin" name="origin" required> 
+            <ion-select-option *ngFor="let myAccounts of maccounts; let i = index " value="{{ myAccounts.number }}" >{{myAccounts.balance}} ({{myAccounts.number }})</ion-select-option>
+          </ion-select>  
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating" required="true">Cantidad a enviar</ion-label>
+        <ion-input type="number" name="value" [(ngModel)]="transfer.value" required #input>
+        </ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating" required="true">Tipo de cuenta</ion-label>
+        <ion-input type="text" name="type" [(ngModel)]="transfer.type" readonly #input2>
+          <ion-select placeholder="Seleccion Tipo de cuenta" [(ngModel)]="transfer.type" name="type" required> 
+            <ion-select-option value="AHORROS">Ahorros</ion-select-option>
+            <ion-select-option value="CORRIENTE">Corriente</ion-select-option>           
+          </ion-select>  
+        </ion-input>
+
+      </ion-item>
+
+      <ion-item>
+        <ion-label position="floating" required="true">Descripcion</ion-label>
+        <ion-input type="text" name="description" [(ngModel)]="transfer.description" required #input2>
+        </ion-input>
+
+      </ion-item>
+
+      <ion-button expand="block" fill="outline" type="submit" color="warning">
+        <ion-icon name="log-in" class="marginicon"></ion-icon> enviar
+      </ion-button>
+    </ion-list>
+
+  </form>
+</ion-content>

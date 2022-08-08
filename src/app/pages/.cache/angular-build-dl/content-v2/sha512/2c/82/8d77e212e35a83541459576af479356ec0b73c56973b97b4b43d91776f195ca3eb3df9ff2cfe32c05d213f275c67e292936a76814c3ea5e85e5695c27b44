@@ -1,0 +1,498 @@
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-renewal-renewal-module"],{
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/renewal/renewal.page.html":
+/*!***************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/renewal/renewal.page.html ***!
+  \***************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar color=\"warning\">\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"/login\" icon-only></ion-back-button>\r\n      {{'RENEWAL.titlePage' | translate}}\r\n    </ion-buttons>\r\n    <ion-title>\r\n    </ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>  \r\n\r\n  <ion-card>\r\n    <ion-item class=\"btcTitle\">      \r\n      <ion-label class=\"planactual\"><ion-icon name=\"card-outline\"></ion-icon> {{'RENEWAL.yourPlan.title' | translate}}</ion-label>      \r\n    </ion-item>  \r\n    <ion-card-content>\r\n      <ion-row>        \r\n        <ion-col size=\"6\">\r\n          <ion-icon name=\"calendar-outline\" class=\"icons-page\" color=\"warning\"></ion-icon>\r\n          <label for=\"\" class=\"primary-label  \">{{dateExpire}}</label><br>\r\n          <label for=\"\" class=\"secundary-label\">{{'RENEWAL.yourPlan.expireIn' | translate}}</label>\r\n        </ion-col>\r\n        <ion-col size=\"6\">\r\n          <ion-icon name=\"today-outline\" class=\"icons-page\" color=\"warning\"></ion-icon>\r\n          <label for=\"\" class=\"primary-label  \">{{remaininDays}} {{'RENEWAL.yourPlan.days' | translate}}</label><br>\r\n          <label for=\"\" class=\"secundary-label\">{{'RENEWAL.yourPlan.restDays' | translate}}</label>\r\n        </ion-col>\r\n        <ion-col size=\"12\">\r\n          <ion-icon name=\"calendar-outline\" class=\"icons-page\" color=\"warning\"></ion-icon>\r\n          <label for=\"\" class=\"primary-label\">{{plann}}</label><br>\r\n          <label for=\"\" class=\"secundary-label\">plan</label>\r\n        </ion-col>\r\n      </ion-row>    \r\n    </ion-card-content>\r\n  </ion-card>\r\n\r\n  <ion-card>\r\n    <ion-item class=\"btcTitle\">\r\n      \r\n      <ion-label> <ion-icon name=\"barcode-outline\"></ion-icon> {{'RENEWAL.renewalwith' | translate}}</ion-label>      \r\n    </ion-item>  \r\n    <ion-card-content>\r\n      <ion-row>\r\n        <form (ngSubmit)=\"tokenCheck(frenewal)\" #frenewal=\"ngForm\">  \r\n        <ion-row>          \r\n            <ion-col size=\"7\">\r\n              <ion-input name=\"lic\"  placeholder=\"Token\" [(ngModel)]=\"renewalLic.lic\" required></ion-input>\r\n            </ion-col>\r\n            <ion-col size=\"3\">\r\n              <ion-button (click)=\"scan()\"  color=\"warning\"><ion-icon name=\"qr-code-outline\" class=\"colorblack\"></ion-icon> {{'RENEWAL.renewalByToken.form.state' | translate}}</ion-button>\r\n            </ion-col>          \r\n        </ion-row>\r\n      </form>\r\n        <ion-col size=\"6\">\r\n          <ion-icon name=\"power-outline\" class=\"icons-page\" color=\"warning\"></ion-icon>\r\n          <label for=\"\" class=\"primary-label  \">{{ state }}</label><br>\r\n          <label for=\"\" class=\"secundary-label\">{{'RENEWAL.renewalByToken.form.state' | translate}}</label>\r\n        </ion-col>\r\n        <ion-col size=\"6\">\r\n          <ion-icon name=\"today-outline\" class=\"icons-page \" color=\"warning\"></ion-icon>\r\n          <label for=\"\" class=\"primary-label  \">{{days}}</label><br>\r\n          <label for=\"\" class=\"secundary-label\">{{'RENEWAL.renewalByToken.form.days' | translate}}</label>\r\n        </ion-col>   \r\n      </ion-row>\r\n      <ion-row>\r\n      <ion-col size=\"6\">\r\n          <ion-icon name=\"phone-portrait-outline\" class=\"icons-page\" color=\"warning\"></ion-icon>\r\n          <label for=\"\" class=\"primary-label\" >{{ plan }}</label><br>\r\n          <label for=\"\" class=\"secundary-label\">{{'RENEWAL.renewalByToken.form.plann' | translate}}</label>\r\n        </ion-col>\r\n      </ion-row>\r\n      <ion-button expand=\"block\" fill=\"outline\" color=\"warning\" (click)=\"renewal()\" [disabled]=\"disabled\">{{'RENEWAL.renewalByToken.form.buttonRenewal' | translate}}</ion-button>   \r\n    </ion-card-content>\r\n  </ion-card>\r\n\r\n  <!--ion-card>\r\n    <form (ngSubmit)=\"renew(ren)\" #ren=\"ngForm\">\r\n      <ion-item class=\"btcTitle\">\r\n        \r\n        <ion-label ><ion-icon name=\"logo-bitcoin\"></ion-icon> {{'RENEWAL.btc.title' | translate}}</ion-label>\r\n      </ion-item>\r\n      <ion-card-content>\r\n        <ion-row>\r\n        \r\n          <div class=\"marquee\">\r\n            <div class=\"marquee__inner\" aria-hidden=\"true\">\r\n                <span class=\"sk\"> {{'RENEWAL.pleaseuser' | translate}}</span>                \r\n            </div>\r\n        </div>  \r\n          <ion-item>\r\n  \r\n            <ion-input name=\"user\" required placeholder=\"Usuario\" class=\"ph-center\" [(ngModel)]=\"reneArr.user\"></ion-input>\r\n            <ion-icon slot=\"end\"></ion-icon>\r\n          </ion-item>\r\n        </ion-row>\r\n        <ion-row>\r\n          <ion-col size=\"12\">\r\n            <img src=\"../../../assets/qr.jpg\" alt=\"\" (click)=\"copySid(btc)\">\r\n            <div class=\"ion-text-center wallet\" (click)=\"copySid(btc)\">{{btc}}</div>\r\n          </ion-col>\r\n          <ion-col >\r\n            <label for=\"\">{{'RENEWAL.plannsixmonths' | translate}}</label><br>\r\n            <label for=\"\">{{'RENEWAL.value' | translate}}: 625 €</label><br>\r\n            \r\n            \r\n          </ion-col>\r\n      \r\n        </ion-row>\r\n        <ion-row class=\"col1\">\r\n          <ion-col>\r\n            <label class=\"bet\" (click)=\"copyBTC(btcprice)\">BTC : {{btcprice}}</label>              \r\n            </ion-col>\r\n        </ion-row>\r\n        <ion-button expand=\"block\"  fill=\"outline\" (click)=\"captureImage()\" class=\"mayus\">\r\n          <ion-icon class=\"cameraa\" name=\"camera-outline\"></ion-icon> {{'RENEWAL.comprobe' | translate}}\r\n        </ion-button>\r\n        <ion-button type=\"submit\" color=\"warning\" shape=\"round\" expand=\"block\" [disabled]=\"disabledBtc\" class=\"brenw\">\r\n          {{'RENEWAL.rene' | translate}}\r\n        </ion-button>\r\n        <ion-row>\r\n        </ion-row>\r\n      </ion-card-content>\r\n    </form>\r\n  </ion-card-->\r\n</ion-content>");
+
+/***/ }),
+
+/***/ "./src/app/pages/renewal/renewal.module.ts":
+/*!*************************************************!*\
+  !*** ./src/app/pages/renewal/renewal.module.ts ***!
+  \*************************************************/
+/*! exports provided: RenewalPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RenewalPageModule", function() { return RenewalPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _renewal_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./renewal.page */ "./src/app/pages/renewal/renewal.page.ts");
+
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _renewal_page__WEBPACK_IMPORTED_MODULE_7__["RenewalPage"]
+    }
+];
+let RenewalPageModule = class RenewalPageModule {
+};
+RenewalPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes),
+            _ngx_translate_core__WEBPACK_IMPORTED_MODULE_5__["TranslateModule"]
+        ],
+        declarations: [_renewal_page__WEBPACK_IMPORTED_MODULE_7__["RenewalPage"]]
+    })
+], RenewalPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/renewal/renewal.page.scss":
+/*!*************************************************!*\
+  !*** ./src/app/pages/renewal/renewal.page.scss ***!
+  \*************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = (".icons-page {\n  margin-left: -5px;\n  margin-right: 3px;\n  width: 20px;\n  height: 20px;\n}\n\n.primary-label {\n  color: #000000;\n  margin-top: 2px;\n}\n\n.secundary-label {\n  font-size: 12px;\n  color: grey;\n  margin-left: 18px;\n  margin-top: 0px;\n}\n\n.wallet {\n  color: black;\n  font-size: 13px;\n}\n\n.labelwallet {\n  font-size: 12px;\n}\n\n.planactual {\n  margin-left: 3px;\n}\n\n.lb {\n  font-size: 17px;\n  text-align: center;\n}\n\n.colorblack {\n  color: #000000;\n  margin-right: 4px;\n}\n\n.bld {\n  font-weight: bold;\n}\n\n.brenw {\n  margin-top: 19px;\n}\n\n.marquee {\n  border-radius: 14px 14px 14px 14px;\n  position: relative;\n  overflow: hidden;\n  --offset: 37vw;\n  --move-initial: calc(185% + var(--offset));\n  --move-final: calc(-235% + var(--offset));\n  color: #f19936;\n  margin-left: 18px;\n}\n\n.marquee__inner {\n  width: -webkit-fit-content;\n  width: -moz-fit-content;\n  width: fit-content;\n  display: flex;\n  position: relative;\n  transform: translate3d(var(--move-initial), 0, 0);\n  -webkit-animation: marquee 9s linear infinite;\n          animation: marquee 9s linear infinite;\n  -webkit-animation-play-state: auto;\n          animation-play-state: auto;\n}\n\n.marquee span {\n  font-size: 16px;\n  padding: 0 2vw;\n  font-weight: bold;\n}\n\n.marquee:hover .marquee__inner {\n  -webkit-animation-play-state: running;\n          animation-play-state: running;\n}\n\n@-webkit-keyframes marquee {\n  0% {\n    transform: translate3d(var(--move-initial), 0, 0);\n  }\n  100% {\n    transform: translate3d(var(--move-final), 0, 0);\n  }\n}\n\n@keyframes marquee {\n  0% {\n    transform: translate3d(var(--move-initial), 0, 0);\n  }\n  100% {\n    transform: translate3d(var(--move-final), 0, 0);\n  }\n}\n\n.cameraa {\n  margin-right: 3px;\n}\n\n.botonAdjuntar {\n  text-transform: lowercase;\n}\n\n.btcTitle {\n  text-align: center;\n}\n\n.bet {\n  text-align: center;\n  font-weight: bold;\n  font-size: 16px;\n  color: black;\n}\n\n.col1 {\n  text-align: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcmVuZXdhbC9DOlxcVXNlcnNcXE5lbWVzc2lzXFxEZXNrdG9wXFxwcm9qZWN0c1xcanVuaW9cXGZzdSAtIENvcHkvc3JjXFxhcHBcXHBhZ2VzXFxyZW5ld2FsXFxyZW5ld2FsLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvcmVuZXdhbC9yZW5ld2FsLnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGlCQUFBO0VBQ0EsaUJBQUE7RUFDQSxXQUFBO0VBQ0EsWUFBQTtBQ0NKOztBREVBO0VBQ0ksY0FBQTtFQUNBLGVBQUE7QUNDSjs7QURFQTtFQUNJLGVBQUE7RUFDQSxXQUFBO0VBQ0EsaUJBQUE7RUFDQSxlQUFBO0FDQ0o7O0FERUE7RUFDSSxZQUFBO0VBQ0EsZUFBQTtBQ0NKOztBREVBO0VBQ0ksZUFBQTtBQ0NKOztBREVBO0VBQ0ksZ0JBQUE7QUNDSjs7QURFQTtFQUNJLGVBQUE7RUFDQSxrQkFBQTtBQ0NKOztBREVBO0VBQ0ksY0FBQTtFQUNBLGlCQUFBO0FDQ0o7O0FERUE7RUFDSSxpQkFBQTtBQ0NKOztBREVBO0VBQ0ksZ0JBQUE7QUNDSjs7QURJQTtFQUNJLGtDQUFBO0VBQ0Esa0JBQUE7RUFDQSxnQkFBQTtFQUNBLGNBQUE7RUFDQSwwQ0FBQTtFQUNBLHlDQUFBO0VBQ0EsY0FBQTtFQUNBLGlCQUFBO0FDREo7O0FES0E7RUFDSSwwQkFBQTtFQUFBLHVCQUFBO0VBQUEsa0JBQUE7RUFDQSxhQUFBO0VBQ0Esa0JBQUE7RUFDQSxpREFBQTtFQUNBLDZDQUFBO1VBQUEscUNBQUE7RUFDQSxrQ0FBQTtVQUFBLDBCQUFBO0FDRko7O0FETUE7RUFFSSxlQUFBO0VBQ0EsY0FBQTtFQUNBLGlCQUFBO0FDSko7O0FET0E7RUFDSSxxQ0FBQTtVQUFBLDZCQUFBO0FDSko7O0FET0E7RUFDSTtJQUNJLGlEQUFBO0VDSk47RURPRTtJQUNJLCtDQUFBO0VDTE47QUFDRjs7QURGQTtFQUNJO0lBQ0ksaURBQUE7RUNKTjtFRE9FO0lBQ0ksK0NBQUE7RUNMTjtBQUNGOztBRFNBO0VBQ0ksaUJBQUE7QUNQSjs7QURXQTtFQUVJLHlCQUFBO0FDVEo7O0FEZUE7RUFDSSxrQkFBQTtBQ1pKOztBRGVBO0VBQ0ksa0JBQUE7RUFDQSxpQkFBQTtFQUNBLGVBQUE7RUFDQSxZQUFBO0FDWko7O0FEZ0JBO0VBQU0sa0JBQUE7QUNaTiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3JlbmV3YWwvcmVuZXdhbC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuaWNvbnMtcGFnZXtcclxuICAgIG1hcmdpbi1sZWZ0OiAtNXB4O1xyXG4gICAgbWFyZ2luLXJpZ2h0OiAzcHg7XHJcbiAgICB3aWR0aDogMjBweDtcclxuICAgIGhlaWdodDogMjBweDtcclxufVxyXG5cclxuLnByaW1hcnktbGFiZWx7XHJcbiAgICBjb2xvcjogIzAwMDAwMDtcclxuICAgIG1hcmdpbi10b3A6IDJweDtcclxufVxyXG5cclxuLnNlY3VuZGFyeS1sYWJlbHtcclxuICAgIGZvbnQtc2l6ZTogMTJweDtcclxuICAgIGNvbG9yOiBncmV5O1xyXG4gICAgbWFyZ2luLWxlZnQ6IDE4cHg7XHJcbiAgICBtYXJnaW4tdG9wOiAwcHg7XHJcbn1cclxuXHJcbi53YWxsZXR7XHJcbiAgICBjb2xvcjogYmxhY2s7XHJcbiAgICBmb250LXNpemU6IDEzcHg7XHJcbn1cclxuXHJcbi5sYWJlbHdhbGxldHtcclxuICAgIGZvbnQtc2l6ZTogMTJweDtcclxufVxyXG5cclxuLnBsYW5hY3R1YWx7XHJcbiAgICBtYXJnaW4tbGVmdDogM3B4O1xyXG59XHJcblxyXG4ubGJ7XHJcbiAgICBmb250LXNpemU6IDE3cHg7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbn1cclxuXHJcbi5jb2xvcmJsYWNre1xyXG4gICAgY29sb3I6ICMwMDAwMDA7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IDRweDs7XHJcbn1cclxuXHJcbi5ibGR7XHJcbiAgICBmb250LXdlaWdodDogYm9sZDtcclxufVxyXG5cclxuLmJyZW53e1xyXG4gICAgbWFyZ2luLXRvcDogMTlweDtcclxufVxyXG5cclxuXHJcblxyXG4ubWFycXVlZSB7XHJcbiAgICBib3JkZXItcmFkaXVzOiAxNHB4IDE0cHggMTRweCAxNHB4O1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgb3ZlcmZsb3c6IGhpZGRlbjtcclxuICAgIC0tb2Zmc2V0OiAzN3Z3O1xyXG4gICAgLS1tb3ZlLWluaXRpYWw6IGNhbGMoMTg1JSArIHZhcigtLW9mZnNldCkpO1xyXG4gICAgLS1tb3ZlLWZpbmFsOiBjYWxjKC0yMzUlICsgdmFyKC0tb2Zmc2V0KSk7XHJcbiAgICBjb2xvcjogI2YxOTkzNjtcclxuICAgIG1hcmdpbi1sZWZ0OiAxOHB4O1xyXG4gICAgLy9mb250LXNpemU6IDE4cHg7XHJcbn1cclxuXHJcbi5tYXJxdWVlX19pbm5lciB7XHJcbiAgICB3aWR0aDogZml0LWNvbnRlbnQ7XHJcbiAgICBkaXNwbGF5OiBmbGV4O1xyXG4gICAgcG9zaXRpb246IHJlbGF0aXZlO1xyXG4gICAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCh2YXIoLS1tb3ZlLWluaXRpYWwpLCAwLCAwKTtcclxuICAgIGFuaW1hdGlvbjogbWFycXVlZSA5cyBsaW5lYXIgaW5maW5pdGU7XHJcbiAgICBhbmltYXRpb24tcGxheS1zdGF0ZTogYXV0bztcclxuICAgIFxyXG59XHJcblxyXG4ubWFycXVlZSBzcGFuIHtcclxuICAgIC8vZm9udC1zaXplOiA0LjV2dztcclxuICAgIGZvbnQtc2l6ZTogMTZweDtcclxuICAgIHBhZGRpbmc6IDAgMnZ3O1xyXG4gICAgZm9udC13ZWlnaHQ6IGJvbGQ7XHJcbn1cclxuXHJcbi5tYXJxdWVlOmhvdmVyIC5tYXJxdWVlX19pbm5lciB7XHJcbiAgICBhbmltYXRpb24tcGxheS1zdGF0ZTogcnVubmluZztcclxufVxyXG5cclxuQGtleWZyYW1lcyBtYXJxdWVlIHtcclxuICAgIDAlIHtcclxuICAgICAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZTNkKHZhcigtLW1vdmUtaW5pdGlhbCksIDAsIDApO1xyXG4gICAgfVxyXG5cclxuICAgIDEwMCUge1xyXG4gICAgICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlM2QodmFyKC0tbW92ZS1maW5hbCksIDAsIDApO1xyXG4gICAgfVxyXG59XHJcblxyXG5cclxuLmNhbWVyYWF7XHJcbiAgICBtYXJnaW4tcmlnaHQ6IDNweDtcclxuICAgIFxyXG59XHJcblxyXG4uYm90b25BZGp1bnRhciB7XHJcbiAgICBcclxuICAgIHRleHQtdHJhbnNmb3JtOiBsb3dlcmNhc2U7XHJcbn1cclxuXHJcblxyXG5cclxuXHJcbi5idGNUaXRsZXtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxufVxyXG5cclxuLmJldHtcclxuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcclxuICAgIGZvbnQtd2VpZ2h0OiBib2xkO1xyXG4gICAgZm9udC1zaXplOiAxNnB4O1xyXG4gICAgY29sb3I6IGJsYWNrO1xyXG4gICBcclxufVxyXG5cclxuLmNvbDF7dGV4dC1hbGlnbjogY2VudGVyO30iLCIuaWNvbnMtcGFnZSB7XG4gIG1hcmdpbi1sZWZ0OiAtNXB4O1xuICBtYXJnaW4tcmlnaHQ6IDNweDtcbiAgd2lkdGg6IDIwcHg7XG4gIGhlaWdodDogMjBweDtcbn1cblxuLnByaW1hcnktbGFiZWwge1xuICBjb2xvcjogIzAwMDAwMDtcbiAgbWFyZ2luLXRvcDogMnB4O1xufVxuXG4uc2VjdW5kYXJ5LWxhYmVsIHtcbiAgZm9udC1zaXplOiAxMnB4O1xuICBjb2xvcjogZ3JleTtcbiAgbWFyZ2luLWxlZnQ6IDE4cHg7XG4gIG1hcmdpbi10b3A6IDBweDtcbn1cblxuLndhbGxldCB7XG4gIGNvbG9yOiBibGFjaztcbiAgZm9udC1zaXplOiAxM3B4O1xufVxuXG4ubGFiZWx3YWxsZXQge1xuICBmb250LXNpemU6IDEycHg7XG59XG5cbi5wbGFuYWN0dWFsIHtcbiAgbWFyZ2luLWxlZnQ6IDNweDtcbn1cblxuLmxiIHtcbiAgZm9udC1zaXplOiAxN3B4O1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59XG5cbi5jb2xvcmJsYWNrIHtcbiAgY29sb3I6ICMwMDAwMDA7XG4gIG1hcmdpbi1yaWdodDogNHB4O1xufVxuXG4uYmxkIHtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG59XG5cbi5icmVudyB7XG4gIG1hcmdpbi10b3A6IDE5cHg7XG59XG5cbi5tYXJxdWVlIHtcbiAgYm9yZGVyLXJhZGl1czogMTRweCAxNHB4IDE0cHggMTRweDtcbiAgcG9zaXRpb246IHJlbGF0aXZlO1xuICBvdmVyZmxvdzogaGlkZGVuO1xuICAtLW9mZnNldDogMzd2dztcbiAgLS1tb3ZlLWluaXRpYWw6IGNhbGMoMTg1JSArIHZhcigtLW9mZnNldCkpO1xuICAtLW1vdmUtZmluYWw6IGNhbGMoLTIzNSUgKyB2YXIoLS1vZmZzZXQpKTtcbiAgY29sb3I6ICNmMTk5MzY7XG4gIG1hcmdpbi1sZWZ0OiAxOHB4O1xufVxuXG4ubWFycXVlZV9faW5uZXIge1xuICB3aWR0aDogZml0LWNvbnRlbnQ7XG4gIGRpc3BsYXk6IGZsZXg7XG4gIHBvc2l0aW9uOiByZWxhdGl2ZTtcbiAgdHJhbnNmb3JtOiB0cmFuc2xhdGUzZCh2YXIoLS1tb3ZlLWluaXRpYWwpLCAwLCAwKTtcbiAgYW5pbWF0aW9uOiBtYXJxdWVlIDlzIGxpbmVhciBpbmZpbml0ZTtcbiAgYW5pbWF0aW9uLXBsYXktc3RhdGU6IGF1dG87XG59XG5cbi5tYXJxdWVlIHNwYW4ge1xuICBmb250LXNpemU6IDE2cHg7XG4gIHBhZGRpbmc6IDAgMnZ3O1xuICBmb250LXdlaWdodDogYm9sZDtcbn1cblxuLm1hcnF1ZWU6aG92ZXIgLm1hcnF1ZWVfX2lubmVyIHtcbiAgYW5pbWF0aW9uLXBsYXktc3RhdGU6IHJ1bm5pbmc7XG59XG5cbkBrZXlmcmFtZXMgbWFycXVlZSB7XG4gIDAlIHtcbiAgICB0cmFuc2Zvcm06IHRyYW5zbGF0ZTNkKHZhcigtLW1vdmUtaW5pdGlhbCksIDAsIDApO1xuICB9XG4gIDEwMCUge1xuICAgIHRyYW5zZm9ybTogdHJhbnNsYXRlM2QodmFyKC0tbW92ZS1maW5hbCksIDAsIDApO1xuICB9XG59XG4uY2FtZXJhYSB7XG4gIG1hcmdpbi1yaWdodDogM3B4O1xufVxuXG4uYm90b25BZGp1bnRhciB7XG4gIHRleHQtdHJhbnNmb3JtOiBsb3dlcmNhc2U7XG59XG5cbi5idGNUaXRsZSB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn1cblxuLmJldCB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgZm9udC13ZWlnaHQ6IGJvbGQ7XG4gIGZvbnQtc2l6ZTogMTZweDtcbiAgY29sb3I6IGJsYWNrO1xufVxuXG4uY29sMSB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbn0iXX0= */");
+
+/***/ }),
+
+/***/ "./src/app/pages/renewal/renewal.page.ts":
+/*!***********************************************!*\
+  !*** ./src/app/pages/renewal/renewal.page.ts ***!
+  \***********************************************/
+/*! exports provided: RenewalPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RenewalPage", function() { return RenewalPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _services_tokens_service__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../services/tokens.service */ "./src/app/services/tokens.service.ts");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+/* harmony import */ var _services_users_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/users.service */ "./src/app/services/users.service.ts");
+/* harmony import */ var _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic-native/qr-scanner/ngx */ "./node_modules/@ionic-native/qr-scanner/ngx/index.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _ionic_native_media_capture_ngx__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @ionic-native/media-capture/ngx */ "./node_modules/@ionic-native/media-capture/ngx/index.js");
+/* harmony import */ var _ionic_native_clipboard_ngx__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! @ionic-native/clipboard/ngx */ "./node_modules/@ionic-native/clipboard/ngx/index.js");
+/* harmony import */ var _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic-native/File/ngx */ "./node_modules/@ionic-native/File/ngx/index.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+
+
+
+
+
+
+
+
+
+
+
+
+
+//var dateFormat = require('dateformat');
+let RenewalPage = class RenewalPage {
+    constructor(tService, toastCtrl, storage, userService, qrScanner, datePipe, mediaCapture, clipboard, platform, file, router) {
+        this.tService = tService;
+        this.toastCtrl = toastCtrl;
+        this.storage = storage;
+        this.userService = userService;
+        this.qrScanner = qrScanner;
+        this.datePipe = datePipe;
+        this.mediaCapture = mediaCapture;
+        this.clipboard = clipboard;
+        this.platform = platform;
+        this.file = file;
+        this.router = router;
+        this.renewalLic = {
+            lic: ''
+        };
+        this.state = ' - ';
+        this.plan = '';
+        this.dataRenewal = {
+            userid: '',
+            expire: ''
+        };
+        this.userUpd = {
+            iduser: '',
+            daysplan: '',
+            token: '',
+            expire_in: '',
+            idToken: ''
+        };
+        this.disabled = false;
+        this.base = '';
+        this.dataResFiles = [];
+        this.reneArr = {
+            user: '',
+            voucher: ''
+        };
+        this.resultImage = {};
+        this.disabledBtc = true;
+        this.btc = '1HyAzmyNMbwDAxnVjGxQtcJQxbriNN3vuj';
+        this.swcamera = 0;
+        this.plann = '';
+        this.platform.backButton.subscribeWithPriority(10, () => {
+            document.getElementsByTagName("body")[0].style.opacity = "1";
+            this.scaned.unsubscribe();
+        });
+        this.platform.ready().then(() => {
+            this.qrScanner.hide();
+            this.platform.pause.subscribe(() => {
+                console.log("[INFO] PAUSE");
+            });
+            this.platform.resume.subscribe(() => {
+                console.log('[INFO] RESUME');
+                this.storage.get('stateCamera').then((result) => {
+                    console.log('[INFO] STATE CAMERA : ', result);
+                    if (result === 1) {
+                        console.log('[INFO]: Se esta usando la camara NO CERRAR');
+                        this.userService.saveStateCamera(0);
+                    }
+                    else {
+                        console.log('[INFO]: Mandar al Login');
+                        this.logout();
+                    }
+                });
+            });
+        });
+    }
+    ngOnInit() {
+        this.qrScanner.hide();
+        this.qrScanner.destroy();
+        this.tService.getBTCPrice().subscribe(res => {
+            this.btcprice = res;
+        });
+        this.remainDays();
+    }
+    logout() {
+        console.log("Logging out user");
+        this.router.navigate(['/home']);
+    }
+    remainDays() {
+        this.storage.get('username').then((result) => {
+            this.userService.getSekretId(result).subscribe(responseUser => {
+                this.dateExpire = responseUser.user[0].expire_in.split('T');
+                this.dateExpire = this.dateExpire[0];
+                this.dateExpire = this.dateExpire.split('-');
+                this.dateExpire = this.dateExpire[2] + '-' + this.dateExpire[1] + '-' + this.dateExpire[0];
+                console.log('FECHA DE EXPIRACION: ', this.dateExpire);
+                this.plann = responseUser.user[0].plan;
+                this.tService.getDateServer().subscribe(resDateServer => {
+                    this.temDateServer = resDateServer.dateShort;
+                    this.serverDate = this.temDateServer.split('/');
+                    this.serverDate = this.serverDate[0] + '-' + this.serverDate[1] + '-' + this.serverDate[2];
+                    console.log('Fecha del servidor ', this.serverDate);
+                    this.remaininDays = this.restaFechas(this.serverDate, this.dateExpire);
+                });
+            });
+        });
+    }
+    renew(ren) {
+        if (this.reneArr.user === '' && this.reneArr.user === '') {
+            this.presentToast('Debe Adjuntar el Voucher de transferencia e ingresar el usuario');
+        }
+        else {
+            this.tService.saveVoucher(this.reneArr).subscribe(dataResponse => {
+                console.log('respuesta gurdado', dataResponse);
+                this.responseV = dataResponse.ok;
+                if (this.responseV === true) {
+                    this.presentToast('Su solicitud esta siendo procesada');
+                }
+                else {
+                    this.presentToast('Su solicitud ya se ha enviado');
+                }
+                console.log('asdasd', this.responseV.ok);
+            });
+        }
+    }
+    copySid(contact) {
+        this.clipboard.copy(contact);
+        this.presentToast('Se ha copiado la wallet');
+    }
+    copyBTC(contact) {
+        this.clipboard.copy(contact);
+        this.presentToast('Se ha copiado el valor a depositar');
+    }
+    captureImage() {
+        this.swcamera = 1;
+        this.userService.saveStateCamera(this.swcamera);
+        let path;
+        let namePic;
+        var options = {
+            limit: 1,
+            quality: 15,
+            correctOrientation: false
+        };
+        this.mediaCapture.captureImage(options).then((data) => {
+            if (data.length > 0) {
+                path = data[0].fullPath;
+                namePic = data[0].name;
+                console.log('NOMBRE DE LA IMAGEN', namePic);
+                this.copyFileToLocalDir(path, namePic);
+            }
+        }, (err) => console.error(err));
+        this.swcamera = 0;
+    }
+    copyFileToLocalDir(fullPath, namePic) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            console.log('Paso con l aimagen : ', namePic);
+            let myPath = fullPath;
+            let result;
+            let im, ph;
+            // Make sure we copy from the right location
+            if (fullPath.indexOf('file://') < 0) {
+                myPath = 'file://' + fullPath;
+            }
+            this.dataResFiles = yield this.upImage(myPath);
+            console.log('???===??? IMAGEN', this.dataResFiles);
+            result = this.dataResFiles.name;
+            console.log('RESUL SUBIDA', result);
+            if (result === '') {
+                setTimeout(() => {
+                    result = this.dataResFiles.name;
+                    //  this.sendMessageImage(result);
+                }, 1000);
+            }
+            else {
+                // this.sendMessageImage(result);
+                ph = 'file:///storage/emulated/0/Pictures/';
+                this.file.removeFile(ph, namePic);
+            }
+        });
+    }
+    upImage(file) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            let imageSennder = file;
+            let resultImageSender;
+            if (file != null) {
+                //send message was photo     
+                this.presentToast('Subiendo Vaucher por favor espere unos segundos antes de darle en renovar');
+                resultImageSender = yield this.tService.uploadimage(imageSennder).then((imageData) => {
+                    console.log('IMAGE DATA', imageData);
+                    this.resultImage = imageData;
+                    this.res = imageData;
+                    this.reneArr.voucher = this.res.name;
+                    console.log('AAARRRR???', this.reneArr);
+                    setTimeout(() => {
+                        this.comprobe();
+                    }, 4000);
+                    console.log(this.reneArr);
+                });
+                resultImageSender = yield this.tService.uploadimage(imageSennder);
+            }
+            else {
+                this.presentToast('se ha encontrado algun error');
+            }
+            return resultImageSender;
+        });
+    }
+    comprobe() {
+        if (this.reneArr.user === '') {
+            this.presentToast('Debe Ingresar un usuario');
+        }
+        else {
+            if (this.reneArr.voucher === '') {
+                this.presentToast('Debe adjuntar un Voucher');
+            }
+            else {
+                this.disabledBtc = false;
+                this.presentToast('Pulse en renovar para enviar su solicitud');
+            }
+        }
+    }
+    renewal(frenewal) {
+        //  console.log('FORMULARIO INGRESA', this.renewalLic.lic);
+        if (this.renewalLic.lic === '') {
+            this.presentToast('Debe ingresar un token');
+        }
+        else {
+            console.log('Dias del plan ', this.days);
+            this.storage.get('username').then((result) => {
+                this.username = result;
+                this.userService.getSekretId(this.username).subscribe(response => {
+                    this.userid = response.user[0]._id;
+                    this.tService.getDateServer().subscribe(respDate => {
+                        this.dateServer = respDate.datenow;
+                        this.datelong = respDate.datelong;
+                        this.dateShort = respDate.dateShort;
+                        var dateExpireUser = response.user[0].expire_in;
+                        var dateEx = dateExpireUser.split('T');
+                        var cateExp = dateEx[0];
+                        var newDateNowExpireUser = this.datePipe.transform(cateExp, "dd-MM-yyyy");
+                        // console.log('fecha2', newDateNow ) ;
+                        this.nodateUser = this.restaFechas(newDateNowExpireUser, this.dateServer);
+                        console.log('rest days', this.nodateUser);
+                        this.userUpd = {
+                            iduser: this.userid,
+                            daysplan: this.days,
+                            token: this.tk,
+                            expire_in: response.user[0].expire_in,
+                            idToken: this.idtoken
+                        };
+                        console.log(this.userUpd);
+                        this.tService.renewal(this.userUpd).subscribe(responseToken => {
+                            console.log('Servicio de', responseToken);
+                            if (responseToken.ok === true) {
+                                this.presentToast('Se ha renovado con exito!');
+                            }
+                        });
+                    });
+                }); // end getSekretID
+            });
+        }
+    }
+    tokenCheck(vv) {
+        // console.log('FORMULARIO INGRESA', this.renewalLic.lic);
+        this.tk = this.renewalLic.lic;
+        this.characters = this.renewalLic.lic.length;
+        if (this.characters === 20) {
+            this.tService.getVerifyToken(this.renewalLic.lic).subscribe(resp => {
+                console.log('RESPUESTA DEL TOKEN INGRESADO', resp);
+                if (Object.entries(resp.tokens).length === 0) {
+                    this.presentToast('El token ingresado no existe');
+                }
+                else {
+                    this.idPlan = resp.tokens[0].idplan;
+                    this.stateToken = resp.tokens[0].state;
+                    console.log('Estado del token', this.stateToken);
+                    if (this.stateToken === '0') {
+                        this.presentToast('El token no se encuentra disponible');
+                    }
+                    else {
+                        this.presentToast('El token se encuentra disponible');
+                    }
+                    this.idtoken = resp.tokens[0]._id;
+                    if (this.stateToken === '1') {
+                        this.state = 'Disponible';
+                        this.disabled = false;
+                    }
+                    else {
+                        this.state = 'No disponible';
+                        this.disabled = true;
+                    }
+                    this.tService.getRemainingDays(this.idPlan).subscribe(respPlan => {
+                        this.infoToken = respPlan.plans[0];
+                        this.plan = this.infoToken.type;
+                        this.days = this.infoToken.timetoexpire;
+                    });
+                }
+            });
+        }
+        else {
+            this.presentToast('El token No esta registrado');
+        }
+    }
+    /* getPriceBTC() {
+       this.base = 'BTC';
+       let price = require('crypto-price');
+       price.getCryptoPrice(this.base, crypto).then(obj => { // Base for ex - USD, Crypto for ex - ETH
+         console.log(obj.price)
+       }).catch(err => {
+         console.log(err)
+       })
+   
+     }*/
+    presentToast(message) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const toast = yield this.toastCtrl.create({
+                message,
+                duration: 2000,
+                position: 'top'
+            });
+            toast.present();
+        });
+    }
+    restaFechas(f1, f2) {
+        var aFecha1 = f1.split('-');
+        var aFecha2 = f2.split('-');
+        var fFecha1 = Date.UTC(aFecha1[2], aFecha1[1] - 1, aFecha1[0]);
+        var fFecha2 = Date.UTC(aFecha2[2], aFecha2[1] - 1, aFecha2[0]);
+        var dif = fFecha2 - fFecha1;
+        var dias = Math.floor(dif / (1000 * 60 * 60 * 24));
+        return dias;
+    }
+    scan() {
+        this.qrScanner.prepare().then((status) => {
+            if (status.authorized) {
+                this.qrScanner.show();
+                document.getElementsByTagName("body")[0].style.opacity = "0";
+                this.scaned = this.qrScanner.scan().subscribe((textFound) => {
+                    document.getElementsByTagName("body")[0].style.opacity = "1";
+                    this.renewalLic.lic = textFound;
+                    this.tokenCheck(this.renewalLic.lic);
+                    this.qrScanner.hide();
+                    this.scaned.unsubscribe();
+                    this.qrScanner.destroy();
+                    this.scaned.destroy();
+                }, (err) => {
+                    console.log(err);
+                });
+            }
+            else if (status.denied) {
+            }
+            else {
+            }
+        });
+    }
+}; // END class
+RenewalPage.ctorParameters = () => [
+    { type: _services_tokens_service__WEBPACK_IMPORTED_MODULE_2__["TokenService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"] },
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"] },
+    { type: _services_users_service__WEBPACK_IMPORTED_MODULE_5__["UsersService"] },
+    { type: _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_6__["QRScanner"] },
+    { type: _angular_common__WEBPACK_IMPORTED_MODULE_7__["DatePipe"] },
+    { type: _ionic_native_media_capture_ngx__WEBPACK_IMPORTED_MODULE_8__["MediaCapture"] },
+    { type: _ionic_native_clipboard_ngx__WEBPACK_IMPORTED_MODULE_9__["Clipboard"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"] },
+    { type: _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_10__["File"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_11__["Router"] }
+];
+RenewalPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-renewal',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./renewal.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/renewal/renewal.page.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./renewal.page.scss */ "./src/app/pages/renewal/renewal.page.scss")).default]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_services_tokens_service__WEBPACK_IMPORTED_MODULE_2__["TokenService"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"],
+        _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"],
+        _services_users_service__WEBPACK_IMPORTED_MODULE_5__["UsersService"],
+        _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_6__["QRScanner"],
+        _angular_common__WEBPACK_IMPORTED_MODULE_7__["DatePipe"],
+        _ionic_native_media_capture_ngx__WEBPACK_IMPORTED_MODULE_8__["MediaCapture"],
+        _ionic_native_clipboard_ngx__WEBPACK_IMPORTED_MODULE_9__["Clipboard"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"],
+        _ionic_native_File_ngx__WEBPACK_IMPORTED_MODULE_10__["File"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_11__["Router"]])
+], RenewalPage);
+
+
+
+/***/ })
+
+}]);
+//# sourceMappingURL=pages-renewal-renewal-module-es2015.js.map

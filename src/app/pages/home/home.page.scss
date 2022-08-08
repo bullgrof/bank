@@ -1,0 +1,25 @@
+.logo{
+    width: 55px
+}
+
+ion-header::after {
+    display: none;
+    --ion-background-color:#082032;
+  }
+  
+.title{
+    color: #ffffff;
+}
+
+ion-content {
+    --ion-background-color:#082032;
+}
+
+
+.card{
+    color: #ffffff;
+}
+
+.card-c{
+    font-size: 24px;
+}

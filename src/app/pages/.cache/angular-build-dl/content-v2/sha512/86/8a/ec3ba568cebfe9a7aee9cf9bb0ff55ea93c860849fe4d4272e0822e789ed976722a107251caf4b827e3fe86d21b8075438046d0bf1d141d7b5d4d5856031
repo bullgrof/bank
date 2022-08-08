@@ -1,0 +1,375 @@
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-change-password-change-password-module"], {
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/change-password/change-password.page.html":
+  /*!*******************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/change-password/change-password.page.html ***!
+    \*******************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppPagesChangePasswordChangePasswordPageHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar color=\"warning\">\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"/contacts\" icon-only></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title> {{'CHANGEPASSWORD.title' | translate}}</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n  <ion-card >\r\n    <img src=\"../../../assets/ssl.png\" class=\"ssl\">      \r\n    <p class=\"success\">{{secureKEY}}</p>\r\n  \r\n    <ion-card-content>\r\n      <form (ngSubmit)=\"changePassword(fchangep)\" #fchangep=\"ngForm\">\r\n        <ion-row>\r\n          <ion-col>    \r\n            <ion-list>    \r\n              <ion-item>\r\n                <ion-label></ion-label>\r\n                <ion-input name=\"password\"\r\n                           type=\"text\" \r\n                           required\r\n                           [(ngModel)]=\"password.pass\"\r\n                           min=\"5\"\r\n                           placeholder=\"{{'CHANGEPASSWORD.newpassword' | translate}}\" ></ion-input>\r\n              </ion-item>\r\n              <ion-item>\r\n                <ion-label></ion-label>\r\n                <ion-input name=\"repassword\"\r\n                           type=\"text\"                            \r\n                           [(ngModel)]=\"password.repass\"\r\n                           (onChage)=\"verifyPasswords(password.repass)\"\r\n                           placeholder=\"Confirmar contraseña\" \r\n                           min=\"5\"\r\n                           required></ion-input>\r\n              </ion-item>\r\n            </ion-list>\r\n          </ion-col>\r\n        </ion-row>\r\n    \r\n        <ion-row>\r\n          <ion-col>\r\n            <ion-button type=\"submit\" \r\n                        color=\"warning\" \r\n                        shape=\"round\" \r\n                        expand=\"block\"\r\n                        [disabled]=\"fchangep.invalid\">\r\n              {{'CHANGEPASSWORD.bottonchange' | translate}}\r\n            </ion-button>\r\n          </ion-col>\r\n        </ion-row>\r\n    \r\n      </form>\r\n    </ion-card-content>\r\n  </ion-card>\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n\r\n  \r\n</ion-content>\r\n";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/change-password/change-password.module.ts":
+  /*!*****************************************************************!*\
+    !*** ./src/app/pages/change-password/change-password.module.ts ***!
+    \*****************************************************************/
+
+  /*! exports provided: ChangePasswordPageModule */
+
+  /***/
+  function srcAppPagesChangePasswordChangePasswordModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ChangePasswordPageModule", function () {
+      return ChangePasswordPageModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _change_password_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./change-password.page */
+    "./src/app/pages/change-password/change-password.page.ts");
+    /* harmony import */
+
+
+    var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @ngx-translate/core */
+    "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
+
+    var routes = [{
+      path: '',
+      component: _change_password_page__WEBPACK_IMPORTED_MODULE_6__["ChangePasswordPage"]
+    }];
+
+    var ChangePasswordPageModule = function ChangePasswordPageModule() {
+      _classCallCheck(this, ChangePasswordPageModule);
+    };
+
+    ChangePasswordPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes), _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateModule"]],
+      declarations: [_change_password_page__WEBPACK_IMPORTED_MODULE_6__["ChangePasswordPage"]]
+    })], ChangePasswordPageModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/change-password/change-password.page.scss":
+  /*!*****************************************************************!*\
+    !*** ./src/app/pages/change-password/change-password.page.scss ***!
+    \*****************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppPagesChangePasswordChangePasswordPageScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = ".ssl {\n  width: 40%;\n  height: 100%;\n  margin-left: 32%;\n  margin-top: 12px;\n}\n\n.success {\n  color: #000000;\n  text-align: center;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvY2hhbmdlLXBhc3N3b3JkL0M6XFxVc2Vyc1xcTmVtZXNzaXNcXERlc2t0b3BcXHByb2plY3RzXFxqdW5pb1xcZnN1IC0gQ29weS9zcmNcXGFwcFxccGFnZXNcXGNoYW5nZS1wYXNzd29yZFxcY2hhbmdlLXBhc3N3b3JkLnBhZ2Uuc2NzcyIsInNyYy9hcHAvcGFnZXMvY2hhbmdlLXBhc3N3b3JkL2NoYW5nZS1wYXNzd29yZC5wYWdlLnNjc3MiXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IkFBQUE7RUFDSSxVQUFBO0VBQ0EsWUFBQTtFQUNBLGdCQUFBO0VBQ0EsZ0JBQUE7QUNDSjs7QURFQTtFQUNJLGNBQUE7RUFDQSxrQkFBQTtBQ0NKIiwiZmlsZSI6InNyYy9hcHAvcGFnZXMvY2hhbmdlLXBhc3N3b3JkL2NoYW5nZS1wYXNzd29yZC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuc3Nse1xyXG4gICAgd2lkdGg6IDQwJTtcclxuICAgIGhlaWdodDogMTAwJTtcclxuICAgIG1hcmdpbi1sZWZ0OiAzMiU7XHJcbiAgICBtYXJnaW4tdG9wOiAxMnB4O1xyXG59XHJcblxyXG4uc3VjY2Vzc3tcclxuICAgIGNvbG9yOiAjMDAwMDAwO1xyXG4gICAgdGV4dC1hbGlnbjogY2VudGVyO1xyXG5cclxufVxyXG4iLCIuc3NsIHtcbiAgd2lkdGg6IDQwJTtcbiAgaGVpZ2h0OiAxMDAlO1xuICBtYXJnaW4tbGVmdDogMzIlO1xuICBtYXJnaW4tdG9wOiAxMnB4O1xufVxuXG4uc3VjY2VzcyB7XG4gIGNvbG9yOiAjMDAwMDAwO1xuICB0ZXh0LWFsaWduOiBjZW50ZXI7XG59Il19 */";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/change-password/change-password.page.ts":
+  /*!***************************************************************!*\
+    !*** ./src/app/pages/change-password/change-password.page.ts ***!
+    \***************************************************************/
+
+  /*! exports provided: ChangePasswordPage */
+
+  /***/
+  function srcAppPagesChangePasswordChangePasswordPageTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "ChangePasswordPage", function () {
+      return ChangePasswordPage;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var src_app_services_users_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! src/app/services/users.service */
+    "./src/app/services/users.service.ts");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _ionic_native_aes_256_ngx__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @ionic-native/aes-256/ngx */
+    "./node_modules/@ionic-native/aes-256/ngx/index.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+
+    var ChangePasswordPage = /*#__PURE__*/function () {
+      function ChangePasswordPage(activeRoute, userService, toastCtrl, aes256, platform, router) {
+        var _this = this;
+
+        _classCallCheck(this, ChangePasswordPage);
+
+        this.activeRoute = activeRoute;
+        this.userService = userService;
+        this.toastCtrl = toastCtrl;
+        this.aes256 = aes256;
+        this.platform = platform;
+        this.router = router;
+        this.password = {
+          iduser: '',
+          pass: '',
+          repass: ''
+        };
+        this.iduser = '';
+        this.theResponse = {};
+        this.secureKEY = '';
+        this.secureIV = '';
+        this.sw = 0;
+        this.skey = '4FWCC-M3XVT-xxer-MKQYG-HP7YB-78784-RHPFQ-KP4R4-7841-K7X36';
+        this.fchangep = _angular_forms__WEBPACK_IMPORTED_MODULE_6__["FormGroup"];
+        platform.ready().then(function () {
+          _this.platform.pause.subscribe(function () {//this.logout();
+          });
+
+          _this.platform.resume.subscribe(function () {
+            console.log('[INFO] App resumed');
+          });
+        });
+      }
+
+      _createClass(ChangePasswordPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          this.generateSecureKeyAndIV();
+          this.iduser = this.activeRoute.snapshot.paramMap.get('iduser');
+        }
+      }, {
+        key: "logout",
+        value: function logout() {
+          console.log("Logging out user");
+          this.router.navigate(['/home']);
+        }
+      }, {
+        key: "changePassword",
+        value: function changePassword(fchangep) {
+          var _this2 = this;
+
+          console.log(fchangep.valid);
+
+          if (fchangep.invalid) {
+            return;
+          }
+
+          this.password.iduser = this.iduser;
+          console.log(this.password);
+
+          if (this.password.pass === this.password.repass) {
+            if (this.password.pass.length < 5) {
+              this.password.pass = '';
+              this.password.repass = '';
+              this.presentToast('La contraseña debe tener mínimo 5 caracteres');
+            } else {
+              this.userService.updatePassword(this.password).subscribe(function (response) {
+                _this2.theResponse = response;
+
+                if (!_this2.theResponse) {
+                  _this2.password.pass = '';
+                  _this2.password.repass = '';
+
+                  _this2.presentToast('No se ha podido actualizar la contraseña');
+                } else {
+                  _this2.password.pass = '';
+                  _this2.password.repass = '';
+
+                  _this2.presentToast('Se ha cambiado la contraseña con éxito');
+
+                  _this2.router.navigate(['/contacts']);
+                }
+              });
+            }
+          } else {
+            this.password.pass = '';
+            this.password.repass = '';
+            this.presentToast('Las contraseñas ingresadas no coinciden');
+          }
+        }
+      }, {
+        key: "presentToast",
+        value: function presentToast(message) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var toast;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return this.toastCtrl.create({
+                      message: message,
+                      duration: 3500,
+                      position: 'middle'
+                    });
+
+                  case 2:
+                    toast = _context.sent;
+                    toast.present();
+
+                  case 4:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
+        }
+      }, {
+        key: "generateSecureKeyAndIV",
+        value: function generateSecureKeyAndIV() {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee2() {
+            return regeneratorRuntime.wrap(function _callee2$(_context2) {
+              while (1) {
+                switch (_context2.prev = _context2.next) {
+                  case 0:
+                    _context2.next = 2;
+                    return this.aes256.generateSecureKey(this.skey);
+
+                  case 2:
+                    this.secureKEY = _context2.sent;
+                    _context2.next = 5;
+                    return this.aes256.generateSecureIV(this.skey);
+
+                  case 5:
+                    this.secureIV = _context2.sent;
+
+                  case 6:
+                  case "end":
+                    return _context2.stop();
+                }
+              }
+            }, _callee2, this);
+          }));
+        }
+      }, {
+        key: "verifyPasswords",
+        value: function verifyPasswords(rePassword) {}
+      }]);
+
+      return ChangePasswordPage;
+    }();
+
+    ChangePasswordPage.ctorParameters = function () {
+      return [{
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]
+      }, {
+        type: src_app_services_users_service__WEBPACK_IMPORTED_MODULE_3__["UsersService"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"]
+      }, {
+        type: _ionic_native_aes_256_ngx__WEBPACK_IMPORTED_MODULE_5__["AES256"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }];
+    };
+
+    ChangePasswordPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-change-password',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./change-password.page.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/change-password/change-password.page.html"))["default"],
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./change-password.page.scss */
+      "./src/app/pages/change-password/change-password.page.scss"))["default"]]
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], src_app_services_users_service__WEBPACK_IMPORTED_MODULE_3__["UsersService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"], _ionic_native_aes_256_ngx__WEBPACK_IMPORTED_MODULE_5__["AES256"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]])], ChangePasswordPage);
+    /***/
+  }
+}]);
+//# sourceMappingURL=pages-change-password-change-password-module-es5.js.map

@@ -1,0 +1,350 @@
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-edit-contact-edit-contact-module"], {
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/edit-contact/edit-contact.page.html":
+  /*!*************************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/edit-contact/edit-contact.page.html ***!
+    \*************************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppPagesEditContactEditContactPageHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar color=\"warning\">\r\n    <ion-buttons slot=\"start\" icon-only>\r\n      <ion-back-button defaultHref=\"/contacts\" icon-only></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>{{'RENAMECONTACT.title' | translate}}</ion-title>\r\n  </ion-toolbar>\r\n</ion-header>\r\n<ion-content>\r\n\r\n  <ion-grid fixed>\r\n    <ion-row>\r\n      <ion-col>\r\n        <ion-card>\r\n          <ion-item>\r\n            <img src=\"../../../assets/userEdit.png\" class=\"edituserImage\">\r\n          </ion-item>\r\n          <ion-item class=\"ion-activated\">\r\n            <ion-icon name=\"walk\" slot=\"start\"></ion-icon>\r\n            <ion-label>{{'RENAMECONTACT.user' | translate}} : {{ contact }}</ion-label>\r\n          </ion-item>\r\n          <ion-item>\r\n            <ion-icon name=\"key\" slot=\"start\"></ion-icon>\r\n            <ion-label>Sekret ID: {{sidContact}}</ion-label>\r\n          </ion-item>\r\n        </ion-card>\r\n      </ion-col>\r\n    </ion-row>\r\n    <form (ngSubmit)=\"renameContact(fRename)\" #fRename=\"ngForm\">\r\n      <ion-row>\r\n        <ion-col>\r\n          <ion-list>\r\n            <ion-item>\r\n              <ion-input name=\"alias\" type=\"text\" required [(ngModel)]=\"rename.alias\" placeholder=\"{{'RENAMECONTACT.newname' | translate}}\">\r\n              </ion-input>\r\n            </ion-item>\r\n          </ion-list>\r\n        </ion-col>\r\n      </ion-row>\r\n      <ion-row>\r\n        <ion-col>\r\n          <ion-button type=\"submit\" color=\"warning\" shape=\"round\" class=\"button1\">\r\n            {{'RENAMECONTACT.rename' | translate}}\r\n          </ion-button>\r\n        </ion-col>\r\n      </ion-row>\r\n\r\n    </form>\r\n  </ion-grid>\r\n\r\n\r\n  <ion-row>\r\n\r\n    <ion-card class=\"centerr no-border\" >\r\n  \r\n        <ngx-qrcode class=\"centerr\" [qrc-element-type]=\"img\" [qrc-value]=\"sidContact\">\r\n        </ngx-qrcode>\r\n      \r\n    </ion-card>\r\n\r\n\r\n  </ion-row>\r\n\r\n\r\n\r\n\r\n\r\n\r\n</ion-content>";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/edit-contact/edit-contact.module.ts":
+  /*!***********************************************************!*\
+    !*** ./src/app/pages/edit-contact/edit-contact.module.ts ***!
+    \***********************************************************/
+
+  /*! exports provided: EditContactPageModule */
+
+  /***/
+  function srcAppPagesEditContactEditContactModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "EditContactPageModule", function () {
+      return EditContactPageModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _edit_contact_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./edit-contact.page */
+    "./src/app/pages/edit-contact/edit-contact.page.ts");
+    /* harmony import */
+
+
+    var ngx_qrcode2__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! ngx-qrcode2 */
+    "./node_modules/ngx-qrcode2/index.js");
+    /* harmony import */
+
+
+    var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(
+    /*! @ngx-translate/core */
+    "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
+
+    var routes = [{
+      path: '',
+      component: _edit_contact_page__WEBPACK_IMPORTED_MODULE_6__["EditContactPage"]
+    }];
+
+    var EditContactPageModule = function EditContactPageModule() {
+      _classCallCheck(this, EditContactPageModule);
+    };
+
+    EditContactPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"], ngx_qrcode2__WEBPACK_IMPORTED_MODULE_7__["NgxQRCodeModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes), _ngx_translate_core__WEBPACK_IMPORTED_MODULE_8__["TranslateModule"]],
+      declarations: [_edit_contact_page__WEBPACK_IMPORTED_MODULE_6__["EditContactPage"]]
+    })], EditContactPageModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/edit-contact/edit-contact.page.scss":
+  /*!***********************************************************!*\
+    !*** ./src/app/pages/edit-contact/edit-contact.page.scss ***!
+    \***********************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppPagesEditContactEditContactPageScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = ".mainSlide, .mainSlide ion-slide {\n  width: 100%;\n  height: 100%;\n}\n\nimg {\n  width: 120px;\n}\n\n.pick-avatar {\n  width: 80px;\n  opacity: 0.3;\n}\n\n.pick-avatar-seleccionado {\n  transition: opacity 0.5s linear;\n  opacity: 1 !important;\n}\n\n.button1 {\n  margin-left: 31%;\n}\n\n.edituserImage {\n  margin-left: 32%;\n}\n\n/*\n.centerr{\n    text-align: center;\n    width: 100%;\n}\n*/\n\n.centerr {\n  text-align: center;\n  width: 100%;\n}\n\n.test {\n  width: 200px;\n}\n\n.test-class > img {\n  width: 200px;\n}\n\n.qr {\n  width: 550px;\n}\n\nedit-contact ion-card {\n  border: 0 !important;\n  border: none !important;\n  border-style: none !important;\n}\n\n.no-border {\n  border: 0 !important;\n  border: none !important;\n  border-style: none !important;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvZWRpdC1jb250YWN0L0M6XFxVc2Vyc1xcTmVtZXNzaXNcXERlc2t0b3BcXHByb2plY3RzXFxqdW5pb1xcY2FsbHNcXGZzdSAtIENvcHkvc3JjXFxhcHBcXHBhZ2VzXFxlZGl0LWNvbnRhY3RcXGVkaXQtY29udGFjdC5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL2VkaXQtY29udGFjdC9lZGl0LWNvbnRhY3QucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUVBO0VBQ0ksV0FBQTtFQUNBLFlBQUE7QUNESjs7QURJQTtFQUNJLFlBQUE7QUNESjs7QURJQTtFQUNJLFdBQUE7RUFDQSxZQUFBO0FDREo7O0FESUE7RUFDSSwrQkFBQTtFQUNBLHFCQUFBO0FDREo7O0FER0E7RUFDSSxnQkFBQTtBQ0FKOztBREdBO0VBQ0ksZ0JBQUE7QUNBSjs7QURFQTs7Ozs7Q0FBQTs7QUFPQTtFQUNJLGtCQUFBO0VBRUEsV0FBQTtBQ0RKOztBRElBO0VBQ0ksWUFBQTtBQ0RKOztBREtBO0VBQ0ksWUFBQTtBQ0ZKOztBRE1FO0VBQ0ksWUFBQTtBQ0hOOztBRE9JO0VBQ0ksb0JBQUE7RUFDQSx1QkFBQTtFQUNBLDZCQUFBO0FDSlI7O0FEU0U7RUFDRSxvQkFBQTtFQUNBLHVCQUFBO0VBQ0EsNkJBQUE7QUNOSiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2VkaXQtY29udGFjdC9lZGl0LWNvbnRhY3QucGFnZS5zY3NzIiwic291cmNlc0NvbnRlbnQiOlsiXHJcblxyXG4ubWFpblNsaWRlLCAubWFpblNsaWRlIGlvbi1zbGlkZSB7XHJcbiAgICB3aWR0aDogMTAwJTtcclxuICAgIGhlaWdodDogMTAwJTtcclxufVxyXG5cclxuaW1nIHtcclxuICAgIHdpZHRoOiAxMjBweDtcclxufVxyXG5cclxuLnBpY2stYXZhdGFyIHtcclxuICAgIHdpZHRoOiA4MHB4O1xyXG4gICAgb3BhY2l0eTogMC4zO1xyXG59XHJcblxyXG4ucGljay1hdmF0YXItc2VsZWNjaW9uYWRvIHtcclxuICAgIHRyYW5zaXRpb246IG9wYWNpdHkgMC41cyBsaW5lYXI7XHJcbiAgICBvcGFjaXR5OiAxICFpbXBvcnRhbnQ7XHJcbn1cclxuLmJ1dHRvbjF7XHJcbiAgICBtYXJnaW4tbGVmdDogMzElO1xyXG59XHJcblxyXG4uZWRpdHVzZXJJbWFnZXtcclxuICAgIG1hcmdpbi1sZWZ0OiAzMiU7XHJcbn1cclxuLypcclxuLmNlbnRlcnJ7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgICB3aWR0aDogMTAwJTtcclxufVxyXG4qL1xyXG5cclxuLmNlbnRlcnJ7XHJcbiAgICB0ZXh0LWFsaWduOiBjZW50ZXI7XHJcbiAgIFxyXG4gICAgd2lkdGg6IDEwMCU7XHJcbn1cclxuXHJcbi50ZXN0e1xyXG4gICAgd2lkdGg6IDIwMHB4O1xyXG59XHJcblxyXG5cclxuLnRlc3QtY2xhc3MgPiBpbWcge1xyXG4gICAgd2lkdGg6IDIwMHB4O1xyXG4gIH1cclxuXHJcblxyXG4gIC5xcntcclxuICAgICAgd2lkdGg6IDU1MHB4O1xyXG4gIH1cclxuXHJcbiAgZWRpdC1jb250YWN0e1xyXG4gICAgaW9uLWNhcmR7XHJcbiAgICAgICAgYm9yZGVyOiAwICFpbXBvcnRhbnQ7XHJcbiAgICAgICAgYm9yZGVyOiBub25lICFpbXBvcnRhbnQ7XHJcbiAgICAgICAgYm9yZGVyLXN0eWxlOiBub25lICFpbXBvcnRhbnQ7XHJcbiAgICB9ICAgIFxyXG4gIH1cclxuXHJcblxyXG4gIC5uby1ib3JkZXJ7XHJcbiAgICBib3JkZXI6IDAgIWltcG9ydGFudDtcclxuICAgIGJvcmRlcjogbm9uZSAhaW1wb3J0YW50O1xyXG4gICAgYm9yZGVyLXN0eWxlOiBub25lICFpbXBvcnRhbnQ7XHJcbiAgXHJcbiAgfSIsIi5tYWluU2xpZGUsIC5tYWluU2xpZGUgaW9uLXNsaWRlIHtcbiAgd2lkdGg6IDEwMCU7XG4gIGhlaWdodDogMTAwJTtcbn1cblxuaW1nIHtcbiAgd2lkdGg6IDEyMHB4O1xufVxuXG4ucGljay1hdmF0YXIge1xuICB3aWR0aDogODBweDtcbiAgb3BhY2l0eTogMC4zO1xufVxuXG4ucGljay1hdmF0YXItc2VsZWNjaW9uYWRvIHtcbiAgdHJhbnNpdGlvbjogb3BhY2l0eSAwLjVzIGxpbmVhcjtcbiAgb3BhY2l0eTogMSAhaW1wb3J0YW50O1xufVxuXG4uYnV0dG9uMSB7XG4gIG1hcmdpbi1sZWZ0OiAzMSU7XG59XG5cbi5lZGl0dXNlckltYWdlIHtcbiAgbWFyZ2luLWxlZnQ6IDMyJTtcbn1cblxuLypcbi5jZW50ZXJye1xuICAgIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgICB3aWR0aDogMTAwJTtcbn1cbiovXG4uY2VudGVyciB7XG4gIHRleHQtYWxpZ246IGNlbnRlcjtcbiAgd2lkdGg6IDEwMCU7XG59XG5cbi50ZXN0IHtcbiAgd2lkdGg6IDIwMHB4O1xufVxuXG4udGVzdC1jbGFzcyA+IGltZyB7XG4gIHdpZHRoOiAyMDBweDtcbn1cblxuLnFyIHtcbiAgd2lkdGg6IDU1MHB4O1xufVxuXG5lZGl0LWNvbnRhY3QgaW9uLWNhcmQge1xuICBib3JkZXI6IDAgIWltcG9ydGFudDtcbiAgYm9yZGVyOiBub25lICFpbXBvcnRhbnQ7XG4gIGJvcmRlci1zdHlsZTogbm9uZSAhaW1wb3J0YW50O1xufVxuXG4ubm8tYm9yZGVyIHtcbiAgYm9yZGVyOiAwICFpbXBvcnRhbnQ7XG4gIGJvcmRlcjogbm9uZSAhaW1wb3J0YW50O1xuICBib3JkZXItc3R5bGU6IG5vbmUgIWltcG9ydGFudDtcbn0iXX0= */";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/edit-contact/edit-contact.page.ts":
+  /*!*********************************************************!*\
+    !*** ./src/app/pages/edit-contact/edit-contact.page.ts ***!
+    \*********************************************************/
+
+  /*! exports provided: EditContactPage */
+
+  /***/
+  function srcAppPagesEditContactEditContactPageTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "EditContactPage", function () {
+      return EditContactPage;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! src/app/services/contacts.service */
+    "./src/app/services/contacts.service.ts");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var src_app_services_users_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! src/app/services/users.service */
+    "./src/app/services/users.service.ts");
+    /* harmony import */
+
+
+    var _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! @ionic-native/qr-scanner/ngx */
+    "./node_modules/@ionic-native/qr-scanner/ngx/index.js");
+
+    var EditContactPage = /*#__PURE__*/function () {
+      function EditContactPage(activeRoute, contactsService, toastCtrl, userService, qrScanner, router, platform) {
+        var _this = this;
+
+        _classCallCheck(this, EditContactPage);
+
+        this.activeRoute = activeRoute;
+        this.contactsService = contactsService;
+        this.toastCtrl = toastCtrl;
+        this.userService = userService;
+        this.qrScanner = qrScanner;
+        this.router = router;
+        this.platform = platform;
+        this.sidUser = null;
+        this.sidContact = null;
+        this.rename = {
+          siduser: '',
+          sidContact: '',
+          alias: ''
+        };
+        this.response = {};
+        this.contact = {};
+        platform.ready().then(function () {
+          _this.platform.pause.subscribe(function () {//this.logout();
+          });
+
+          _this.platform.resume.subscribe(function () {
+            console.log('[INFO] App resumed');
+          });
+        });
+      }
+
+      _createClass(EditContactPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          this.qrScanner.hide();
+          this.qrScanner.destroy();
+          this.sidUser = this.activeRoute.snapshot.paramMap.get('siduser');
+          this.sidContact = this.activeRoute.snapshot.paramMap.get('sidcontact');
+          this.getUsername(this.sidContact);
+          console.log("SID USER", this.sidUser);
+          console.log("SID CONTACT", this.sidContact);
+        }
+      }, {
+        key: "logout",
+        value: function logout() {
+          console.log("Logging out user");
+          this.router.navigate(['/home']);
+        }
+      }, {
+        key: "renameContact",
+        value: function renameContact(fRename) {
+          var _this2 = this;
+
+          console.log(fRename.valid);
+          this.rename.sidContact = this.sidContact;
+          this.rename.siduser = this.sidUser;
+
+          if (fRename.invalid) {
+            return;
+          }
+
+          this.contactsService.renameContact(this.rename).subscribe(function (res) {
+            //console.log('RESPUESTA DEL SERVICIO', res);
+            _this2.response = res;
+
+            if (!_this2.response) {
+              _this2.presentToast('ha ocurrido un error');
+            } else {
+              _this2.presentToast('Se ha renombrado el contacto');
+
+              _this2.router.navigate(['/contacts']);
+            }
+
+            _this2.rename.alias = '';
+          });
+        }
+      }, {
+        key: "getUsername",
+        value: function getUsername(sidc) {
+          var _this3 = this;
+
+          this.userService.getUserNameBySekretId(sidc).subscribe(function (response) {
+            _this3.contact = response.user[0];
+            _this3.contact = _this3.contact.username;
+          });
+        }
+      }, {
+        key: "presentToast",
+        value: function presentToast(message) {
+          return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, /*#__PURE__*/regeneratorRuntime.mark(function _callee() {
+            var toast;
+            return regeneratorRuntime.wrap(function _callee$(_context) {
+              while (1) {
+                switch (_context.prev = _context.next) {
+                  case 0:
+                    _context.next = 2;
+                    return this.toastCtrl.create({
+                      message: message,
+                      duration: 2000,
+                      position: 'middle'
+                    });
+
+                  case 2:
+                    toast = _context.sent;
+                    toast.present();
+
+                  case 4:
+                  case "end":
+                    return _context.stop();
+                }
+              }
+            }, _callee, this);
+          }));
+        }
+      }]);
+
+      return EditContactPage;
+    }();
+
+    EditContactPage.ctorParameters = function () {
+      return [{
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"]
+      }, {
+        type: src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_3__["ContactsService"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"]
+      }, {
+        type: src_app_services_users_service__WEBPACK_IMPORTED_MODULE_5__["UsersService"]
+      }, {
+        type: _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_6__["QRScanner"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }, {
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"]
+      }];
+    };
+
+    EditContactPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-edit-contact',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./edit-contact.page.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/edit-contact/edit-contact.page.html"))["default"],
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./edit-contact.page.scss */
+      "./src/app/pages/edit-contact/edit-contact.page.scss"))["default"]]
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_angular_router__WEBPACK_IMPORTED_MODULE_2__["ActivatedRoute"], src_app_services_contacts_service__WEBPACK_IMPORTED_MODULE_3__["ContactsService"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["ToastController"], src_app_services_users_service__WEBPACK_IMPORTED_MODULE_5__["UsersService"], _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_6__["QRScanner"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _ionic_angular__WEBPACK_IMPORTED_MODULE_4__["Platform"]])], EditContactPage);
+    /***/
+  }
+}]);
+//# sourceMappingURL=pages-edit-contact-edit-contact-module-es5.js.map

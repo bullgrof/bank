@@ -1,0 +1,454 @@
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-register-user-register-user-module"],{
+
+/***/ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/register-user/register-user.page.html":
+/*!***************************************************************************************************!*\
+  !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/register-user/register-user.page.html ***!
+  \***************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("<ion-header>\r\n  <ion-toolbar color=\"warning\">\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"/login\" icon-only></ion-back-button>\r\n      {{'REGISTRY.title' | translate }}\r\n    </ion-buttons>\r\n  </ion-toolbar>\r\n</ion-header>\r\n\r\n<ion-content>\r\n  <ion-card class=\"card-middle\">\r\n    <ion-card-content>\r\n      <img src=\"/assets/avatars/login.png\" style=\"width:29%; margin-left: 35% ;\">\r\n      <!--img src=\"../../../assets/usersekret.svg\"   alt=\"\"-->\r\n      \r\n      <form  (ngSubmit)=\"registerUser()\" #formuser=\"ngForm\" class=\"formlogin\">\r\n        <ion-list>\r\n            <ion-row>\r\n                <ion-col size=\"8\">\r\n                    <ion-item>\r\n                        <ion-label position=\"floating\" required=\"true\">{{'REGISTRY.form.token' | translate }}</ion-label>\r\n                        <ion-input type=\"text\"\r\n                                    name=\"idtoken\"\r\n                                   [(ngModel)]=\"users.idtoken\" \r\n                                   [value]=\"users.idtoken\"\r\n                                   required\r\n                                   max=\"20\"\r\n                                   (change)=\"verifyt(users.idtoken)\">\r\n                        </ion-input>           \r\n                    </ion-item>\r\n                </ion-col>\r\n              \r\n                <ion-col size=\"4\">\r\n                  <ion-tab-button (click)=\"scan()\" >\r\n                    <ion-icon name=\"barcode\"></ion-icon>\r\n                    <ion-label>{{'REGISTRY.form.scan' | translate }}</ion-label>\r\n                  </ion-tab-button>\r\n                </ion-col>\r\n            </ion-row>\r\n           \r\n            <ion-item>\r\n              <ion-label position=\"floating\" required=\"true\">{{'REGISTRY.form.user' | translate }}</ion-label>\r\n              <ion-input type=\"text\"\r\n                          name=\"username\"\r\n                          (onKeyUp)=\"keyUpChecker($event)\"\r\n                          (input)=\"inputValidator($event)\"\r\n                          title= \"solo se permiten letras y numeros\"\r\n                         [(ngModel)]=\"users.username\" \r\n                         (change)=\"verifyu(users.username)\"\r\n                         required\r\n\r\n                        >\r\n              </ion-input>           \r\n            </ion-item>\r\n\r\n            <ion-item>\r\n                <ion-label position=\"floating\" required=\"true\">{{'REGISTRY.form.password' | translate }}</ion-label>\r\n                <ion-input type=\"password\"\r\n                            name=\"password\"\r\n                           [(ngModel)]=\"users.password\" \r\n                           required\r\n                           #input>\r\n                </ion-input>\r\n            </ion-item>\r\n\r\n            <ion-item>\r\n                <ion-label position=\"floating\" required=\"true\">{{'REGISTRY.form.rePassword' | translate }}</ion-label>\r\n                <ion-input type=\"password\"\r\n                            name=\"passwordv\"\r\n                           [(ngModel)]=\"users.passwordv\" \r\n                           required\r\n                           #input2\r\n                           (change)=\"passwordsmatch(users.password, users.passwordv)\">\r\n                </ion-input>               \r\n                \r\n            </ion-item>\r\n            <ion-item>\r\n                <label class=\"{{classpassinput}}\">{{passwordsnotmatch}}</label>\r\n            </ion-item>       \r\n            \r\n            <ion-item (click)=\"disclaimer(users.check)\">\r\n              <ion-checkbox color=\"warning\"  \r\n              required=\"true\"\r\n              [(ngModel)]=\"users.check\" \r\n              name=\"check\"\r\n              ></ion-checkbox>\r\n              <label for=\"\" > &nbsp;{{'REGISTRY.form.aceptTerms' | translate }}</label>\r\n            </ion-item>\r\n\r\n        \r\n        <ion-button expand=\"block\" \r\n        fill=\"outline\" \r\n                    type=\"submit\" \r\n                    [disabled]=\"formuser.invalid\"                      \r\n                    color=\"warning\">\r\n              <ion-icon name=\"log-in\" class=\"marginicon\"></ion-icon>   {{'REGISTRY.form.signup' | translate }}\r\n        </ion-button>\r\n      </ion-list>\r\n\r\n      </form>\r\n             \r\n      \r\n    </ion-card-content>\r\n  </ion-card>\r\n</ion-content>\r\n");
+
+/***/ }),
+
+/***/ "./src/app/pages/register-user/register-user.module.ts":
+/*!*************************************************************!*\
+  !*** ./src/app/pages/register-user/register-user.module.ts ***!
+  \*************************************************************/
+/*! exports provided: RegisterUserPageModule */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterUserPageModule", function() { return RegisterUserPageModule; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @angular/forms */ "./node_modules/@angular/forms/fesm2015/forms.js");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! @ngx-translate/core */ "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _register_user_page__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./register-user.page */ "./src/app/pages/register-user/register-user.page.ts");
+
+
+
+
+
+
+
+
+const routes = [
+    {
+        path: '',
+        component: _register_user_page__WEBPACK_IMPORTED_MODULE_7__["RegisterUserPage"]
+    }
+];
+let RegisterUserPageModule = class RegisterUserPageModule {
+};
+RegisterUserPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+        imports: [
+            _angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"],
+            _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"],
+            _ionic_angular__WEBPACK_IMPORTED_MODULE_6__["IonicModule"],
+            _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes),
+            _ngx_translate_core__WEBPACK_IMPORTED_MODULE_5__["TranslateModule"]
+        ],
+        declarations: [_register_user_page__WEBPACK_IMPORTED_MODULE_7__["RegisterUserPage"]]
+    })
+], RegisterUserPageModule);
+
+
+
+/***/ }),
+
+/***/ "./src/app/pages/register-user/register-user.page.scss":
+/*!*************************************************************!*\
+  !*** ./src/app/pages/register-user/register-user.page.scss ***!
+  \*************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony default export */ __webpack_exports__["default"] = ("toolbar-title toolbar-title-ios {\n  font-size: 1.7rem;\n}\n\ntoolbar-title toolbar-title-md {\n  font-size: 2rem;\n}\n\ntoolbar-title toolbar-title-wp {\n  font-size: 1.5rem;\n}\n\n.marginicon {\n  margin-left: 3px;\n}\n\n.dontmatch {\n  color: red;\n  font-size: x-small;\n  margin-top: 2px;\n}\n\n.match {\n  color: black;\n  font-size: x-small;\n  margin-top: 2px;\n}\n\n.formlogin {\n  margin-top: 35px;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcmVnaXN0ZXItdXNlci9DOlxcVXNlcnNcXE5lbWVzc2lzXFxEZXNrdG9wXFxkdlxcRlNVIGRldi9zcmNcXGFwcFxccGFnZXNcXHJlZ2lzdGVyLXVzZXJcXHJlZ2lzdGVyLXVzZXIucGFnZS5zY3NzIiwic3JjL2FwcC9wYWdlcy9yZWdpc3Rlci11c2VyL3JlZ2lzdGVyLXVzZXIucGFnZS5zY3NzIl0sIm5hbWVzIjpbXSwibWFwcGluZ3MiOiJBQUFBO0VBQ0ksaUJBQUE7QUNDSjs7QURFRTtFQUNFLGVBQUE7QUNDSjs7QURFRTtFQUNFLGlCQUFBO0FDQ0o7O0FERUU7RUFDRSxnQkFBQTtBQ0NKOztBREVFO0VBQ0UsVUFBQTtFQUNBLGtCQUFBO0VBQ0EsZUFBQTtBQ0NKOztBREVFO0VBQ0UsWUFBQTtFQUNBLGtCQUFBO0VBQ0EsZUFBQTtBQ0NKOztBREVBO0VBQ0UsZ0JBQUE7QUNDRiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL3JlZ2lzdGVyLXVzZXIvcmVnaXN0ZXItdXNlci5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyJ0b29sYmFyLXRpdGxlIHRvb2xiYXItdGl0bGUtaW9zIHsgXHJcbiAgICBmb250LXNpemU6IDEuN3JlbTtcclxuICB9XHJcblxyXG4gIHRvb2xiYXItdGl0bGUgdG9vbGJhci10aXRsZS1tZCB7IFxyXG4gICAgZm9udC1zaXplOiAycmVtO1xyXG4gIH1cclxuXHJcbiAgdG9vbGJhci10aXRsZSB0b29sYmFyLXRpdGxlLXdwIHsgXHJcbiAgICBmb250LXNpemU6IDEuNXJlbTtcclxuICB9XHJcblxyXG4gIC5tYXJnaW5pY29ue1xyXG4gICAgbWFyZ2luLWxlZnQ6IDNweDtcclxuICB9XHJcblxyXG4gIC5kb250bWF0Y2h7XHJcbiAgICBjb2xvcjogcmVkO1xyXG4gICAgZm9udC1zaXplOiB4LXNtYWxsO1xyXG4gICAgbWFyZ2luLXRvcDogMnB4O1xyXG4gIH1cclxuXHJcbiAgLm1hdGNoe1xyXG4gICAgY29sb3I6IGJsYWNrO1xyXG4gICAgZm9udC1zaXplOiB4LXNtYWxsO1xyXG4gICAgbWFyZ2luLXRvcDogMnB4O1xyXG59XHJcblxyXG4uZm9ybWxvZ2lue1xyXG4gIG1hcmdpbi10b3A6IDM1cHg7XHJcbn0iLCJ0b29sYmFyLXRpdGxlIHRvb2xiYXItdGl0bGUtaW9zIHtcbiAgZm9udC1zaXplOiAxLjdyZW07XG59XG5cbnRvb2xiYXItdGl0bGUgdG9vbGJhci10aXRsZS1tZCB7XG4gIGZvbnQtc2l6ZTogMnJlbTtcbn1cblxudG9vbGJhci10aXRsZSB0b29sYmFyLXRpdGxlLXdwIHtcbiAgZm9udC1zaXplOiAxLjVyZW07XG59XG5cbi5tYXJnaW5pY29uIHtcbiAgbWFyZ2luLWxlZnQ6IDNweDtcbn1cblxuLmRvbnRtYXRjaCB7XG4gIGNvbG9yOiByZWQ7XG4gIGZvbnQtc2l6ZTogeC1zbWFsbDtcbiAgbWFyZ2luLXRvcDogMnB4O1xufVxuXG4ubWF0Y2gge1xuICBjb2xvcjogYmxhY2s7XG4gIGZvbnQtc2l6ZTogeC1zbWFsbDtcbiAgbWFyZ2luLXRvcDogMnB4O1xufVxuXG4uZm9ybWxvZ2luIHtcbiAgbWFyZ2luLXRvcDogMzVweDtcbn0iXX0= */");
+
+/***/ }),
+
+/***/ "./src/app/pages/register-user/register-user.page.ts":
+/*!***********************************************************!*\
+  !*** ./src/app/pages/register-user/register-user.page.ts ***!
+  \***********************************************************/
+/*! exports provided: RegisterUserPage */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "RegisterUserPage", function() { return RegisterUserPage; });
+/* harmony import */ var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! tslib */ "./node_modules/tslib/tslib.es6.js");
+/* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm2015/core.js");
+/* harmony import */ var _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! @ionic-native/barcode-scanner/ngx */ "./node_modules/@ionic-native/barcode-scanner/ngx/index.js");
+/* harmony import */ var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! @ionic/angular */ "./node_modules/@ionic/angular/dist/fesm5.js");
+/* harmony import */ var _ionic_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! @ionic/storage */ "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+/* harmony import */ var _services_tokens_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../services/tokens.service */ "./src/app/services/tokens.service.ts");
+/* harmony import */ var _services_users_service__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../services/users.service */ "./src/app/services/users.service.ts");
+/* harmony import */ var _angular_router__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! @angular/router */ "./node_modules/@angular/router/fesm2015/router.js");
+/* harmony import */ var _angular_common__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! @angular/common */ "./node_modules/@angular/common/fesm2015/common.js");
+/* harmony import */ var src_app_services_push_service__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! src/app/services/push.service */ "./src/app/services/push.service.ts");
+/* harmony import */ var _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! @ionic-native/qr-scanner/ngx */ "./node_modules/@ionic-native/qr-scanner/ngx/index.js");
+
+/*
+verifyt(): metodo que verifica los tockens al ingresarlo qeu si estan disponible
+*/
+
+
+
+
+
+
+
+//import { Format } from 'date-format';
+
+
+
+
+
+let RegisterUserPage = class RegisterUserPage {
+    constructor(barcodeScanner, tokenService, toastCtrl, userService, router, datePipe, menuCtrl, pushService, qrScanner, platform, storage, alertController) {
+        this.barcodeScanner = barcodeScanner;
+        this.tokenService = tokenService;
+        this.toastCtrl = toastCtrl;
+        this.userService = userService;
+        this.router = router;
+        this.datePipe = datePipe;
+        this.menuCtrl = menuCtrl;
+        this.pushService = pushService;
+        this.qrScanner = qrScanner;
+        this.platform = platform;
+        this.storage = storage;
+        this.alertController = alertController;
+        this.passwordsnotmatch = '';
+        this.defaulvalue = 0;
+        this.idtoken = 4;
+        this.users = {
+            username: '',
+            password: '',
+            secondpass: '',
+            expire_in: '',
+            notificationId: '',
+            check: false
+        };
+        this.form = {
+            check: false
+        };
+        this.userRegister = {
+            username: '',
+            password: '',
+            idtoken: '',
+        };
+        this.userRegisterValid = {
+            username: 0,
+            password: 0,
+            idtoken: 0,
+            check: 1
+        };
+        this.respuesta = '';
+        this.veryfytoken = '';
+        this.discla = " <p>Al usar SEKRET, usted acepta y está sujeto a estos Términos y condiciones en su totalidad y, sin reservas, a todas las leyes y regulaciones aplicables, y acepta que es responsable del cumplimiento de las leyes aplicables. Estos Términos de servicio rigen su uso de esta APP. Si no está de acuerdo con alguno de estos términos, tiene prohibido utilizar SEKRET.</p>";
+        this.discla2 = "<p>Uso aceptable:</p>";
+        this.discla3 = "<p>• No debe usar SEKRET de ninguna manera que pueda causar daño a SEKRET o de cualquier manera que sea ilegal, fraudulenta o dañina, o en conexión con cualquier actividad ilegal.</p>";
+        this.discla4 = "<p>• No debe utilizar esta APP para enviar ningún tipo de comunicaciones comerciales.</p>";
+        this.discla5 = "<p>• No debe utilizar esta APP para ningún propósito relacionado con actividad Ilícita o prohibida por el gobierno local donde se use SEKRET.</p>";
+        this.discla6 = "<p>Afiliación :</p>";
+        this.discla7 = "<p>Esta política puede cambiar en cualquier momento, por favor regístrese antes de usar el sitio.</p>";
+        this.discla8 = "<p>• Los usuarios deben proporcionar información válida y veraz durante todas las etapas.</p>";
+        this.discla9 = "<p>• Los usuarios no deben crear más de una cuenta por persona, ya que tener varias cuentas puede resultar en la suspensión de todas las cuentas y la pérdida de la información.</p>";
+        this.discla10 = "<p>• Los usuarios no deben utilizar un proxy ni intentar enmascarar o desviar su conexión a Internet. Eso resultará en la suspensión de todas sus cuentas.</p>";
+        this.discla11 = "<p>    • El saldo de la cuenta no se puede transferir, intercambiar, vender ni cambiar de propiedad bajo ninguna circunstancia, excepto por SEKRET</p>";
+        this.discla12 = "<p>• Nos reservamos el derecho de cerrar su cuenta y eliminar su información si ha violado nuestro acuerdo de términos de servicio.</p>";
+        this.discla13 = "<p>• Nos reservamos el derecho de cerrar su cuenta debido a inactividad de 3 o más meses. Una cuenta inactiva se define como una cuenta que no ha obtenido acceso durante 3 meses o más.</p>";
+        this.discla14 = "<p>Sin garantías:</p>";
+        this.discla15 = "<p>SEKRET se proporciona 'tal cual', sin ninguna representación ni garantía. SEKRET no hace representaciones ni garantías en relación con esta APP o la información y materiales proporcionados en la APP.</p>";
+        this.discla16 = "<p></p>";
+        this.discla17 = "<p>SEKRET garantiza que:</p>";
+        this.discla18 = "<p>• La información en esta APP es completa, verdadera o no engañosa.</p>";
+        this.discla19 = "<p>    • No se almacena ningún tipo de información de usuarios ni de conexiones a la Plataforma.</p>";
+        this.discla20 = "<p>    • No vendemos información ni suministramos accesos a terceros en nuestra plataforma.</p>";
+        this.discla21 = "<p>Privacidad:</p>";
+        this.discla22 = "<p>Para obtener detalles sobre nuestra política de privacidad, consulte la sección de política de privacidad.</p>";
+        this.discla23 = "<p>Disposiciones inaplicables:</p>";
+        this.discla24 = "<p>Si alguna disposición de este descargo de responsabilidad de la APP es o se determina que no se puede hacer cumplir según la ley aplicable, eso no afectará la aplicabilidad de las otras disposiciones de este descargo de responsabilidad del sitio web.  Enlaces : https://www.sekret.es/  </p>";
+        this.discla25 = "<p>Modificaciones:</p>";
+        this.discla26 = "<p>SEKRET puede revisar estos términos de uso de su APP en cualquier momento sin previo aviso. Al utilizar esta APP, usted acepta estar sujeto a la versión actual de estos términos de servicio.  Incumplimientos de estos términos y condiciones:  </p>";
+        this.discla27 = "<p>• SEKRET se reserva el derecho en virtud de estos términos y condiciones de tomar medidas si incumple estos términos y condiciones de alguna manera.</p>";
+        this.discla28 = "<p>• SEKRET puede tomar las acciones que considere apropiadas para hacer frente a la infracción, incluida la suspensión de su acceso a la APP, la eliminación de la cuenta de la  APP SEKRET y la prohibición de acceder al servicio.</p>";
+        this.disclaFinale = this.discla + this.discla2 + this.discla3 + this.discla4 + this.discla5 + this.discla6 + this.discla7 + this.discla8 + this.discla9 + this.discla10 + this.discla11 + this.discla12 + this.discla13 + this.discla14 + this.discla15 + this.discla16 + this.discla17 + this.discla18 + this.discla19 + this.discla20 + this.discla21 + this.discla22 + this.discla23 + this.discla24 + this.discla25 + this.discla26 + this.discla27 + this.discla28;
+        this.platform.backButton.subscribeWithPriority(10, () => {
+            document.getElementsByTagName("body")[0].style.opacity = "1";
+            this.scaned.unsubscribe();
+        });
+        platform.ready().then(() => {
+            this.platform.pause.subscribe(() => {
+                this.qrScanner.hide();
+                // this.logout();
+            });
+            this.platform.resume.subscribe(() => {
+                console.log('[INFO] App resumed');
+                this.qrScanner.pausePreview();
+                this.qrScanner.destroy();
+                //  this.logout();            
+                // this.router.navigate(['/home']);
+            });
+        });
+    }
+    ngOnInit() {
+    }
+    logout() {
+        console.log("Logging out user");
+        this.router.navigate(['/home']);
+    }
+    ionViewWillEnter() {
+        this.menuCtrl.enable(false);
+    }
+    registerUser(formuser) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            if (this.users.check === false) {
+                this.presentToast('Debe aceptar los términos y condiciones');
+            }
+            else {
+                let tokenResponse = this.users.idtoken;
+                console.log('******', this.userRegisterValid.idtoken);
+                this.timTokenVar = this.getDays(tokenResponse);
+                let newDateExpire;
+                console.log('ARREGLO DE USUARIO: USUARIO', this.users.username);
+                console.log('ARREGLO DE USUARIO: iDTOKEN', this.users.idtoken);
+                console.log('ARREGLO DE USUARIO: PASSWORD', this.users.password);
+                console.log('ARREGLO DE USUARIO: EXPIREIN ', this.users.expire_in);
+                newDateExpire = this.timTokenVar;
+                var array_date = newDateExpire.split("/"); //esta linea esta bien y te genera el arreglo
+                var year = parseInt(array_date[2]);
+                var month = parseInt(array_date[1]);
+                var day = parseInt(array_date[0]);
+                var newFormatDate = year + '-' + month + '-' + day;
+                var newDate = this.datePipe.transform(newFormatDate, "yyyy-MM-dd, h:mm a");
+                console.log('[ *** %%% ID DEL PLANN]', this.idplan);
+                console.log('[ *** %%% TYPO DE PLAN]', this.typePlan);
+                //console.log('ARREGLO DE USUARIO', newFormatDate);
+                this.users = {
+                    username: this.users.username,
+                    password: this.users.password,
+                    secondpass: '',
+                    expire_in: newDate,
+                    notificationId: this.pushService.getuserIdOneSignal(),
+                    idPlan: this.idplan,
+                    plan: this.typePlan,
+                    token: this.users.idtoken
+                };
+                this.userService.saveToken(this.users.username);
+                const valid = yield this.userService.registrarUsuario(this.users);
+                this.storage.set('username', this.users.username);
+                this.presentToast('Usuario creado correctamente');
+                this.users.username = '';
+                this.users.password = '';
+                this.users.token = '';
+                this.users.passwordv = '';
+                //console.log('validacion de usuario : ', valid); 
+            }
+        });
+    }
+    presentToast(message) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const toast = yield this.toastCtrl.create({
+                message,
+                duration: 2000,
+                position: 'middle'
+            });
+            toast.present();
+        });
+    }
+    verifyt(token) {
+        console.log('Ingresa por revision: ', token);
+        let characters = token.length;
+        if (characters === 20) {
+            this.tokenService.getVerifyToken(token).subscribe(resp => {
+                console.log('resp token', resp);
+                if (resp.tokens[0].token != null && resp.tokens[0].state === '1') {
+                    this.idplan = resp.tokens[0].idplan;
+                    this.presentToast('El token se encuentra disponible');
+                    this.getDays(this.idplan);
+                }
+                else {
+                    this.userRegisterValid.idtoken = 1;
+                    this.presentToast('El token No esta disponible');
+                    this.idplan = 1010;
+                }
+            });
+        }
+        else {
+            this.presentToast('El token No esta registrado');
+            this.userRegisterValid.idtoken = 1;
+        }
+        return this.idplan;
+    }
+    getDays(idplan) {
+        let idplanToService = idplan;
+        //console.log('IDPLAN TO SEARCH', idplanToService)
+        this.tokenService.getRemainingDays(idplan).subscribe(resp => {
+            console.log('PLAN AL QUE PERTENECE', resp);
+            this.typePlan = resp.plans[0].type;
+            console.log('TAMALO DE LOSP PLANES ', resp.plans.length);
+            if (resp.plans.length === 0) {
+                this.presentToast('El token No se encuentra registrado.');
+            }
+            console.log('DIAS DEL PLAN', resp.plans[0].timetoexpire);
+            this.timeToken = resp.plans[0].timetoexpire;
+            var hoy = new Date();
+            var devolucion = new Date();
+            devolucion.setDate(hoy.getDate() + this.timeToken);
+            console.log('FECHA ACTUAL', Date());
+            this.testing = devolucion.toLocaleDateString();
+        });
+        return this.testing;
+    }
+    onSubmitUserCreate() {
+        console.log("paso");
+        console.log(this.users);
+    }
+    scan() {
+        this.qrScanner.prepare().then((status) => {
+            if (status.authorized) {
+                this.qrScanner.show();
+                document.getElementsByTagName("body")[0].style.opacity = "0";
+                this.scaned = this.qrScanner.scan().subscribe((textFound) => {
+                    document.getElementsByTagName("body")[0].style.opacity = "1";
+                    this.users.idtoken = textFound;
+                    this.txt = textFound;
+                    this.verifyt(this.txt);
+                    console.log('TEXTO ESCANEADO', textFound);
+                    this.qrScanner.hide();
+                    this.scaned.unsubscribe();
+                    this.qrScanner.destroy();
+                    this.users.username.focus();
+                    this.scaned.destroy();
+                }, (err) => {
+                    console.log(err);
+                });
+            }
+            else if (status.denied) {
+            }
+            else {
+            }
+        });
+    }
+    passwordsmatch(pass1, pass2) {
+        console.log('passoword 1', pass1);
+        console.log('passoword 2', pass2);
+        if (pass1 === pass2) {
+            this.passwordsnotmatch = 'Correcto';
+            this.classpassinput = 'match';
+            this.userRegisterValid.password = 0;
+        }
+        else {
+            this.passwordsnotmatch = 'Las contraseñas no coinciden';
+            this.classpassinput = 'dontmatch';
+            this.userRegisterValid.password = 1;
+        }
+    }
+    verifyu(user) {
+        this.userService.getVerifyUser(user).subscribe(response => {
+            this.verifyUser = response.user[0];
+            console.log('+++++++++++', this.verifyUser);
+            if (!this.verifyUser) {
+                this.presentToast('Usuario disponible');
+            }
+            else {
+                this.presentToast('Usuario no disponible');
+            }
+        });
+    }
+    inputValidator(event) {
+        console.log('paso al metod de validacion');
+        console.log(event.target.value);
+        const pattern = /^[a-zA-Z0-9]*$/;
+        //let inputChar = String.fromCharCode(event.charCode)
+        if (!pattern.test(event.target.value)) {
+            event.target.value = event.target.value.replace(/[^a-zA-Z0-9]/g, "");
+            // invalid character, prevent input
+        }
+    }
+    disclaimer(check) {
+        return tslib__WEBPACK_IMPORTED_MODULE_0__["__awaiter"](this, void 0, void 0, function* () {
+            const alert = yield this.alertController.create({
+                header: 'Disclaimer!',
+                message: this.disclaFinale,
+                buttons: [
+                    {
+                        text: 'Cancelar',
+                        role: 'cancel',
+                        cssClass: 'secondary',
+                        handler: (blah) => {
+                            console.log('Confirm Cancel: blah');
+                            this.userRegisterValid.check = 1;
+                        }
+                    }, {
+                        text: 'Aceptar',
+                        handler: () => {
+                            console.log('Confirm Okay');
+                            console.log('ENTRA EN EL CHECJ', check);
+                            if (check === true) {
+                                this.users.check = true;
+                                this.userRegisterValid.check = 0;
+                            }
+                        }
+                    }
+                ]
+            });
+            yield alert.present();
+        });
+    }
+    stack(rev) {
+        console.log('[INFO]', rev);
+    }
+};
+RegisterUserPage.ctorParameters = () => [
+    { type: _ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_2__["BarcodeScanner"] },
+    { type: _services_tokens_service__WEBPACK_IMPORTED_MODULE_5__["TokenService"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"] },
+    { type: _services_users_service__WEBPACK_IMPORTED_MODULE_6__["UsersService"] },
+    { type: _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"] },
+    { type: _angular_common__WEBPACK_IMPORTED_MODULE_8__["DatePipe"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["MenuController"] },
+    { type: src_app_services_push_service__WEBPACK_IMPORTED_MODULE_9__["PushService"] },
+    { type: _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_10__["QRScanner"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"] },
+    { type: _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"] },
+    { type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"] }
+];
+RegisterUserPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([
+    Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+        selector: 'app-register-user',
+        template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! raw-loader!./register-user.page.html */ "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/register-user/register-user.page.html")).default,
+        styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(/*! ./register-user.page.scss */ "./src/app/pages/register-user/register-user.page.scss")).default]
+    }),
+    tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_native_barcode_scanner_ngx__WEBPACK_IMPORTED_MODULE_2__["BarcodeScanner"],
+        _services_tokens_service__WEBPACK_IMPORTED_MODULE_5__["TokenService"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["ToastController"],
+        _services_users_service__WEBPACK_IMPORTED_MODULE_6__["UsersService"],
+        _angular_router__WEBPACK_IMPORTED_MODULE_7__["Router"],
+        _angular_common__WEBPACK_IMPORTED_MODULE_8__["DatePipe"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["MenuController"],
+        src_app_services_push_service__WEBPACK_IMPORTED_MODULE_9__["PushService"],
+        _ionic_native_qr_scanner_ngx__WEBPACK_IMPORTED_MODULE_10__["QRScanner"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"],
+        _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"],
+        _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["AlertController"]])
+], RegisterUserPage);
+
+
+
+/***/ })
+
+}]);
+//# sourceMappingURL=pages-register-user-register-user-module-es2015.js.map

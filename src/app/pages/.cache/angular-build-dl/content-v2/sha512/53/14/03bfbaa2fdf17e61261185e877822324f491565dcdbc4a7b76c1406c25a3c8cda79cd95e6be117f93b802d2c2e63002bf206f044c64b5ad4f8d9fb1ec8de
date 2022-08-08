@@ -1,0 +1,183 @@
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-passport-passport-module"], {
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/passport/passport.page.html":
+  /*!*****************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/passport/passport.page.html ***!
+    \*****************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppPagesPassportPassportPageHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "\r\n<ion-content class=\"pass\">\r\n  <ion-card class=\"card1 card\">\r\n    <ion-item>\r\n      <ion-icon name=\"key-outline\"></ion-icon>\r\n      <ion-label>Ingresa tu Contraseña</ion-label>\r\n      \r\n    </ion-item>\r\n  \r\n    <ion-card-content class=\"card\">\r\n      El la aplicacion se ha puesto en segundo plano, por favor ingresa tu contraseña para verificar.\r\n      <ion-item>\r\n        <ion-label position=\"floating\" class=\"label1\">Contraseña</ion-label>\r\n        <ion-input class=\"label1\"></ion-input>\r\n      </ion-item>\r\n      <ion-button expand=\"block\" fill=\"outline\">Ingresar</ion-button>\r\n    </ion-card-content>\r\n  </ion-card>\r\n</ion-content>\r\n";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/passport/passport.module.ts":
+  /*!***************************************************!*\
+    !*** ./src/app/pages/passport/passport.module.ts ***!
+    \***************************************************/
+
+  /*! exports provided: PassportPageModule */
+
+  /***/
+  function srcAppPagesPassportPassportModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "PassportPageModule", function () {
+      return PassportPageModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _passport_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./passport.page */
+    "./src/app/pages/passport/passport.page.ts");
+
+    var routes = [{
+      path: '',
+      component: _passport_page__WEBPACK_IMPORTED_MODULE_6__["PassportPage"]
+    }];
+
+    var PassportPageModule = function PassportPageModule() {
+      _classCallCheck(this, PassportPageModule);
+    };
+
+    PassportPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes)],
+      declarations: [_passport_page__WEBPACK_IMPORTED_MODULE_6__["PassportPage"]]
+    })], PassportPageModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/passport/passport.page.scss":
+  /*!***************************************************!*\
+    !*** ./src/app/pages/passport/passport.page.scss ***!
+    \***************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppPagesPassportPassportPageScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = ".card1 {\n  margin-top: 35%;\n}\n\n--ion-content {\n  background-color: black;\n}\n\nion-content {\n  --ion-background-color: #FF8700;\n}\n\n.card {\n  border-color: cadetblue;\n  color: white;\n}\n\n.label1 {\n  color: white;\n}\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbInNyYy9hcHAvcGFnZXMvcGFzc3BvcnQvQzpcXFVzZXJzXFxOZW1lc3Npc1xcRGVza3RvcFxcZnN1IC0gQ29weS9zcmNcXGFwcFxccGFnZXNcXHBhc3Nwb3J0XFxwYXNzcG9ydC5wYWdlLnNjc3MiLCJzcmMvYXBwL3BhZ2VzL3Bhc3Nwb3J0L3Bhc3Nwb3J0LnBhZ2Uuc2NzcyJdLCJuYW1lcyI6W10sIm1hcHBpbmdzIjoiQUFBQTtFQUNJLGVBQUE7QUNDSjs7QURFQTtFQUNJLHVCQUFBO0FDQ0o7O0FERUE7RUFDSSwrQkFBQTtBQ0NKOztBREVBO0VBQ0ksdUJBQUE7RUFDQSxZQUFBO0FDQ0o7O0FERUE7RUFDSSxZQUFBO0FDQ0oiLCJmaWxlIjoic3JjL2FwcC9wYWdlcy9wYXNzcG9ydC9wYXNzcG9ydC5wYWdlLnNjc3MiLCJzb3VyY2VzQ29udGVudCI6WyIuY2FyZDF7XHJcbiAgICBtYXJnaW4tdG9wOiAzNSU7XHJcbn1cclxuXHJcbi0taW9uLWNvbnRlbnR7XHJcbiAgICBiYWNrZ3JvdW5kLWNvbG9yOiBibGFjaztcclxufVxyXG5cclxuaW9uLWNvbnRlbnR7XHJcbiAgICAtLWlvbi1iYWNrZ3JvdW5kLWNvbG9yOiAjRkY4NzAwO1xyXG59XHJcblxyXG4uY2FyZHtcclxuICAgIGJvcmRlci1jb2xvcjogY2FkZXRibHVlO1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG59XHJcblxyXG4ubGFiZWwxe1xyXG4gICAgY29sb3I6IHdoaXRlO1xyXG59IiwiLmNhcmQxIHtcbiAgbWFyZ2luLXRvcDogMzUlO1xufVxuXG4tLWlvbi1jb250ZW50IHtcbiAgYmFja2dyb3VuZC1jb2xvcjogYmxhY2s7XG59XG5cbmlvbi1jb250ZW50IHtcbiAgLS1pb24tYmFja2dyb3VuZC1jb2xvcjogI0ZGODcwMDtcbn1cblxuLmNhcmQge1xuICBib3JkZXItY29sb3I6IGNhZGV0Ymx1ZTtcbiAgY29sb3I6IHdoaXRlO1xufVxuXG4ubGFiZWwxIHtcbiAgY29sb3I6IHdoaXRlO1xufSJdfQ== */";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/passport/passport.page.ts":
+  /*!*************************************************!*\
+    !*** ./src/app/pages/passport/passport.page.ts ***!
+    \*************************************************/
+
+  /*! exports provided: PassportPage */
+
+  /***/
+  function srcAppPagesPassportPassportPageTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "PassportPage", function () {
+      return PassportPage;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+
+    var PassportPage = /*#__PURE__*/function () {
+      function PassportPage() {
+        _classCallCheck(this, PassportPage);
+      }
+
+      _createClass(PassportPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {}
+      }]);
+
+      return PassportPage;
+    }();
+
+    PassportPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-passport',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./passport.page.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/passport/passport.page.html"))["default"],
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./passport.page.scss */
+      "./src/app/pages/passport/passport.page.scss"))["default"]]
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [])], PassportPage);
+    /***/
+  }
+}]);
+//# sourceMappingURL=pages-passport-passport-module-es5.js.map

@@ -1,0 +1,311 @@
+function _defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } }
+
+function _createClass(Constructor, protoProps, staticProps) { if (protoProps) _defineProperties(Constructor.prototype, protoProps); if (staticProps) _defineProperties(Constructor, staticProps); return Constructor; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+(window["webpackJsonp"] = window["webpackJsonp"] || []).push([["pages-groups-groups-module"], {
+  /***/
+  "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/groups/groups.page.html":
+  /*!*************************************************************************************!*\
+    !*** ./node_modules/raw-loader/dist/cjs.js!./src/app/pages/groups/groups.page.html ***!
+    \*************************************************************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function node_modulesRawLoaderDistCjsJsSrcAppPagesGroupsGroupsPageHtml(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "<ion-header>\r\n  <ion-toolbar color=\"warning\">\r\n    <ion-buttons slot=\"start\">\r\n      <ion-back-button defaultHref=\"/contacts\" icon-only></ion-back-button>\r\n    </ion-buttons>\r\n    <ion-title>{{'GROUPS.title' | translate}}</ion-title>\r\n  </ion-toolbar>\r\n  <ion-buttons>\r\n    <ion-toolbar>\r\n      <ion-buttons slot=\"primary\">\r\n        <ion-button [routerLink]=\"['/contacts']\">\r\n          <ion-icon slot=\"icon-only\" name=\"person\" color=\"warning\"></ion-icon>\r\n        </ion-button>\r\n\r\n      </ion-buttons>\r\n      <ion-toolbar>\r\n        <ion-searchbar (ionChange)=\"filterSearch($event)\" animated [debounce]=\"1000\"\r\n          placeholder=\"{{'CONTACTS.searchBar' | translate}}\"></ion-searchbar>\r\n      </ion-toolbar>\r\n    </ion-toolbar>\r\n  </ion-buttons>\r\n</ion-header>\r\n\r\n<ion-content>\r\n\r\n\r\n  <ion-refresher slot=\"fixed\" (ionRefresh)=\"doRefresh($event)\">\r\n    <ion-refresher-content></ion-refresher-content>\r\n  </ion-refresher>\r\n\r\n  <ion-fab vertical=\"top\" horizontal=\"end\" slot=\"fixed\">\r\n    <ion-fab-button color=\"warning\">\r\n      <ion-icon name=\"add\" (click)=\"createGroup()\"></ion-icon>\r\n    </ion-fab-button>\r\n  </ion-fab>\r\n\r\n  <ion-list>\r\n\r\n    <ion-item *ngFor=\"let group of groupList\" [routerLink]=\"['/chat-group', group.msgId ]\">\r\n      <ion-avatar slot=\"start\">\r\n        <img src=\"../../../assets/avatars/group.png\">\r\n      </ion-avatar>\r\n      <ion-label>{{ group.namegroup }} </ion-label>\r\n      <ion-icon name=\"chatbox-ellipses\" color=\"warning\" *ngIf=\"group.badge === '1'\" slot=\"end\"></ion-icon>\r\n      <p *ngIf=\"group.badge === '1'\">{{'GROUPS.unreadmessages' | translate}}</p>\r\n    </ion-item>\r\n  </ion-list>\r\n\r\n</ion-content>";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/groups/groups.module.ts":
+  /*!***********************************************!*\
+    !*** ./src/app/pages/groups/groups.module.ts ***!
+    \***********************************************/
+
+  /*! exports provided: GroupsPageModule */
+
+  /***/
+  function srcAppPagesGroupsGroupsModuleTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "GroupsPageModule", function () {
+      return GroupsPageModule;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_common__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/common */
+    "./node_modules/@angular/common/fesm2015/common.js");
+    /* harmony import */
+
+
+    var _angular_forms__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @angular/forms */
+    "./node_modules/@angular/forms/fesm2015/forms.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _groups_page__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(
+    /*! ./groups.page */
+    "./src/app/pages/groups/groups.page.ts");
+    /* harmony import */
+
+
+    var _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(
+    /*! @ngx-translate/core */
+    "./node_modules/@ngx-translate/core/fesm2015/ngx-translate-core.js");
+
+    var routes = [{
+      path: '',
+      component: _groups_page__WEBPACK_IMPORTED_MODULE_6__["GroupsPage"]
+    }];
+
+    var GroupsPageModule = function GroupsPageModule() {
+      _classCallCheck(this, GroupsPageModule);
+    };
+
+    GroupsPageModule = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
+      imports: [_angular_common__WEBPACK_IMPORTED_MODULE_2__["CommonModule"], _angular_forms__WEBPACK_IMPORTED_MODULE_3__["FormsModule"], _ionic_angular__WEBPACK_IMPORTED_MODULE_5__["IonicModule"], _angular_router__WEBPACK_IMPORTED_MODULE_4__["RouterModule"].forChild(routes), _ngx_translate_core__WEBPACK_IMPORTED_MODULE_7__["TranslateModule"]],
+      declarations: [_groups_page__WEBPACK_IMPORTED_MODULE_6__["GroupsPage"]]
+    })], GroupsPageModule);
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/groups/groups.page.scss":
+  /*!***********************************************!*\
+    !*** ./src/app/pages/groups/groups.page.scss ***!
+    \***********************************************/
+
+  /*! exports provided: default */
+
+  /***/
+  function srcAppPagesGroupsGroupsPageScss(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony default export */
+
+
+    __webpack_exports__["default"] = "\n/*# sourceMappingURL=data:application/json;base64,eyJ2ZXJzaW9uIjozLCJzb3VyY2VzIjpbXSwibmFtZXMiOltdLCJtYXBwaW5ncyI6IiIsImZpbGUiOiJzcmMvYXBwL3BhZ2VzL2dyb3Vwcy9ncm91cHMucGFnZS5zY3NzIn0= */";
+    /***/
+  },
+
+  /***/
+  "./src/app/pages/groups/groups.page.ts":
+  /*!*********************************************!*\
+    !*** ./src/app/pages/groups/groups.page.ts ***!
+    \*********************************************/
+
+  /*! exports provided: GroupsPage */
+
+  /***/
+  function srcAppPagesGroupsGroupsPageTs(module, __webpack_exports__, __webpack_require__) {
+    "use strict";
+
+    __webpack_require__.r(__webpack_exports__);
+    /* harmony export (binding) */
+
+
+    __webpack_require__.d(__webpack_exports__, "GroupsPage", function () {
+      return GroupsPage;
+    });
+    /* harmony import */
+
+
+    var tslib__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(
+    /*! tslib */
+    "./node_modules/tslib/tslib.es6.js");
+    /* harmony import */
+
+
+    var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(
+    /*! @angular/core */
+    "./node_modules/@angular/core/fesm2015/core.js");
+    /* harmony import */
+
+
+    var _angular_router__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(
+    /*! @angular/router */
+    "./node_modules/@angular/router/fesm2015/router.js");
+    /* harmony import */
+
+
+    var _ionic_angular__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(
+    /*! @ionic/angular */
+    "./node_modules/@ionic/angular/dist/fesm5.js");
+    /* harmony import */
+
+
+    var _ionic_storage__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(
+    /*! @ionic/storage */
+    "./node_modules/@ionic/storage/fesm2015/ionic-storage.js");
+    /* harmony import */
+
+
+    var _services_users_service__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(
+    /*! ../../services/users.service */
+    "./src/app/services/users.service.ts");
+
+    var GroupsPage = /*#__PURE__*/function () {
+      function GroupsPage(platform, router, storage, userService) {
+        var _this = this;
+
+        _classCallCheck(this, GroupsPage);
+
+        this.platform = platform;
+        this.router = router;
+        this.storage = storage;
+        this.userService = userService;
+        platform.ready().then(function () {
+          _this.platform.pause.subscribe(function () {// this.logout();
+          });
+
+          _this.platform.resume.subscribe(function () {
+            console.log('[INFO] App resumed');
+
+            _this.storage.get('stateCamera').then(function (result) {
+              console.log('[INFO] STATE CAMERA : ', result);
+
+              if (result === 1) {
+                console.log('[INFO]: Se esta usando la camara NO CERRAR');
+
+                _this.userService.saveStateCamera(0);
+              } else {
+                console.log('[INFO]: Mandar al Login');
+
+                _this.logout();
+              }
+            });
+          });
+        });
+      }
+
+      _createClass(GroupsPage, [{
+        key: "ngOnInit",
+        value: function ngOnInit() {
+          this.getgroups();
+          this.doRefresh('ionRefresh');
+          console.log('SE EJECUTA EL NGONINIT DE LOS GRUPOS');
+        }
+      }, {
+        key: "getgroups",
+        value: function getgroups() {
+          var _this2 = this;
+
+          this.storage.get('username').then(function (result) {
+            _this2.userstorage = result; //console.log('USUARIOOOOOO',result)
+
+            _this2.userService.getGroupList(result).subscribe(function (response) {
+              console.log('[XXXXXXXXXXXXXXXXXXXXXX]', response);
+              _this2.groupList = response.us;
+              console.log('LISTA de GRUPOS', _this2.groupList);
+            });
+          });
+        }
+      }, {
+        key: "logout",
+        value: function logout() {
+          console.log("Logging out user");
+          this.router.navigate(['/home']);
+        }
+      }, {
+        key: "createGroup",
+        value: function createGroup() {
+          this.router.navigate(['/create-group']);
+        }
+      }, {
+        key: "doRefresh",
+        value: function doRefresh(event) {
+          var _this3 = this;
+
+          console.log('[EVENT *******]', event);
+          setTimeout(function () {
+            _this3.getgroups();
+
+            _this3.storage.get('username').then(function (result) {
+              _this3.userstorage = result;
+              console.log('USUARIOOOOOO', result);
+
+              _this3.userService.getGroupList(result).subscribe(function (response) {
+                _this3.groupList = response.us;
+                console.log('LISTA de GRUPOS', _this3.groupList);
+              });
+            });
+
+            event.target.complete();
+          }, 1000);
+        }
+      }, {
+        key: "ionViewWillEnter",
+        value: function ionViewWillEnter() {
+          this.doRefresh('ionRefresh');
+        }
+      }]);
+
+      return GroupsPage;
+    }();
+
+    GroupsPage.ctorParameters = function () {
+      return [{
+        type: _ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"]
+      }, {
+        type: _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"]
+      }, {
+        type: _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"]
+      }, {
+        type: _services_users_service__WEBPACK_IMPORTED_MODULE_5__["UsersService"]
+      }];
+    };
+
+    GroupsPage = tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"]([Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["Component"])({
+      selector: 'app-groups',
+      template: tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! raw-loader!./groups.page.html */
+      "./node_modules/raw-loader/dist/cjs.js!./src/app/pages/groups/groups.page.html"))["default"],
+      styles: [tslib__WEBPACK_IMPORTED_MODULE_0__["__importDefault"](__webpack_require__(
+      /*! ./groups.page.scss */
+      "./src/app/pages/groups/groups.page.scss"))["default"]]
+    }), tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"]("design:paramtypes", [_ionic_angular__WEBPACK_IMPORTED_MODULE_3__["Platform"], _angular_router__WEBPACK_IMPORTED_MODULE_2__["Router"], _ionic_storage__WEBPACK_IMPORTED_MODULE_4__["Storage"], _services_users_service__WEBPACK_IMPORTED_MODULE_5__["UsersService"]])], GroupsPage);
+    /***/
+  }
+}]);
+//# sourceMappingURL=pages-groups-groups-module-es5.js.map
